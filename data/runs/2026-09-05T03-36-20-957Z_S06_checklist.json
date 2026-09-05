@@ -1,0 +1,1033 @@
+{
+  "request": {
+    "stage": "checklist",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S06",
+      "title": "Vendor Meeting and Improvement Action Follow-up",
+      "domain": "engineering_coordination",
+      "initial_description": "The team meets with an equipment vendor to discuss improvement ideas. After the meeting, someone summarizes the discussion and follows up on action items.",
+      "reference_workflow": {
+        "goal": "Coordinate a vendor meeting, capture improvement decisions, and track follow-up actions.",
+        "actors": [
+          "equipment engineer",
+          "vendor representative",
+          "meeting organizer",
+          "action-item owner",
+          "manager"
+        ],
+        "systems": [
+          "calendar system",
+          "meeting notes",
+          "action-item tracker",
+          "shared document repository"
+        ],
+        "inputs": [
+          "improvement request",
+          "equipment issue summary",
+          "meeting agenda",
+          "vendor proposal"
+        ],
+        "outputs": [
+          "meeting minutes",
+          "action-item list",
+          "owner and due date assignments",
+          "updated improvement proposal"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Prepare agenda and issue summary",
+            "actor": "equipment engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Schedule meeting with vendor",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A3",
+            "name": "Discuss improvement options",
+            "actor": "equipment engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Record decisions and open questions",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A5",
+            "name": "Assign action-item owners and due dates",
+            "actor": "manager"
+          },
+          {
+            "id": "A6",
+            "name": "Share meeting summary",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A7",
+            "name": "Track action-item progress",
+            "actor": "action-item owner"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the proposed improvement technically feasible?",
+            "branches": [
+              "feasible",
+              "requires revision"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are action items clearly owned?",
+            "branches": [
+              "owned",
+              "owner missing"
+            ]
+          }
+        ],
+        "exceptions": [
+          "agenda not prepared",
+          "vendor proposal incomplete",
+          "unclear owner",
+          "missed follow-up deadline"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Meeting scheduling can be assisted by calendar availability checks."
+          },
+          {
+            "target": "A4",
+            "rationale": "Meeting notes can be summarized into decisions, open questions, and action items."
+          },
+          {
+            "target": "A7",
+            "rationale": "Action-item reminders and status tracking can be automated."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "agenda input",
+        "meeting organizer",
+        "action-item owner",
+        "due date",
+        "tracker system",
+        "feasibility decision"
+      ]
+    },
+    "answers": "",
+    "previousOutput": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Schedule Vendor Meeting",
+            "actor": "Team Lead or Coordinator",
+            "system": "Calendar / Scheduling Tool",
+            "inputs": [
+              "Vendor contact details",
+              "Team availability",
+              "Agenda topics"
+            ],
+            "outputs": [
+              "Meeting invite",
+              "Confirmed meeting time"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Prepare Meeting Agenda",
+            "actor": "Team Lead or Coordinator",
+            "system": "Document Management System",
+            "inputs": [
+              "Improvement ideas backlog",
+              "Previous meeting notes",
+              "Equipment performance data"
+            ],
+            "outputs": [
+              "Formal meeting agenda"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Conduct Vendor Meeting",
+            "actor": "Team Members and Vendor Representatives",
+            "system": "Video Conferencing or In-person",
+            "inputs": [
+              "Meeting agenda",
+              "Equipment documentation",
+              "Improvement proposals"
+            ],
+            "outputs": [
+              "Raw meeting notes",
+              "Verbal agreements",
+              "Identified action items"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Summarize Meeting Discussion",
+            "actor": "Team Member (Note-taker)",
+            "system": "Document Management System",
+            "inputs": [
+              "Raw meeting notes",
+              "Verbal agreements"
+            ],
+            "outputs": [
+              "Meeting summary document"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Extract and Log Action Items",
+            "actor": "Team Member (Note-taker or Coordinator)",
+            "system": "Task Management System",
+            "inputs": [
+              "Meeting summary document"
+            ],
+            "outputs": [
+              "Action item list with owners and due dates"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Distribute Meeting Summary",
+            "actor": "Team Lead or Coordinator",
+            "system": "Email / Communication Platform",
+            "inputs": [
+              "Meeting summary document",
+              "Action item list"
+            ],
+            "outputs": [
+              "Distributed summary email",
+              "Acknowledgement from attendees"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Assign Action Item Owners",
+            "actor": "Team Lead",
+            "system": "Task Management System",
+            "inputs": [
+              "Action item list",
+              "Team member roles and availability"
+            ],
+            "outputs": [
+              "Assigned action items with responsible parties and deadlines"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Monitor Action Item Progress",
+            "actor": "Team Lead or Coordinator",
+            "system": "Task Management System",
+            "inputs": [
+              "Assigned action items",
+              "Due dates"
+            ],
+            "outputs": [
+              "Progress status updates"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Send Follow-up Reminders",
+            "actor": "Team Lead or Coordinator",
+            "system": "Email / Task Management System",
+            "inputs": [
+              "Overdue or upcoming action items"
+            ],
+            "outputs": [
+              "Reminder notifications to responsible parties"
+            ]
+          },
+          {
+            "id": "A10",
+            "name": "Collect Action Item Completion Evidence",
+            "actor": "Action Item Owner",
+            "system": "Task Management System / Document Management System",
+            "inputs": [
+              "Completed action items",
+              "Supporting documentation"
+            ],
+            "outputs": [
+              "Completion confirmation",
+              "Evidence artifacts"
+            ]
+          },
+          {
+            "id": "A11",
+            "name": "Review and Close Action Items",
+            "actor": "Team Lead",
+            "system": "Task Management System",
+            "inputs": [
+              "Completion confirmation",
+              "Evidence artifacts"
+            ],
+            "outputs": [
+              "Closed action items",
+              "Updated action item log"
+            ]
+          },
+          {
+            "id": "A12",
+            "name": "Escalate Unresolved Action Items",
+            "actor": "Team Lead",
+            "system": "Email / Communication Platform",
+            "inputs": [
+              "Overdue unresolved action items"
+            ],
+            "outputs": [
+              "Escalation notice to vendor or senior management"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all required attendees available for the proposed meeting time?",
+            "branches": [
+              "Yes - confirm meeting and proceed to agenda preparation",
+              "No - reschedule and re-invite"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the action item completed by the due date?",
+            "branches": [
+              "Yes - collect completion evidence and close item",
+              "No - send follow-up reminder or escalate"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the completion evidence sufficient for closure?",
+            "branches": [
+              "Yes - close action item",
+              "No - request additional evidence or corrective action"
+            ]
+          },
+          {
+            "id": "D4",
+            "condition": "Has the action item remained unresolved past escalation threshold?",
+            "branches": [
+              "Yes - escalate to vendor or senior management",
+              "No - continue monitoring"
+            ]
+          }
+        ],
+        "exceptions": [
+          "Vendor cancels or reschedules meeting at short notice",
+          "Key stakeholder unable to attend; meeting may need to be postponed or proceed with delegate",
+          "Meeting notes are incomplete or disputed by attendees",
+          "Action item owner becomes unavailable (e.g., leave, role change); item must be reassigned",
+          "Vendor fails to deliver on committed action items; escalation or contract review required",
+          "Improvement idea requires budget approval before action item can be completed"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A9",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A10",
+            "type": "control_flow"
+          },
+          {
+            "from": "A9",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A10",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A11",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "D4",
+            "type": "control_flow"
+          },
+          {
+            "from": "D4",
+            "to": "A12",
+            "type": "control_flow"
+          },
+          {
+            "from": "A1",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A2",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A1 - Schedule Vendor Meeting",
+          "rationale": "Meeting scheduling can be automated using calendar integration tools that check availability of all required participants and propose optimal meeting slots, reducing manual back-and-forth coordination.",
+          "required_data": [
+            "Participant calendar availability",
+            "Vendor contact details",
+            "Meeting duration estimate"
+          ],
+          "constraints": [
+            "Requires calendar system integration with vendor's external calendar or manual confirmation",
+            "Time zone differences may complicate automated scheduling"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A4 - Summarize Meeting Discussion",
+          "rationale": "If meetings are conducted via video conferencing with recording, AI-based transcription and summarization tools can generate draft meeting summaries, reducing manual effort and improving consistency.",
+          "required_data": [
+            "Meeting recording or live transcript",
+            "Agenda topics for context"
+          ],
+          "constraints": [
+            "Requires participant consent for recording",
+            "AI summaries require human review for accuracy before distribution",
+            "May not capture non-verbal context or informal agreements"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A5 - Extract and Log Action Items",
+          "rationale": "Natural language processing can identify and extract action items from meeting summaries or transcripts and automatically populate a task management system, reducing manual data entry errors.",
+          "required_data": [
+            "Meeting summary or transcript",
+            "Task management system API access"
+          ],
+          "constraints": [
+            "NLP accuracy may vary; human review required",
+            "Ambiguous action items need clarification before automation"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A6 - Distribute Meeting Summary",
+          "rationale": "Once the meeting summary and action item list are finalized, automated distribution via email or collaboration platform can be triggered without manual intervention.",
+          "required_data": [
+            "Finalized meeting summary",
+            "Attendee and stakeholder email list"
+          ],
+          "constraints": [
+            "Human approval of summary content required before automated send",
+            "Distribution list must be maintained and accurate"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A8 - Monitor Action Item Progress",
+          "rationale": "Task management systems can automatically track due dates, flag overdue items, and generate progress dashboards without manual monitoring effort.",
+          "required_data": [
+            "Action item list with due dates and owners",
+            "Task management system with reporting capability"
+          ],
+          "constraints": [
+            "Action item owners must update task status regularly for monitoring to be accurate"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A9 - Send Follow-up Reminders",
+          "rationale": "Automated reminder notifications can be sent based on configurable rules (e.g., X days before due date, on due date, and X days after if incomplete), eliminating the need for manual follow-up.",
+          "required_data": [
+            "Action item due dates",
+            "Owner contact information",
+            "Reminder schedule configuration"
+          ],
+          "constraints": [
+            "Overly frequent automated reminders may cause notification fatigue",
+            "Escalation logic must be carefully configured to avoid premature escalation"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D2 - Is the action item completed by the due date?",
+          "rationale": "This decision can be automated by querying task status in the task management system at the due date and automatically routing to reminder or closure workflows accordingly.",
+          "required_data": [
+            "Action item status",
+            "Due date"
+          ],
+          "constraints": [
+            "Relies on timely and accurate status updates by action item owners"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D4 - Has the action item remained unresolved past escalation threshold?",
+          "rationale": "Escalation rules can be codified and automated within the task management or workflow system, triggering escalation notices without manual intervention after a defined overdue period.",
+          "required_data": [
+            "Action item status",
+            "Escalation threshold configuration",
+            "Escalation contact list"
+          ],
+          "constraints": [
+            "Escalation thresholds must be agreed upon and configured in advance",
+            "Edge cases (e.g., item pending vendor response) may require human override"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "The team uses a digital calendar system that supports availability checking for scheduling purposes.",
+        "A task management system is available to log, assign, and track action items.",
+        "Meeting notes are captured in a digital document management system rather than paper-based records.",
+        "The vendor meeting may occur in-person or via video conferencing; the workflow accounts for both.",
+        "Action items may be assigned to both internal team members and vendor representatives.",
+        "The improvement ideas discussed relate to equipment used by the team, not to general organizational processes.",
+        "A single team member is responsible for note-taking during the meeting, but the team lead is responsible for review and approval of the summary.",
+        "Follow-up cadence and escalation thresholds are defined by the team lead or organizational policy.",
+        "The workflow repeats for subsequent vendor meetings, with prior action item status informing the next meeting agenda.",
+        "Budget approval or procurement steps, if needed for action items, are handled outside this workflow scope."
+      ]
+    },
+    "questions": null
+  },
+  "result": {
+    "id": "b1a141b2-3ed9-4ea0-a3e9-2194bc55b86b",
+    "created_at": "2026-09-05T03:36:20.957Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "checklist",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Schedule Vendor Meeting\",\n        \"actor\": \"Team Coordinator\",\n        \"system\": \"Calendar/Scheduling Tool\",\n        \"inputs\": [\"Vendor contact details\", \"Team availability\", \"Meeting agenda topics\"],\n        \"outputs\": [\"Meeting invitation\", \"Confirmed meeting slot\", \"Pre-meeting agenda document\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Prepare Meeting Agenda and Supporting Materials\",\n        \"actor\": \"Team Lead\",\n        \"system\": \"Document Management System\",\n        \"inputs\": [\"Previous meeting notes\", \"Ongoing equipment issues list\", \"Improvement idea backlog\"],\n        \"outputs\": [\"Formal meeting agenda\", \"Supporting documentation package\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Conduct Vendor Meeting\",\n        \"actor\": \"Team Lead, Team Members, Vendor Representative\",\n        \"system\": \"Video Conferencing Tool or Physical Meeting\",\n        \"inputs\": [\"Meeting agenda\", \"Supporting documentation\", \"Vendor presentations or proposals\"],\n        \"outputs\": [\"Raw meeting notes\", \"Discussed improvement ideas\", \"Verbally agreed action items\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Capture and Summarize Meeting Discussion\",\n        \"actor\": \"Team Member (Note Taker)\",\n        \"system\": \"Document Management System\",\n        \"inputs\": [\"Raw meeting notes\", \"Verbally agreed action items\", \"Vendor proposals discussed\"],\n        \"outputs\": [\"Formatted meeting summary\", \"Draft action item list\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Review and Validate Meeting Summary\",\n        \"actor\": \"Team Lead\",\n        \"system\": \"Document Management System\",\n        \"inputs\": [\"Formatted meeting summary\", \"Draft action item list\"],\n        \"outputs\": [\"Approved meeting summary\", \"Validated action item list with owners and due dates\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Distribute Meeting Summary and Action Items\",\n        \"actor\": \"Team Coordinator\",\n        \"system\": \"Email / Collaboration Platform\",\n        \"inputs\": [\"Approved meeting summary\", \"Validated action item list\"],\n        \"outputs\": [\"Distributed meeting summary email\", \"Action item notifications sent to owners\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Log Action Items in Tracking System\",\n        \"actor\": \"Team Coordinator\",\n        \"system\": \"Action Item / Task Tracking System\",\n        \"inputs\": [\"Validated action item list\"],\n        \"outputs\": [\"Logged action items with assigned owners, due dates, and status\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Monitor Action Item Progress\",\n        \"actor\": \"Team Lead\",\n        \"system\": \"Action Item / Task Tracking System\",\n        \"inputs\": [\"Logged action items\", \"Status updates from owners\"],\n        \"outputs\": [\"Progress report\", \"Escalation flags for overdue items\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Send Follow-up Reminders to Action Item Owners\",\n        \"actor\": \"Team Coordinator\",\n        \"system\": \"Email / Collaboration Platform\",\n        \"inputs\": [\"Overdue or approaching-deadline action items\"],\n        \"outputs\": [\"Reminder notifications sent to owners\"]\n      },\n      {\n        \"id\": \"A10\",\n        \"name\": \"Collect and Review Action Item Completion Evidence\",\n        \"actor\": \"Team Lead\",\n        \"system\": \"Action Item / Task Tracking System\",\n        \"inputs\": [\"Completed action item updates\", \"Supporting evidence or deliverables from owners\"],\n        \"outputs\": [\"Verified closed action items\", \"Outstanding items list\"]\n      },\n      {\n        \"id\": \"A11\",\n        \"name\": \"Escalate Unresolved or High-Risk Action Items\",\n        \"actor\": \"Team Lead\",\n        \"system\": \"Email / Management Reporting Tool\",\n        \"inputs\": [\"Outstanding items list\", \"Risk assessment of unresolved items\"],\n        \"outputs\": [\"Escalation report sent to management\", \"Revised deadlines or reassignments\"]\n      },\n      {\n        \"id\": \"A12\",\n        \"name\": \"Close Out Meeting and Archive Documentation\",\n        \"actor\": \"Team Coordinator\",\n        \"system\": \"Document Management System\",\n        \"inputs\": [\"Verified closed action items\", \"Final meeting summary\"],\n        \"outputs\": [\"Archived meeting record\", \"Closed action item log\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is the meeting summary accurate and complete?\",\n        \"branches\": [\n          \"Yes - Proceed to distribute summary and action items (A6)\",\n          \"No - Return to note taker for revision (A4)\"\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Are action items overdue or approaching their due date?\",\n        \"branches\": [\n          \"Yes - Send follow-up reminders (A9)\",\n          \"No - Continue monitoring (A8)\"\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Are all action items completed and verified?\",\n        \"branches\": [\n          \"Yes - Proceed to close out and archive (A12)\",\n          \"No - Assess if escalation is needed (D4)\"\n        ]\n      },\n      {\n        \"id\": \"D4\",\n        \"condition\": \"Do unresolved action items pose significant risk or require management involvement?\",\n        \"branches\": [\n          \"Yes - Escalate to management (A11)\",\n          \"No - Continue monitoring and reminders (A8, A9)\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      \"Vendor cancels or reschedules the meeting at short notice, requiring rescheduling of all participants\",\n      \"Key stakeholder is absent during the meeting, leading to incomplete decision-making\",\n      \"Meeting notes are lost or not captured adequately, requiring reconstruction from memory\",\n      \"Action item owner is unavailable or has left the organization, requiring reassignment\",\n      \"Vendor fails to follow through on commitments made during the meeting\",\n      \"Improvement ideas raised require budget approval beyond team authority, causing delays\",\n      \"Meeting summary contains disputed information, requiring mediation between parties\"\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"A4\", \"type\": \"control_flow\"},\n      {\"from\": \"A4\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A5\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A6\", \"type\": \"conditional\"},\n      {\"from\": \"D1\", \"to\": \"A4\", \"type\": \"conditional\"},\n      {\"from\": \"A6\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A7\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A8\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A9\", \"type\": \"conditional\"},\n      {\"from\": \"A9\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A8\", \"to\": \"A10\", \"type\": \"control_flow\"},\n      {\"from\": \"A10\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A12\", \"type\": \"conditional\"},\n      {\"from\": \"D3\", \"to\": \"D4\", \"type\": \"conditional\"},\n      {\"from\": \"D4\", \"to\": \"A11\", \"type\": \"conditional\"},\n      {\"from\": \"D4\", \"to\": \"A8\", \"type\": \"conditional\"},\n      {\"from\": \"A11\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A10\", \"to\": \"A12\", \"type\": \"control_flow\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A1 - Schedule Vendor Meeting\",\n      \"rationale\": \"Meeting scheduling can be automated using calendar integration tools that check availability across participants and propose optimal slots, reducing back-and-forth coordination effort.\",\n      \"required_data\": [\"Participant calendars\", \"Vendor contact details\", \"Meeting duration and format preferences\"],\n      \"constraints\": [\"Vendor must use a compatible scheduling system or accept calendar invitations\", \"Time zone differences may complicate automated slot selection\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A4 - Capture and Summarize Meeting Discussion\",\n      \"rationale\": \"AI-powered transcription and summarization tools can automatically generate structured meeting summaries and draft action item lists from recorded or transcribed meeting audio, significantly reducing manual note-taking effort.\",\n      \"required_data\": [\"Meeting audio or transcript\", \"Predefined summary template\", \"Action item categorization schema\"],\n      \"constraints\": [\"Meeting must be conducted via a platform supporting transcription\", \"Vendor participants must consent to recording\", \"AI-generated summaries require human review for accuracy\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A6 - Distribute Meeting Summary and Action Items\",\n      \"rationale\": \"Once the summary is approved, automated distribution via email or collaboration platform can be triggered without manual intervention, using predefined distribution lists.\",\n      \"required_data\": [\"Approved meeting summary\", \"Validated action item list\", \"Stakeholder distribution list\"],\n      \"constraints\": [\"Distribution list must be maintained and up to date\", \"Approval from Team Lead must be confirmed before triggering automation\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A7 - Log Action Items in Tracking System\",\n      \"rationale\": \"Action items identified during meeting summarization can be automatically parsed and logged into a task tracking system with assigned owners and due dates, eliminating duplicate manual data entry.\",\n      \"required_data\": [\"Validated action item list with owners and due dates\", \"Task tracking system API or integration\"],\n      \"constraints\": [\"Action item owners must exist as users in the tracking system\", \"Integration between document management and task tracking systems required\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D2 and A9 - Monitor Action Item Progress and Send Follow-up Reminders\",\n      \"rationale\": \"Automated deadline monitoring and reminder notifications can be scheduled based on due dates logged in the tracking system, removing the need for manual coordinator intervention for routine follow-ups.\",\n      \"required_data\": [\"Logged action items with due dates and owner contact information\", \"Reminder schedule configuration\", \"Status update data from tracking system\"],\n      \"constraints\": [\"Tracking system must support automated notification rules\", \"Escalation thresholds and reminder frequency must be configured upfront\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A8 - Monitor Action Item Progress\",\n      \"rationale\": \"A dashboard aggregating action item statuses from the tracking system can provide real-time visibility to the Team Lead without requiring manual status collection, reducing oversight effort.\",\n      \"required_data\": [\"Real-time action item status data\", \"Completion evidence links\", \"Due date and owner information\"],\n      \"constraints\": [\"All updates must be entered into the tracking system by owners for data to be reliable\", \"Dashboard tool must integrate with the task tracking system\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A11 - Escalate Unresolved or High-Risk Action Items\",\n      \"rationale\": \"Automated escalation alerts can be generated when action items exceed defined risk thresholds or remain overdue beyond a configurable period, ensuring management is notified without relying on manual judgment alone.\",\n      \"required_data\": [\"Overdue action item data\", \"Risk categorization rules\", \"Management contact list\"],\n      \"constraints\": [\"Risk categorization rules must be defined and maintained\", \"Escalation policy must be agreed upon and approved by management\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A12 - Close Out Meeting and Archive Documentation\",\n      \"rationale\": \"When all action items are verified as complete, an automated workflow can trigger archiving of the meeting record and action item log to the document management system, reducing manual close-out steps.\",\n      \"required_data\": [\"Verified closed action item list\", \"Final meeting summary document\", \"Archive folder structure in document management system\"],\n      \"constraints\": [\"Archiving logic must correctly identify all items as closed before triggering\", \"Document management system must support automated file organization\"],\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"assumptions\": [\n    \"The team and vendor conduct meetings on a recurring or project-driven basis, making process standardization worthwhile.\",\n    \"A document management system exists for storing meeting materials and summaries.\",\n    \"A task or action item tracking system is available or can be adopted by the team.\",\n    \"The Team Lead has authority to approve meeting summaries and escalate action items without requiring additional approvals from higher management in routine cases.\",\n    \"Vendor participants are external and may not have access to internal systems, limiting integration with vendor-side tools.\",\n    \"Meeting frequency is assumed to be periodic (e.g., monthly or quarterly) rather than ad hoc, though the process applies to either.\",\n    \"Action item owners are identifiable individuals within the team or vendor organization who can be contacted directly.\",\n    \"The organization uses a collaboration platform (e.g., email or team messaging tool) for notifications and distribution.\",\n    \"Recording vendor meetings for transcription purposes requires consent and is subject to organizational and legal policies.\",\n    \"Improvement ideas discussed in meetings may require separate approval workflows if they involve significant investment or operational changes, which are out of scope for this workflow.\"\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Schedule Vendor Meeting",
+            "actor": "Team Coordinator",
+            "system": "Calendar/Scheduling Tool",
+            "inputs": [
+              "Vendor contact details",
+              "Team availability",
+              "Meeting agenda topics"
+            ],
+            "outputs": [
+              "Meeting invitation",
+              "Confirmed meeting slot",
+              "Pre-meeting agenda document"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Prepare Meeting Agenda and Supporting Materials",
+            "actor": "Team Lead",
+            "system": "Document Management System",
+            "inputs": [
+              "Previous meeting notes",
+              "Ongoing equipment issues list",
+              "Improvement idea backlog"
+            ],
+            "outputs": [
+              "Formal meeting agenda",
+              "Supporting documentation package"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Conduct Vendor Meeting",
+            "actor": "Team Lead, Team Members, Vendor Representative",
+            "system": "Video Conferencing Tool or Physical Meeting",
+            "inputs": [
+              "Meeting agenda",
+              "Supporting documentation",
+              "Vendor presentations or proposals"
+            ],
+            "outputs": [
+              "Raw meeting notes",
+              "Discussed improvement ideas",
+              "Verbally agreed action items"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Capture and Summarize Meeting Discussion",
+            "actor": "Team Member (Note Taker)",
+            "system": "Document Management System",
+            "inputs": [
+              "Raw meeting notes",
+              "Verbally agreed action items",
+              "Vendor proposals discussed"
+            ],
+            "outputs": [
+              "Formatted meeting summary",
+              "Draft action item list"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Review and Validate Meeting Summary",
+            "actor": "Team Lead",
+            "system": "Document Management System",
+            "inputs": [
+              "Formatted meeting summary",
+              "Draft action item list"
+            ],
+            "outputs": [
+              "Approved meeting summary",
+              "Validated action item list with owners and due dates"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Distribute Meeting Summary and Action Items",
+            "actor": "Team Coordinator",
+            "system": "Email / Collaboration Platform",
+            "inputs": [
+              "Approved meeting summary",
+              "Validated action item list"
+            ],
+            "outputs": [
+              "Distributed meeting summary email",
+              "Action item notifications sent to owners"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Log Action Items in Tracking System",
+            "actor": "Team Coordinator",
+            "system": "Action Item / Task Tracking System",
+            "inputs": [
+              "Validated action item list"
+            ],
+            "outputs": [
+              "Logged action items with assigned owners, due dates, and status"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Monitor Action Item Progress",
+            "actor": "Team Lead",
+            "system": "Action Item / Task Tracking System",
+            "inputs": [
+              "Logged action items",
+              "Status updates from owners"
+            ],
+            "outputs": [
+              "Progress report",
+              "Escalation flags for overdue items"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Send Follow-up Reminders to Action Item Owners",
+            "actor": "Team Coordinator",
+            "system": "Email / Collaboration Platform",
+            "inputs": [
+              "Overdue or approaching-deadline action items"
+            ],
+            "outputs": [
+              "Reminder notifications sent to owners"
+            ]
+          },
+          {
+            "id": "A10",
+            "name": "Collect and Review Action Item Completion Evidence",
+            "actor": "Team Lead",
+            "system": "Action Item / Task Tracking System",
+            "inputs": [
+              "Completed action item updates",
+              "Supporting evidence or deliverables from owners"
+            ],
+            "outputs": [
+              "Verified closed action items",
+              "Outstanding items list"
+            ]
+          },
+          {
+            "id": "A11",
+            "name": "Escalate Unresolved or High-Risk Action Items",
+            "actor": "Team Lead",
+            "system": "Email / Management Reporting Tool",
+            "inputs": [
+              "Outstanding items list",
+              "Risk assessment of unresolved items"
+            ],
+            "outputs": [
+              "Escalation report sent to management",
+              "Revised deadlines or reassignments"
+            ]
+          },
+          {
+            "id": "A12",
+            "name": "Close Out Meeting and Archive Documentation",
+            "actor": "Team Coordinator",
+            "system": "Document Management System",
+            "inputs": [
+              "Verified closed action items",
+              "Final meeting summary"
+            ],
+            "outputs": [
+              "Archived meeting record",
+              "Closed action item log"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the meeting summary accurate and complete?",
+            "branches": [
+              "Yes - Proceed to distribute summary and action items (A6)",
+              "No - Return to note taker for revision (A4)"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are action items overdue or approaching their due date?",
+            "branches": [
+              "Yes - Send follow-up reminders (A9)",
+              "No - Continue monitoring (A8)"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Are all action items completed and verified?",
+            "branches": [
+              "Yes - Proceed to close out and archive (A12)",
+              "No - Assess if escalation is needed (D4)"
+            ]
+          },
+          {
+            "id": "D4",
+            "condition": "Do unresolved action items pose significant risk or require management involvement?",
+            "branches": [
+              "Yes - Escalate to management (A11)",
+              "No - Continue monitoring and reminders (A8, A9)"
+            ]
+          }
+        ],
+        "exceptions": [
+          "Vendor cancels or reschedules the meeting at short notice, requiring rescheduling of all participants",
+          "Key stakeholder is absent during the meeting, leading to incomplete decision-making",
+          "Meeting notes are lost or not captured adequately, requiring reconstruction from memory",
+          "Action item owner is unavailable or has left the organization, requiring reassignment",
+          "Vendor fails to follow through on commitments made during the meeting",
+          "Improvement ideas raised require budget approval beyond team authority, causing delays",
+          "Meeting summary contains disputed information, requiring mediation between parties"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A6",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A4",
+            "type": "conditional"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A9",
+            "type": "conditional"
+          },
+          {
+            "from": "A9",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "A10",
+            "type": "control_flow"
+          },
+          {
+            "from": "A10",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A12",
+            "type": "conditional"
+          },
+          {
+            "from": "D3",
+            "to": "D4",
+            "type": "conditional"
+          },
+          {
+            "from": "D4",
+            "to": "A11",
+            "type": "conditional"
+          },
+          {
+            "from": "D4",
+            "to": "A8",
+            "type": "conditional"
+          },
+          {
+            "from": "A11",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A10",
+            "to": "A12",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A1 - Schedule Vendor Meeting",
+          "rationale": "Meeting scheduling can be automated using calendar integration tools that check availability across participants and propose optimal slots, reducing back-and-forth coordination effort.",
+          "required_data": [
+            "Participant calendars",
+            "Vendor contact details",
+            "Meeting duration and format preferences"
+          ],
+          "constraints": [
+            "Vendor must use a compatible scheduling system or accept calendar invitations",
+            "Time zone differences may complicate automated slot selection"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A4 - Capture and Summarize Meeting Discussion",
+          "rationale": "AI-powered transcription and summarization tools can automatically generate structured meeting summaries and draft action item lists from recorded or transcribed meeting audio, significantly reducing manual note-taking effort.",
+          "required_data": [
+            "Meeting audio or transcript",
+            "Predefined summary template",
+            "Action item categorization schema"
+          ],
+          "constraints": [
+            "Meeting must be conducted via a platform supporting transcription",
+            "Vendor participants must consent to recording",
+            "AI-generated summaries require human review for accuracy"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A6 - Distribute Meeting Summary and Action Items",
+          "rationale": "Once the summary is approved, automated distribution via email or collaboration platform can be triggered without manual intervention, using predefined distribution lists.",
+          "required_data": [
+            "Approved meeting summary",
+            "Validated action item list",
+            "Stakeholder distribution list"
+          ],
+          "constraints": [
+            "Distribution list must be maintained and up to date",
+            "Approval from Team Lead must be confirmed before triggering automation"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A7 - Log Action Items in Tracking System",
+          "rationale": "Action items identified during meeting summarization can be automatically parsed and logged into a task tracking system with assigned owners and due dates, eliminating duplicate manual data entry.",
+          "required_data": [
+            "Validated action item list with owners and due dates",
+            "Task tracking system API or integration"
+          ],
+          "constraints": [
+            "Action item owners must exist as users in the tracking system",
+            "Integration between document management and task tracking systems required"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D2 and A9 - Monitor Action Item Progress and Send Follow-up Reminders",
+          "rationale": "Automated deadline monitoring and reminder notifications can be scheduled based on due dates logged in the tracking system, removing the need for manual coordinator intervention for routine follow-ups.",
+          "required_data": [
+            "Logged action items with due dates and owner contact information",
+            "Reminder schedule configuration",
+            "Status update data from tracking system"
+          ],
+          "constraints": [
+            "Tracking system must support automated notification rules",
+            "Escalation thresholds and reminder frequency must be configured upfront"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A8 - Monitor Action Item Progress",
+          "rationale": "A dashboard aggregating action item statuses from the tracking system can provide real-time visibility to the Team Lead without requiring manual status collection, reducing oversight effort.",
+          "required_data": [
+            "Real-time action item status data",
+            "Completion evidence links",
+            "Due date and owner information"
+          ],
+          "constraints": [
+            "All updates must be entered into the tracking system by owners for data to be reliable",
+            "Dashboard tool must integrate with the task tracking system"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A11 - Escalate Unresolved or High-Risk Action Items",
+          "rationale": "Automated escalation alerts can be generated when action items exceed defined risk thresholds or remain overdue beyond a configurable period, ensuring management is notified without relying on manual judgment alone.",
+          "required_data": [
+            "Overdue action item data",
+            "Risk categorization rules",
+            "Management contact list"
+          ],
+          "constraints": [
+            "Risk categorization rules must be defined and maintained",
+            "Escalation policy must be agreed upon and approved by management"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A12 - Close Out Meeting and Archive Documentation",
+          "rationale": "When all action items are verified as complete, an automated workflow can trigger archiving of the meeting record and action item log to the document management system, reducing manual close-out steps.",
+          "required_data": [
+            "Verified closed action item list",
+            "Final meeting summary document",
+            "Archive folder structure in document management system"
+          ],
+          "constraints": [
+            "Archiving logic must correctly identify all items as closed before triggering",
+            "Document management system must support automated file organization"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "The team and vendor conduct meetings on a recurring or project-driven basis, making process standardization worthwhile.",
+        "A document management system exists for storing meeting materials and summaries.",
+        "A task or action item tracking system is available or can be adopted by the team.",
+        "The Team Lead has authority to approve meeting summaries and escalate action items without requiring additional approvals from higher management in routine cases.",
+        "Vendor participants are external and may not have access to internal systems, limiting integration with vendor-side tools.",
+        "Meeting frequency is assumed to be periodic (e.g., monthly or quarterly) rather than ad hoc, though the process applies to either.",
+        "Action item owners are identifiable individuals within the team or vendor organization who can be contacted directly.",
+        "The organization uses a collaboration platform (e.g., email or team messaging tool) for notifications and distribution.",
+        "Recording vendor meetings for transcription purposes requires consent and is subject to organizational and legal policies.",
+        "Improvement ideas discussed in meetings may require separate approval workflows if they involve significant investment or operational changes, which are out of scope for this workflow."
+      ]
+    }
+  }
+}

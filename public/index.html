@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICPM Elicitation Prototype</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <aside class="scenario-panel">
+          <div class="panel-heading">
+            <p class="eyebrow">ICPM 2027 Prototype</p>
+            <h1>Process Elicitation</h1>
+          </div>
+
+          <label class="field-label" for="scenarioSelect">Scenario</label>
+          <select id="scenarioSelect"></select>
+
+          <div class="scenario-meta">
+            <span id="scenarioDomain"></span>
+            <span id="scenarioId"></span>
+          </div>
+
+          <label class="field-label" for="initialDescription">Initial description</label>
+          <textarea id="initialDescription" spellcheck="false"></textarea>
+
+          <div class="button-grid">
+            <button id="oneShotBtn" type="button">One-shot</button>
+            <button id="checklistBtn" type="button">Checklist</button>
+            <button id="questionsBtn" type="button">Questions</button>
+          </div>
+        </aside>
+
+        <section class="main-panel">
+          <div class="run-bar">
+            <div>
+              <p class="eyebrow">Model</p>
+              <input id="modelInput" value="claude-sonnet-4-6" spellcheck="false">
+            </div>
+            <div class="status" id="status">Ready</div>
+          </div>
+
+          <div class="content-grid">
+            <section class="output-panel">
+              <div class="section-title">
+                <h2>LLM Output</h2>
+                <button id="copyOutputBtn" type="button">Copy JSON</button>
+              </div>
+              <pre id="output"></pre>
+            </section>
+
+            <section class="answer-panel">
+              <div class="section-title">
+                <h2>Clarification Answers</h2>
+                <div class="answer-actions">
+                  <button id="oracleBtn" type="button">Oracle Answers</button>
+                  <button id="updateBtn" type="button">Update</button>
+                </div>
+              </div>
+              <textarea id="answers" placeholder="Answer the generated clarification questions here."></textarea>
+              <div class="reference-box">
+                <h3>Reference Workflow</h3>
+                <pre id="referenceWorkflow"></pre>
+              </div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

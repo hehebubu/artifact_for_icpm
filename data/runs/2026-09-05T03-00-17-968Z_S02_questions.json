@@ -1,0 +1,708 @@
+{
+  "request": {
+    "stage": "questions",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S02",
+      "title": "Equipment-Specific Measurement Workflow",
+      "domain": "semiconductor_engineering",
+      "initial_description": "A wafer is measured using one of several tools. The exact preparation and measurement steps differ by tool, and the engineer records the result after measurement.",
+      "reference_workflow": {
+        "goal": "Measure a wafer using the appropriate equipment-specific procedure and record the result.",
+        "actors": [
+          "measurement engineer",
+          "equipment owner",
+          "requester"
+        ],
+        "systems": [
+          "measurement equipment",
+          "equipment reservation system",
+          "measurement result repository"
+        ],
+        "inputs": [
+          "measurement request",
+          "wafer identifier",
+          "measurement recipe",
+          "equipment availability"
+        ],
+        "outputs": [
+          "measurement result",
+          "equipment usage record",
+          "request completion notice"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Confirm measurement request and wafer identifier",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Select suitable measurement equipment",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A3",
+            "name": "Check equipment availability and reserve slot",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Prepare wafer according to equipment procedure",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A5",
+            "name": "Run measurement recipe",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A6",
+            "name": "Validate measurement output",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Upload result and notify requester",
+            "actor": "measurement engineer"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Which equipment is required for the requested measurement?",
+            "branches": [
+              "equipment type A",
+              "equipment type B",
+              "equipment type C"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the equipment available and qualified?",
+            "branches": [
+              "available",
+              "unavailable or under maintenance"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the measurement output valid?",
+            "branches": [
+              "valid",
+              "invalid or noisy"
+            ]
+          }
+        ],
+        "exceptions": [
+          "equipment unavailable",
+          "wafer information mismatch",
+          "recipe not approved",
+          "invalid measurement output"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Equipment selection can be recommended from measurement type and wafer condition."
+          },
+          {
+            "target": "A3",
+            "rationale": "Reservation checks can be automated through system integration."
+          },
+          {
+            "target": "A6",
+            "rationale": "Output validity can be partially checked using rule-based thresholds or historical patterns."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "equipment selection rule",
+        "reservation step",
+        "recipe approval",
+        "validity criteria",
+        "requester notification",
+        "exception path"
+      ]
+    },
+    "answers": "",
+    "previousOutput": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Receive Wafer for Measurement",
+            "actor": "Engineer",
+            "system": "Lab Tracking System",
+            "inputs": [
+              "Wafer ID",
+              "Work Order",
+              "Measurement Request"
+            ],
+            "outputs": [
+              "Wafer Check-In Record",
+              "Assigned Tool ID"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Select Measurement Tool",
+            "actor": "Engineer",
+            "system": "Lab Tracking System",
+            "inputs": [
+              "Wafer ID",
+              "Measurement Type",
+              "Tool Availability Status"
+            ],
+            "outputs": [
+              "Selected Tool ID",
+              "Tool Assignment Record"
+            ]
+          },
+          {
+            "id": "A3a",
+            "name": "Prepare Wafer for Tool A",
+            "actor": "Engineer",
+            "system": "Tool A Control System",
+            "inputs": [
+              "Wafer ID",
+              "Tool A Preparation Protocol"
+            ],
+            "outputs": [
+              "Prepared Wafer (Tool A)",
+              "Preparation Log"
+            ]
+          },
+          {
+            "id": "A3b",
+            "name": "Prepare Wafer for Tool B",
+            "actor": "Engineer",
+            "system": "Tool B Control System",
+            "inputs": [
+              "Wafer ID",
+              "Tool B Preparation Protocol"
+            ],
+            "outputs": [
+              "Prepared Wafer (Tool B)",
+              "Preparation Log"
+            ]
+          },
+          {
+            "id": "A3c",
+            "name": "Prepare Wafer for Tool C",
+            "actor": "Engineer",
+            "system": "Tool C Control System",
+            "inputs": [
+              "Wafer ID",
+              "Tool C Preparation Protocol"
+            ],
+            "outputs": [
+              "Prepared Wafer (Tool C)",
+              "Preparation Log"
+            ]
+          },
+          {
+            "id": "A4a",
+            "name": "Execute Measurement on Tool A",
+            "actor": "Engineer",
+            "system": "Tool A Control System",
+            "inputs": [
+              "Prepared Wafer (Tool A)",
+              "Tool A Measurement Parameters"
+            ],
+            "outputs": [
+              "Raw Measurement Data (Tool A)",
+              "Measurement Log"
+            ]
+          },
+          {
+            "id": "A4b",
+            "name": "Execute Measurement on Tool B",
+            "actor": "Engineer",
+            "system": "Tool B Control System",
+            "inputs": [
+              "Prepared Wafer (Tool B)",
+              "Tool B Measurement Parameters"
+            ],
+            "outputs": [
+              "Raw Measurement Data (Tool B)",
+              "Measurement Log"
+            ]
+          },
+          {
+            "id": "A4c",
+            "name": "Execute Measurement on Tool C",
+            "actor": "Engineer",
+            "system": "Tool C Control System",
+            "inputs": [
+              "Prepared Wafer (Tool C)",
+              "Tool C Measurement Parameters"
+            ],
+            "outputs": [
+              "Raw Measurement Data (Tool C)",
+              "Measurement Log"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Review and Validate Measurement Output",
+            "actor": "Engineer",
+            "system": "Data Review Interface",
+            "inputs": [
+              "Raw Measurement Data",
+              "Measurement Log",
+              "Expected Value Ranges"
+            ],
+            "outputs": [
+              "Validated Measurement Result",
+              "Validation Status Flag"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Record Measurement Result",
+            "actor": "Engineer",
+            "system": "Lab Information Management System",
+            "inputs": [
+              "Validated Measurement Result",
+              "Wafer ID",
+              "Tool ID",
+              "Timestamp"
+            ],
+            "outputs": [
+              "Stored Measurement Record",
+              "Result Report"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Handle Measurement Exception",
+            "actor": "Engineer",
+            "system": "Lab Tracking System",
+            "inputs": [
+              "Failed Measurement Data",
+              "Exception Flag",
+              "Wafer ID"
+            ],
+            "outputs": [
+              "Exception Report",
+              "Re-measurement Request or Escalation Record"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Which measurement tool is selected for this wafer?",
+            "branches": [
+              {
+                "label": "Tool A",
+                "next": "A3a"
+              },
+              {
+                "label": "Tool B",
+                "next": "A3b"
+              },
+              {
+                "label": "Tool C",
+                "next": "A3c"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the measurement result valid and within expected range?",
+            "branches": [
+              {
+                "label": "Valid",
+                "next": "A6"
+              },
+              {
+                "label": "Invalid or Out-of-Range",
+                "next": "A7"
+              }
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Can the exception be resolved by re-measurement?",
+            "branches": [
+              {
+                "label": "Yes - Re-measure",
+                "next": "A2"
+              },
+              {
+                "label": "No - Escalate",
+                "next": "End/Escalation"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          "Tool unavailable or under maintenance at time of measurement request",
+          "Wafer damaged during preparation step",
+          "Measurement data out of expected range requiring re-measurement",
+          "Tool calibration failure detected mid-measurement",
+          "Engineer unavailable to validate results in required timeframe",
+          "Incomplete or missing work order information at intake"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A3a",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A3b",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A3c",
+            "type": "conditional"
+          },
+          {
+            "from": "A3a",
+            "to": "A4a",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3b",
+            "to": "A4b",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3c",
+            "to": "A4c",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4a",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4b",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4c",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A6",
+            "type": "conditional"
+          },
+          {
+            "from": "D2",
+            "to": "A7",
+            "type": "conditional"
+          },
+          {
+            "from": "A7",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A2",
+            "type": "conditional"
+          },
+          {
+            "from": "A6",
+            "to": "End",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A2 - Select Measurement Tool",
+          "rationale": "Tool selection can be automated by querying real-time tool availability and matching measurement type requirements to tool capabilities, reducing manual decision-making and wait time.",
+          "required_data": [
+            "Tool availability status",
+            "Tool capability registry",
+            "Measurement type specification",
+            "Queue length per tool"
+          ],
+          "constraints": [
+            "Requires live integration with tool scheduling or equipment management system",
+            "Must handle edge cases where no suitable tool is available"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 - Tool Routing Decision",
+          "rationale": "Once tool selection logic is automated, the routing decision can be handled programmatically based on the selected tool ID, eliminating manual branching.",
+          "required_data": [
+            "Selected Tool ID from A2"
+          ],
+          "constraints": [
+            "Dependent on automation of A2",
+            "Routing rules must be explicitly encoded and maintained"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A4a / A4b / A4c - Execute Measurement",
+          "rationale": "Many precision measurement tools support programmatic recipe execution and automated data capture via APIs or standard protocols, removing the need for manual operation.",
+          "required_data": [
+            "Measurement recipe or parameters per tool",
+            "Wafer ID for traceability",
+            "Tool API or control interface specification"
+          ],
+          "constraints": [
+            "Tool integration capability varies by tool model and age",
+            "Requires validated and version-controlled measurement recipes",
+            "May require regulatory or quality approval for automated operation"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A5 - Review and Validate Measurement Output",
+          "rationale": "Automated range checking and statistical validation against predefined thresholds can flag out-of-range results without manual review, accelerating throughput.",
+          "required_data": [
+            "Expected value ranges per measurement type",
+            "Raw measurement data",
+            "Historical measurement distribution data"
+          ],
+          "constraints": [
+            "Edge cases requiring engineering judgment may still need human review",
+            "Threshold definitions must be maintained and version-controlled",
+            "False-positive rate must be acceptable to operations team"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A6 - Record Measurement Result",
+          "rationale": "Validated results can be automatically written to the lab information management system upon passing validation, eliminating manual data entry and reducing transcription errors.",
+          "required_data": [
+            "Validated measurement result",
+            "Wafer ID",
+            "Tool ID",
+            "Timestamp",
+            "LIMS write API or integration endpoint"
+          ],
+          "constraints": [
+            "Requires reliable integration between validation layer and LIMS",
+            "Data format standardization across tools required",
+            "Audit trail and traceability requirements must be preserved"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A7 - Handle Measurement Exception",
+          "rationale": "Automated exception triage can categorize failure types, log exceptions, and trigger re-measurement requests or escalation notifications without waiting for engineer intervention.",
+          "required_data": [
+            "Exception type taxonomy",
+            "Failure thresholds",
+            "Escalation contact list",
+            "Re-measurement eligibility rules"
+          ],
+          "constraints": [
+            "Complex or novel exceptions may still require human judgment",
+            "Escalation workflows must be defined and agreed upon in advance"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A1 - Receive Wafer for Measurement",
+          "rationale": "Wafer intake and work order validation can be partially automated through barcode or RFID scanning combined with automated work order lookup, reducing manual logging.",
+          "required_data": [
+            "Wafer ID (barcode or RFID)",
+            "Work order database",
+            "Measurement request format"
+          ],
+          "constraints": [
+            "Requires physical scanning infrastructure at intake station",
+            "Work order system must be accessible in real time"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "Three representative tools (Tool A, Tool B, Tool C) are used as placeholders; the actual number and types of tools may vary.",
+        "Each tool has a distinct preparation protocol and measurement procedure that differs meaningfully from the others.",
+        "A lab information management system or equivalent data repository exists for storing measurement results.",
+        "Tool availability and scheduling information is tracked in some form of lab tracking or equipment management system.",
+        "Engineers are responsible for both preparation and measurement steps, with no separate technician role assumed unless specified.",
+        "Measurement result validation involves comparison against predefined expected ranges or specifications.",
+        "Re-measurement is a permitted resolution path for failed or out-of-range results, subject to limits.",
+        "The workflow is repeated per wafer; batch processing is not assumed unless specified.",
+        "Frequency of measurements is not specified and is assumed to be regular but variable based on production demand.",
+        "Tools may support some degree of digital interface or data export, enabling at least partial automation of measurement execution and data capture."
+      ]
+    },
+    "questions": null
+  },
+  "result": {
+    "id": "edbe63b3-84af-4764-8d2c-4f432f8b7d09",
+    "created_at": "2026-09-05T03:00:17.963Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "questions",
+    "raw_text": "{\n  \"missing_information\": [\n    {\n      \"category\": \"decision\",\n      \"gap\": \"No criteria defined for how a specific tool is selected for a given wafer measurement\",\n      \"why_it_matters\": \"Without knowing the tool selection logic (e.g., based on wafer type, lot priority, tool availability, measurement type), it is impossible to model the branching logic or assess whether tool assignment can be automated\"\n    },\n    {\n      \"category\": \"actor\",\n      \"gap\": \"It is unclear who initiates the measurement request and whether multiple roles are involved across tool preparation and result recording\",\n      \"why_it_matters\": \"Automation scope depends on knowing which actors perform which steps; if preparation and recording are done by different roles, handoff points and potential bottlenecks must be identified\"\n    },\n    {\n      \"category\": \"system\",\n      \"gap\": \"No information provided about the systems or interfaces used by the tools or for recording results\",\n      \"why_it_matters\": \"Automation feasibility depends on whether tools expose APIs, generate structured output files, or require manual data entry; without this, integration constraints cannot be assessed\"\n    },\n    {\n      \"category\": \"input\",\n      \"gap\": \"The specific preparation steps per tool are not described, nor are the inputs required for each (e.g., recipes, calibration parameters, wafer identifiers)\",\n      \"why_it_matters\": \"Each tool variant may require different inputs, and undocumented preparation steps represent hidden manual effort and potential failure points that must be captured for accurate process modeling\"\n    },\n    {\n      \"category\": \"output\",\n      \"gap\": \"The format, structure, and destination of the recorded measurement result are not specified\",\n      \"why_it_matters\": \"If results are recorded in free text, a spreadsheet, or a proprietary format, data extraction and downstream automation will require different approaches; structured vs. unstructured output significantly changes automation complexity\"\n    },\n    {\n      \"category\": \"exception\",\n      \"gap\": \"No exception handling is described for scenarios such as tool unavailability, measurement failure, out-of-specification results, or calibration errors\",\n      \"why_it_matters\": \"Exception paths are critical for robust automation; unhandled exceptions will cause process failures or require unplanned manual intervention, undermining automation reliability\"\n    },\n    {\n      \"category\": \"frequency\",\n      \"gap\": \"The volume and frequency of measurements (per shift, per day, per lot) and the distribution across tools are unknown\",\n      \"why_it_matters\": \"Frequency and load distribution determine the ROI justification for automation and inform decisions about parallelism, scheduling, and resource allocation\"\n    },\n    {\n      \"category\": \"manual_effort\",\n      \"gap\": \"The time spent on preparation versus measurement versus result recording per tool is not quantified\",\n      \"why_it_matters\": \"Without effort estimates per step and per tool, it is not possible to prioritize which subprocess to automate first or to calculate expected time savings\"\n    },\n    {\n      \"category\": \"dependency\",\n      \"gap\": \"It is unclear whether measurement must follow a specific upstream process step or whether there are sequencing constraints between tools\",\n      \"why_it_matters\": \"Upstream dependencies affect when the workflow can be triggered and whether automation can proceed autonomously or must wait for external conditions to be met\"\n    },\n    {\n      \"category\": \"data_availability\",\n      \"gap\": \"It is not known whether historical measurement logs or tool usage records exist in a structured, queryable form\",\n      \"why_it_matters\": \"Process mining and automation assessment rely on historical event data; if logs are incomplete or unstructured, conformance checking and variant analysis will be severely limited\"\n    },\n    {\n      \"category\": \"risk_or_approval\",\n      \"gap\": \"No approval or quality review step is mentioned after result recording, nor is it clear whether out-of-spec results trigger an escalation workflow\",\n      \"why_it_matters\": \"If results require engineer sign-off or trigger corrective actions, these steps must be included in the process model; omitting them would produce an incomplete and potentially non-compliant automation design\"\n    }\n  ],\n  \"clarification_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"What criteria determine which tool is selected for a given wafer measurement — for example, is the decision based on wafer type, measurement specification, tool availability, or engineer preference, and is this decision documented anywhere?\",\n      \"targets\": [\"decision\", \"tool selection logic\"]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"Can you walk through the specific preparation and measurement steps for each tool variant, and identify which of those steps require manual physical interaction versus software or parameter entry?\",\n      \"targets\": [\"input\", \"manual_effort\", \"actor\"]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"Where and in what format does the engineer record the measurement result — for example, a paper log, spreadsheet, MES system, or tool-generated report — and is that data accessible programmatically?\",\n      \"targets\": [\"output\", \"system\", \"data_availability\"]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"What happens when a measurement result is out of specification or when a tool fails mid-measurement — is there a defined escalation or rework path, and who is responsible for that decision?\",\n      \"targets\": [\"exception\", \"risk_or_approval\", \"actor\"]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"Approximately how many measurements are performed per shift or per day across all tools, and how evenly is the workload distributed between them?\",\n      \"targets\": [\"frequency\", \"manual_effort\"]\n    },\n    {\n      \"id\": \"Q6\",\n      \"question\": \"Are there existing digital logs or event records from the measurement tools or surrounding systems that capture timestamps, tool IDs, wafer IDs, and outcomes in a structured format?\",\n      \"targets\": [\"data_availability\", \"integration_constraint\", \"system\"]\n    }\n  ]\n}",
+    "parsed": {
+      "missing_information": [
+        {
+          "category": "decision",
+          "gap": "No criteria defined for how a specific tool is selected for a given wafer measurement",
+          "why_it_matters": "Without knowing the tool selection logic (e.g., based on wafer type, lot priority, tool availability, measurement type), it is impossible to model the branching logic or assess whether tool assignment can be automated"
+        },
+        {
+          "category": "actor",
+          "gap": "It is unclear who initiates the measurement request and whether multiple roles are involved across tool preparation and result recording",
+          "why_it_matters": "Automation scope depends on knowing which actors perform which steps; if preparation and recording are done by different roles, handoff points and potential bottlenecks must be identified"
+        },
+        {
+          "category": "system",
+          "gap": "No information provided about the systems or interfaces used by the tools or for recording results",
+          "why_it_matters": "Automation feasibility depends on whether tools expose APIs, generate structured output files, or require manual data entry; without this, integration constraints cannot be assessed"
+        },
+        {
+          "category": "input",
+          "gap": "The specific preparation steps per tool are not described, nor are the inputs required for each (e.g., recipes, calibration parameters, wafer identifiers)",
+          "why_it_matters": "Each tool variant may require different inputs, and undocumented preparation steps represent hidden manual effort and potential failure points that must be captured for accurate process modeling"
+        },
+        {
+          "category": "output",
+          "gap": "The format, structure, and destination of the recorded measurement result are not specified",
+          "why_it_matters": "If results are recorded in free text, a spreadsheet, or a proprietary format, data extraction and downstream automation will require different approaches; structured vs. unstructured output significantly changes automation complexity"
+        },
+        {
+          "category": "exception",
+          "gap": "No exception handling is described for scenarios such as tool unavailability, measurement failure, out-of-specification results, or calibration errors",
+          "why_it_matters": "Exception paths are critical for robust automation; unhandled exceptions will cause process failures or require unplanned manual intervention, undermining automation reliability"
+        },
+        {
+          "category": "frequency",
+          "gap": "The volume and frequency of measurements (per shift, per day, per lot) and the distribution across tools are unknown",
+          "why_it_matters": "Frequency and load distribution determine the ROI justification for automation and inform decisions about parallelism, scheduling, and resource allocation"
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The time spent on preparation versus measurement versus result recording per tool is not quantified",
+          "why_it_matters": "Without effort estimates per step and per tool, it is not possible to prioritize which subprocess to automate first or to calculate expected time savings"
+        },
+        {
+          "category": "dependency",
+          "gap": "It is unclear whether measurement must follow a specific upstream process step or whether there are sequencing constraints between tools",
+          "why_it_matters": "Upstream dependencies affect when the workflow can be triggered and whether automation can proceed autonomously or must wait for external conditions to be met"
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is not known whether historical measurement logs or tool usage records exist in a structured, queryable form",
+          "why_it_matters": "Process mining and automation assessment rely on historical event data; if logs are incomplete or unstructured, conformance checking and variant analysis will be severely limited"
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "No approval or quality review step is mentioned after result recording, nor is it clear whether out-of-spec results trigger an escalation workflow",
+          "why_it_matters": "If results require engineer sign-off or trigger corrective actions, these steps must be included in the process model; omitting them would produce an incomplete and potentially non-compliant automation design"
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "What criteria determine which tool is selected for a given wafer measurement — for example, is the decision based on wafer type, measurement specification, tool availability, or engineer preference, and is this decision documented anywhere?",
+          "targets": [
+            "decision",
+            "tool selection logic"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Can you walk through the specific preparation and measurement steps for each tool variant, and identify which of those steps require manual physical interaction versus software or parameter entry?",
+          "targets": [
+            "input",
+            "manual_effort",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Where and in what format does the engineer record the measurement result — for example, a paper log, spreadsheet, MES system, or tool-generated report — and is that data accessible programmatically?",
+          "targets": [
+            "output",
+            "system",
+            "data_availability"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What happens when a measurement result is out of specification or when a tool fails mid-measurement — is there a defined escalation or rework path, and who is responsible for that decision?",
+          "targets": [
+            "exception",
+            "risk_or_approval",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Approximately how many measurements are performed per shift or per day across all tools, and how evenly is the workload distributed between them?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Are there existing digital logs or event records from the measurement tools or surrounding systems that capture timestamps, tool IDs, wafer IDs, and outcomes in a structured format?",
+          "targets": [
+            "data_availability",
+            "integration_constraint",
+            "system"
+          ]
+        }
+      ]
+    }
+  }
+}

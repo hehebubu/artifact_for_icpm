@@ -1,0 +1,466 @@
+{
+  "request": {
+    "stage": "one_shot",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S01",
+      "title": "Verification Test Setup and Reporting",
+      "domain": "semiconductor_engineering",
+      "initial_description": "An engineer prepares a verification test, runs the evaluation, checks the results, and writes a short report. If something looks wrong, the engineer investigates and shares the result with related people.",
+      "reference_workflow": {
+        "goal": "Run a verification test and distribute a summarized result report.",
+        "actors": [
+          "verification engineer",
+          "review engineer",
+          "project owner"
+        ],
+        "systems": [
+          "test execution tool",
+          "result repository",
+          "report template",
+          "email or collaboration tool"
+        ],
+        "inputs": [
+          "test request",
+          "test condition",
+          "sample identifier",
+          "evaluation setup guide"
+        ],
+        "outputs": [
+          "test result files",
+          "summary report",
+          "issue list",
+          "review notification"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Review test request and conditions",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Prepare evaluation setup",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A3",
+            "name": "Run verification test",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Collect result files",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A5",
+            "name": "Check result validity",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A6",
+            "name": "Summarize findings in report",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Share report for review",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A8",
+            "name": "Review report and request clarification if needed",
+            "actor": "review engineer"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are the result files complete and readable?",
+            "branches": [
+              "complete",
+              "missing or corrupted"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Do the results contain abnormal patterns?",
+            "branches": [
+              "normal",
+              "abnormal"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing setup information",
+          "test execution failure",
+          "incomplete result files",
+          "unclear abnormal pattern"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A4",
+            "rationale": "Result file collection is repetitive and follows a standard folder or repository pattern."
+          },
+          {
+            "target": "A5",
+            "rationale": "Completeness and basic validity checks can be rule-based."
+          },
+          {
+            "target": "A6",
+            "rationale": "Report drafting can be supported by template filling and result summarization."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "test request input",
+        "sample identifier",
+        "systems used",
+        "result validity criteria",
+        "review actor",
+        "exception handling",
+        "report distribution channel"
+      ]
+    },
+    "answers": "",
+    "previousOutput": null
+  },
+  "result": {
+    "id": "a79c09e4-cef6-49d4-a30b-9ac22bfc9476",
+    "created_at": "2026-09-05T02:29:38.007Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "one_shot",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Prepare Verification Test\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Test Management Tool\",\n        \"inputs\": [\"Test requirements\", \"Test specifications\", \"Prior test plans\"],\n        \"outputs\": [\"Test plan\", \"Test configuration\", \"Test scripts\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Run Evaluation\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Test Execution Environment\",\n        \"inputs\": [\"Test plan\", \"Test configuration\", \"Test scripts\"],\n        \"outputs\": [\"Raw test results\", \"Execution logs\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Check Results\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Test Results Viewer\",\n        \"inputs\": [\"Raw test results\", \"Execution logs\"],\n        \"outputs\": [\"Reviewed results\", \"Pass/fail assessment\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Write Report\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Authoring Tool\",\n        \"inputs\": [\"Reviewed results\", \"Pass/fail assessment\"],\n        \"outputs\": [\"Verification test report\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Investigate Issue\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Debugging and Analysis Tool\",\n        \"inputs\": [\"Reviewed results\", \"Execution logs\", \"Test configuration\"],\n        \"outputs\": [\"Root cause analysis\", \"Investigation findings\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Share Findings with Stakeholders\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Communication and Collaboration Tool\",\n        \"inputs\": [\"Investigation findings\", \"Root cause analysis\", \"Verification test report\"],\n        \"outputs\": [\"Distributed findings report\", \"Notification to related people\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Do the results look correct?\",\n        \"branches\": [\n          {\n            \"outcome\": \"Yes - Results are acceptable\",\n            \"next\": \"A4\"\n          },\n          {\n            \"outcome\": \"No - Something looks wrong\",\n            \"next\": \"A5\"\n          }\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Is the investigation complete and findings ready to share?\",\n        \"branches\": [\n          {\n            \"outcome\": \"Yes - Findings are ready\",\n            \"next\": \"A6\"\n          },\n          {\n            \"outcome\": \"No - Further investigation needed\",\n            \"next\": \"A5\"\n          }\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"description\": \"Test execution fails to complete due to environment or configuration error\",\n        \"handling\": \"Engineer reviews execution logs, corrects configuration, and re-runs evaluation\"\n      },\n      {\n        \"id\": \"E2\",\n        \"description\": \"Report cannot be finalized due to unresolved investigation\",\n        \"handling\": \"Report is put on hold until investigation findings are confirmed; stakeholders are notified of delay\"\n      },\n      {\n        \"id\": \"E3\",\n        \"description\": \"Related stakeholders are unavailable or unresponsive when findings are shared\",\n        \"handling\": \"Engineer escalates through alternative communication channel or records findings for later distribution\"\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A4\", \"type\": \"conditional\", \"condition\": \"Results acceptable\"},\n      {\"from\": \"D1\", \"to\": \"A5\", \"type\": \"conditional\", \"condition\": \"Results look wrong\"},\n      {\"from\": \"A5\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A6\", \"type\": \"conditional\", \"condition\": \"Investigation complete\"},\n      {\"from\": \"D2\", \"to\": \"A5\", \"type\": \"conditional\", \"condition\": \"Further investigation needed\"},\n      {\"from\": \"A4\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"A6\", \"type\": \"data_flow\", \"note\": \"Report and findings are both inputs to sharing step\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A2 - Run Evaluation\",\n      \"rationale\": \"Test execution is often highly repetitive and follows deterministic scripts; automated test runners can execute test suites without manual intervention, reducing time and human error.\",\n      \"required_data\": [\"Test scripts\", \"Test configuration\", \"Target system access credentials or interface\"],\n      \"constraints\": [\"Test environment must be stable and accessible\", \"Scripts must be well-defined and not require ad-hoc judgment during execution\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A3 - Check Results\",\n      \"rationale\": \"Automated result parsing and threshold-based pass/fail evaluation can flag anomalies without manual review, especially when expected outcomes are predefined.\",\n      \"required_data\": [\"Expected result benchmarks\", \"Pass/fail criteria\", \"Raw test results schema\"],\n      \"constraints\": [\"Requires clearly defined acceptance criteria\", \"May not handle ambiguous or novel failure modes well without human review\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"D1 - Do the results look correct?\",\n      \"rationale\": \"If pass/fail criteria are quantitative and well-defined, a rules engine or statistical comparison tool can automatically route to report writing or investigation without manual judgment.\",\n      \"required_data\": [\"Quantitative pass/fail thresholds\", \"Result data in structured format\"],\n      \"constraints\": [\"Low confidence scenarios (borderline results) may still require engineer judgment\", \"Criteria must be formally specified in advance\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A4 - Write Report\",\n      \"rationale\": \"Report generation can be partially or fully automated by populating predefined templates with structured test results, timestamps, and pass/fail outcomes.\",\n      \"required_data\": [\"Report template\", \"Structured test results\", \"Pass/fail assessment\", \"Engineer metadata\"],\n      \"constraints\": [\"Narrative commentary or contextual interpretation may still require manual input\", \"Template must be standardized\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A6 - Share Findings with Stakeholders\",\n      \"rationale\": \"Automated notification and distribution via email or collaboration tools can be triggered upon report completion or investigation closure, reducing manual communication overhead.\",\n      \"required_data\": [\"Stakeholder contact list or group\", \"Finalized report or findings document\", \"Trigger event definition (e.g., report ready)\"],\n      \"constraints\": [\"Stakeholder list must be maintained and up to date\", \"Sensitive findings may require manual review before distribution\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A1 - Prepare Verification Test\",\n      \"rationale\": \"Test preparation steps such as populating test configurations from templates or pulling requirements from a requirements management system can be partially automated to reduce setup time.\",\n      \"required_data\": [\"Requirements database\", \"Test plan templates\", \"Previous test configurations\"],\n      \"constraints\": [\"Novel or first-time test types may require significant manual design effort\", \"Automation limited to repeatable or templated test types\"],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"assumptions\": [\n    \"The engineer is a single actor throughout the process, though in practice multiple engineers or roles may be involved.\",\n    \"The term 'related people' in the original description is interpreted as stakeholders who need to be informed of investigation findings or final results.\",\n    \"The report writing step (A4) occurs even in the normal (no-issue) path; in the issue path, sharing findings (A6) supplements or replaces the standard report distribution.\",\n    \"The investigation step (A5) may iterate multiple times before findings are ready, captured via the D2 loop.\",\n    \"Systems referenced (e.g., Test Management Tool, Test Execution Environment) are generic placeholders consistent with common engineering workflows and are not specific to any real product.\",\n    \"The workflow is assumed to be linear with one main exception path; more complex branching (e.g., partial failures, multiple investigators) is not modeled due to insufficient detail.\",\n    \"Sharing findings (A6) is relevant both after investigation and potentially after a clean report is completed, though the primary trigger from the scenario description appears to be the issue path.\"\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Prepare Verification Test",
+            "actor": "Engineer",
+            "system": "Test Management Tool",
+            "inputs": [
+              "Test requirements",
+              "Test specifications",
+              "Prior test plans"
+            ],
+            "outputs": [
+              "Test plan",
+              "Test configuration",
+              "Test scripts"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Run Evaluation",
+            "actor": "Engineer",
+            "system": "Test Execution Environment",
+            "inputs": [
+              "Test plan",
+              "Test configuration",
+              "Test scripts"
+            ],
+            "outputs": [
+              "Raw test results",
+              "Execution logs"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Check Results",
+            "actor": "Engineer",
+            "system": "Test Results Viewer",
+            "inputs": [
+              "Raw test results",
+              "Execution logs"
+            ],
+            "outputs": [
+              "Reviewed results",
+              "Pass/fail assessment"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Write Report",
+            "actor": "Engineer",
+            "system": "Document Authoring Tool",
+            "inputs": [
+              "Reviewed results",
+              "Pass/fail assessment"
+            ],
+            "outputs": [
+              "Verification test report"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Investigate Issue",
+            "actor": "Engineer",
+            "system": "Debugging and Analysis Tool",
+            "inputs": [
+              "Reviewed results",
+              "Execution logs",
+              "Test configuration"
+            ],
+            "outputs": [
+              "Root cause analysis",
+              "Investigation findings"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Share Findings with Stakeholders",
+            "actor": "Engineer",
+            "system": "Communication and Collaboration Tool",
+            "inputs": [
+              "Investigation findings",
+              "Root cause analysis",
+              "Verification test report"
+            ],
+            "outputs": [
+              "Distributed findings report",
+              "Notification to related people"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Do the results look correct?",
+            "branches": [
+              {
+                "outcome": "Yes - Results are acceptable",
+                "next": "A4"
+              },
+              {
+                "outcome": "No - Something looks wrong",
+                "next": "A5"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the investigation complete and findings ready to share?",
+            "branches": [
+              {
+                "outcome": "Yes - Findings are ready",
+                "next": "A6"
+              },
+              {
+                "outcome": "No - Further investigation needed",
+                "next": "A5"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Test execution fails to complete due to environment or configuration error",
+            "handling": "Engineer reviews execution logs, corrects configuration, and re-runs evaluation"
+          },
+          {
+            "id": "E2",
+            "description": "Report cannot be finalized due to unresolved investigation",
+            "handling": "Report is put on hold until investigation findings are confirmed; stakeholders are notified of delay"
+          },
+          {
+            "id": "E3",
+            "description": "Related stakeholders are unavailable or unresponsive when findings are shared",
+            "handling": "Engineer escalates through alternative communication channel or records findings for later distribution"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A4",
+            "type": "conditional",
+            "condition": "Results acceptable"
+          },
+          {
+            "from": "D1",
+            "to": "A5",
+            "type": "conditional",
+            "condition": "Results look wrong"
+          },
+          {
+            "from": "A5",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A6",
+            "type": "conditional",
+            "condition": "Investigation complete"
+          },
+          {
+            "from": "D2",
+            "to": "A5",
+            "type": "conditional",
+            "condition": "Further investigation needed"
+          },
+          {
+            "from": "A4",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A6",
+            "type": "data_flow",
+            "note": "Report and findings are both inputs to sharing step"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A2 - Run Evaluation",
+          "rationale": "Test execution is often highly repetitive and follows deterministic scripts; automated test runners can execute test suites without manual intervention, reducing time and human error.",
+          "required_data": [
+            "Test scripts",
+            "Test configuration",
+            "Target system access credentials or interface"
+          ],
+          "constraints": [
+            "Test environment must be stable and accessible",
+            "Scripts must be well-defined and not require ad-hoc judgment during execution"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A3 - Check Results",
+          "rationale": "Automated result parsing and threshold-based pass/fail evaluation can flag anomalies without manual review, especially when expected outcomes are predefined.",
+          "required_data": [
+            "Expected result benchmarks",
+            "Pass/fail criteria",
+            "Raw test results schema"
+          ],
+          "constraints": [
+            "Requires clearly defined acceptance criteria",
+            "May not handle ambiguous or novel failure modes well without human review"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "D1 - Do the results look correct?",
+          "rationale": "If pass/fail criteria are quantitative and well-defined, a rules engine or statistical comparison tool can automatically route to report writing or investigation without manual judgment.",
+          "required_data": [
+            "Quantitative pass/fail thresholds",
+            "Result data in structured format"
+          ],
+          "constraints": [
+            "Low confidence scenarios (borderline results) may still require engineer judgment",
+            "Criteria must be formally specified in advance"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A4 - Write Report",
+          "rationale": "Report generation can be partially or fully automated by populating predefined templates with structured test results, timestamps, and pass/fail outcomes.",
+          "required_data": [
+            "Report template",
+            "Structured test results",
+            "Pass/fail assessment",
+            "Engineer metadata"
+          ],
+          "constraints": [
+            "Narrative commentary or contextual interpretation may still require manual input",
+            "Template must be standardized"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A6 - Share Findings with Stakeholders",
+          "rationale": "Automated notification and distribution via email or collaboration tools can be triggered upon report completion or investigation closure, reducing manual communication overhead.",
+          "required_data": [
+            "Stakeholder contact list or group",
+            "Finalized report or findings document",
+            "Trigger event definition (e.g., report ready)"
+          ],
+          "constraints": [
+            "Stakeholder list must be maintained and up to date",
+            "Sensitive findings may require manual review before distribution"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A1 - Prepare Verification Test",
+          "rationale": "Test preparation steps such as populating test configurations from templates or pulling requirements from a requirements management system can be partially automated to reduce setup time.",
+          "required_data": [
+            "Requirements database",
+            "Test plan templates",
+            "Previous test configurations"
+          ],
+          "constraints": [
+            "Novel or first-time test types may require significant manual design effort",
+            "Automation limited to repeatable or templated test types"
+          ],
+          "confidence": "low"
+        }
+      ],
+      "assumptions": [
+        "The engineer is a single actor throughout the process, though in practice multiple engineers or roles may be involved.",
+        "The term 'related people' in the original description is interpreted as stakeholders who need to be informed of investigation findings or final results.",
+        "The report writing step (A4) occurs even in the normal (no-issue) path; in the issue path, sharing findings (A6) supplements or replaces the standard report distribution.",
+        "The investigation step (A5) may iterate multiple times before findings are ready, captured via the D2 loop.",
+        "Systems referenced (e.g., Test Management Tool, Test Execution Environment) are generic placeholders consistent with common engineering workflows and are not specific to any real product.",
+        "The workflow is assumed to be linear with one main exception path; more complex branching (e.g., partial failures, multiple investigators) is not modeled due to insufficient detail.",
+        "Sharing findings (A6) is relevant both after investigation and potentially after a clean report is completed, though the primary trigger from the scenario description appears to be the issue path."
+      ]
+    }
+  }
+}

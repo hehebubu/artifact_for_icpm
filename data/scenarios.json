@@ -1,0 +1,340 @@
+{
+  "dataset_name": "Synthetic workflow scenarios for automation-oriented process elicitation",
+  "description": "Eight synthetic scenarios inspired by common semiconductor engineering and office workflows. The scenarios are generic and do not contain confidential company data, internal system names, product information, equipment identifiers, logs, metrics, or personally identifiable information.",
+  "schema_version": "0.1",
+  "scenarios": [
+    {
+      "id": "S01",
+      "title": "Verification Test Setup and Reporting",
+      "domain": "semiconductor_engineering",
+      "initial_description": "An engineer prepares a verification test, runs the evaluation, checks the results, and writes a short report. If something looks wrong, the engineer investigates and shares the result with related people.",
+      "reference_workflow": {
+        "goal": "Run a verification test and distribute a summarized result report.",
+        "actors": ["verification engineer", "review engineer", "project owner"],
+        "systems": ["test execution tool", "result repository", "report template", "email or collaboration tool"],
+        "inputs": ["test request", "test condition", "sample identifier", "evaluation setup guide"],
+        "outputs": ["test result files", "summary report", "issue list", "review notification"],
+        "activities": [
+          {"id": "A1", "name": "Review test request and conditions", "actor": "verification engineer"},
+          {"id": "A2", "name": "Prepare evaluation setup", "actor": "verification engineer"},
+          {"id": "A3", "name": "Run verification test", "actor": "verification engineer"},
+          {"id": "A4", "name": "Collect result files", "actor": "verification engineer"},
+          {"id": "A5", "name": "Check result validity", "actor": "verification engineer"},
+          {"id": "A6", "name": "Summarize findings in report", "actor": "verification engineer"},
+          {"id": "A7", "name": "Share report for review", "actor": "verification engineer"},
+          {"id": "A8", "name": "Review report and request clarification if needed", "actor": "review engineer"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Are the result files complete and readable?", "branches": ["complete", "missing or corrupted"]},
+          {"id": "D2", "condition": "Do the results contain abnormal patterns?", "branches": ["normal", "abnormal"]}
+        ],
+        "exceptions": ["missing setup information", "test execution failure", "incomplete result files", "unclear abnormal pattern"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"},
+          {"from": "A6", "to": "A7", "type": "control_flow"},
+          {"from": "A7", "to": "A8", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A4", "rationale": "Result file collection is repetitive and follows a standard folder or repository pattern."},
+          {"target": "A5", "rationale": "Completeness and basic validity checks can be rule-based."},
+          {"target": "A6", "rationale": "Report drafting can be supported by template filling and result summarization."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["test request input", "sample identifier", "systems used", "result validity criteria", "review actor", "exception handling", "report distribution channel"]
+    },
+    {
+      "id": "S02",
+      "title": "Equipment-Specific Measurement Workflow",
+      "domain": "semiconductor_engineering",
+      "initial_description": "A wafer is measured using one of several tools. The exact preparation and measurement steps differ by tool, and the engineer records the result after measurement.",
+      "reference_workflow": {
+        "goal": "Measure a wafer using the appropriate equipment-specific procedure and record the result.",
+        "actors": ["measurement engineer", "equipment owner", "requester"],
+        "systems": ["measurement equipment", "equipment reservation system", "measurement result repository"],
+        "inputs": ["measurement request", "wafer identifier", "measurement recipe", "equipment availability"],
+        "outputs": ["measurement result", "equipment usage record", "request completion notice"],
+        "activities": [
+          {"id": "A1", "name": "Confirm measurement request and wafer identifier", "actor": "measurement engineer"},
+          {"id": "A2", "name": "Select suitable measurement equipment", "actor": "measurement engineer"},
+          {"id": "A3", "name": "Check equipment availability and reserve slot", "actor": "measurement engineer"},
+          {"id": "A4", "name": "Prepare wafer according to equipment procedure", "actor": "measurement engineer"},
+          {"id": "A5", "name": "Run measurement recipe", "actor": "measurement engineer"},
+          {"id": "A6", "name": "Validate measurement output", "actor": "measurement engineer"},
+          {"id": "A7", "name": "Upload result and notify requester", "actor": "measurement engineer"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Which equipment is required for the requested measurement?", "branches": ["equipment type A", "equipment type B", "equipment type C"]},
+          {"id": "D2", "condition": "Is the equipment available and qualified?", "branches": ["available", "unavailable or under maintenance"]},
+          {"id": "D3", "condition": "Is the measurement output valid?", "branches": ["valid", "invalid or noisy"]}
+        ],
+        "exceptions": ["equipment unavailable", "wafer information mismatch", "recipe not approved", "invalid measurement output"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"},
+          {"from": "A6", "to": "A7", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A2", "rationale": "Equipment selection can be recommended from measurement type and wafer condition."},
+          {"target": "A3", "rationale": "Reservation checks can be automated through system integration."},
+          {"target": "A6", "rationale": "Output validity can be partially checked using rule-based thresholds or historical patterns."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["equipment selection rule", "reservation step", "recipe approval", "validity criteria", "requester notification", "exception path"]
+    },
+    {
+      "id": "S03",
+      "title": "Wafer Sample Transfer and Disposal Request",
+      "domain": "semiconductor_engineering",
+      "initial_description": "Samples are moved when they are needed for evaluation. After evaluation, unnecessary samples are checked and disposed of through a request process.",
+      "reference_workflow": {
+        "goal": "Move required wafer samples for evaluation and dispose of completed samples through traceable approval.",
+        "actors": ["sample requester", "sample manager", "verification engineer", "approver"],
+        "systems": ["sample tracking sheet", "transfer request form", "approval system", "storage location registry"],
+        "inputs": ["sample identifier", "evaluation purpose", "target location", "disposal reason"],
+        "outputs": ["transfer approval", "updated sample status", "disposal record", "physical confirmation note"],
+        "activities": [
+          {"id": "A1", "name": "Identify required sample and evaluation purpose", "actor": "sample requester"},
+          {"id": "A2", "name": "Submit sample transfer request", "actor": "sample requester"},
+          {"id": "A3", "name": "Approve transfer request", "actor": "approver"},
+          {"id": "A4", "name": "Physically confirm sample", "actor": "sample manager"},
+          {"id": "A5", "name": "Move sample to target location", "actor": "sample manager"},
+          {"id": "A6", "name": "Update sample status after evaluation", "actor": "verification engineer"},
+          {"id": "A7", "name": "Submit disposal request for completed sample", "actor": "verification engineer"},
+          {"id": "A8", "name": "Approve and record disposal", "actor": "approver"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Is the sample available and correctly identified?", "branches": ["available", "not found or mismatched"]},
+          {"id": "D2", "condition": "Is disposal allowed after evaluation?", "branches": ["allowed", "retain sample"]}
+        ],
+        "exceptions": ["sample identifier mismatch", "missing physical sample", "approval delay", "retention requirement"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"},
+          {"from": "A6", "to": "A7", "type": "control_flow"},
+          {"from": "A7", "to": "A8", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A2", "rationale": "Transfer request fields can be pre-filled from sample identifiers and evaluation purpose."},
+          {"target": "A6", "rationale": "Status updates can be prompted automatically after scheduled evaluation completion."},
+          {"target": "A7", "rationale": "Disposal candidates can be suggested when retention conditions are not met."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["approval actor", "tracking system", "physical confirmation", "status update rule", "retention decision", "disposal record"]
+    },
+    {
+      "id": "S04",
+      "title": "Defect Issue Triage and Risk Reporting",
+      "domain": "semiconductor_engineering",
+      "initial_description": "When a defect occurs, the engineer reports it, discusses it with related teams, performs additional experiments, and decides how to improve the issue and communicate the risk.",
+      "reference_workflow": {
+        "goal": "Triage a defect issue, coordinate investigation, and report improvement actions and customer risk.",
+        "actors": ["issue owner", "process engineer", "quality engineer", "customer interface owner", "manager"],
+        "systems": ["issue tracking system", "experiment log", "risk report template", "collaboration tool"],
+        "inputs": ["defect description", "sample or lot context", "initial evidence", "customer impact assumption"],
+        "outputs": ["issue report", "root-cause hypothesis", "experiment plan", "improvement action", "customer risk summary"],
+        "activities": [
+          {"id": "A1", "name": "Register defect issue with initial evidence", "actor": "issue owner"},
+          {"id": "A2", "name": "Classify issue severity and affected scope", "actor": "quality engineer"},
+          {"id": "A3", "name": "Notify related teams and assign owners", "actor": "issue owner"},
+          {"id": "A4", "name": "Define root-cause hypotheses", "actor": "process engineer"},
+          {"id": "A5", "name": "Plan and run follow-up experiment", "actor": "process engineer"},
+          {"id": "A6", "name": "Review experiment result and select improvement action", "actor": "issue owner"},
+          {"id": "A7", "name": "Assess customer risk", "actor": "customer interface owner"},
+          {"id": "A8", "name": "Share final report and action items", "actor": "manager"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Is the issue customer-impacting?", "branches": ["customer risk exists", "internal issue only"]},
+          {"id": "D2", "condition": "Does the experiment support the root-cause hypothesis?", "branches": ["supported", "not supported"]}
+        ],
+        "exceptions": ["insufficient evidence", "unclear owner", "experiment delay", "conflicting root-cause hypotheses"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"},
+          {"from": "A6", "to": "A7", "type": "control_flow"},
+          {"from": "A7", "to": "A8", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A1", "rationale": "Issue reports can be pre-structured from defect descriptions and evidence attachments."},
+          {"target": "A3", "rationale": "Related teams can be suggested from issue category and affected process area."},
+          {"target": "A8", "rationale": "Action-item extraction and risk report drafting can be partially automated."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["severity criteria", "team ownership", "issue tracking fields", "customer risk decision", "experiment evidence", "final reporting format"]
+    },
+    {
+      "id": "S05",
+      "title": "Specification Document Review",
+      "domain": "engineering_documentation",
+      "initial_description": "An engineer reviews a specification document to check whether new features are reflected correctly and whether there are typos or missing details.",
+      "reference_workflow": {
+        "goal": "Review a specification document for feature coverage, consistency, and editorial errors.",
+        "actors": ["document reviewer", "feature owner", "document author", "approver"],
+        "systems": ["document repository", "change request tracker", "review checklist", "commenting tool"],
+        "inputs": ["specification document", "feature change list", "previous document version", "review checklist"],
+        "outputs": ["review comments", "change request list", "approval decision", "updated document"],
+        "activities": [
+          {"id": "A1", "name": "Collect document and related change list", "actor": "document reviewer"},
+          {"id": "A2", "name": "Compare feature changes with document content", "actor": "document reviewer"},
+          {"id": "A3", "name": "Check terminology and formatting consistency", "actor": "document reviewer"},
+          {"id": "A4", "name": "Record comments and requested revisions", "actor": "document reviewer"},
+          {"id": "A5", "name": "Revise document based on comments", "actor": "document author"},
+          {"id": "A6", "name": "Confirm revisions with feature owner", "actor": "feature owner"},
+          {"id": "A7", "name": "Approve final document", "actor": "approver"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Are all feature changes reflected?", "branches": ["complete", "missing changes"]},
+          {"id": "D2", "condition": "Are the revisions acceptable?", "branches": ["approve", "request another revision"]}
+        ],
+        "exceptions": ["missing change list", "conflicting terminology", "unclear feature owner", "unresolved comments"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"},
+          {"from": "A6", "to": "A7", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A2", "rationale": "Feature coverage can be checked by comparing change lists and document sections."},
+          {"target": "A3", "rationale": "Terminology, formatting, and typo checks can be automated."},
+          {"target": "A4", "rationale": "Review comments can be grouped by section, severity, and owner."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["change list input", "document repository", "feature owner", "approval decision", "revision loop", "review checklist"]
+    },
+    {
+      "id": "S06",
+      "title": "Vendor Meeting and Improvement Action Follow-up",
+      "domain": "engineering_coordination",
+      "initial_description": "The team meets with an equipment vendor to discuss improvement ideas. After the meeting, someone summarizes the discussion and follows up on action items.",
+      "reference_workflow": {
+        "goal": "Coordinate a vendor meeting, capture improvement decisions, and track follow-up actions.",
+        "actors": ["equipment engineer", "vendor representative", "meeting organizer", "action-item owner", "manager"],
+        "systems": ["calendar system", "meeting notes", "action-item tracker", "shared document repository"],
+        "inputs": ["improvement request", "equipment issue summary", "meeting agenda", "vendor proposal"],
+        "outputs": ["meeting minutes", "action-item list", "owner and due date assignments", "updated improvement proposal"],
+        "activities": [
+          {"id": "A1", "name": "Prepare agenda and issue summary", "actor": "equipment engineer"},
+          {"id": "A2", "name": "Schedule meeting with vendor", "actor": "meeting organizer"},
+          {"id": "A3", "name": "Discuss improvement options", "actor": "equipment engineer"},
+          {"id": "A4", "name": "Record decisions and open questions", "actor": "meeting organizer"},
+          {"id": "A5", "name": "Assign action-item owners and due dates", "actor": "manager"},
+          {"id": "A6", "name": "Share meeting summary", "actor": "meeting organizer"},
+          {"id": "A7", "name": "Track action-item progress", "actor": "action-item owner"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Is the proposed improvement technically feasible?", "branches": ["feasible", "requires revision"]},
+          {"id": "D2", "condition": "Are action items clearly owned?", "branches": ["owned", "owner missing"]}
+        ],
+        "exceptions": ["agenda not prepared", "vendor proposal incomplete", "unclear owner", "missed follow-up deadline"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"},
+          {"from": "A6", "to": "A7", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A2", "rationale": "Meeting scheduling can be assisted by calendar availability checks."},
+          {"target": "A4", "rationale": "Meeting notes can be summarized into decisions, open questions, and action items."},
+          {"target": "A7", "rationale": "Action-item reminders and status tracking can be automated."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["agenda input", "meeting organizer", "action-item owner", "due date", "tracker system", "feasibility decision"]
+    },
+    {
+      "id": "S07",
+      "title": "Meeting Summary and Email Reporting",
+      "domain": "office_workflow",
+      "initial_description": "After a meeting, the contents are summarized and shared by email with the relevant people.",
+      "reference_workflow": {
+        "goal": "Summarize meeting content and distribute decisions, owners, and deadlines to relevant stakeholders.",
+        "actors": ["meeting participant", "minute taker", "decision owner", "recipient"],
+        "systems": ["calendar system", "meeting transcript or notes", "email client", "task tracker"],
+        "inputs": ["meeting agenda", "meeting notes or transcript", "participant list", "action-item list"],
+        "outputs": ["meeting summary email", "decision list", "action-item assignments", "task tracker updates"],
+        "activities": [
+          {"id": "A1", "name": "Collect meeting notes or transcript", "actor": "minute taker"},
+          {"id": "A2", "name": "Extract decisions and action items", "actor": "minute taker"},
+          {"id": "A3", "name": "Confirm unclear items with decision owners", "actor": "minute taker"},
+          {"id": "A4", "name": "Draft summary email", "actor": "minute taker"},
+          {"id": "A5", "name": "Attach or link supporting materials", "actor": "minute taker"},
+          {"id": "A6", "name": "Send email to relevant recipients", "actor": "minute taker"},
+          {"id": "A7", "name": "Update task tracker if needed", "actor": "decision owner"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Are all action items assigned to owners?", "branches": ["assigned", "clarification needed"]},
+          {"id": "D2", "condition": "Does the meeting require task tracking?", "branches": ["tracker update needed", "email only"]}
+        ],
+        "exceptions": ["missing transcript", "unclear decision owner", "recipient list incomplete", "confidential content included"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"},
+          {"from": "A6", "to": "A7", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A2", "rationale": "Decision and action-item extraction can be supported by summarization models."},
+          {"target": "A4", "rationale": "Email drafting can be template-based."},
+          {"target": "A7", "rationale": "Task tracker updates can be generated from action-item tables."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["source of notes", "recipient list", "decision owner", "confidentiality check", "task tracker condition", "supporting materials"]
+    },
+    {
+      "id": "S08",
+      "title": "Meeting Room Reservation",
+      "domain": "office_workflow",
+      "initial_description": "A meeting room is reserved for a team meeting. The organizer checks availability and shares the room information with participants.",
+      "reference_workflow": {
+        "goal": "Reserve an appropriate meeting room and notify participants with room details.",
+        "actors": ["meeting organizer", "meeting participants", "facility system"],
+        "systems": ["calendar system", "room reservation system", "email or collaboration tool"],
+        "inputs": ["meeting date and time", "participant count", "location preference", "equipment needs"],
+        "outputs": ["room reservation", "calendar invitation", "participant notification"],
+        "activities": [
+          {"id": "A1", "name": "Collect meeting time and participant count", "actor": "meeting organizer"},
+          {"id": "A2", "name": "Check room availability", "actor": "meeting organizer"},
+          {"id": "A3", "name": "Select room matching capacity and equipment needs", "actor": "meeting organizer"},
+          {"id": "A4", "name": "Reserve selected room", "actor": "meeting organizer"},
+          {"id": "A5", "name": "Create or update calendar invitation", "actor": "meeting organizer"},
+          {"id": "A6", "name": "Notify participants of room information", "actor": "meeting organizer"}
+        ],
+        "decisions": [
+          {"id": "D1", "condition": "Is a suitable room available?", "branches": ["available", "not available"]},
+          {"id": "D2", "condition": "Does the meeting require special equipment?", "branches": ["equipment needed", "standard room sufficient"]}
+        ],
+        "exceptions": ["room unavailable", "participant count changes", "reservation conflict", "equipment unavailable"],
+        "dependencies": [
+          {"from": "A1", "to": "A2", "type": "control_flow"},
+          {"from": "A2", "to": "A3", "type": "control_flow"},
+          {"from": "A3", "to": "A4", "type": "control_flow"},
+          {"from": "A4", "to": "A5", "type": "control_flow"},
+          {"from": "A5", "to": "A6", "type": "control_flow"}
+        ],
+        "automation_opportunities": [
+          {"target": "A2", "rationale": "Availability checks can be automated through calendar and reservation APIs."},
+          {"target": "A3", "rationale": "Room selection can be rule-based using capacity, location, and equipment constraints."},
+          {"target": "A5", "rationale": "Calendar invitation updates can be automated after reservation."}
+        ]
+      },
+      "intentionally_missing_in_initial_description": ["participant count", "equipment needs", "reservation system", "capacity rule", "conflict handling", "calendar update"]
+    }
+  ]
+}

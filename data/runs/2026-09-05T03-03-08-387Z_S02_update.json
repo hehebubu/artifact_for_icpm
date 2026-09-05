@@ -1,0 +1,735 @@
+{
+  "request": {
+    "stage": "update",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S02",
+      "title": "Equipment-Specific Measurement Workflow",
+      "domain": "semiconductor_engineering",
+      "initial_description": "A wafer is measured using one of several tools. The exact preparation and measurement steps differ by tool, and the engineer records the result after measurement.",
+      "reference_workflow": {
+        "goal": "Measure a wafer using the appropriate equipment-specific procedure and record the result.",
+        "actors": [
+          "measurement engineer",
+          "equipment owner",
+          "requester"
+        ],
+        "systems": [
+          "measurement equipment",
+          "equipment reservation system",
+          "measurement result repository"
+        ],
+        "inputs": [
+          "measurement request",
+          "wafer identifier",
+          "measurement recipe",
+          "equipment availability"
+        ],
+        "outputs": [
+          "measurement result",
+          "equipment usage record",
+          "request completion notice"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Confirm measurement request and wafer identifier",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Select suitable measurement equipment",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A3",
+            "name": "Check equipment availability and reserve slot",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Prepare wafer according to equipment procedure",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A5",
+            "name": "Run measurement recipe",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A6",
+            "name": "Validate measurement output",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Upload result and notify requester",
+            "actor": "measurement engineer"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Which equipment is required for the requested measurement?",
+            "branches": [
+              "equipment type A",
+              "equipment type B",
+              "equipment type C"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the equipment available and qualified?",
+            "branches": [
+              "available",
+              "unavailable or under maintenance"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the measurement output valid?",
+            "branches": [
+              "valid",
+              "invalid or noisy"
+            ]
+          }
+        ],
+        "exceptions": [
+          "equipment unavailable",
+          "wafer information mismatch",
+          "recipe not approved",
+          "invalid measurement output"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Equipment selection can be recommended from measurement type and wafer condition."
+          },
+          {
+            "target": "A3",
+            "rationale": "Reservation checks can be automated through system integration."
+          },
+          {
+            "target": "A6",
+            "rationale": "Output validity can be partially checked using rule-based thresholds or historical patterns."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "equipment selection rule",
+        "reservation step",
+        "recipe approval",
+        "validity criteria",
+        "requester notification",
+        "exception path"
+      ]
+    },
+    "answers": "Q1. What criteria determine which tool is selected for a given wafer measurement — for example, is the decision based on wafer type, measurement specification, tool availability, or engineer preference, and is this decision documented anywhere?\nAnswer: The measurement engineer selects equipment based primarily on the type of measurement requested and the condition of the wafer. There are multiple equipment types available, and the selection is a judgment call made by the engineer at the start of the workflow. Equipment availability and qualification status are then confirmed as a separate follow-on check. The selection logic is not formally documented in a decision table; it relies on engineer knowledge of which equipment type supports the required measurement.\n\nQ2. Can you walk through the specific preparation and measurement steps for each tool variant, and identify which of those steps require manual physical interaction versus software or parameter entry?\nAnswer: After equipment is selected and reserved, the engineer physically prepares the wafer according to the procedure specific to that equipment type — this step involves manual handling and is not the same across tools. Once prepared, the engineer loads and runs a measurement recipe on the equipment, which is a software-driven step. The recipe must be pre-approved before use. The physical preparation varies by tool and currently requires hands-on effort; the recipe execution step is more standardized and potentially automatable.\n\nQ3. Where and in what format does the engineer record the measurement result — for example, a paper log, spreadsheet, MES system, or tool-generated report — and is that data accessible programmatically?\nAnswer: The engineer uploads the measurement result to a centralized measurement result repository after validating the output. A request completion notice is also sent to the requester. The repository is a dedicated system, suggesting structured digital storage, though the specific format of the result data depends on the equipment output. Programmatic access to the repository has not been confirmed but the fact that results are uploaded implies a system interface exists.\n\nQ4. What happens when a measurement result is out of specification or when a tool fails mid-measurement — is there a defined escalation or rework path, and who is responsible for that decision?\nAnswer: There is a validation step after measurement where the engineer checks whether the output is valid. If the output is invalid or noisy, it is treated as an exception and the measurement does not proceed to upload. Similarly, if the equipment is unavailable or under maintenance, the workflow cannot continue with that tool. Other recognized exceptions include a wafer information mismatch and an unapproved recipe. However, a formal escalation path or rework loop beyond flagging these exceptions is not explicitly defined in the current workflow.\n\nQ5. Approximately how many measurements are performed per shift or per day across all tools, and how evenly is the workload distributed between them?\nAnswer: Specific volume and frequency data per shift or per day are not captured in the current workflow description. The workflow is triggered by individual measurement requests, but no throughput figures or load distribution across equipment types have been documented. This would need to be extracted from equipment usage records or the reservation system.\n\nQ6. Are there existing digital logs or event records from the measurement tools or surrounding systems that capture timestamps, tool IDs, wafer IDs, and outcomes in a structured format?\nAnswer: The workflow involves an equipment reservation system and a measurement result repository, both of which are digital systems that likely generate records. Equipment usage records are listed as an output of the process, suggesting some structured logging does occur. However, whether these logs capture full event-level detail such as timestamps, wafer identifiers, and outcome status in a queryable format has not been confirmed and would need to be validated with the system owners.",
+    "previousOutput": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "What criteria determine which tool is selected for a given wafer measurement — for example, is the decision based on wafer type, measurement specification, tool availability, or engineer preference, and is this decision documented anywhere?",
+          "answer": "The measurement engineer selects equipment based primarily on the type of measurement requested and the condition of the wafer. There are multiple equipment types available, and the selection is a judgment call made by the engineer at the start of the workflow. Equipment availability and qualification status are then confirmed as a separate follow-on check. The selection logic is not formally documented in a decision table; it relies on engineer knowledge of which equipment type supports the required measurement."
+        },
+        {
+          "question_id": "Q2",
+          "question": "Can you walk through the specific preparation and measurement steps for each tool variant, and identify which of those steps require manual physical interaction versus software or parameter entry?",
+          "answer": "After equipment is selected and reserved, the engineer physically prepares the wafer according to the procedure specific to that equipment type — this step involves manual handling and is not the same across tools. Once prepared, the engineer loads and runs a measurement recipe on the equipment, which is a software-driven step. The recipe must be pre-approved before use. The physical preparation varies by tool and currently requires hands-on effort; the recipe execution step is more standardized and potentially automatable."
+        },
+        {
+          "question_id": "Q3",
+          "question": "Where and in what format does the engineer record the measurement result — for example, a paper log, spreadsheet, MES system, or tool-generated report — and is that data accessible programmatically?",
+          "answer": "The engineer uploads the measurement result to a centralized measurement result repository after validating the output. A request completion notice is also sent to the requester. The repository is a dedicated system, suggesting structured digital storage, though the specific format of the result data depends on the equipment output. Programmatic access to the repository has not been confirmed but the fact that results are uploaded implies a system interface exists."
+        },
+        {
+          "question_id": "Q4",
+          "question": "What happens when a measurement result is out of specification or when a tool fails mid-measurement — is there a defined escalation or rework path, and who is responsible for that decision?",
+          "answer": "There is a validation step after measurement where the engineer checks whether the output is valid. If the output is invalid or noisy, it is treated as an exception and the measurement does not proceed to upload. Similarly, if the equipment is unavailable or under maintenance, the workflow cannot continue with that tool. Other recognized exceptions include a wafer information mismatch and an unapproved recipe. However, a formal escalation path or rework loop beyond flagging these exceptions is not explicitly defined in the current workflow."
+        },
+        {
+          "question_id": "Q5",
+          "question": "Approximately how many measurements are performed per shift or per day across all tools, and how evenly is the workload distributed between them?",
+          "answer": "Specific volume and frequency data per shift or per day are not captured in the current workflow description. The workflow is triggered by individual measurement requests, but no throughput figures or load distribution across equipment types have been documented. This would need to be extracted from equipment usage records or the reservation system."
+        },
+        {
+          "question_id": "Q6",
+          "question": "Are there existing digital logs or event records from the measurement tools or surrounding systems that capture timestamps, tool IDs, wafer IDs, and outcomes in a structured format?",
+          "answer": "The workflow involves an equipment reservation system and a measurement result repository, both of which are digital systems that likely generate records. Equipment usage records are listed as an output of the process, suggesting some structured logging does occur. However, whether these logs capture full event-level detail such as timestamps, wafer identifiers, and outcome status in a queryable format has not been confirmed and would need to be validated with the system owners."
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "decision",
+          "gap": "No criteria defined for how a specific tool is selected for a given wafer measurement",
+          "why_it_matters": "Without knowing the tool selection logic (e.g., based on wafer type, lot priority, tool availability, measurement type), it is impossible to model the branching logic or assess whether tool assignment can be automated"
+        },
+        {
+          "category": "actor",
+          "gap": "It is unclear who initiates the measurement request and whether multiple roles are involved across tool preparation and result recording",
+          "why_it_matters": "Automation scope depends on knowing which actors perform which steps; if preparation and recording are done by different roles, handoff points and potential bottlenecks must be identified"
+        },
+        {
+          "category": "system",
+          "gap": "No information provided about the systems or interfaces used by the tools or for recording results",
+          "why_it_matters": "Automation feasibility depends on whether tools expose APIs, generate structured output files, or require manual data entry; without this, integration constraints cannot be assessed"
+        },
+        {
+          "category": "input",
+          "gap": "The specific preparation steps per tool are not described, nor are the inputs required for each (e.g., recipes, calibration parameters, wafer identifiers)",
+          "why_it_matters": "Each tool variant may require different inputs, and undocumented preparation steps represent hidden manual effort and potential failure points that must be captured for accurate process modeling"
+        },
+        {
+          "category": "output",
+          "gap": "The format, structure, and destination of the recorded measurement result are not specified",
+          "why_it_matters": "If results are recorded in free text, a spreadsheet, or a proprietary format, data extraction and downstream automation will require different approaches; structured vs. unstructured output significantly changes automation complexity"
+        },
+        {
+          "category": "exception",
+          "gap": "No exception handling is described for scenarios such as tool unavailability, measurement failure, out-of-specification results, or calibration errors",
+          "why_it_matters": "Exception paths are critical for robust automation; unhandled exceptions will cause process failures or require unplanned manual intervention, undermining automation reliability"
+        },
+        {
+          "category": "frequency",
+          "gap": "The volume and frequency of measurements (per shift, per day, per lot) and the distribution across tools are unknown",
+          "why_it_matters": "Frequency and load distribution determine the ROI justification for automation and inform decisions about parallelism, scheduling, and resource allocation"
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The time spent on preparation versus measurement versus result recording per tool is not quantified",
+          "why_it_matters": "Without effort estimates per step and per tool, it is not possible to prioritize which subprocess to automate first or to calculate expected time savings"
+        },
+        {
+          "category": "dependency",
+          "gap": "It is unclear whether measurement must follow a specific upstream process step or whether there are sequencing constraints between tools",
+          "why_it_matters": "Upstream dependencies affect when the workflow can be triggered and whether automation can proceed autonomously or must wait for external conditions to be met"
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is not known whether historical measurement logs or tool usage records exist in a structured, queryable form",
+          "why_it_matters": "Process mining and automation assessment rely on historical event data; if logs are incomplete or unstructured, conformance checking and variant analysis will be severely limited"
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "No approval or quality review step is mentioned after result recording, nor is it clear whether out-of-spec results trigger an escalation workflow",
+          "why_it_matters": "If results require engineer sign-off or trigger corrective actions, these steps must be included in the process model; omitting them would produce an incomplete and potentially non-compliant automation design"
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "What criteria determine which tool is selected for a given wafer measurement — for example, is the decision based on wafer type, measurement specification, tool availability, or engineer preference, and is this decision documented anywhere?",
+          "targets": [
+            "decision",
+            "tool selection logic"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Can you walk through the specific preparation and measurement steps for each tool variant, and identify which of those steps require manual physical interaction versus software or parameter entry?",
+          "targets": [
+            "input",
+            "manual_effort",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Where and in what format does the engineer record the measurement result — for example, a paper log, spreadsheet, MES system, or tool-generated report — and is that data accessible programmatically?",
+          "targets": [
+            "output",
+            "system",
+            "data_availability"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What happens when a measurement result is out of specification or when a tool fails mid-measurement — is there a defined escalation or rework path, and who is responsible for that decision?",
+          "targets": [
+            "exception",
+            "risk_or_approval",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Approximately how many measurements are performed per shift or per day across all tools, and how evenly is the workload distributed between them?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Are there existing digital logs or event records from the measurement tools or surrounding systems that capture timestamps, tool IDs, wafer IDs, and outcomes in a structured format?",
+          "targets": [
+            "data_availability",
+            "integration_constraint",
+            "system"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "87a1d435-cb6c-4b06-a28a-eb38990a8885",
+    "created_at": "2026-09-05T03:03:08.384Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "update",
+    "raw_text": "{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Receive Measurement Request\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"None (manual intake)\",\n        \"inputs\": [\"Measurement request (wafer type, measurement specification)\"],\n        \"outputs\": [\"Acknowledged measurement request\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Select Equipment Type\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"None (engineer judgment)\",\n        \"inputs\": [\"Measurement type\", \"Wafer condition\", \"Engineer knowledge of equipment capabilities\"],\n        \"outputs\": [\"Selected equipment type\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Check Equipment Availability and Qualification Status\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"Equipment Reservation System\",\n        \"inputs\": [\"Selected equipment type\"],\n        \"outputs\": [\"Equipment availability status\", \"Equipment qualification status\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Reserve Equipment\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"Equipment Reservation System\",\n        \"inputs\": [\"Confirmed available and qualified equipment\"],\n        \"outputs\": [\"Equipment reservation record\", \"Equipment usage log entry\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Verify Wafer Information\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"None (manual check)\",\n        \"inputs\": [\"Physical wafer\", \"Measurement request details\"],\n        \"outputs\": [\"Confirmed wafer identity match\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Perform Tool-Specific Wafer Preparation\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"None (manual physical handling)\",\n        \"inputs\": [\"Reserved equipment\", \"Wafer\", \"Tool-specific preparation procedure\"],\n        \"outputs\": [\"Prepared wafer ready for measurement\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Verify Recipe Approval Status\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"Recipe Management System (implied)\",\n        \"inputs\": [\"Measurement recipe identifier\"],\n        \"outputs\": [\"Recipe approval status\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Load and Execute Measurement Recipe\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"Equipment Control Software\",\n        \"inputs\": [\"Approved measurement recipe\", \"Prepared wafer\", \"Reserved equipment\"],\n        \"outputs\": [\"Raw measurement output data\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Validate Measurement Output\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"None (manual review)\",\n        \"inputs\": [\"Raw measurement output data\"],\n        \"outputs\": [\"Validation decision (valid or invalid/noisy)\"]\n      },\n      {\n        \"id\": \"A10\",\n        \"name\": \"Upload Measurement Result to Repository\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"Measurement Result Repository\",\n        \"inputs\": [\"Validated measurement result\"],\n        \"outputs\": [\"Stored measurement result record\"]\n      },\n      {\n        \"id\": \"A11\",\n        \"name\": \"Send Request Completion Notice\",\n        \"actor\": \"Measurement Engineer\",\n        \"system\": \"None (manual notification or email)\",\n        \"inputs\": [\"Uploaded result confirmation\", \"Requester contact information\"],\n        \"outputs\": [\"Completion notification to requester\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is the selected equipment available and qualified?\",\n        \"branches\": [\n          \"Yes → Proceed to A4 (Reserve Equipment)\",\n          \"No → Return to A2 (Select alternative equipment type) or halt workflow\"\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Does the wafer information match the measurement request?\",\n        \"branches\": [\n          \"Yes → Proceed to A6 (Wafer Preparation)\",\n          \"No → Raise wafer information mismatch exception; halt workflow\"\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Is the measurement recipe pre-approved?\",\n        \"branches\": [\n          \"Yes → Proceed to A8 (Load and Execute Recipe)\",\n          \"No → Raise unapproved recipe exception; halt workflow\"\n        ]\n      },\n      {\n        \"id\": \"D4\",\n        \"condition\": \"Is the measurement output valid (not noisy or erroneous)?\",\n        \"branches\": [\n          \"Yes → Proceed to A10 (Upload Result)\",\n          \"No → Raise invalid output exception; halt workflow (no formal rework loop defined)\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"name\": \"Equipment Unavailable or Under Maintenance\",\n        \"trigger\": \"Equipment availability check at D1 fails\",\n        \"current_handling\": \"Workflow cannot continue with selected tool; engineer must select alternative equipment or halt\",\n        \"gap\": \"No formal fallback routing or escalation path documented\"\n      },\n      {\n        \"id\": \"E2\",\n        \"name\": \"Wafer Information Mismatch\",\n        \"trigger\": \"Wafer identity does not match measurement request at D2\",\n        \"current_handling\": \"Exception flagged; workflow halted\",\n        \"gap\": \"No defined resolution or escalation path\"\n      },\n      {\n        \"id\": \"E3\",\n        \"name\": \"Unapproved Recipe\",\n        \"trigger\": \"Recipe approval check at D3 fails\",\n        \"current_handling\": \"Exception flagged; workflow halted\",\n        \"gap\": \"No process defined for expediting recipe approval or selecting an alternative approved recipe\"\n      },\n      {\n        \"id\": \"E4\",\n        \"name\": \"Invalid or Noisy Measurement Output\",\n        \"trigger\": \"Output validation at D4 fails\",\n        \"current_handling\": \"Exception flagged; result not uploaded\",\n        \"gap\": \"No rework loop, remeasurement procedure, or escalation path is formally defined\"\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A4\", \"type\": \"conditional\"},\n      {\"from\": \"A4\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A5\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A6\", \"type\": \"conditional\"},\n      {\"from\": \"A6\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A7\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A8\", \"type\": \"conditional\"},\n      {\"from\": \"A8\", \"to\": \"A9\", \"type\": \"control_flow\"},\n      {\"from\": \"A9\", \"to\": \"D4\", \"type\": \"control_flow\"},\n      {\"from\": \"D4\", \"to\": \"A10\", \"type\": \"conditional\"},\n      {\"from\": \"A10\", \"to\": \"A11\", \"type\": \"control_flow\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A3 – Check Equipment Availability and Qualification Status\",\n      \"rationale\": \"The equipment reservation system is a digital system that should expose availability and qualification status programmatically. This check can be automated as a real-time query, eliminating manual lookup and reducing delay.\",\n      \"required_data\": [\"Equipment reservation system API or query interface\", \"Equipment qualification status records\"],\n      \"constraints\": [\"System must expose structured, queryable availability data\", \"Qualification status must be maintained and current in the system\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A4 – Reserve Equipment\",\n      \"rationale\": \"Equipment reservation is a transactional step that, if the reservation system has a write interface, can be automated immediately following a successful availability check without engineer manual entry.\",\n      \"required_data\": [\"Equipment reservation system write interface\", \"Selected equipment identifier\", \"Measurement request identifier\"],\n      \"constraints\": [\"System must support automated reservation creation\", \"Concurrency conflicts must be handled by the system\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A7 – Verify Recipe Approval Status\",\n      \"rationale\": \"Recipe approval status is a binary, structured attribute that can be queried from the recipe management system automatically before recipe execution, replacing a manual check step.\",\n      \"required_data\": [\"Recipe management system with approval status field\", \"Recipe identifier linked to measurement request\"],\n      \"constraints\": [\"Recipe management system must be accessible programmatically\", \"Approval status must reflect real-time state\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A8 – Load and Execute Measurement Recipe\",\n      \"rationale\": \"Recipe execution is described as a software-driven step and is noted as potentially automatable. If the equipment control software supports scripted or remote recipe invocation, this step can be triggered without manual engineer intervention.\",\n      \"required_data\": [\"Equipment control software API or automation interface\", \"Approved recipe file or identifier\", \"Wafer load confirmation signal\"],\n      \"constraints\": [\"Equipment control software must support remote or scripted execution\", \"Physical wafer loading (part of A6) must still be completed manually prior to this step\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A10 – Upload Measurement Result to Repository\",\n      \"rationale\": \"Once output is validated, the upload to the measurement result repository is a data transfer step that can be automated if the repository has an ingest interface and the equipment output format is structured.\",\n      \"required_data\": [\"Measurement result repository upload interface\", \"Structured output file from equipment\", \"Wafer and request identifiers for metadata tagging\"],\n      \"constraints\": [\"Output format must be consistent enough to map to repository schema\", \"Validation decision (D4) must be resolved before triggering upload\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A11 – Send Request Completion Notice\",\n      \"rationale\": \"Completion notification is a routine communication step that can be fully automated as a triggered message once the result upload is confirmed, using requester contact information from the original request.\",\n      \"required_data\": [\"Requester contact details from measurement request record\", \"Upload confirmation event from measurement result repository\"],\n      \"constraints\": [\"Notification system or messaging interface must be available\", \"Requester contact information must be captured at request intake\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D4 – Validate Measurement Output\",\n      \"rationale\": \"Output validation could be partially automated using statistical thresholds or signal quality metrics if the equipment generates structured numerical output. Rule-based checks for noise or out-of-bounds values could replace or augment manual review.\",\n      \"required_data\": [\"Defined specification limits or noise thresholds per measurement type\", \"Structured numeric output from equipment\", \"Measurement type context\"],\n      \"constraints\": [\"Thresholds must be formally defined and maintained\", \"Edge cases may still require human review\", \"Validation rules must be approved before deployment\"],\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"remaining_gaps\": [\n    {\n      \"id\": \"G1\",\n      \"description\": \"No formal escalation or rework path is defined for any of the four exception types (equipment unavailable, wafer mismatch, unapproved recipe, invalid output). The workflow halts without a documented resolution process, creating dead ends that cannot be modeled or automated.\",\n      \"impact\": \"High – exceptions cannot be handled systematically or monitored for recurrence\",\n      \"suggested_action\": \"Define and document exception resolution paths, including responsible roles, time limits, and rework or retry logic for each exception type\"\n    },\n    {\n      \"id\": \"G2\",\n      \"description\": \"The tool-specific wafer preparation steps (A6) are not individually documented. Each equipment type has a distinct manual procedure, but these variants are not captured in the workflow description.\",\n      \"impact\": \"High – process mining cannot distinguish tool-specific sub-paths without this detail; automation assessment for preparation steps is impossible\",\n      \"suggested_action\": \"Document the preparation procedure for each equipment type as a distinct sub-process or decision branch, identifying which steps are common and which are tool-specific\"\n    },\n    {\n      \"id\": \"G3\",\n      \"description\": \"Programmatic accessibility of the measurement result repository has not been confirmed. Automation of the upload step (A10) depends on this interface existing.\",\n      \"impact\": \"Medium – blocks automation of result upload and downstream notification\",\n      \"suggested_action\": \"Validate with system owners whether the repository exposes an ingest API and what the accepted data format is\"\n    },\n    {\n      \"id\": \"G4\",\n      \"description\": \"Whether the equipment reservation system and measurement result repository generate queryable event logs with timestamps, wafer identifiers, tool IDs, and outcome codes has not been confirmed.\",\n      \"impact\": \"High – process mining requires event log data; without confirmation of log structure and content, conformance checking and performance analysis cannot be performed\",\n      \"suggested_action\": \"Audit the event logging capabilities of both systems and extract a sample log to assess completeness and queryability\"\n    },\n    {\n      \"id\": \"G5\",\n      \"description\": \"Throughput volume data (measurements per shift or per day, workload distribution across equipment types) is entirely absent. This prevents capacity analysis, bottleneck identification, and prioritization of automation investments.\",\n      \"impact\": \"Medium – limits ability to assess ROI of automation and identify high-frequency pain points\",\n      \"suggested_action\": \"Extract historical usage records from the equipment reservation system to estimate request volumes, cycle times, and tool utilization rates\"\n    },\n    {\n      \"id\": \"G6\",\n      \"description\": \"The engineer's equipment selection logic (A2) is undocumented and relies entirely on tacit knowledge. This creates a non-reproducible decision point that cannot be audited, trained upon, or automated.\",\n      \"impact\": \"Medium – selection inconsistency may lead to suboptimal equipment use and is invisible to process analysis\",\n      \"suggested_action\": \"Work with engineers to elicit and formalize the selection criteria into a documented decision table or rule set, even if informal, to enable future decision support or routing automation\"\n    }\n  ]\n}",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Receive Measurement Request",
+            "actor": "Measurement Engineer",
+            "system": "None (manual intake)",
+            "inputs": [
+              "Measurement request (wafer type, measurement specification)"
+            ],
+            "outputs": [
+              "Acknowledged measurement request"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Select Equipment Type",
+            "actor": "Measurement Engineer",
+            "system": "None (engineer judgment)",
+            "inputs": [
+              "Measurement type",
+              "Wafer condition",
+              "Engineer knowledge of equipment capabilities"
+            ],
+            "outputs": [
+              "Selected equipment type"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Check Equipment Availability and Qualification Status",
+            "actor": "Measurement Engineer",
+            "system": "Equipment Reservation System",
+            "inputs": [
+              "Selected equipment type"
+            ],
+            "outputs": [
+              "Equipment availability status",
+              "Equipment qualification status"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Reserve Equipment",
+            "actor": "Measurement Engineer",
+            "system": "Equipment Reservation System",
+            "inputs": [
+              "Confirmed available and qualified equipment"
+            ],
+            "outputs": [
+              "Equipment reservation record",
+              "Equipment usage log entry"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Verify Wafer Information",
+            "actor": "Measurement Engineer",
+            "system": "None (manual check)",
+            "inputs": [
+              "Physical wafer",
+              "Measurement request details"
+            ],
+            "outputs": [
+              "Confirmed wafer identity match"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Perform Tool-Specific Wafer Preparation",
+            "actor": "Measurement Engineer",
+            "system": "None (manual physical handling)",
+            "inputs": [
+              "Reserved equipment",
+              "Wafer",
+              "Tool-specific preparation procedure"
+            ],
+            "outputs": [
+              "Prepared wafer ready for measurement"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Verify Recipe Approval Status",
+            "actor": "Measurement Engineer",
+            "system": "Recipe Management System (implied)",
+            "inputs": [
+              "Measurement recipe identifier"
+            ],
+            "outputs": [
+              "Recipe approval status"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Load and Execute Measurement Recipe",
+            "actor": "Measurement Engineer",
+            "system": "Equipment Control Software",
+            "inputs": [
+              "Approved measurement recipe",
+              "Prepared wafer",
+              "Reserved equipment"
+            ],
+            "outputs": [
+              "Raw measurement output data"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Validate Measurement Output",
+            "actor": "Measurement Engineer",
+            "system": "None (manual review)",
+            "inputs": [
+              "Raw measurement output data"
+            ],
+            "outputs": [
+              "Validation decision (valid or invalid/noisy)"
+            ]
+          },
+          {
+            "id": "A10",
+            "name": "Upload Measurement Result to Repository",
+            "actor": "Measurement Engineer",
+            "system": "Measurement Result Repository",
+            "inputs": [
+              "Validated measurement result"
+            ],
+            "outputs": [
+              "Stored measurement result record"
+            ]
+          },
+          {
+            "id": "A11",
+            "name": "Send Request Completion Notice",
+            "actor": "Measurement Engineer",
+            "system": "None (manual notification or email)",
+            "inputs": [
+              "Uploaded result confirmation",
+              "Requester contact information"
+            ],
+            "outputs": [
+              "Completion notification to requester"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the selected equipment available and qualified?",
+            "branches": [
+              "Yes → Proceed to A4 (Reserve Equipment)",
+              "No → Return to A2 (Select alternative equipment type) or halt workflow"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the wafer information match the measurement request?",
+            "branches": [
+              "Yes → Proceed to A6 (Wafer Preparation)",
+              "No → Raise wafer information mismatch exception; halt workflow"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the measurement recipe pre-approved?",
+            "branches": [
+              "Yes → Proceed to A8 (Load and Execute Recipe)",
+              "No → Raise unapproved recipe exception; halt workflow"
+            ]
+          },
+          {
+            "id": "D4",
+            "condition": "Is the measurement output valid (not noisy or erroneous)?",
+            "branches": [
+              "Yes → Proceed to A10 (Upload Result)",
+              "No → Raise invalid output exception; halt workflow (no formal rework loop defined)"
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "name": "Equipment Unavailable or Under Maintenance",
+            "trigger": "Equipment availability check at D1 fails",
+            "current_handling": "Workflow cannot continue with selected tool; engineer must select alternative equipment or halt",
+            "gap": "No formal fallback routing or escalation path documented"
+          },
+          {
+            "id": "E2",
+            "name": "Wafer Information Mismatch",
+            "trigger": "Wafer identity does not match measurement request at D2",
+            "current_handling": "Exception flagged; workflow halted",
+            "gap": "No defined resolution or escalation path"
+          },
+          {
+            "id": "E3",
+            "name": "Unapproved Recipe",
+            "trigger": "Recipe approval check at D3 fails",
+            "current_handling": "Exception flagged; workflow halted",
+            "gap": "No process defined for expediting recipe approval or selecting an alternative approved recipe"
+          },
+          {
+            "id": "E4",
+            "name": "Invalid or Noisy Measurement Output",
+            "trigger": "Output validation at D4 fails",
+            "current_handling": "Exception flagged; result not uploaded",
+            "gap": "No rework loop, remeasurement procedure, or escalation path is formally defined"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A4",
+            "type": "conditional"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A6",
+            "type": "conditional"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A8",
+            "type": "conditional"
+          },
+          {
+            "from": "A8",
+            "to": "A9",
+            "type": "control_flow"
+          },
+          {
+            "from": "A9",
+            "to": "D4",
+            "type": "control_flow"
+          },
+          {
+            "from": "D4",
+            "to": "A10",
+            "type": "conditional"
+          },
+          {
+            "from": "A10",
+            "to": "A11",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A3 – Check Equipment Availability and Qualification Status",
+          "rationale": "The equipment reservation system is a digital system that should expose availability and qualification status programmatically. This check can be automated as a real-time query, eliminating manual lookup and reducing delay.",
+          "required_data": [
+            "Equipment reservation system API or query interface",
+            "Equipment qualification status records"
+          ],
+          "constraints": [
+            "System must expose structured, queryable availability data",
+            "Qualification status must be maintained and current in the system"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A4 – Reserve Equipment",
+          "rationale": "Equipment reservation is a transactional step that, if the reservation system has a write interface, can be automated immediately following a successful availability check without engineer manual entry.",
+          "required_data": [
+            "Equipment reservation system write interface",
+            "Selected equipment identifier",
+            "Measurement request identifier"
+          ],
+          "constraints": [
+            "System must support automated reservation creation",
+            "Concurrency conflicts must be handled by the system"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A7 – Verify Recipe Approval Status",
+          "rationale": "Recipe approval status is a binary, structured attribute that can be queried from the recipe management system automatically before recipe execution, replacing a manual check step.",
+          "required_data": [
+            "Recipe management system with approval status field",
+            "Recipe identifier linked to measurement request"
+          ],
+          "constraints": [
+            "Recipe management system must be accessible programmatically",
+            "Approval status must reflect real-time state"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A8 – Load and Execute Measurement Recipe",
+          "rationale": "Recipe execution is described as a software-driven step and is noted as potentially automatable. If the equipment control software supports scripted or remote recipe invocation, this step can be triggered without manual engineer intervention.",
+          "required_data": [
+            "Equipment control software API or automation interface",
+            "Approved recipe file or identifier",
+            "Wafer load confirmation signal"
+          ],
+          "constraints": [
+            "Equipment control software must support remote or scripted execution",
+            "Physical wafer loading (part of A6) must still be completed manually prior to this step"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A10 – Upload Measurement Result to Repository",
+          "rationale": "Once output is validated, the upload to the measurement result repository is a data transfer step that can be automated if the repository has an ingest interface and the equipment output format is structured.",
+          "required_data": [
+            "Measurement result repository upload interface",
+            "Structured output file from equipment",
+            "Wafer and request identifiers for metadata tagging"
+          ],
+          "constraints": [
+            "Output format must be consistent enough to map to repository schema",
+            "Validation decision (D4) must be resolved before triggering upload"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A11 – Send Request Completion Notice",
+          "rationale": "Completion notification is a routine communication step that can be fully automated as a triggered message once the result upload is confirmed, using requester contact information from the original request.",
+          "required_data": [
+            "Requester contact details from measurement request record",
+            "Upload confirmation event from measurement result repository"
+          ],
+          "constraints": [
+            "Notification system or messaging interface must be available",
+            "Requester contact information must be captured at request intake"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D4 – Validate Measurement Output",
+          "rationale": "Output validation could be partially automated using statistical thresholds or signal quality metrics if the equipment generates structured numerical output. Rule-based checks for noise or out-of-bounds values could replace or augment manual review.",
+          "required_data": [
+            "Defined specification limits or noise thresholds per measurement type",
+            "Structured numeric output from equipment",
+            "Measurement type context"
+          ],
+          "constraints": [
+            "Thresholds must be formally defined and maintained",
+            "Edge cases may still require human review",
+            "Validation rules must be approved before deployment"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "remaining_gaps": [
+        {
+          "id": "G1",
+          "description": "No formal escalation or rework path is defined for any of the four exception types (equipment unavailable, wafer mismatch, unapproved recipe, invalid output). The workflow halts without a documented resolution process, creating dead ends that cannot be modeled or automated.",
+          "impact": "High – exceptions cannot be handled systematically or monitored for recurrence",
+          "suggested_action": "Define and document exception resolution paths, including responsible roles, time limits, and rework or retry logic for each exception type"
+        },
+        {
+          "id": "G2",
+          "description": "The tool-specific wafer preparation steps (A6) are not individually documented. Each equipment type has a distinct manual procedure, but these variants are not captured in the workflow description.",
+          "impact": "High – process mining cannot distinguish tool-specific sub-paths without this detail; automation assessment for preparation steps is impossible",
+          "suggested_action": "Document the preparation procedure for each equipment type as a distinct sub-process or decision branch, identifying which steps are common and which are tool-specific"
+        },
+        {
+          "id": "G3",
+          "description": "Programmatic accessibility of the measurement result repository has not been confirmed. Automation of the upload step (A10) depends on this interface existing.",
+          "impact": "Medium – blocks automation of result upload and downstream notification",
+          "suggested_action": "Validate with system owners whether the repository exposes an ingest API and what the accepted data format is"
+        },
+        {
+          "id": "G4",
+          "description": "Whether the equipment reservation system and measurement result repository generate queryable event logs with timestamps, wafer identifiers, tool IDs, and outcome codes has not been confirmed.",
+          "impact": "High – process mining requires event log data; without confirmation of log structure and content, conformance checking and performance analysis cannot be performed",
+          "suggested_action": "Audit the event logging capabilities of both systems and extract a sample log to assess completeness and queryability"
+        },
+        {
+          "id": "G5",
+          "description": "Throughput volume data (measurements per shift or per day, workload distribution across equipment types) is entirely absent. This prevents capacity analysis, bottleneck identification, and prioritization of automation investments.",
+          "impact": "Medium – limits ability to assess ROI of automation and identify high-frequency pain points",
+          "suggested_action": "Extract historical usage records from the equipment reservation system to estimate request volumes, cycle times, and tool utilization rates"
+        },
+        {
+          "id": "G6",
+          "description": "The engineer's equipment selection logic (A2) is undocumented and relies entirely on tacit knowledge. This creates a non-reproducible decision point that cannot be audited, trained upon, or automated.",
+          "impact": "Medium – selection inconsistency may lead to suboptimal equipment use and is invisible to process analysis",
+          "suggested_action": "Work with engineers to elicit and formalize the selection criteria into a documented decision table or rule set, even if informal, to enable future decision support or routing automation"
+        }
+      ]
+    }
+  }
+}

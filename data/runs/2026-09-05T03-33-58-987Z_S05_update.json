@@ -1,0 +1,300 @@
+{
+  "request": {
+    "stage": "update",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S05",
+      "title": "Specification Document Review",
+      "domain": "engineering_documentation",
+      "initial_description": "An engineer reviews a specification document to check whether new features are reflected correctly and whether there are typos or missing details.",
+      "reference_workflow": {
+        "goal": "Review a specification document for feature coverage, consistency, and editorial errors.",
+        "actors": [
+          "document reviewer",
+          "feature owner",
+          "document author",
+          "approver"
+        ],
+        "systems": [
+          "document repository",
+          "change request tracker",
+          "review checklist",
+          "commenting tool"
+        ],
+        "inputs": [
+          "specification document",
+          "feature change list",
+          "previous document version",
+          "review checklist"
+        ],
+        "outputs": [
+          "review comments",
+          "change request list",
+          "approval decision",
+          "updated document"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect document and related change list",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A2",
+            "name": "Compare feature changes with document content",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A3",
+            "name": "Check terminology and formatting consistency",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A4",
+            "name": "Record comments and requested revisions",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A5",
+            "name": "Revise document based on comments",
+            "actor": "document author"
+          },
+          {
+            "id": "A6",
+            "name": "Confirm revisions with feature owner",
+            "actor": "feature owner"
+          },
+          {
+            "id": "A7",
+            "name": "Approve final document",
+            "actor": "approver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all feature changes reflected?",
+            "branches": [
+              "complete",
+              "missing changes"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are the revisions acceptable?",
+            "branches": [
+              "approve",
+              "request another revision"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing change list",
+          "conflicting terminology",
+          "unclear feature owner",
+          "unresolved comments"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Feature coverage can be checked by comparing change lists and document sections."
+          },
+          {
+            "target": "A3",
+            "rationale": "Terminology, formatting, and typo checks can be automated."
+          },
+          {
+            "target": "A4",
+            "rationale": "Review comments can be grouped by section, severity, and owner."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "change list input",
+        "document repository",
+        "feature owner",
+        "approval decision",
+        "revision loop",
+        "review checklist"
+      ]
+    },
+    "answers": "Q1. Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?\nAnswer: The review is performed by a designated document reviewer. Additional actors are involved at later stages: a document author who owns the specification content, a feature owner who confirms that revisions are technically correct, and an approver who provides final sign-off. No specific seniority or certification criteria are defined, but the feature owner implies domain expertise is expected at the confirmation step.\n\nQ2. What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?\nAnswer: The specification document is stored in a document repository. A feature change list and the previous document version are also pulled as inputs, suggesting version-controlled, structured artifacts. A review checklist is used alongside the document, implying a consistent schema or template is followed across reviews.\n\nQ3. What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?\nAnswer: The review produces review comments and a change request list, which are recorded using a commenting tool and a change request tracker. After revisions are made and confirmed, an approval decision is issued and an updated document is produced. These outputs are stored back in the document repository.\n\nQ4. What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?\nAnswer: The reviewer uses a review checklist to guide the process. Two main criteria are evaluated: whether all feature changes are reflected in the document, and whether terminology and formatting are consistent. Findings are recorded as comments or change requests. The workflow includes a decision point on whether all feature changes are covered, indicating feature completeness is treated as a primary acceptance criterion. Explicit severity tiers are not defined in the current process.\n\nQ5. How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?\nAnswer: The trigger for a review is the availability of a specification document and its associated feature change list — the reviewer first collects these before any analysis begins. Frequency and duration per review are not specified in the current workflow definition. The process appears to be initiated on demand rather than on a fixed schedule.\n\nQ6. Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?\nAnswer: Yes, there is a formal approval step: an approver must approve the final document before the process concludes. If revisions are not acceptable, the workflow loops back to request another revision cycle. Defined exception cases include a missing change list, conflicting terminology, an unclear or unavailable feature owner, and unresolved comments — each of these can block progress through the workflow. Reviewer unavailability is not explicitly handled by a fallback rule in the current process.",
+    "previousOutput": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?",
+          "answer": "The review is performed by a designated document reviewer. Additional actors are involved at later stages: a document author who owns the specification content, a feature owner who confirms that revisions are technically correct, and an approver who provides final sign-off. No specific seniority or certification criteria are defined, but the feature owner implies domain expertise is expected at the confirmation step."
+        },
+        {
+          "question_id": "Q2",
+          "question": "What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?",
+          "answer": "The specification document is stored in a document repository. A feature change list and the previous document version are also pulled as inputs, suggesting version-controlled, structured artifacts. A review checklist is used alongside the document, implying a consistent schema or template is followed across reviews."
+        },
+        {
+          "question_id": "Q3",
+          "question": "What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?",
+          "answer": "The review produces review comments and a change request list, which are recorded using a commenting tool and a change request tracker. After revisions are made and confirmed, an approval decision is issued and an updated document is produced. These outputs are stored back in the document repository."
+        },
+        {
+          "question_id": "Q4",
+          "question": "What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?",
+          "answer": "The reviewer uses a review checklist to guide the process. Two main criteria are evaluated: whether all feature changes are reflected in the document, and whether terminology and formatting are consistent. Findings are recorded as comments or change requests. The workflow includes a decision point on whether all feature changes are covered, indicating feature completeness is treated as a primary acceptance criterion. Explicit severity tiers are not defined in the current process."
+        },
+        {
+          "question_id": "Q5",
+          "question": "How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?",
+          "answer": "The trigger for a review is the availability of a specification document and its associated feature change list — the reviewer first collects these before any analysis begins. Frequency and duration per review are not specified in the current workflow definition. The process appears to be initiated on demand rather than on a fixed schedule."
+        },
+        {
+          "question_id": "Q6",
+          "question": "Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?",
+          "answer": "Yes, there is a formal approval step: an approver must approve the final document before the process concludes. If revisions are not acceptable, the workflow loops back to request another revision cycle. Defined exception cases include a missing change list, conflicting terminology, an unclear or unavailable feature owner, and unresolved comments — each of these can block progress through the workflow. Reviewer unavailability is not explicitly handled by a fallback rule in the current process."
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No information on who performs the review — single engineer, a team, or a rotating role. Seniority or domain expertise requirements are also unspecified.",
+          "why_it_matters": "Automation scope and handoff logic depend on whether one or multiple actors are involved. Role-based routing rules cannot be defined without this."
+        },
+        {
+          "category": "input",
+          "gap": "The format, source, and versioning scheme of the specification document are not described (e.g., structured template, free-form text, wiki page, PDF).",
+          "why_it_matters": "Automation feasibility for parsing or comparing documents depends heavily on whether the input is machine-readable and consistently structured."
+        },
+        {
+          "category": "output",
+          "gap": "There is no defined output artifact described — it is unclear whether the reviewer produces a formal review report, annotated document, ticket, or verbal feedback.",
+          "why_it_matters": "Without a defined output, it is impossible to assess what automation could generate or route, and process completion cannot be detected."
+        },
+        {
+          "category": "decision",
+          "gap": "No decision criteria are specified for what constitutes an acceptable specification versus one requiring revision. There is no defined threshold for typos, missing details, or feature completeness.",
+          "why_it_matters": "Automation or assisted-review tools require explicit rules or checklists to replicate or support human judgment at decision points."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception paths are described — what happens if the document is severely incomplete, if the reviewer is unavailable, or if conflicting feature requirements are found.",
+          "why_it_matters": "Exception handling is essential for end-to-end workflow automation; unhandled exceptions cause process breakdowns that block automation deployment."
+        },
+        {
+          "category": "frequency",
+          "gap": "The frequency and volume of reviews are not mentioned — whether this happens once per release cycle, daily, or on-demand is unknown.",
+          "why_it_matters": "Frequency and volume determine automation ROI and whether batch processing, real-time triggers, or scheduled jobs are the appropriate automation pattern."
+        },
+        {
+          "category": "dependency",
+          "gap": "There is no indication of upstream dependencies (e.g., who authored the document, what triggers the review) or downstream dependencies (e.g., what process is unblocked after review).",
+          "why_it_matters": "Without knowing triggers and downstream consumers, the workflow cannot be correctly modeled or integrated into a broader automated pipeline."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The time and effort required per review are not quantified — no estimate of how long the review takes or which sub-steps are most time-consuming.",
+          "why_it_matters": "Manual effort data is required to prioritize automation opportunities and build a business case for investment."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools used during the review process are identified — it is unknown whether the engineer uses a document management system, diff tool, or issue tracker.",
+          "why_it_matters": "System identification is necessary to determine integration points for automation and to assess data accessibility."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "There is no mention of whether the review outcome requires sign-off from a stakeholder or approval gate before the specification is considered finalized.",
+          "why_it_matters": "Approval gates affect workflow routing, SLA definition, and whether human-in-the-loop steps must be preserved in any automated solution."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?",
+          "targets": [
+            "actor"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?",
+          "targets": [
+            "input",
+            "system"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?",
+          "targets": [
+            "output",
+            "system"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?",
+          "targets": [
+            "decision"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?",
+          "targets": [
+            "frequency",
+            "manual_effort",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?",
+          "targets": [
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "4f394abc-aeda-4a0c-b257-3ae38f279882",
+    "created_at": "2026-09-05T03:33:58.972Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "update",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Collect Specification Document and Feature Change List\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Document Repository\",\n        \"inputs\": [\"Specification Document (latest version)\", \"Previous Document Version\", \"Feature Change List\"],\n        \"outputs\": [\"Collected Document Package\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Retrieve Review Checklist\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Document Repository\",\n        \"inputs\": [\"Collected Document Package\"],\n        \"outputs\": [\"Review Checklist\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Check Feature Changes Reflected in Document\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Commenting Tool\",\n        \"inputs\": [\"Specification Document\", \"Feature Change List\", \"Review Checklist\"],\n        \"outputs\": [\"Feature Coverage Assessment\", \"Review Comments (feature gaps)\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Check Terminology and Formatting Consistency\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Commenting Tool\",\n        \"inputs\": [\"Specification Document\", \"Review Checklist\"],\n        \"outputs\": [\"Terminology and Formatting Assessment\", \"Review Comments (terminology/formatting issues)\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Compile Review Comments and Change Request List\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Change Request Tracker\",\n        \"inputs\": [\"Feature Coverage Assessment\", \"Terminology and Formatting Assessment\", \"Review Comments\"],\n        \"outputs\": [\"Consolidated Review Comments\", \"Change Request List\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Submit Change Requests to Document Author\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Change Request Tracker\",\n        \"inputs\": [\"Change Request List\"],\n        \"outputs\": [\"Change Request Notification to Document Author\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Revise Specification Document\",\n        \"actor\": \"Document Author\",\n        \"system\": \"Document Repository\",\n        \"inputs\": [\"Change Request List\", \"Original Specification Document\"],\n        \"outputs\": [\"Revised Specification Document\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Confirm Technical Correctness of Revisions\",\n        \"actor\": \"Feature Owner\",\n        \"system\": \"Commenting Tool\",\n        \"inputs\": [\"Revised Specification Document\", \"Feature Change List\"],\n        \"outputs\": [\"Technical Confirmation Decision\", \"Additional Comments (if any)\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Verify All Comments Resolved\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Change Request Tracker\",\n        \"inputs\": [\"Revised Specification Document\", \"Consolidated Review Comments\", \"Technical Confirmation Decision\"],\n        \"outputs\": [\"Comment Resolution Status\"]\n      },\n      {\n        \"id\": \"A10\",\n        \"name\": \"Submit Document for Final Approval\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Document Repository\",\n        \"inputs\": [\"Revised Specification Document\", \"Comment Resolution Status\"],\n        \"outputs\": [\"Approval Request\"]\n      },\n      {\n        \"id\": \"A11\",\n        \"name\": \"Approve Final Document\",\n        \"actor\": \"Approver\",\n        \"system\": \"Document Repository\",\n        \"inputs\": [\"Approval Request\", \"Revised Specification Document\"],\n        \"outputs\": [\"Approval Decision\", \"Updated Approved Document\"]\n      },\n      {\n        \"id\": \"A12\",\n        \"name\": \"Store Approved Document in Repository\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Document Repository\",\n        \"inputs\": [\"Updated Approved Document\", \"Approval Decision\"],\n        \"outputs\": [\"Published Specification Document\"]\n      },\n      {\n        \"id\": \"A13\",\n        \"name\": \"Escalate Missing Change List Exception\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Change Request Tracker\",\n        \"inputs\": [\"Incomplete Document Package\"],\n        \"outputs\": [\"Escalation Notification to Document Author\"]\n      },\n      {\n        \"id\": \"A14\",\n        \"name\": \"Escalate Conflicting Terminology Exception\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Commenting Tool\",\n        \"inputs\": [\"Terminology and Formatting Assessment\"],\n        \"outputs\": [\"Conflict Escalation Notice to Document Author and Feature Owner\"]\n      },\n      {\n        \"id\": \"A15\",\n        \"name\": \"Escalate Unclear or Unavailable Feature Owner Exception\",\n        \"actor\": \"Document Reviewer\",\n        \"system\": \"Change Request Tracker\",\n        \"inputs\": [\"Technical Confirmation Decision (blocked)\"],\n        \"outputs\": [\"Escalation Notice to Approver or Alternate Feature Owner\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is the Feature Change List available?\",\n        \"branches\": [\n          {\"outcome\": \"Yes\", \"next\": \"A2\"},\n          {\"outcome\": \"No\", \"next\": \"A13\"}\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Are all feature changes reflected in the specification document?\",\n        \"branches\": [\n          {\"outcome\": \"Yes\", \"next\": \"A4\"},\n          {\"outcome\": \"No\", \"next\": \"A5\"}\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Are there terminology or formatting inconsistencies?\",\n        \"branches\": [\n          {\"outcome\": \"Yes — conflicts identified\", \"next\": \"A14\"},\n          {\"outcome\": \"Yes — minor issues only\", \"next\": \"A5\"},\n          {\"outcome\": \"No issues\", \"next\": \"A5\"}\n        ]\n      },\n      {\n        \"id\": \"D4\",\n        \"condition\": \"Is the Feature Owner available and clearly identified?\",\n        \"branches\": [\n          {\"outcome\": \"Yes\", \"next\": \"A8\"},\n          {\"outcome\": \"No\", \"next\": \"A15\"}\n        ]\n      },\n      {\n        \"id\": \"D5\",\n        \"condition\": \"Are revisions technically confirmed and all comments resolved?\",\n        \"branches\": [\n          {\"outcome\": \"Yes\", \"next\": \"A10\"},\n          {\"outcome\": \"No — further revision needed\", \"next\": \"A6\"}\n        ]\n      },\n      {\n        \"id\": \"D6\",\n        \"condition\": \"Does the Approver approve the final document?\",\n        \"branches\": [\n          {\"outcome\": \"Approved\", \"next\": \"A12\"},\n          {\"outcome\": \"Rejected — revisions required\", \"next\": \"A6\"}\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"name\": \"Missing Feature Change List\",\n        \"trigger\": \"Feature Change List not available at process start\",\n        \"handling\": \"Reviewer escalates to Document Author via A13; process is blocked until the change list is provided\",\n        \"next\": \"A1\"\n      },\n      {\n        \"id\": \"E2\",\n        \"name\": \"Conflicting Terminology\",\n        \"trigger\": \"Irreconcilable terminology conflicts detected during A4\",\n        \"handling\": \"Reviewer escalates to Document Author and Feature Owner via A14; process waits for authoritative resolution before continuing\",\n        \"next\": \"A7\"\n      },\n      {\n        \"id\": \"E3\",\n        \"name\": \"Unclear or Unavailable Feature Owner\",\n        \"trigger\": \"Feature Owner cannot be identified or is unresponsive at D4\",\n        \"handling\": \"Reviewer escalates to Approver or an alternate Feature Owner via A15; process is blocked until a qualified confirmer is designated\",\n        \"next\": \"A8\"\n      },\n      {\n        \"id\": \"E4\",\n        \"name\": \"Unresolved Review Comments\",\n        \"trigger\": \"Open comments remain after revision and confirmation phase (D5 — No)\",\n        \"handling\": \"Workflow loops back to A6 to issue another revision cycle; approval is not sought until all comments are resolved\",\n        \"next\": \"A6\"\n      },\n      {\n        \"id\": \"E5\",\n        \"name\": \"Reviewer Unavailability\",\n        \"trigger\": \"Designated Document Reviewer is unavailable during the review process\",\n        \"handling\": \"No fallback rule is currently defined; this represents an open gap in the process\",\n        \"next\": null\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A13\", \"type\": \"exception_flow\"},\n      {\"from\": \"A13\", \"to\": \"A1\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A4\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A4\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A14\", \"type\": \"exception_flow\"},\n      {\"from\": \"D3\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A14\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A7\", \"to\": \"D4\", \"type\": \"control_flow\"},\n      {\"from\": \"D4\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"D4\", \"to\": \"A15\", \"type\": \"exception_flow\"},\n      {\"from\": \"A15\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A8\", \"to\": \"A9\", \"type\": \"control_flow\"},\n      {\"from\": \"A9\", \"to\": \"D5\", \"type\": \"control_flow\"},\n      {\"from\": \"D5\", \"to\": \"A10\", \"type\": \"control_flow\"},\n      {\"from\": \"D5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A10\", \"to\": \"A11\", \"type\": \"control_flow\"},\n      {\"from\": \"A11\", \"to\": \"D6\", \"type\": \"control_flow\"},\n      {\"from\": \"D6\", \"to\": \"A12\", \"type\": \"control_flow\"},\n      {\"from\": \"D6\", \"to\": \"A6\", \"type\": \"control_flow\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A1 — Collect Specification Document and Feature Change List\",\n      \"rationale\": \"Document retrieval from a version-controlled repository can be fully automated by triggering a fetch of the latest document version and associated change list upon process initiation, eliminating manual collection effort.\",\n      \"required_data\": [\"Document repository access credentials\", \"Document identifier or version tag\", \"Feature change list identifier\"],\n      \"constraints\": [\"Repository must expose a programmatic API or query interface\", \"Version tagging conventions must be consistently applied\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A2 — Retrieve Review Checklist\",\n      \"rationale\": \"If the review checklist follows a consistent schema stored in the document repository, it can be automatically fetched and attached to the review session without manual intervention.\",\n      \"required_data\": [\"Checklist identifier or template reference\", \"Document repository access\"],\n      \"constraints\": [\"Checklist must be standardized and versioned; ad-hoc checklists would require human selection\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A4 — Check Terminology and Formatting Consistency\",\n      \"rationale\": \"Automated static analysis tools can compare terminology against a controlled glossary and flag formatting deviations against a defined template, significantly reducing manual effort for this repetitive check.\",\n      \"required_data\": [\"Controlled terminology glossary\", \"Formatting style guide or schema\", \"Specification document in machine-readable format\"],\n      \"constraints\": [\"Requires the document to be in a parseable format (e.g., structured text, XML, Markdown)\", \"Contextual or semantic conflicts may still require human judgment\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"D2 — Are all feature changes reflected in the specification document?\",\n      \"rationale\": \"Cross-referencing the feature change list against the document's content can be partially automated using text matching or natural language processing to identify whether each listed feature has a corresponding section or description.\",\n      \"required_data\": [\"Feature change list with structured identifiers or keywords\", \"Specification document in machine-readable format\", \"Section-to-feature mapping rules\"],\n      \"constraints\": [\"High ambiguity in natural language descriptions reduces reliability; confidence is medium rather than high\", \"Human confirmation of edge cases would still be needed\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A5 — Compile Review Comments and Change Request List\",\n      \"rationale\": \"Aggregation of comments from the commenting tool and findings from automated checks into a structured change request list can be automated, reducing manual compilation time.\",\n      \"required_data\": [\"Commenting tool API output\", \"Automated check findings\", \"Change request tracker write access\"],\n      \"constraints\": [\"Commenting tool must support programmatic export of comments\", \"Change request tracker must have an intake API or form\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A6 — Submit Change Requests to Document Author\",\n      \"rationale\": \"Notification and assignment of change requests to the Document Author can be automated through the change request tracker's built-in notification and assignment rules, removing manual hand-off steps.\",\n      \"required_data\": [\"Document Author identity linked to the document\", \"Change request tracker notification configuration\"],\n      \"constraints\": [\"Author identity must be resolvable from document metadata\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A9 — Verify All Comments Resolved\",\n      \"rationale\": \"The change request tracker can automatically evaluate whether all open items have been marked resolved, producing a comment resolution status without manual review of each item.\",\n      \"required_data\": [\"Change request tracker resolution status fields\", \"Linked comment identifiers\"],\n      \"constraints\": [\"Requires consistent use of status fields by all actors; informal out-of-system resolutions would be missed\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D1 — Is the Feature Change List available?\",\n      \"rationale\": \"Automated pre-condition checking at process start can detect whether the change list is present in the repository and immediately route to the escalation path without waiting for a human to discover the gap.\",\n      \"required_data\": [\"Repository query capability\", \"Change list presence validation rule\"],\n      \"constraints\": [\"Must be triggered at process instantiation before any human task is assigned\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A13 — Escalate Missing Change List Exception\",\n      \"rationale\": \"Automated escalation notifications to the Document Author can be sent immediately upon detection of a missing change list, removing the need for the reviewer to manually draft and send an escalation.\",\n      \"required_data\": [\"Document Author contact information\", \"Notification template\", \"Change request tracker or messaging system\"],\n      \"constraints\": [\"Author contact must be derivable from document metadata\"],\n      \"confidence\": \"high\"\n    }\n  ],\n  \"remaining_gaps\": [\n    {\n      \"id\": \"G1\",\n      \"description\": \"Reviewer unavailability has no defined fallback rule. There is no delegation mechanism, backup reviewer pool, or escalation path if the designated Document Reviewer is absent, which could stall the entire process indefinitely.\",\n      \"impact\": \"High — process cannot progress without an active reviewer\",\n      \"suggested",
+    "parsed": null
+  }
+}

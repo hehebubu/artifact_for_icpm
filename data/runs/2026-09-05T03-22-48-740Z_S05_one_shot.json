@@ -1,0 +1,515 @@
+{
+  "request": {
+    "stage": "one_shot",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S05",
+      "title": "Specification Document Review",
+      "domain": "engineering_documentation",
+      "initial_description": "An engineer reviews a specification document to check whether new features are reflected correctly and whether there are typos or missing details.",
+      "reference_workflow": {
+        "goal": "Review a specification document for feature coverage, consistency, and editorial errors.",
+        "actors": [
+          "document reviewer",
+          "feature owner",
+          "document author",
+          "approver"
+        ],
+        "systems": [
+          "document repository",
+          "change request tracker",
+          "review checklist",
+          "commenting tool"
+        ],
+        "inputs": [
+          "specification document",
+          "feature change list",
+          "previous document version",
+          "review checklist"
+        ],
+        "outputs": [
+          "review comments",
+          "change request list",
+          "approval decision",
+          "updated document"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect document and related change list",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A2",
+            "name": "Compare feature changes with document content",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A3",
+            "name": "Check terminology and formatting consistency",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A4",
+            "name": "Record comments and requested revisions",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A5",
+            "name": "Revise document based on comments",
+            "actor": "document author"
+          },
+          {
+            "id": "A6",
+            "name": "Confirm revisions with feature owner",
+            "actor": "feature owner"
+          },
+          {
+            "id": "A7",
+            "name": "Approve final document",
+            "actor": "approver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all feature changes reflected?",
+            "branches": [
+              "complete",
+              "missing changes"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are the revisions acceptable?",
+            "branches": [
+              "approve",
+              "request another revision"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing change list",
+          "conflicting terminology",
+          "unclear feature owner",
+          "unresolved comments"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Feature coverage can be checked by comparing change lists and document sections."
+          },
+          {
+            "target": "A3",
+            "rationale": "Terminology, formatting, and typo checks can be automated."
+          },
+          {
+            "target": "A4",
+            "rationale": "Review comments can be grouped by section, severity, and owner."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "change list input",
+        "document repository",
+        "feature owner",
+        "approval decision",
+        "revision loop",
+        "review checklist"
+      ]
+    },
+    "answers": "",
+    "previousOutput": null,
+    "questions": null
+  },
+  "result": {
+    "id": "f31776f0-26d7-4ac8-904e-af5105479216",
+    "created_at": "2026-09-05T03:22:48.737Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "one_shot",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Retrieve Specification Document\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Management System\",\n        \"inputs\": [\"Document ID\", \"Version Reference\"],\n        \"outputs\": [\"Specification Document\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Review New Feature Descriptions\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Viewer\",\n        \"inputs\": [\"Specification Document\", \"Feature Requirements List\"],\n        \"outputs\": [\"Feature Coverage Notes\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Check for Typos and Language Errors\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Viewer / Text Editor\",\n        \"inputs\": [\"Specification Document\"],\n        \"outputs\": [\"List of Typos and Language Issues\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Identify Missing Details\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Viewer\",\n        \"inputs\": [\"Specification Document\", \"Feature Requirements List\"],\n        \"outputs\": [\"List of Missing Details\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Compile Review Findings\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Editor\",\n        \"inputs\": [\"Feature Coverage Notes\", \"List of Typos and Language Issues\", \"List of Missing Details\"],\n        \"outputs\": [\"Review Report\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Submit Review Report\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Management System\",\n        \"inputs\": [\"Review Report\"],\n        \"outputs\": [\"Submitted Review Report\", \"Notification to Document Owner\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Update Specification Document\",\n        \"actor\": \"Document Owner\",\n        \"system\": \"Document Editor\",\n        \"inputs\": [\"Submitted Review Report\", \"Specification Document\"],\n        \"outputs\": [\"Updated Specification Document\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Confirm Review Completion\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Document Management System\",\n        \"inputs\": [\"Updated Specification Document\"],\n        \"outputs\": [\"Review Completion Confirmation\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Are all new features correctly reflected in the specification?\",\n        \"branches\": [\n          {\"outcome\": \"Yes\", \"next\": \"A3\"},\n          {\"outcome\": \"No\", \"next\": \"A5\", \"note\": \"Flag missing or incorrect feature descriptions\"}\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Are there typos, language errors, or missing details found?\",\n        \"branches\": [\n          {\"outcome\": \"Yes\", \"next\": \"A5\"},\n          {\"outcome\": \"No\", \"next\": \"A6\", \"note\": \"Proceed to submit clean review\"}\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Is the updated specification document satisfactory?\",\n        \"branches\": [\n          {\"outcome\": \"Yes\", \"next\": \"A8\"},\n          {\"outcome\": \"No\", \"next\": \"A2\", \"note\": \"Re-initiate review cycle\"}\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"description\": \"Specification document is not accessible or is missing\",\n        \"handling\": \"Engineer escalates to document owner to provide the correct document version before review proceeds\"\n      },\n      {\n        \"id\": \"E2\",\n        \"description\": \"Feature requirements list is outdated or unavailable\",\n        \"handling\": \"Engineer requests updated requirements from the relevant stakeholder before proceeding with feature coverage review\"\n      },\n      {\n        \"id\": \"E3\",\n        \"description\": \"Document owner is unresponsive after review report submission\",\n        \"handling\": \"Engineer escalates to team lead to follow up and ensure timely document update\"\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A3\", \"type\": \"conditional\"},\n      {\"from\": \"D1\", \"to\": \"A5\", \"type\": \"conditional\"},\n      {\"from\": \"A3\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"A4\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"A4\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A5\", \"type\": \"conditional\"},\n      {\"from\": \"D2\", \"to\": \"A6\", \"type\": \"conditional\"},\n      {\"from\": \"A5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A7\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A8\", \"type\": \"conditional\"},\n      {\"from\": \"D3\", \"to\": \"A2\", \"type\": \"conditional\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A3 - Check for Typos and Language Errors\",\n      \"rationale\": \"Natural language processing tools can automatically scan specification documents for spelling errors, grammatical issues, and stylistic inconsistencies, significantly reducing manual effort and improving consistency.\",\n      \"required_data\": [\"Specification Document text content\", \"Language and style rules configuration\"],\n      \"constraints\": [\"Tool must support technical and domain-specific vocabulary\", \"False positive rate must be manageable for engineers\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A2 - Review New Feature Descriptions\",\n      \"rationale\": \"Automated diff and traceability tools can compare the specification document against a structured feature requirements list to flag features not mentioned or incompletely described, partially automating coverage checks.\",\n      \"required_data\": [\"Structured Feature Requirements List\", \"Specification Document\", \"Traceability mapping rules\"],\n      \"constraints\": [\"Feature requirements must be in a structured, machine-readable format\", \"Semantic matching may require human validation for ambiguous cases\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A4 - Identify Missing Details\",\n      \"rationale\": \"Template-based validation tools can check whether all mandatory sections and fields in the specification are populated, automating detection of structurally missing information.\",\n      \"required_data\": [\"Specification Document template\", \"Mandatory field definitions\", \"Specification Document content\"],\n      \"constraints\": [\"Effectiveness limited to structurally defined missing details; semantic gaps still require human judgment\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A5 - Compile Review Findings\",\n      \"rationale\": \"Automated aggregation tools can consolidate findings from spell-check, coverage analysis, and template validation into a structured review report, reducing manual compilation effort.\",\n      \"required_data\": [\"Feature Coverage Notes\", \"Typo and Language Issue List\", \"Missing Details List\"],\n      \"constraints\": [\"Engineer must validate and approve auto-generated report before submission\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A6 - Submit Review Report\",\n      \"rationale\": \"Workflow automation can handle routing and notification of the review report to the document owner upon engineer approval, eliminating manual submission steps.\",\n      \"required_data\": [\"Review Report\", \"Document Owner contact details\", \"Workflow routing rules\"],\n      \"constraints\": [\"Engineer must explicitly approve submission to maintain accountability\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D1 - Are all new features correctly reflected in the specification?\",\n      \"rationale\": \"If feature requirements are structured and machine-readable, automated traceability analysis can partially resolve this decision, flagging gaps for engineer confirmation.\",\n      \"required_data\": [\"Feature Requirements List\", \"Specification Document content\", \"Traceability rules\"],\n      \"constraints\": [\"Ambiguous or loosely defined requirements reduce reliability of automated decision\", \"Human override must always be available\"],\n      \"confidence\": \"low\"\n    },\n    {\n      \"target\": \"A1 - Retrieve Specification Document\",\n      \"rationale\": \"Automated document retrieval triggered by a review task assignment can eliminate the manual step of locating and opening the correct document version.\",\n      \"required_data\": [\"Document ID\", \"Version Reference\", \"Task assignment metadata\"],\n      \"constraints\": [\"Document Management System must support API-based retrieval\", \"Access permissions must be correctly configured\"],\n      \"confidence\": \"high\"\n    }\n  ],\n  \"assumptions\": [\n    \"A structured Feature Requirements List exists and is available to the engineer prior to the review.\",\n    \"The specification document is stored in a Document Management System with version control.\",\n    \"The engineer is responsible for both language quality checks and feature coverage checks.\",\n    \"A document owner exists who is responsible for updating the specification based on review findings.\",\n    \"The review cycle may iterate if the updated document does not meet the engineer's expectations.\",\n    \"Review findings are compiled into a formal report rather than communicated informally.\",\n    \"Notifications to the document owner are handled through the Document Management System.\",\n    \"The review is conducted on a single document version at a time.\"\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Retrieve Specification Document",
+            "actor": "Engineer",
+            "system": "Document Management System",
+            "inputs": [
+              "Document ID",
+              "Version Reference"
+            ],
+            "outputs": [
+              "Specification Document"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Review New Feature Descriptions",
+            "actor": "Engineer",
+            "system": "Document Viewer",
+            "inputs": [
+              "Specification Document",
+              "Feature Requirements List"
+            ],
+            "outputs": [
+              "Feature Coverage Notes"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Check for Typos and Language Errors",
+            "actor": "Engineer",
+            "system": "Document Viewer / Text Editor",
+            "inputs": [
+              "Specification Document"
+            ],
+            "outputs": [
+              "List of Typos and Language Issues"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Identify Missing Details",
+            "actor": "Engineer",
+            "system": "Document Viewer",
+            "inputs": [
+              "Specification Document",
+              "Feature Requirements List"
+            ],
+            "outputs": [
+              "List of Missing Details"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Compile Review Findings",
+            "actor": "Engineer",
+            "system": "Document Editor",
+            "inputs": [
+              "Feature Coverage Notes",
+              "List of Typos and Language Issues",
+              "List of Missing Details"
+            ],
+            "outputs": [
+              "Review Report"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Submit Review Report",
+            "actor": "Engineer",
+            "system": "Document Management System",
+            "inputs": [
+              "Review Report"
+            ],
+            "outputs": [
+              "Submitted Review Report",
+              "Notification to Document Owner"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Update Specification Document",
+            "actor": "Document Owner",
+            "system": "Document Editor",
+            "inputs": [
+              "Submitted Review Report",
+              "Specification Document"
+            ],
+            "outputs": [
+              "Updated Specification Document"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Confirm Review Completion",
+            "actor": "Engineer",
+            "system": "Document Management System",
+            "inputs": [
+              "Updated Specification Document"
+            ],
+            "outputs": [
+              "Review Completion Confirmation"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all new features correctly reflected in the specification?",
+            "branches": [
+              {
+                "outcome": "Yes",
+                "next": "A3"
+              },
+              {
+                "outcome": "No",
+                "next": "A5",
+                "note": "Flag missing or incorrect feature descriptions"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are there typos, language errors, or missing details found?",
+            "branches": [
+              {
+                "outcome": "Yes",
+                "next": "A5"
+              },
+              {
+                "outcome": "No",
+                "next": "A6",
+                "note": "Proceed to submit clean review"
+              }
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the updated specification document satisfactory?",
+            "branches": [
+              {
+                "outcome": "Yes",
+                "next": "A8"
+              },
+              {
+                "outcome": "No",
+                "next": "A2",
+                "note": "Re-initiate review cycle"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Specification document is not accessible or is missing",
+            "handling": "Engineer escalates to document owner to provide the correct document version before review proceeds"
+          },
+          {
+            "id": "E2",
+            "description": "Feature requirements list is outdated or unavailable",
+            "handling": "Engineer requests updated requirements from the relevant stakeholder before proceeding with feature coverage review"
+          },
+          {
+            "id": "E3",
+            "description": "Document owner is unresponsive after review report submission",
+            "handling": "Engineer escalates to team lead to follow up and ensure timely document update"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A3",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A5",
+            "type": "conditional"
+          },
+          {
+            "from": "A3",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A5",
+            "type": "conditional"
+          },
+          {
+            "from": "D2",
+            "to": "A6",
+            "type": "conditional"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A8",
+            "type": "conditional"
+          },
+          {
+            "from": "D3",
+            "to": "A2",
+            "type": "conditional"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A3 - Check for Typos and Language Errors",
+          "rationale": "Natural language processing tools can automatically scan specification documents for spelling errors, grammatical issues, and stylistic inconsistencies, significantly reducing manual effort and improving consistency.",
+          "required_data": [
+            "Specification Document text content",
+            "Language and style rules configuration"
+          ],
+          "constraints": [
+            "Tool must support technical and domain-specific vocabulary",
+            "False positive rate must be manageable for engineers"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A2 - Review New Feature Descriptions",
+          "rationale": "Automated diff and traceability tools can compare the specification document against a structured feature requirements list to flag features not mentioned or incompletely described, partially automating coverage checks.",
+          "required_data": [
+            "Structured Feature Requirements List",
+            "Specification Document",
+            "Traceability mapping rules"
+          ],
+          "constraints": [
+            "Feature requirements must be in a structured, machine-readable format",
+            "Semantic matching may require human validation for ambiguous cases"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A4 - Identify Missing Details",
+          "rationale": "Template-based validation tools can check whether all mandatory sections and fields in the specification are populated, automating detection of structurally missing information.",
+          "required_data": [
+            "Specification Document template",
+            "Mandatory field definitions",
+            "Specification Document content"
+          ],
+          "constraints": [
+            "Effectiveness limited to structurally defined missing details; semantic gaps still require human judgment"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A5 - Compile Review Findings",
+          "rationale": "Automated aggregation tools can consolidate findings from spell-check, coverage analysis, and template validation into a structured review report, reducing manual compilation effort.",
+          "required_data": [
+            "Feature Coverage Notes",
+            "Typo and Language Issue List",
+            "Missing Details List"
+          ],
+          "constraints": [
+            "Engineer must validate and approve auto-generated report before submission"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A6 - Submit Review Report",
+          "rationale": "Workflow automation can handle routing and notification of the review report to the document owner upon engineer approval, eliminating manual submission steps.",
+          "required_data": [
+            "Review Report",
+            "Document Owner contact details",
+            "Workflow routing rules"
+          ],
+          "constraints": [
+            "Engineer must explicitly approve submission to maintain accountability"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 - Are all new features correctly reflected in the specification?",
+          "rationale": "If feature requirements are structured and machine-readable, automated traceability analysis can partially resolve this decision, flagging gaps for engineer confirmation.",
+          "required_data": [
+            "Feature Requirements List",
+            "Specification Document content",
+            "Traceability rules"
+          ],
+          "constraints": [
+            "Ambiguous or loosely defined requirements reduce reliability of automated decision",
+            "Human override must always be available"
+          ],
+          "confidence": "low"
+        },
+        {
+          "target": "A1 - Retrieve Specification Document",
+          "rationale": "Automated document retrieval triggered by a review task assignment can eliminate the manual step of locating and opening the correct document version.",
+          "required_data": [
+            "Document ID",
+            "Version Reference",
+            "Task assignment metadata"
+          ],
+          "constraints": [
+            "Document Management System must support API-based retrieval",
+            "Access permissions must be correctly configured"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "assumptions": [
+        "A structured Feature Requirements List exists and is available to the engineer prior to the review.",
+        "The specification document is stored in a Document Management System with version control.",
+        "The engineer is responsible for both language quality checks and feature coverage checks.",
+        "A document owner exists who is responsible for updating the specification based on review findings.",
+        "The review cycle may iterate if the updated document does not meet the engineer's expectations.",
+        "Review findings are compiled into a formal report rather than communicated informally.",
+        "Notifications to the document owner are handled through the Document Management System.",
+        "The review is conducted on a single document version at a time."
+      ]
+    }
+  }
+}

@@ -1,0 +1,864 @@
+{
+  "request": {
+    "stage": "checklist",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S08",
+      "title": "Meeting Room Reservation",
+      "domain": "office_workflow",
+      "initial_description": "A meeting room is reserved for a team meeting. The organizer checks availability and shares the room information with participants.",
+      "reference_workflow": {
+        "goal": "Reserve an appropriate meeting room and notify participants with room details.",
+        "actors": [
+          "meeting organizer",
+          "meeting participants",
+          "facility system"
+        ],
+        "systems": [
+          "calendar system",
+          "room reservation system",
+          "email or collaboration tool"
+        ],
+        "inputs": [
+          "meeting date and time",
+          "participant count",
+          "location preference",
+          "equipment needs"
+        ],
+        "outputs": [
+          "room reservation",
+          "calendar invitation",
+          "participant notification"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect meeting time and participant count",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A2",
+            "name": "Check room availability",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A3",
+            "name": "Select room matching capacity and equipment needs",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A4",
+            "name": "Reserve selected room",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A5",
+            "name": "Create or update calendar invitation",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A6",
+            "name": "Notify participants of room information",
+            "actor": "meeting organizer"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is a suitable room available?",
+            "branches": [
+              "available",
+              "not available"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the meeting require special equipment?",
+            "branches": [
+              "equipment needed",
+              "standard room sufficient"
+            ]
+          }
+        ],
+        "exceptions": [
+          "room unavailable",
+          "participant count changes",
+          "reservation conflict",
+          "equipment unavailable"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Availability checks can be automated through calendar and reservation APIs."
+          },
+          {
+            "target": "A3",
+            "rationale": "Room selection can be rule-based using capacity, location, and equipment constraints."
+          },
+          {
+            "target": "A5",
+            "rationale": "Calendar invitation updates can be automated after reservation."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "participant count",
+        "equipment needs",
+        "reservation system",
+        "capacity rule",
+        "conflict handling",
+        "calendar update"
+      ]
+    },
+    "answers": "",
+    "previousOutput": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Identify Meeting Requirements",
+            "actor": "Organizer",
+            "system": "Calendar/Scheduling Tool",
+            "inputs": [
+              "Meeting date",
+              "Meeting time",
+              "Expected number of participants",
+              "Required facilities"
+            ],
+            "outputs": [
+              "Meeting requirements specification"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Check Room Availability",
+            "actor": "Organizer",
+            "system": "Room Booking System",
+            "inputs": [
+              "Meeting requirements specification",
+              "Desired time slot"
+            ],
+            "outputs": [
+              "List of available rooms",
+              "Availability status"
+            ]
+          },
+          {
+            "id": "D1",
+            "name": "Is a suitable room available?",
+            "condition": "A suitable room matching the requirements is available for the desired time slot",
+            "branches": [
+              "Yes - proceed to reservation",
+              "No - adjust requirements or time slot"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Adjust Meeting Requirements or Time Slot",
+            "actor": "Organizer",
+            "system": "Calendar/Scheduling Tool",
+            "inputs": [
+              "Original meeting requirements",
+              "Availability status"
+            ],
+            "outputs": [
+              "Revised meeting requirements or revised time slot"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Reserve Meeting Room",
+            "actor": "Organizer",
+            "system": "Room Booking System",
+            "inputs": [
+              "Selected room",
+              "Confirmed time slot",
+              "Meeting details"
+            ],
+            "outputs": [
+              "Room reservation confirmation",
+              "Booking reference number"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Send Room Information to Participants",
+            "actor": "Organizer",
+            "system": "Email/Calendar Tool",
+            "inputs": [
+              "Participant contact list",
+              "Room reservation confirmation",
+              "Meeting agenda"
+            ],
+            "outputs": [
+              "Meeting invitation with room details sent to participants"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Confirm Participation",
+            "actor": "Participant",
+            "system": "Email/Calendar Tool",
+            "inputs": [
+              "Meeting invitation"
+            ],
+            "outputs": [
+              "Participant acceptance or decline"
+            ]
+          },
+          {
+            "id": "D2",
+            "name": "Have all key participants confirmed?",
+            "condition": "Required participants have accepted the meeting invitation",
+            "branches": [
+              "Yes - meeting confirmed",
+              "No - follow up or reschedule"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Follow Up with Non-Responding Participants",
+            "actor": "Organizer",
+            "system": "Email/Calendar Tool",
+            "inputs": [
+              "List of non-responding participants",
+              "Meeting details"
+            ],
+            "outputs": [
+              "Follow-up communication sent"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Finalize Meeting Confirmation",
+            "actor": "Organizer",
+            "system": "Calendar/Scheduling Tool",
+            "inputs": [
+              "Participant confirmations",
+              "Room reservation confirmation"
+            ],
+            "outputs": [
+              "Finalized meeting record",
+              "Final reminder to participants"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is a suitable room available for the desired time slot?",
+            "branches": [
+              "Room available - proceed to A4",
+              "Room not available - return to A3"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Have all key participants confirmed attendance?",
+            "branches": [
+              "All confirmed - proceed to A8",
+              "Not all confirmed - proceed to A7"
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Room becomes unavailable after reservation due to system error or double booking",
+            "handling": "Notify organizer, trigger re-availability check, rebook alternative room"
+          },
+          {
+            "id": "E2",
+            "description": "No suitable room is available within acceptable alternative time slots",
+            "handling": "Escalate to facility manager or consider virtual meeting alternative"
+          },
+          {
+            "id": "E3",
+            "description": "Meeting invitation delivery failure to one or more participants",
+            "handling": "Retry delivery or use alternative communication channel"
+          },
+          {
+            "id": "E4",
+            "description": "Organizer cancels the meeting after reservation",
+            "handling": "Release room reservation, notify all participants of cancellation"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A3",
+            "type": "conditional",
+            "condition": "Room not available"
+          },
+          {
+            "from": "D1",
+            "to": "A4",
+            "type": "conditional",
+            "condition": "Room available"
+          },
+          {
+            "from": "A3",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A7",
+            "type": "conditional",
+            "condition": "Not all confirmed"
+          },
+          {
+            "from": "D2",
+            "to": "A8",
+            "type": "conditional",
+            "condition": "All confirmed"
+          },
+          {
+            "from": "A7",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "END",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A2 - Check Room Availability",
+          "rationale": "Room availability lookup is a structured query against booking data and can be fully automated using a scheduling system API, eliminating manual search effort.",
+          "required_data": [
+            "Desired date and time",
+            "Required room capacity",
+            "Required facilities",
+            "Room inventory database"
+          ],
+          "constraints": [
+            "Room booking system must expose a query API or integration interface",
+            "Real-time data synchronization required to avoid stale availability results"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A4 - Reserve Meeting Room",
+          "rationale": "Once a room is selected, the booking action is a deterministic transaction that can be automated via API call to the room booking system, reducing manual steps and booking errors.",
+          "required_data": [
+            "Selected room identifier",
+            "Meeting time slot",
+            "Organizer credentials",
+            "Meeting title and purpose"
+          ],
+          "constraints": [
+            "Requires organizer authorization and authentication",
+            "Booking system must support programmatic reservation"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A5 - Send Room Information to Participants",
+          "rationale": "Sending meeting invitations with room details is a templated communication task easily automated through calendar/email integration once reservation is confirmed.",
+          "required_data": [
+            "Participant email list",
+            "Room confirmation details",
+            "Meeting agenda",
+            "Calendar system integration credentials"
+          ],
+          "constraints": [
+            "Participant contact data must be current and accessible",
+            "Calendar system must support automated invite creation and dispatch"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 - Is a suitable room available?",
+          "rationale": "The availability decision is rule-based and can be evaluated automatically by the booking system based on predefined criteria such as capacity and facility requirements.",
+          "required_data": [
+            "Availability query results",
+            "Minimum room requirements thresholds"
+          ],
+          "constraints": [
+            "Decision logic must be codified into the scheduling system rules"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A7 - Follow Up with Non-Responding Participants",
+          "rationale": "Automated reminders for non-responding participants can be triggered based on a time threshold after the initial invite, reducing organizer workload.",
+          "required_data": [
+            "Participant response status",
+            "Configurable reminder time threshold",
+            "Participant contact information"
+          ],
+          "constraints": [
+            "Must avoid excessive reminder frequency to prevent notification fatigue",
+            "Should respect participant communication preferences"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "D2 - Have all key participants confirmed?",
+          "rationale": "Response tracking is a data aggregation task that can be automated by monitoring calendar invite acceptance statuses and triggering appropriate workflow branches.",
+          "required_data": [
+            "Invitation response records",
+            "List of mandatory vs optional participants"
+          ],
+          "constraints": [
+            "Distinction between mandatory and optional participants must be defined by organizer",
+            "Calendar system must expose response status via API"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A3 - Adjust Meeting Requirements or Time Slot",
+          "rationale": "Partial automation is possible by suggesting alternative rooms or time slots automatically when the original choice is unavailable, though final decision remains with the organizer.",
+          "required_data": [
+            "Original requirements",
+            "Alternative availability data",
+            "Organizer preferences"
+          ],
+          "constraints": [
+            "Organizer must retain final approval authority",
+            "Suggestion algorithm must balance multiple variables including participant availability"
+          ],
+          "confidence": "low"
+        }
+      ],
+      "assumptions": [
+        "A centralized room booking system exists and maintains an up-to-date inventory of meeting rooms and their attributes.",
+        "The organizer has access to both a calendar/scheduling tool and the room booking system.",
+        "Participants have calendar accounts accessible via the same or interoperable email/calendar platform.",
+        "Room requirements such as capacity and required equipment are known before the availability check.",
+        "The workflow covers a single meeting reservation cycle; recurring meeting patterns are out of scope.",
+        "Participant lists are defined prior to sending invitations and do not change after the booking is made.",
+        "A distinction between mandatory and optional participants is assumed for the confirmation decision, defaulting to all invited if not specified.",
+        "The process ends once the meeting is confirmed and participants have been notified; post-meeting activities are out of scope.",
+        "Virtual meeting alternatives are considered only as an exception fallback when no physical room is available.",
+        "System integrations between the room booking system and calendar/email tools are technically feasible in this environment."
+      ]
+    },
+    "questions": null
+  },
+  "result": {
+    "id": "e34285a9-e1cc-429f-a7e0-fbb6f9c19ca7",
+    "created_at": "2026-09-05T03:50:13.612Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "checklist",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Identify Meeting Requirements\",\n        \"actor\": \"Organizer\",\n        \"system\": \"None\",\n        \"inputs\": [\"Meeting date\", \"Meeting time\", \"Expected attendee count\", \"Required equipment\"],\n        \"outputs\": [\"Meeting requirements document\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Check Room Availability\",\n        \"actor\": \"Organizer\",\n        \"system\": \"Room Booking System\",\n        \"inputs\": [\"Meeting requirements document\", \"Calendar data\"],\n        \"outputs\": [\"List of available rooms\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Select Suitable Room\",\n        \"actor\": \"Organizer\",\n        \"system\": \"Room Booking System\",\n        \"inputs\": [\"List of available rooms\", \"Meeting requirements document\"],\n        \"outputs\": [\"Selected room\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Reserve Meeting Room\",\n        \"actor\": \"Organizer\",\n        \"system\": \"Room Booking System\",\n        \"inputs\": [\"Selected room\", \"Meeting date\", \"Meeting time\", \"Duration\"],\n        \"outputs\": [\"Reservation confirmation\", \"Booking reference ID\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Send Room Information to Participants\",\n        \"actor\": \"Organizer\",\n        \"system\": \"Email or Calendar Application\",\n        \"inputs\": [\"Reservation confirmation\", \"Participant list\", \"Meeting agenda\"],\n        \"outputs\": [\"Meeting invitation with room details\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Receive and Confirm Participation\",\n        \"actor\": \"Participant\",\n        \"system\": \"Email or Calendar Application\",\n        \"inputs\": [\"Meeting invitation with room details\"],\n        \"outputs\": [\"Acceptance or decline response\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Update Reservation if Needed\",\n        \"actor\": \"Organizer\",\n        \"system\": \"Room Booking System\",\n        \"inputs\": [\"Acceptance or decline responses\", \"Updated attendee count\"],\n        \"outputs\": [\"Updated reservation confirmation\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Send Reminder to Participants\",\n        \"actor\": \"Organizer\",\n        \"system\": \"Email or Calendar Application\",\n        \"inputs\": [\"Reservation confirmation\", \"Participant list\"],\n        \"outputs\": [\"Reminder notification\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Cancel or Rebook Room\",\n        \"actor\": \"Organizer\",\n        \"system\": \"Room Booking System\",\n        \"inputs\": [\"Cancellation reason\", \"Booking reference ID\"],\n        \"outputs\": [\"Cancellation confirmation or new booking reference\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is a suitable room available for the required date, time, and capacity?\",\n        \"branches\": [\n          \"Yes - Proceed to Select Suitable Room (A3)\",\n          \"No - Adjust requirements or choose different date/time, return to A1\"\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Has the participant count changed significantly after responses are received?\",\n        \"branches\": [\n          \"Yes - Update Reservation if Needed (A7)\",\n          \"No - Proceed to Send Reminder (A8)\"\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Has the meeting been cancelled or rescheduled?\",\n        \"branches\": [\n          \"Yes - Cancel or Rebook Room (A9)\",\n          \"No - Proceed to Send Reminder (A8)\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      \"Room becomes unavailable after reservation due to double booking or system error\",\n      \"Organizer forgets to release room after meeting cancellation\",\n      \"Room booking system is offline or inaccessible\",\n      \"Required equipment not available in selected room\",\n      \"Participant list is incomplete or contains incorrect contact information\",\n      \"Meeting time conflict discovered after invitations are sent\",\n      \"Room capacity exceeded by late-added participants\"\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A1\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"A4\", \"type\": \"control_flow\"},\n      {\"from\": \"A4\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A7\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A9\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A8\", \"type\": \"control_flow\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A2 - Check Room Availability\",\n      \"rationale\": \"Room availability lookup is a repetitive, rule-based query against calendar and booking data. It can be fully automated to return real-time availability without manual searching.\",\n      \"required_data\": [\"Meeting date\", \"Meeting time\", \"Duration\", \"Required capacity\", \"Required equipment\", \"Room calendar data\"],\n      \"constraints\": [\"Room booking system must expose an API or have query capabilities\", \"Calendar data must be up-to-date and centralized\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A4 - Reserve Meeting Room\",\n      \"rationale\": \"Once a room is selected, the reservation action is a structured transaction that can be automated via API calls to the booking system, reducing manual data entry and errors.\",\n      \"required_data\": [\"Selected room ID\", \"Organizer ID\", \"Meeting date\", \"Start time\", \"End time\", \"Booking reference generation\"],\n      \"constraints\": [\"Booking system must support automated reservation via API or integration\", \"Conflict detection must be handled in real time\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A5 - Send Room Information to Participants\",\n      \"rationale\": \"Notification to participants can be automated by triggering calendar invites or emails upon booking confirmation, eliminating manual communication steps.\",\n      \"required_data\": [\"Participant email list\", \"Reservation confirmation details\", \"Meeting agenda\"],\n      \"constraints\": [\"Integration between booking system and email or calendar platform required\", \"Participant contact data must be available and accurate\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A8 - Send Reminder to Participants\",\n      \"rationale\": \"Pre-meeting reminders are time-based and rule-driven, making them ideal for automated scheduling triggered at defined intervals before the meeting.\",\n      \"required_data\": [\"Meeting date and time\", \"Participant list\", \"Reservation confirmation\"],\n      \"constraints\": [\"Email or calendar system must support scheduled automated notifications\", \"Reminder timing rules must be configurable\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D1 - Is a suitable room available?\",\n      \"rationale\": \"Availability filtering and decision-making based on capacity, equipment, and time constraints can be automated using rule-based logic applied to booking system data.\",\n      \"required_data\": [\"Room inventory data\", \"Booking calendar\", \"Capacity thresholds\", \"Equipment metadata per room\"],\n      \"constraints\": [\"Room attributes must be structured and maintained in the booking system\", \"Logic rules must be predefined and maintained\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"D2 - Has participant count changed significantly?\",\n      \"rationale\": \"Response tracking and threshold comparison can be automated by monitoring RSVP status and comparing accepted attendees against room capacity rules.\",\n      \"required_data\": [\"RSVP responses\", \"Room capacity\", \"Defined threshold for significant change\"],\n      \"constraints\": [\"Calendar or email platform must expose RSVP status data\", \"Threshold definition requires organizational policy input\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A7 - Update Reservation if Needed\",\n      \"rationale\": \"If participant count changes are detected automatically, the system can trigger room re-evaluation and update or suggest alternate rooms without organizer intervention.\",\n      \"required_data\": [\"Updated attendee count\", \"Booking reference ID\", \"Alternative room availability\"],\n      \"constraints\": [\"Requires full integration between RSVP tracking and booking system\", \"Organizer approval may still be needed for room changes\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A9 - Cancel or Rebook Room\",\n      \"rationale\": \"Cancellation workflows can be partially automated by detecting meeting cancellation signals from calendar systems and triggering room release automatically.\",\n      \"required_data\": [\"Cancellation signal from calendar\", \"Booking reference ID\"],\n      \"constraints\": [\"Calendar cancellation must be detectable by booking system via event or webhook\", \"Rebooking requires availability data and may need organizer confirmation\"],\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"assumptions\": [\n    \"A centralized room booking system exists and maintains real-time calendar data for all rooms.\",\n    \"Rooms have structured metadata including capacity, available equipment, and location.\",\n    \"The organization uses a standard email or calendar platform that supports invitations and RSVP tracking.\",\n    \"The organizer has the authority to reserve rooms without additional approval for standard team meetings.\",\n    \"Participant contact information is maintained in a directory accessible to the organizer.\",\n    \"Meeting reminders are considered standard practice and participants expect them.\",\n    \"Room reservations are made in advance, providing sufficient lead time for automation to function.\",\n    \"Cancellations or reschedules are communicated through the same calendar or email platform used for invitations.\",\n    \"No financial approval or cost center allocation is required for standard internal room bookings.\",\n    \"The booking system can generate unique booking reference IDs for each reservation.\"\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Identify Meeting Requirements",
+            "actor": "Organizer",
+            "system": "None",
+            "inputs": [
+              "Meeting date",
+              "Meeting time",
+              "Expected attendee count",
+              "Required equipment"
+            ],
+            "outputs": [
+              "Meeting requirements document"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Check Room Availability",
+            "actor": "Organizer",
+            "system": "Room Booking System",
+            "inputs": [
+              "Meeting requirements document",
+              "Calendar data"
+            ],
+            "outputs": [
+              "List of available rooms"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Select Suitable Room",
+            "actor": "Organizer",
+            "system": "Room Booking System",
+            "inputs": [
+              "List of available rooms",
+              "Meeting requirements document"
+            ],
+            "outputs": [
+              "Selected room"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Reserve Meeting Room",
+            "actor": "Organizer",
+            "system": "Room Booking System",
+            "inputs": [
+              "Selected room",
+              "Meeting date",
+              "Meeting time",
+              "Duration"
+            ],
+            "outputs": [
+              "Reservation confirmation",
+              "Booking reference ID"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Send Room Information to Participants",
+            "actor": "Organizer",
+            "system": "Email or Calendar Application",
+            "inputs": [
+              "Reservation confirmation",
+              "Participant list",
+              "Meeting agenda"
+            ],
+            "outputs": [
+              "Meeting invitation with room details"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Receive and Confirm Participation",
+            "actor": "Participant",
+            "system": "Email or Calendar Application",
+            "inputs": [
+              "Meeting invitation with room details"
+            ],
+            "outputs": [
+              "Acceptance or decline response"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Update Reservation if Needed",
+            "actor": "Organizer",
+            "system": "Room Booking System",
+            "inputs": [
+              "Acceptance or decline responses",
+              "Updated attendee count"
+            ],
+            "outputs": [
+              "Updated reservation confirmation"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Send Reminder to Participants",
+            "actor": "Organizer",
+            "system": "Email or Calendar Application",
+            "inputs": [
+              "Reservation confirmation",
+              "Participant list"
+            ],
+            "outputs": [
+              "Reminder notification"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Cancel or Rebook Room",
+            "actor": "Organizer",
+            "system": "Room Booking System",
+            "inputs": [
+              "Cancellation reason",
+              "Booking reference ID"
+            ],
+            "outputs": [
+              "Cancellation confirmation or new booking reference"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is a suitable room available for the required date, time, and capacity?",
+            "branches": [
+              "Yes - Proceed to Select Suitable Room (A3)",
+              "No - Adjust requirements or choose different date/time, return to A1"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Has the participant count changed significantly after responses are received?",
+            "branches": [
+              "Yes - Update Reservation if Needed (A7)",
+              "No - Proceed to Send Reminder (A8)"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Has the meeting been cancelled or rescheduled?",
+            "branches": [
+              "Yes - Cancel or Rebook Room (A9)",
+              "No - Proceed to Send Reminder (A8)"
+            ]
+          }
+        ],
+        "exceptions": [
+          "Room becomes unavailable after reservation due to double booking or system error",
+          "Organizer forgets to release room after meeting cancellation",
+          "Room booking system is offline or inaccessible",
+          "Required equipment not available in selected room",
+          "Participant list is incomplete or contains incorrect contact information",
+          "Meeting time conflict discovered after invitations are sent",
+          "Room capacity exceeded by late-added participants"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A1",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A9",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A2 - Check Room Availability",
+          "rationale": "Room availability lookup is a repetitive, rule-based query against calendar and booking data. It can be fully automated to return real-time availability without manual searching.",
+          "required_data": [
+            "Meeting date",
+            "Meeting time",
+            "Duration",
+            "Required capacity",
+            "Required equipment",
+            "Room calendar data"
+          ],
+          "constraints": [
+            "Room booking system must expose an API or have query capabilities",
+            "Calendar data must be up-to-date and centralized"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A4 - Reserve Meeting Room",
+          "rationale": "Once a room is selected, the reservation action is a structured transaction that can be automated via API calls to the booking system, reducing manual data entry and errors.",
+          "required_data": [
+            "Selected room ID",
+            "Organizer ID",
+            "Meeting date",
+            "Start time",
+            "End time",
+            "Booking reference generation"
+          ],
+          "constraints": [
+            "Booking system must support automated reservation via API or integration",
+            "Conflict detection must be handled in real time"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A5 - Send Room Information to Participants",
+          "rationale": "Notification to participants can be automated by triggering calendar invites or emails upon booking confirmation, eliminating manual communication steps.",
+          "required_data": [
+            "Participant email list",
+            "Reservation confirmation details",
+            "Meeting agenda"
+          ],
+          "constraints": [
+            "Integration between booking system and email or calendar platform required",
+            "Participant contact data must be available and accurate"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A8 - Send Reminder to Participants",
+          "rationale": "Pre-meeting reminders are time-based and rule-driven, making them ideal for automated scheduling triggered at defined intervals before the meeting.",
+          "required_data": [
+            "Meeting date and time",
+            "Participant list",
+            "Reservation confirmation"
+          ],
+          "constraints": [
+            "Email or calendar system must support scheduled automated notifications",
+            "Reminder timing rules must be configurable"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 - Is a suitable room available?",
+          "rationale": "Availability filtering and decision-making based on capacity, equipment, and time constraints can be automated using rule-based logic applied to booking system data.",
+          "required_data": [
+            "Room inventory data",
+            "Booking calendar",
+            "Capacity thresholds",
+            "Equipment metadata per room"
+          ],
+          "constraints": [
+            "Room attributes must be structured and maintained in the booking system",
+            "Logic rules must be predefined and maintained"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "D2 - Has participant count changed significantly?",
+          "rationale": "Response tracking and threshold comparison can be automated by monitoring RSVP status and comparing accepted attendees against room capacity rules.",
+          "required_data": [
+            "RSVP responses",
+            "Room capacity",
+            "Defined threshold for significant change"
+          ],
+          "constraints": [
+            "Calendar or email platform must expose RSVP status data",
+            "Threshold definition requires organizational policy input"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A7 - Update Reservation if Needed",
+          "rationale": "If participant count changes are detected automatically, the system can trigger room re-evaluation and update or suggest alternate rooms without organizer intervention.",
+          "required_data": [
+            "Updated attendee count",
+            "Booking reference ID",
+            "Alternative room availability"
+          ],
+          "constraints": [
+            "Requires full integration between RSVP tracking and booking system",
+            "Organizer approval may still be needed for room changes"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A9 - Cancel or Rebook Room",
+          "rationale": "Cancellation workflows can be partially automated by detecting meeting cancellation signals from calendar systems and triggering room release automatically.",
+          "required_data": [
+            "Cancellation signal from calendar",
+            "Booking reference ID"
+          ],
+          "constraints": [
+            "Calendar cancellation must be detectable by booking system via event or webhook",
+            "Rebooking requires availability data and may need organizer confirmation"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "A centralized room booking system exists and maintains real-time calendar data for all rooms.",
+        "Rooms have structured metadata including capacity, available equipment, and location.",
+        "The organization uses a standard email or calendar platform that supports invitations and RSVP tracking.",
+        "The organizer has the authority to reserve rooms without additional approval for standard team meetings.",
+        "Participant contact information is maintained in a directory accessible to the organizer.",
+        "Meeting reminders are considered standard practice and participants expect them.",
+        "Room reservations are made in advance, providing sufficient lead time for automation to function.",
+        "Cancellations or reschedules are communicated through the same calendar or email platform used for invitations.",
+        "No financial approval or cost center allocation is required for standard internal room bookings.",
+        "The booking system can generate unique booking reference IDs for each reservation."
+      ]
+    }
+  }
+}

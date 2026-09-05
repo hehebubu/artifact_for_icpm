@@ -1,0 +1,1076 @@
+{
+  "request": {
+    "stage": "checklist",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S04",
+      "title": "Defect Issue Triage and Risk Reporting",
+      "domain": "semiconductor_engineering",
+      "initial_description": "When a defect occurs, the engineer reports it, discusses it with related teams, performs additional experiments, and decides how to improve the issue and communicate the risk.",
+      "reference_workflow": {
+        "goal": "Triage a defect issue, coordinate investigation, and report improvement actions and customer risk.",
+        "actors": [
+          "issue owner",
+          "process engineer",
+          "quality engineer",
+          "customer interface owner",
+          "manager"
+        ],
+        "systems": [
+          "issue tracking system",
+          "experiment log",
+          "risk report template",
+          "collaboration tool"
+        ],
+        "inputs": [
+          "defect description",
+          "sample or lot context",
+          "initial evidence",
+          "customer impact assumption"
+        ],
+        "outputs": [
+          "issue report",
+          "root-cause hypothesis",
+          "experiment plan",
+          "improvement action",
+          "customer risk summary"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Register defect issue with initial evidence",
+            "actor": "issue owner"
+          },
+          {
+            "id": "A2",
+            "name": "Classify issue severity and affected scope",
+            "actor": "quality engineer"
+          },
+          {
+            "id": "A3",
+            "name": "Notify related teams and assign owners",
+            "actor": "issue owner"
+          },
+          {
+            "id": "A4",
+            "name": "Define root-cause hypotheses",
+            "actor": "process engineer"
+          },
+          {
+            "id": "A5",
+            "name": "Plan and run follow-up experiment",
+            "actor": "process engineer"
+          },
+          {
+            "id": "A6",
+            "name": "Review experiment result and select improvement action",
+            "actor": "issue owner"
+          },
+          {
+            "id": "A7",
+            "name": "Assess customer risk",
+            "actor": "customer interface owner"
+          },
+          {
+            "id": "A8",
+            "name": "Share final report and action items",
+            "actor": "manager"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the issue customer-impacting?",
+            "branches": [
+              "customer risk exists",
+              "internal issue only"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the experiment support the root-cause hypothesis?",
+            "branches": [
+              "supported",
+              "not supported"
+            ]
+          }
+        ],
+        "exceptions": [
+          "insufficient evidence",
+          "unclear owner",
+          "experiment delay",
+          "conflicting root-cause hypotheses"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A1",
+            "rationale": "Issue reports can be pre-structured from defect descriptions and evidence attachments."
+          },
+          {
+            "target": "A3",
+            "rationale": "Related teams can be suggested from issue category and affected process area."
+          },
+          {
+            "target": "A8",
+            "rationale": "Action-item extraction and risk report drafting can be partially automated."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "severity criteria",
+        "team ownership",
+        "issue tracking fields",
+        "customer risk decision",
+        "experiment evidence",
+        "final reporting format"
+      ]
+    },
+    "answers": "",
+    "previousOutput": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Defect Detection and Initial Reporting",
+            "actor": "Engineer",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Observed defect data",
+              "Test results",
+              "Process logs"
+            ],
+            "outputs": [
+              "Defect report draft",
+              "Defect ID",
+              "Initial severity estimate"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Defect Report Submission",
+            "actor": "Engineer",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Defect report draft",
+              "Supporting evidence"
+            ],
+            "outputs": [
+              "Submitted defect report",
+              "Notification to stakeholders"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Cross-Team Defect Discussion",
+            "actor": "Engineer, Related Teams, Team Leads",
+            "system": "Collaboration Platform",
+            "inputs": [
+              "Submitted defect report",
+              "Team schedules",
+              "Historical defect data"
+            ],
+            "outputs": [
+              "Discussion notes",
+              "Action items",
+              "Assigned owners",
+              "Preliminary risk assessment"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Additional Experimentation and Analysis",
+            "actor": "Engineer",
+            "system": "Laboratory / Simulation Tools",
+            "inputs": [
+              "Action items from discussion",
+              "Defect report",
+              "Raw data or samples"
+            ],
+            "outputs": [
+              "Experiment results",
+              "Root cause analysis",
+              "Updated defect characterization"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Improvement Strategy Definition",
+            "actor": "Engineer, Related Teams",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Experiment results",
+              "Root cause analysis",
+              "Regulatory constraints"
+            ],
+            "outputs": [
+              "Improvement plan",
+              "Recommended corrective actions",
+              "Implementation timeline"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Risk Assessment and Classification",
+            "actor": "Engineer, Risk Manager",
+            "system": "Risk Management System",
+            "inputs": [
+              "Improvement plan",
+              "Defect characterization",
+              "Impact analysis"
+            ],
+            "outputs": [
+              "Risk classification",
+              "Risk score",
+              "Risk report draft"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Risk Report Communication",
+            "actor": "Risk Manager, Team Lead",
+            "system": "Reporting and Communication Platform",
+            "inputs": [
+              "Risk report draft",
+              "Stakeholder list",
+              "Communication templates"
+            ],
+            "outputs": [
+              "Published risk report",
+              "Stakeholder notifications",
+              "Audit trail entry"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Defect Resolution Monitoring and Closure",
+            "actor": "Engineer, Team Lead",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Improvement plan",
+              "Corrective action records",
+              "Validation test results"
+            ],
+            "outputs": [
+              "Closure report",
+              "Updated defect status",
+              "Lessons learned document"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the defect severity critical enough to escalate immediately?",
+            "branches": [
+              {
+                "label": "Yes - Critical",
+                "next": "A3",
+                "description": "Immediately convene cross-team meeting and notify senior stakeholders"
+              },
+              {
+                "label": "No - Non-critical",
+                "next": "A2",
+                "description": "Follow standard submission and triage process"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Do additional experiments provide sufficient root cause clarity?",
+            "branches": [
+              {
+                "label": "Yes - Sufficient clarity",
+                "next": "A5",
+                "description": "Proceed to define improvement strategy"
+              },
+              {
+                "label": "No - Insufficient clarity",
+                "next": "A4",
+                "description": "Conduct further experimentation"
+              }
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the risk level above the reporting threshold?",
+            "branches": [
+              {
+                "label": "Yes - Above threshold",
+                "next": "A7",
+                "description": "Publish formal risk report and notify all stakeholders"
+              },
+              {
+                "label": "No - Below threshold",
+                "next": "A8",
+                "description": "Document internally and proceed to resolution monitoring"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Defect cannot be reproduced during additional experimentation",
+            "trigger": "Experiment results inconclusive after multiple attempts",
+            "handling": "Escalate to senior engineering review; document as intermittent defect; apply conservative risk classification"
+          },
+          {
+            "id": "E2",
+            "description": "Required team members unavailable for cross-team discussion",
+            "trigger": "Key stakeholders do not respond within defined SLA",
+            "handling": "Escalate to team lead; schedule asynchronous review; flag delay in defect tracking system"
+          },
+          {
+            "id": "E3",
+            "description": "Risk report rejected or disputed by receiving stakeholder",
+            "trigger": "Stakeholder raises objection to risk classification or findings",
+            "handling": "Initiate review cycle; document dispute; reconvene risk assessment meeting"
+          },
+          {
+            "id": "E4",
+            "description": "Corrective actions fail validation testing",
+            "trigger": "Defect recurs after implementation of improvement plan",
+            "handling": "Reopen defect report; return to cross-team discussion phase; update risk classification"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A2",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A3",
+            "type": "conditional"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A4",
+            "type": "conditional"
+          },
+          {
+            "from": "D2",
+            "to": "A5",
+            "type": "conditional"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A7",
+            "type": "conditional"
+          },
+          {
+            "from": "D3",
+            "to": "A8",
+            "type": "conditional"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A1 - Defect Detection and Initial Reporting",
+          "rationale": "Automated monitoring tools can detect anomalies in process or test data and pre-populate defect report fields, reducing manual effort and improving detection speed.",
+          "required_data": [
+            "Real-time process logs",
+            "Sensor or test output data",
+            "Defect classification taxonomy"
+          ],
+          "constraints": [
+            "Requires standardized data formats from upstream systems",
+            "False positive rate must be validated before deployment"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A2 - Defect Report Submission",
+          "rationale": "Submission and routing of defect reports can be automated based on defect type, severity, and team assignment rules, eliminating manual routing delays.",
+          "required_data": [
+            "Severity classification rules",
+            "Team assignment matrix",
+            "Stakeholder contact registry"
+          ],
+          "constraints": [
+            "Assignment rules must be maintained and kept current",
+            "Edge cases may still require manual override"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 - Criticality Escalation Decision",
+          "rationale": "Rule-based or ML-based classification can determine severity and trigger escalation automatically based on predefined thresholds and historical defect patterns.",
+          "required_data": [
+            "Severity scoring criteria",
+            "Historical defect severity outcomes",
+            "Escalation threshold parameters"
+          ],
+          "constraints": [
+            "Initial model training requires labeled historical data",
+            "Human override capability must be preserved for novel defect types"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A3 - Cross-Team Defect Discussion",
+          "rationale": "Meeting scheduling and asynchronous collaboration can be partially automated via calendar integration and structured discussion templates, though human judgment remains central.",
+          "required_data": [
+            "Team calendars",
+            "Stakeholder availability data",
+            "Defect report content"
+          ],
+          "constraints": [
+            "Full automation of discussion content is not feasible",
+            "Cultural and organizational norms may limit automation adoption"
+          ],
+          "confidence": "low"
+        },
+        {
+          "target": "A6 - Risk Assessment and Classification",
+          "rationale": "Risk scoring algorithms can be applied to structured defect and experiment data to produce draft risk classifications, accelerating the assessment step.",
+          "required_data": [
+            "Defect characterization data",
+            "Impact analysis inputs",
+            "Risk scoring model parameters",
+            "Regulatory thresholds"
+          ],
+          "constraints": [
+            "Regulatory compliance may require human sign-off on final classification",
+            "Model must be auditable and explainable"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A7 - Risk Report Communication",
+          "rationale": "Generation and distribution of standardized risk reports can be automated using templates populated from the risk management system, with conditional routing based on risk level.",
+          "required_data": [
+            "Risk classification output",
+            "Report templates",
+            "Stakeholder distribution lists",
+            "Communication channel configurations"
+          ],
+          "constraints": [
+            "Report content requiring narrative judgment must remain human-authored",
+            "Audit trail requirements must be satisfied by automated system"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A8 - Defect Resolution Monitoring and Closure",
+          "rationale": "Status tracking and SLA monitoring for corrective action completion can be automated, with automated alerts triggered when milestones are missed or validation tests are executed.",
+          "required_data": [
+            "Improvement plan milestones",
+            "Validation test results feed",
+            "SLA definitions",
+            "Defect status schema"
+          ],
+          "constraints": [
+            "Final closure approval should remain a human activity",
+            "Integration with laboratory or test systems required for automated result ingestion"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "A defect tracking system exists and is accessible to all relevant actors for logging and status updates.",
+        "Cross-team discussions are assumed to be synchronous meetings or structured asynchronous reviews, not informal ad-hoc conversations.",
+        "Additional experimentation refers to controlled tests or analyses performed by the engineer, not external third-party testing.",
+        "Risk reporting is assumed to follow an internal threshold-based framework that determines when external or senior communication is required.",
+        "The improvement strategy may include process changes, design modifications, or operational controls, but the specific domain is not assumed.",
+        "Defect closure requires validation evidence confirming the corrective action has resolved the issue.",
+        "Actors labeled as 'Related Teams' are assumed to vary by defect type and are determined at the time of cross-team discussion.",
+        "The workflow is assumed to be linear with defined feedback loops at the experimentation and closure stages, not a parallel multi-stream process.",
+        "No specific regulatory framework is assumed, but compliance considerations are noted as a constraint where relevant."
+      ]
+    },
+    "questions": null
+  },
+  "result": {
+    "id": "55ca5dac-da69-45b1-ae9b-76de10e0fe72",
+    "created_at": "2026-09-05T03:18:35.026Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "checklist",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Defect Detection and Initial Logging\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Defect Tracking System\",\n        \"inputs\": [\"Observed defect symptoms\", \"Test results\", \"Process parameters\"],\n        \"outputs\": [\"Defect report draft\", \"Defect ID\", \"Timestamp\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Defect Report Submission\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Defect Tracking System\",\n        \"inputs\": [\"Defect report draft\", \"Supporting evidence\", \"Initial severity estimate\"],\n        \"outputs\": [\"Submitted defect report\", \"Notification to related teams\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Cross-Team Triage Discussion\",\n        \"actor\": \"Engineer, Quality Team, Development Team, Operations Team\",\n        \"system\": \"Collaboration Platform\",\n        \"inputs\": [\"Submitted defect report\", \"Historical defect records\", \"Team availability\"],\n        \"outputs\": [\"Triage meeting notes\", \"Preliminary severity classification\", \"Action item list\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Severity and Priority Classification\",\n        \"actor\": \"Quality Team\",\n        \"system\": \"Defect Tracking System\",\n        \"inputs\": [\"Triage meeting notes\", \"Impact assessment criteria\", \"Affected system scope\"],\n        \"outputs\": [\"Classified severity level\", \"Priority ranking\", \"Updated defect record\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Additional Experimentation and Root Cause Analysis\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Laboratory Information System / Test Environment\",\n        \"inputs\": [\"Defect report\", \"Experimental design plan\", \"Test materials or datasets\"],\n        \"outputs\": [\"Experiment results\", \"Root cause hypothesis\", \"Supporting data artifacts\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Root Cause Confirmation\",\n        \"actor\": \"Engineer, Quality Team\",\n        \"system\": \"Defect Tracking System\",\n        \"inputs\": [\"Experiment results\", \"Root cause hypothesis\", \"Expert review\"],\n        \"outputs\": [\"Confirmed root cause statement\", \"Updated defect record\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Improvement Action Planning\",\n        \"actor\": \"Engineer, Development Team, Quality Team\",\n        \"system\": \"Project Management System\",\n        \"inputs\": [\"Confirmed root cause\", \"Available corrective actions\", \"Resource constraints\"],\n        \"outputs\": [\"Corrective action plan\", \"Assigned owners\", \"Target resolution timeline\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Risk Assessment and Impact Evaluation\",\n        \"actor\": \"Quality Team, Risk Officer\",\n        \"system\": \"Risk Management System\",\n        \"inputs\": [\"Defect severity classification\", \"Affected scope\", \"Corrective action plan\"],\n        \"outputs\": [\"Risk assessment report\", \"Risk score\", \"Escalation recommendation\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Escalation and Approval (if required)\",\n        \"actor\": \"Risk Officer, Management\",\n        \"system\": \"Risk Management System / Email\",\n        \"inputs\": [\"Risk assessment report\", \"Escalation recommendation\", \"Approval thresholds\"],\n        \"outputs\": [\"Approval decision\", \"Escalation record\", \"Authorized action plan\"]\n      },\n      {\n        \"id\": \"A10\",\n        \"name\": \"Risk Communication and Stakeholder Reporting\",\n        \"actor\": \"Quality Team, Risk Officer\",\n        \"system\": \"Reporting Platform / Email\",\n        \"inputs\": [\"Risk assessment report\", \"Approval decision\", \"Stakeholder contact list\"],\n        \"outputs\": [\"Risk report distributed\", \"Stakeholder notifications\", \"Communication log\"]\n      },\n      {\n        \"id\": \"A11\",\n        \"name\": \"Corrective Action Implementation\",\n        \"actor\": \"Development Team, Engineer\",\n        \"system\": \"Project Management System / Test Environment\",\n        \"inputs\": [\"Authorized action plan\", \"Implementation resources\", \"Timeline\"],\n        \"outputs\": [\"Implemented fix or process change\", \"Implementation evidence\"]\n      },\n      {\n        \"id\": \"A12\",\n        \"name\": \"Verification and Defect Closure\",\n        \"actor\": \"Quality Team, Engineer\",\n        \"system\": \"Defect Tracking System\",\n        \"inputs\": [\"Implementation evidence\", \"Verification test results\", \"Closure criteria\"],\n        \"outputs\": [\"Closed defect record\", \"Closure report\", \"Lessons learned entry\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is the defect reproducible and sufficiently documented after initial logging?\",\n        \"branches\": [\n          \"Yes: Proceed to Cross-Team Triage Discussion (A3)\",\n          \"No: Return to Engineer for additional information gathering (A1)\"\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Is the severity classification Critical or High?\",\n        \"branches\": [\n          \"Yes: Expedite to Additional Experimentation (A5) with elevated priority\",\n          \"No: Follow standard experimentation timeline (A5)\"\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Is the root cause confirmed after experimentation?\",\n        \"branches\": [\n          \"Yes: Proceed to Improvement Action Planning (A7)\",\n          \"No: Return to Additional Experimentation (A5) with revised hypothesis\"\n        ]\n      },\n      {\n        \"id\": \"D4\",\n        \"condition\": \"Does the risk score exceed the escalation threshold?\",\n        \"branches\": [\n          \"Yes: Escalation and Approval required (A9)\",\n          \"No: Proceed directly to Risk Communication (A10)\"\n        ]\n      },\n      {\n        \"id\": \"D5\",\n        \"condition\": \"Does verification confirm the defect is resolved?\",\n        \"branches\": [\n          \"Yes: Close defect record (A12)\",\n          \"No: Re-open defect and return to Improvement Action Planning (A7)\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      \"Defect cannot be reproduced: Loop back to data collection with expanded scope\",\n      \"Key team member unavailable for triage: Designate alternate representative or delay triage with documented justification\",\n      \"Experimentation resources unavailable: Escalate resource conflict to management before proceeding\",\n      \"Root cause remains ambiguous after multiple experiment cycles: Escalate to external expert review\",\n      \"Regulatory or compliance defect detected: Immediately trigger mandatory reporting process outside standard workflow\",\n      \"Corrective action introduces new defects: Re-initiate defect report for secondary defect\",\n      \"Stakeholder communication fails or is rejected: Log failed communication and retry with alternate channel\"\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A3\", \"type\": \"conditional\"},\n      {\"from\": \"D1\", \"to\": \"A1\", \"type\": \"conditional\"},\n      {\"from\": \"A3\", \"to\": \"A4\", \"type\": \"control_flow\"},\n      {\"from\": \"A4\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A5\", \"type\": \"conditional\"},\n      {\"from\": \"A5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A7\", \"type\": \"conditional\"},\n      {\"from\": \"D3\", \"to\": \"A5\", \"type\": \"conditional\"},\n      {\"from\": \"A7\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A8\", \"to\": \"D4\", \"type\": \"control_flow\"},\n      {\"from\": \"D4\", \"to\": \"A9\", \"type\": \"conditional\"},\n      {\"from\": \"D4\", \"to\": \"A10\", \"type\": \"conditional\"},\n      {\"from\": \"A9\", \"to\": \"A10\", \"type\": \"control_flow\"},\n      {\"from\": \"A10\", \"to\": \"A11\", \"type\": \"control_flow\"},\n      {\"from\": \"A11\", \"to\": \"A12\", \"type\": \"control_flow\"},\n      {\"from\": \"A12\", \"to\": \"D5\", \"type\": \"control_flow\"},\n      {\"from\": \"D5\", \"to\": \"A7\", \"type\": \"conditional\"},\n      {\"from\": \"A4\", \"to\": \"A8\", \"type\": \"data_flow\"},\n      {\"from\": \"A6\", \"to\": \"A8\", \"type\": \"data_flow\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A1 - Defect Detection and Initial Logging\",\n      \"rationale\": \"Automated defect detection through monitoring systems, sensor data, or test pipelines can pre-populate defect report fields, reducing manual data entry and time-to-report. Anomaly detection algorithms can flag defects before an engineer manually identifies them.\",\n      \"required_data\": [\"Real-time process parameters\", \"Sensor or test output streams\", \"Defect template schema\", \"Historical baseline metrics\"],\n      \"constraints\": [\"Requires integration with monitoring or test infrastructure\", \"False positive rate must be controlled to avoid alert fatigue\", \"Data quality and completeness of automated signals must be validated\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A2 - Defect Report Submission\",\n      \"rationale\": \"Automated form validation, mandatory field enforcement, and auto-routing of notifications to relevant teams upon submission can eliminate manual coordination overhead and reduce submission errors.\",\n      \"required_data\": [\"Defect report schema\", \"Team routing rules\", \"Stakeholder contact registry\"],\n      \"constraints\": [\"Routing logic must be maintained as team structures change\", \"Some defect types may require manual nuance in description that automation cannot capture\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A4 - Severity and Priority Classification\",\n      \"rationale\": \"A rule-based or machine learning classification model trained on historical defect records can automatically assign initial severity and priority scores, enabling faster triage and reducing subjective inconsistency.\",\n      \"required_data\": [\"Historical defect records with severity labels\", \"Impact scope attributes\", \"Classification rule definitions\", \"Defect type taxonomy\"],\n      \"constraints\": [\"Model must be auditable for regulated environments\", \"Human review gate should remain for critical or novel defect types\", \"Training data must be representative and unbiased\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"D1 - Is the defect reproducible and sufficiently documented?\",\n      \"rationale\": \"Automated completeness checks on the defect report fields and cross-referencing with system logs to assess reproducibility signals can programmatically determine if a report is ready for triage, reducing manual back-and-forth.\",\n      \"required_data\": [\"Mandatory field definitions\", \"System or test logs\", \"Reproducibility criteria checklist\"],\n      \"constraints\": [\"Reproducibility may depend on environmental conditions that are not fully machine-readable\", \"Edge cases with ambiguous documentation may still require human judgment\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A5 - Additional Experimentation and Root Cause Analysis\",\n      \"rationale\": \"Automated experiment scheduling, data collection, and preliminary statistical analysis can accelerate root cause investigation. Workflow orchestration tools can assign experiment tasks and aggregate results without manual coordination.\",\n      \"required_data\": [\"Experimental design templates\", \"Available test environment inventory\", \"Data collection pipelines\", \"Statistical analysis scripts\"],\n      \"constraints\": [\"Physical or laboratory experiments may not be fully automatable\", \"Domain-specific knowledge is often required to design meaningful experiments\", \"Experiment infrastructure integration may be complex\"],\n      \"confidence\": \"low\"\n    },\n    {\n      \"target\": \"A8 - Risk Assessment and Impact Evaluation\",\n      \"rationale\": \"Standardized risk scoring models can be automated using defect severity, scope, and corrective action data as inputs, producing consistent and reproducible risk scores and draft reports without manual calculation.\",\n      \"required_data\": [\"Risk scoring rubric\", \"Defect severity classification\", \"Affected system or product scope\", \"Corrective action plan data\"],\n      \"constraints\": [\"Risk models must be reviewed and approved by risk officers before automation\", \"Novel defect categories may fall outside model scope\", \"Regulatory requirements may mandate human sign-off on risk scores\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"D4 - Does the risk score exceed the escalation threshold?\",\n      \"rationale\": \"Threshold-based decision logic can be fully automated: if the computed risk score exceeds a defined threshold, the system automatically routes to the escalation activity and notifies the Risk Officer, eliminating manual decision overhead.\",\n      \"required_data\": [\"Computed risk score\", \"Defined escalation threshold values\", \"Risk Officer contact registry\"],\n      \"constraints\": [\"Thresholds must be formally defined and periodically reviewed\", \"Audit trail of automated escalation decisions must be maintained\", \"Override mechanism must exist for edge cases\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A10 - Risk Communication and Stakeholder Reporting\",\n      \"rationale\": \"Report generation and distribution can be automated using templates populated with risk assessment outputs, with automated delivery to a pre-configured stakeholder list and communication logging upon confirmation of receipt.\",\n      \"required_data\": [\"Report template library\", \"Risk assessment report data\", \"Stakeholder contact list\", \"Communication channel configurations\"],\n      \"constraints\": [\"Sensitive risk content may require human review before distribution\", \"Stakeholder list must be kept current\", \"Regulatory reporting formats may impose specific structure requirements\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A12 - Verification and Defect Closure\",\n      \"rationale\": \"Automated regression testing or verification test suites can be triggered post-implementation to confirm defect resolution, with results automatically compared against closure criteria and defect records updated accordingly.\",\n      \"required_data\": [\"Verification test suite definitions\", \"Closure criteria rules\", \"Implementation evidence artifacts\", \"Defect tracking system API\"],\n      \"constraints\": [\"Not all defect types have automatable verification tests\", \"Physical or process-level changes may require manual inspection\", \"Test environment must mirror production conditions for results to be valid\"],\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"assumptions\": [\n    \"A defect tracking system exists and is accessible to all relevant actors throughout the workflow.\",\n    \"Cross-team triage discussions occur in synchronous or asynchronous collaborative sessions, not solely via email chains.\",\n    \"Severity classification criteria and risk scoring rubrics are formally defined but may not yet be digitally encoded.\",\n    \"Additional experimentation may involve both computational and physical or laboratory activities depending on the defect domain.\",\n    \"Escalation thresholds for risk scores exist in policy but may require formalization before automation can be applied.\",\n    \"Stakeholder lists for risk communication are maintained in an accessible registry.\",\n    \"Historical defect records with labeled outcomes are available to support potential machine learning applications.\",\n    \"Regulatory or compliance constraints may apply to certain defect categories and would trigger parallel mandatory reporting processes not detailed in the base workflow.\",\n    \"Defect closure requires both technical verification and quality team sign-off, not verification alone.\",\n    \"The workflow described applies to a single defect instance; batch or systemic defects affecting multiple records may require workflow extensions.\"\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Defect Detection and Initial Logging",
+            "actor": "Engineer",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Observed defect symptoms",
+              "Test results",
+              "Process parameters"
+            ],
+            "outputs": [
+              "Defect report draft",
+              "Defect ID",
+              "Timestamp"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Defect Report Submission",
+            "actor": "Engineer",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Defect report draft",
+              "Supporting evidence",
+              "Initial severity estimate"
+            ],
+            "outputs": [
+              "Submitted defect report",
+              "Notification to related teams"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Cross-Team Triage Discussion",
+            "actor": "Engineer, Quality Team, Development Team, Operations Team",
+            "system": "Collaboration Platform",
+            "inputs": [
+              "Submitted defect report",
+              "Historical defect records",
+              "Team availability"
+            ],
+            "outputs": [
+              "Triage meeting notes",
+              "Preliminary severity classification",
+              "Action item list"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Severity and Priority Classification",
+            "actor": "Quality Team",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Triage meeting notes",
+              "Impact assessment criteria",
+              "Affected system scope"
+            ],
+            "outputs": [
+              "Classified severity level",
+              "Priority ranking",
+              "Updated defect record"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Additional Experimentation and Root Cause Analysis",
+            "actor": "Engineer",
+            "system": "Laboratory Information System / Test Environment",
+            "inputs": [
+              "Defect report",
+              "Experimental design plan",
+              "Test materials or datasets"
+            ],
+            "outputs": [
+              "Experiment results",
+              "Root cause hypothesis",
+              "Supporting data artifacts"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Root Cause Confirmation",
+            "actor": "Engineer, Quality Team",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Experiment results",
+              "Root cause hypothesis",
+              "Expert review"
+            ],
+            "outputs": [
+              "Confirmed root cause statement",
+              "Updated defect record"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Improvement Action Planning",
+            "actor": "Engineer, Development Team, Quality Team",
+            "system": "Project Management System",
+            "inputs": [
+              "Confirmed root cause",
+              "Available corrective actions",
+              "Resource constraints"
+            ],
+            "outputs": [
+              "Corrective action plan",
+              "Assigned owners",
+              "Target resolution timeline"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Risk Assessment and Impact Evaluation",
+            "actor": "Quality Team, Risk Officer",
+            "system": "Risk Management System",
+            "inputs": [
+              "Defect severity classification",
+              "Affected scope",
+              "Corrective action plan"
+            ],
+            "outputs": [
+              "Risk assessment report",
+              "Risk score",
+              "Escalation recommendation"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Escalation and Approval (if required)",
+            "actor": "Risk Officer, Management",
+            "system": "Risk Management System / Email",
+            "inputs": [
+              "Risk assessment report",
+              "Escalation recommendation",
+              "Approval thresholds"
+            ],
+            "outputs": [
+              "Approval decision",
+              "Escalation record",
+              "Authorized action plan"
+            ]
+          },
+          {
+            "id": "A10",
+            "name": "Risk Communication and Stakeholder Reporting",
+            "actor": "Quality Team, Risk Officer",
+            "system": "Reporting Platform / Email",
+            "inputs": [
+              "Risk assessment report",
+              "Approval decision",
+              "Stakeholder contact list"
+            ],
+            "outputs": [
+              "Risk report distributed",
+              "Stakeholder notifications",
+              "Communication log"
+            ]
+          },
+          {
+            "id": "A11",
+            "name": "Corrective Action Implementation",
+            "actor": "Development Team, Engineer",
+            "system": "Project Management System / Test Environment",
+            "inputs": [
+              "Authorized action plan",
+              "Implementation resources",
+              "Timeline"
+            ],
+            "outputs": [
+              "Implemented fix or process change",
+              "Implementation evidence"
+            ]
+          },
+          {
+            "id": "A12",
+            "name": "Verification and Defect Closure",
+            "actor": "Quality Team, Engineer",
+            "system": "Defect Tracking System",
+            "inputs": [
+              "Implementation evidence",
+              "Verification test results",
+              "Closure criteria"
+            ],
+            "outputs": [
+              "Closed defect record",
+              "Closure report",
+              "Lessons learned entry"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the defect reproducible and sufficiently documented after initial logging?",
+            "branches": [
+              "Yes: Proceed to Cross-Team Triage Discussion (A3)",
+              "No: Return to Engineer for additional information gathering (A1)"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the severity classification Critical or High?",
+            "branches": [
+              "Yes: Expedite to Additional Experimentation (A5) with elevated priority",
+              "No: Follow standard experimentation timeline (A5)"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the root cause confirmed after experimentation?",
+            "branches": [
+              "Yes: Proceed to Improvement Action Planning (A7)",
+              "No: Return to Additional Experimentation (A5) with revised hypothesis"
+            ]
+          },
+          {
+            "id": "D4",
+            "condition": "Does the risk score exceed the escalation threshold?",
+            "branches": [
+              "Yes: Escalation and Approval required (A9)",
+              "No: Proceed directly to Risk Communication (A10)"
+            ]
+          },
+          {
+            "id": "D5",
+            "condition": "Does verification confirm the defect is resolved?",
+            "branches": [
+              "Yes: Close defect record (A12)",
+              "No: Re-open defect and return to Improvement Action Planning (A7)"
+            ]
+          }
+        ],
+        "exceptions": [
+          "Defect cannot be reproduced: Loop back to data collection with expanded scope",
+          "Key team member unavailable for triage: Designate alternate representative or delay triage with documented justification",
+          "Experimentation resources unavailable: Escalate resource conflict to management before proceeding",
+          "Root cause remains ambiguous after multiple experiment cycles: Escalate to external expert review",
+          "Regulatory or compliance defect detected: Immediately trigger mandatory reporting process outside standard workflow",
+          "Corrective action introduces new defects: Re-initiate defect report for secondary defect",
+          "Stakeholder communication fails or is rejected: Log failed communication and retry with alternate channel"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A3",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A1",
+            "type": "conditional"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A5",
+            "type": "conditional"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A7",
+            "type": "conditional"
+          },
+          {
+            "from": "D3",
+            "to": "A5",
+            "type": "conditional"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "D4",
+            "type": "control_flow"
+          },
+          {
+            "from": "D4",
+            "to": "A9",
+            "type": "conditional"
+          },
+          {
+            "from": "D4",
+            "to": "A10",
+            "type": "conditional"
+          },
+          {
+            "from": "A9",
+            "to": "A10",
+            "type": "control_flow"
+          },
+          {
+            "from": "A10",
+            "to": "A11",
+            "type": "control_flow"
+          },
+          {
+            "from": "A11",
+            "to": "A12",
+            "type": "control_flow"
+          },
+          {
+            "from": "A12",
+            "to": "D5",
+            "type": "control_flow"
+          },
+          {
+            "from": "D5",
+            "to": "A7",
+            "type": "conditional"
+          },
+          {
+            "from": "A4",
+            "to": "A8",
+            "type": "data_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A8",
+            "type": "data_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A1 - Defect Detection and Initial Logging",
+          "rationale": "Automated defect detection through monitoring systems, sensor data, or test pipelines can pre-populate defect report fields, reducing manual data entry and time-to-report. Anomaly detection algorithms can flag defects before an engineer manually identifies them.",
+          "required_data": [
+            "Real-time process parameters",
+            "Sensor or test output streams",
+            "Defect template schema",
+            "Historical baseline metrics"
+          ],
+          "constraints": [
+            "Requires integration with monitoring or test infrastructure",
+            "False positive rate must be controlled to avoid alert fatigue",
+            "Data quality and completeness of automated signals must be validated"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A2 - Defect Report Submission",
+          "rationale": "Automated form validation, mandatory field enforcement, and auto-routing of notifications to relevant teams upon submission can eliminate manual coordination overhead and reduce submission errors.",
+          "required_data": [
+            "Defect report schema",
+            "Team routing rules",
+            "Stakeholder contact registry"
+          ],
+          "constraints": [
+            "Routing logic must be maintained as team structures change",
+            "Some defect types may require manual nuance in description that automation cannot capture"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A4 - Severity and Priority Classification",
+          "rationale": "A rule-based or machine learning classification model trained on historical defect records can automatically assign initial severity and priority scores, enabling faster triage and reducing subjective inconsistency.",
+          "required_data": [
+            "Historical defect records with severity labels",
+            "Impact scope attributes",
+            "Classification rule definitions",
+            "Defect type taxonomy"
+          ],
+          "constraints": [
+            "Model must be auditable for regulated environments",
+            "Human review gate should remain for critical or novel defect types",
+            "Training data must be representative and unbiased"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "D1 - Is the defect reproducible and sufficiently documented?",
+          "rationale": "Automated completeness checks on the defect report fields and cross-referencing with system logs to assess reproducibility signals can programmatically determine if a report is ready for triage, reducing manual back-and-forth.",
+          "required_data": [
+            "Mandatory field definitions",
+            "System or test logs",
+            "Reproducibility criteria checklist"
+          ],
+          "constraints": [
+            "Reproducibility may depend on environmental conditions that are not fully machine-readable",
+            "Edge cases with ambiguous documentation may still require human judgment"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A5 - Additional Experimentation and Root Cause Analysis",
+          "rationale": "Automated experiment scheduling, data collection, and preliminary statistical analysis can accelerate root cause investigation. Workflow orchestration tools can assign experiment tasks and aggregate results without manual coordination.",
+          "required_data": [
+            "Experimental design templates",
+            "Available test environment inventory",
+            "Data collection pipelines",
+            "Statistical analysis scripts"
+          ],
+          "constraints": [
+            "Physical or laboratory experiments may not be fully automatable",
+            "Domain-specific knowledge is often required to design meaningful experiments",
+            "Experiment infrastructure integration may be complex"
+          ],
+          "confidence": "low"
+        },
+        {
+          "target": "A8 - Risk Assessment and Impact Evaluation",
+          "rationale": "Standardized risk scoring models can be automated using defect severity, scope, and corrective action data as inputs, producing consistent and reproducible risk scores and draft reports without manual calculation.",
+          "required_data": [
+            "Risk scoring rubric",
+            "Defect severity classification",
+            "Affected system or product scope",
+            "Corrective action plan data"
+          ],
+          "constraints": [
+            "Risk models must be reviewed and approved by risk officers before automation",
+            "Novel defect categories may fall outside model scope",
+            "Regulatory requirements may mandate human sign-off on risk scores"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "D4 - Does the risk score exceed the escalation threshold?",
+          "rationale": "Threshold-based decision logic can be fully automated: if the computed risk score exceeds a defined threshold, the system automatically routes to the escalation activity and notifies the Risk Officer, eliminating manual decision overhead.",
+          "required_data": [
+            "Computed risk score",
+            "Defined escalation threshold values",
+            "Risk Officer contact registry"
+          ],
+          "constraints": [
+            "Thresholds must be formally defined and periodically reviewed",
+            "Audit trail of automated escalation decisions must be maintained",
+            "Override mechanism must exist for edge cases"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A10 - Risk Communication and Stakeholder Reporting",
+          "rationale": "Report generation and distribution can be automated using templates populated with risk assessment outputs, with automated delivery to a pre-configured stakeholder list and communication logging upon confirmation of receipt.",
+          "required_data": [
+            "Report template library",
+            "Risk assessment report data",
+            "Stakeholder contact list",
+            "Communication channel configurations"
+          ],
+          "constraints": [
+            "Sensitive risk content may require human review before distribution",
+            "Stakeholder list must be kept current",
+            "Regulatory reporting formats may impose specific structure requirements"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A12 - Verification and Defect Closure",
+          "rationale": "Automated regression testing or verification test suites can be triggered post-implementation to confirm defect resolution, with results automatically compared against closure criteria and defect records updated accordingly.",
+          "required_data": [
+            "Verification test suite definitions",
+            "Closure criteria rules",
+            "Implementation evidence artifacts",
+            "Defect tracking system API"
+          ],
+          "constraints": [
+            "Not all defect types have automatable verification tests",
+            "Physical or process-level changes may require manual inspection",
+            "Test environment must mirror production conditions for results to be valid"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "A defect tracking system exists and is accessible to all relevant actors throughout the workflow.",
+        "Cross-team triage discussions occur in synchronous or asynchronous collaborative sessions, not solely via email chains.",
+        "Severity classification criteria and risk scoring rubrics are formally defined but may not yet be digitally encoded.",
+        "Additional experimentation may involve both computational and physical or laboratory activities depending on the defect domain.",
+        "Escalation thresholds for risk scores exist in policy but may require formalization before automation can be applied.",
+        "Stakeholder lists for risk communication are maintained in an accessible registry.",
+        "Historical defect records with labeled outcomes are available to support potential machine learning applications.",
+        "Regulatory or compliance constraints may apply to certain defect categories and would trigger parallel mandatory reporting processes not detailed in the base workflow.",
+        "Defect closure requires both technical verification and quality team sign-off, not verification alone.",
+        "The workflow described applies to a single defect instance; batch or systemic defects affecting multiple records may require workflow extensions."
+      ]
+    }
+  }
+}

@@ -1,0 +1,768 @@
+{
+  "request": {
+    "stage": "update",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S03",
+      "title": "Wafer Sample Transfer and Disposal Request",
+      "domain": "semiconductor_engineering",
+      "initial_description": "Samples are moved when they are needed for evaluation. After evaluation, unnecessary samples are checked and disposed of through a request process.",
+      "reference_workflow": {
+        "goal": "Move required wafer samples for evaluation and dispose of completed samples through traceable approval.",
+        "actors": [
+          "sample requester",
+          "sample manager",
+          "verification engineer",
+          "approver"
+        ],
+        "systems": [
+          "sample tracking sheet",
+          "transfer request form",
+          "approval system",
+          "storage location registry"
+        ],
+        "inputs": [
+          "sample identifier",
+          "evaluation purpose",
+          "target location",
+          "disposal reason"
+        ],
+        "outputs": [
+          "transfer approval",
+          "updated sample status",
+          "disposal record",
+          "physical confirmation note"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Identify required sample and evaluation purpose",
+            "actor": "sample requester"
+          },
+          {
+            "id": "A2",
+            "name": "Submit sample transfer request",
+            "actor": "sample requester"
+          },
+          {
+            "id": "A3",
+            "name": "Approve transfer request",
+            "actor": "approver"
+          },
+          {
+            "id": "A4",
+            "name": "Physically confirm sample",
+            "actor": "sample manager"
+          },
+          {
+            "id": "A5",
+            "name": "Move sample to target location",
+            "actor": "sample manager"
+          },
+          {
+            "id": "A6",
+            "name": "Update sample status after evaluation",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Submit disposal request for completed sample",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A8",
+            "name": "Approve and record disposal",
+            "actor": "approver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the sample available and correctly identified?",
+            "branches": [
+              "available",
+              "not found or mismatched"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is disposal allowed after evaluation?",
+            "branches": [
+              "allowed",
+              "retain sample"
+            ]
+          }
+        ],
+        "exceptions": [
+          "sample identifier mismatch",
+          "missing physical sample",
+          "approval delay",
+          "retention requirement"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Transfer request fields can be pre-filled from sample identifiers and evaluation purpose."
+          },
+          {
+            "target": "A6",
+            "rationale": "Status updates can be prompted automatically after scheduled evaluation completion."
+          },
+          {
+            "target": "A7",
+            "rationale": "Disposal candidates can be suggested when retention conditions are not met."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "approval actor",
+        "tracking system",
+        "physical confirmation",
+        "status update rule",
+        "retention decision",
+        "disposal record"
+      ]
+    },
+    "answers": "Q1. Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?\nAnswer: The sample requester initiates the process. They first identify the required sample and its evaluation purpose, then submit a transfer request. The key inputs needed to start are the sample identifier, the evaluation purpose, and the target location.\n\nQ2. What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?\nAnswer: After evaluation is complete, the verification engineer updates the sample status and checks whether a retention requirement applies. If no retention condition is met, the sample is considered eligible for disposal. If a retention requirement exists, the sample is kept rather than disposed of.\n\nQ3. Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?\nAnswer: Yes, there is an approval step. After the verification engineer submits the disposal request, an approver reviews and records the disposal. The request would not proceed to disposal if a retention requirement is identified, effectively acting as a rejection or hold condition.\n\nQ4. What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?\nAnswer: The process uses a sample tracking sheet to manage sample information, a transfer request form to initiate moves, a storage location registry to track where samples are held, and an approval system to handle both transfer and disposal approvals.\n\nQ5. How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?\nAnswer: The reference process does not specify frequency or volume figures. Each transfer and disposal follows the same sequential workflow, but no batch patterns or peak period information is defined in the current process description.\n\nQ6. What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?\nAnswer: The process includes a mandatory physical confirmation step performed by the sample manager before any sample is moved, and disposal must be formally approved and recorded. These steps suggest compliance and traceability requirements are built in, though specific regulatory standards are not named in the process definition. A physical confirmation note is produced as an output, indicating audit trail needs.",
+    "previousOutput": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?",
+          "answer": "The sample requester initiates the process. They first identify the required sample and its evaluation purpose, then submit a transfer request. The key inputs needed to start are the sample identifier, the evaluation purpose, and the target location."
+        },
+        {
+          "question_id": "Q2",
+          "question": "What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?",
+          "answer": "After evaluation is complete, the verification engineer updates the sample status and checks whether a retention requirement applies. If no retention condition is met, the sample is considered eligible for disposal. If a retention requirement exists, the sample is kept rather than disposed of."
+        },
+        {
+          "question_id": "Q3",
+          "question": "Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?",
+          "answer": "Yes, there is an approval step. After the verification engineer submits the disposal request, an approver reviews and records the disposal. The request would not proceed to disposal if a retention requirement is identified, effectively acting as a rejection or hold condition."
+        },
+        {
+          "question_id": "Q4",
+          "question": "What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?",
+          "answer": "The process uses a sample tracking sheet to manage sample information, a transfer request form to initiate moves, a storage location registry to track where samples are held, and an approval system to handle both transfer and disposal approvals."
+        },
+        {
+          "question_id": "Q5",
+          "question": "How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?",
+          "answer": "The reference process does not specify frequency or volume figures. Each transfer and disposal follows the same sequential workflow, but no batch patterns or peak period information is defined in the current process description."
+        },
+        {
+          "question_id": "Q6",
+          "question": "What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?",
+          "answer": "The process includes a mandatory physical confirmation step performed by the sample manager before any sample is moved, and disposal must be formally approved and recorded. These steps suggest compliance and traceability requirements are built in, though specific regulatory standards are not named in the process definition. A physical confirmation note is produced as an output, indicating audit trail needs."
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No roles or responsible parties are identified for initiating sample transfers, performing evaluations, or submitting disposal requests.",
+          "why_it_matters": "Without knowing which roles (e.g., lab technician, process engineer, quality team) own each step, it is impossible to assess handoff points, automation boundaries, or where human judgment is required."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools are mentioned for tracking sample location, evaluation results, or disposal requests.",
+          "why_it_matters": "Automation feasibility depends heavily on whether a lab information management system, ERP, or tracking system exists; without this, integration opportunities cannot be assessed."
+        },
+        {
+          "category": "decision",
+          "gap": "The criteria for determining which samples are 'unnecessary' after evaluation are not defined.",
+          "why_it_matters": "This is a key branching decision in the workflow. Without explicit rules or thresholds, it cannot be automated or even consistently reconstructed from event logs."
+        },
+        {
+          "category": "input",
+          "gap": "The inputs required to initiate a sample transfer (e.g., request form, work order, evaluation schedule) are not specified.",
+          "why_it_matters": "Identifying trigger documents or data inputs is essential for determining whether initiation can be automated and what data must be captured at the start of the process."
+        },
+        {
+          "category": "output",
+          "gap": "The outputs of the disposal request process (e.g., disposal record, certificate, log entry) are not described.",
+          "why_it_matters": "Knowing the required outputs determines traceability and compliance needs, which directly affect automation design and audit trail requirements."
+        },
+        {
+          "category": "frequency",
+          "gap": "The volume and frequency of sample transfers and disposal requests are unknown.",
+          "why_it_matters": "Automation ROI assessment requires understanding how often these processes occur; low-frequency manual processes may not justify automation investment."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception scenarios are described, such as what happens if a sample is lost during transfer, fails evaluation, or if a disposal request is rejected.",
+          "why_it_matters": "Exception handling logic is critical for process completeness; unhandled exceptions in automation can cause process failures or compliance issues."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "It is unclear whether the disposal request requires any approval steps, regulatory sign-off, or safety review before samples are disposed of.",
+          "why_it_matters": "Approval chains introduce human-in-the-loop requirements and potential delays that must be explicitly modeled; missing this could lead to non-compliant automation."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The specific manual steps involved in physically moving samples and completing disposal requests are not described.",
+          "why_it_matters": "Identifying manual touchpoints is essential to quantify automation potential and determine which steps are candidates for robotic process automation or workflow orchestration."
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is unknown whether historical event logs or records exist for sample transfers and disposal requests.",
+          "why_it_matters": "Process mining requires historical data; if no structured logs exist, alternative discovery methods must be used and automation baselines cannot be established."
+        },
+        {
+          "category": "dependency",
+          "gap": "The relationship between the evaluation schedule and sample transfer timing is not defined, nor whether downstream processes depend on disposal completion.",
+          "why_it_matters": "Process dependencies affect sequencing logic and integration design; undocumented dependencies can cause bottlenecks or race conditions in an automated workflow."
+        },
+        {
+          "category": "integration_constraint",
+          "gap": "No information is provided about regulatory or safety standards governing wafer sample handling and disposal.",
+          "why_it_matters": "Semiconductor wafer samples may be subject to material safety or environmental regulations; these constraints shape what can be automated and what requires human oversight."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?",
+          "targets": [
+            "actor",
+            "input",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?",
+          "targets": [
+            "decision",
+            "output"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?",
+          "targets": [
+            "risk_or_approval",
+            "actor",
+            "exception"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?",
+          "targets": [
+            "system",
+            "data_availability",
+            "integration_constraint"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?",
+          "targets": [
+            "integration_constraint",
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "ab8e6d77-4dae-4e1e-911c-e4155378f759",
+    "created_at": "2026-09-05T03:14:48.143Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "update",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Identify Sample and Evaluation Purpose\",\n        \"actor\": \"Sample Requester\",\n        \"system\": \"Sample Tracking Sheet\",\n        \"inputs\": [\"Sample identifier\", \"Evaluation purpose\", \"Target location\"],\n        \"outputs\": [\"Identified sample record\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Submit Transfer Request\",\n        \"actor\": \"Sample Requester\",\n        \"system\": \"Transfer Request Form\",\n        \"inputs\": [\"Identified sample record\", \"Target location\", \"Evaluation purpose\"],\n        \"outputs\": [\"Transfer request submission\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Review and Approve Transfer Request\",\n        \"actor\": \"Approver\",\n        \"system\": \"Approval System\",\n        \"inputs\": [\"Transfer request submission\"],\n        \"outputs\": [\"Approved transfer order\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Physically Confirm Sample for Transfer\",\n        \"actor\": \"Sample Manager\",\n        \"system\": \"Sample Tracking Sheet\",\n        \"inputs\": [\"Approved transfer order\", \"Sample identifier\"],\n        \"outputs\": [\"Physical confirmation note\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Move Sample to Target Location\",\n        \"actor\": \"Sample Manager\",\n        \"system\": \"Storage Location Registry\",\n        \"inputs\": [\"Physical confirmation note\", \"Target location\"],\n        \"outputs\": [\"Updated storage location record\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Perform Sample Evaluation\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Sample Tracking Sheet\",\n        \"inputs\": [\"Updated storage location record\", \"Sample identifier\"],\n        \"outputs\": [\"Evaluation results\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Update Sample Status Post-Evaluation\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Sample Tracking Sheet\",\n        \"inputs\": [\"Evaluation results\"],\n        \"outputs\": [\"Updated sample status\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Check Retention Requirement\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Sample Tracking Sheet\",\n        \"inputs\": [\"Updated sample status\"],\n        \"outputs\": [\"Retention check result\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Submit Disposal Request\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Approval System\",\n        \"inputs\": [\"Retention check result (no retention required)\", \"Sample identifier\"],\n        \"outputs\": [\"Disposal request submission\"]\n      },\n      {\n        \"id\": \"A10\",\n        \"name\": \"Review and Approve Disposal Request\",\n        \"actor\": \"Approver\",\n        \"system\": \"Approval System\",\n        \"inputs\": [\"Disposal request submission\"],\n        \"outputs\": [\"Approved disposal order\"]\n      },\n      {\n        \"id\": \"A11\",\n        \"name\": \"Record and Execute Sample Disposal\",\n        \"actor\": \"Sample Manager\",\n        \"system\": \"Sample Tracking Sheet\",\n        \"inputs\": [\"Approved disposal order\"],\n        \"outputs\": [\"Disposal record\", \"Updated sample tracking sheet\"]\n      },\n      {\n        \"id\": \"A12\",\n        \"name\": \"Retain Sample\",\n        \"actor\": \"Sample Manager\",\n        \"system\": \"Storage Location Registry\",\n        \"inputs\": [\"Retention check result (retention required)\", \"Sample identifier\"],\n        \"outputs\": [\"Retention record\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is the transfer request approved?\",\n        \"branches\": [\n          {\"outcome\": \"Approved\", \"next\": \"A4\"},\n          {\"outcome\": \"Rejected\", \"next\": \"END_TRANSFER_REJECTED\"}\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Does the sample have a retention requirement?\",\n        \"branches\": [\n          {\"outcome\": \"No retention requirement\", \"next\": \"A9\"},\n          {\"outcome\": \"Retention requirement exists\", \"next\": \"A12\"}\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Is the disposal request approved?\",\n        \"branches\": [\n          {\"outcome\": \"Approved\", \"next\": \"A11\"},\n          {\"outcome\": \"Rejected / Hold\", \"next\": \"A12\"}\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"description\": \"Transfer request rejected by approver\",\n        \"trigger\": \"Approver rejects transfer request at D1\",\n        \"resolution\": \"Sample Requester is notified; request may be revised and resubmitted\"\n      },\n      {\n        \"id\": \"E2\",\n        \"description\": \"Sample not physically located during confirmation\",\n        \"trigger\": \"Sample Manager cannot confirm sample presence at A4\",\n        \"resolution\": \"Sample Requester and Verification Engineer are notified; sample location must be reconciled in Storage Location Registry\"\n      },\n      {\n        \"id\": \"E3\",\n        \"description\": \"Disposal request placed on hold or rejected\",\n        \"trigger\": \"Approver rejects disposal request at D3\",\n        \"resolution\": \"Sample is retained; Verification Engineer is notified; retention record is updated\"\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A4\", \"type\": \"conditional\", \"condition\": \"Approved\"},\n      {\"from\": \"A4\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A7\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A8\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A9\", \"type\": \"conditional\", \"condition\": \"No retention requirement\"},\n      {\"from\": \"D2\", \"to\": \"A12\", \"type\": \"conditional\", \"condition\": \"Retention requirement exists\"},\n      {\"from\": \"A9\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A11\", \"type\": \"conditional\", \"condition\": \"Approved\"},\n      {\"from\": \"D3\", \"to\": \"A12\", \"type\": \"conditional\", \"condition\": \"Rejected / Hold\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A2 - Submit Transfer Request\",\n      \"rationale\": \"A structured digital form with mandatory fields (sample identifier, evaluation purpose, target location) can replace manual form submission, reducing errors and enabling downstream routing without human intervention.\",\n      \"required_data\": [\"Sample identifier\", \"Evaluation purpose\", \"Target location\"],\n      \"constraints\": [\"Sample identifier must exist in Sample Tracking Sheet before submission\", \"Target location must be valid in Storage Location Registry\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D1 - Review and Approve Transfer Request\",\n      \"rationale\": \"Rule-based auto-approval can be applied for standard, low-risk transfers where the sample exists and the target location is pre-validated. Exceptions requiring human review can be escalated automatically.\",\n      \"required_data\": [\"Sample identifier validity\", \"Target location validity\", \"Evaluation purpose category\"],\n      \"constraints\": [\"Manual override must remain available for edge cases\", \"Audit trail of automated approvals must be maintained\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A5 - Move Sample to Target Location\",\n      \"rationale\": \"Automatic update of the Storage Location Registry upon physical confirmation eliminates manual registry updates and ensures real-time location accuracy.\",\n      \"required_data\": [\"Physical confirmation note\", \"Target location\", \"Sample identifier\"],\n      \"constraints\": [\"Physical confirmation step (A4) must remain manual due to compliance requirements\", \"Integration between physical confirmation note and registry update needed\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A7 - Update Sample Status Post-Evaluation\",\n      \"rationale\": \"Automatic status update triggered upon completion of evaluation results entry reduces manual tracking overhead and ensures the sample tracking sheet is current without additional action by the engineer.\",\n      \"required_data\": [\"Evaluation results\", \"Sample identifier\"],\n      \"constraints\": [\"Evaluation results must be formally recorded before trigger fires\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A8 - Check Retention Requirement\",\n      \"rationale\": \"Retention rules are deterministic (presence or absence of a retention flag). This check can be fully automated by querying the sample tracking sheet for retention attributes once evaluation status is updated.\",\n      \"required_data\": [\"Updated sample status\", \"Retention rules repository\"],\n      \"constraints\": [\"Retention rules must be maintained and versioned centrally\", \"Automated result must be auditable\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A9 - Submit Disposal Request\",\n      \"rationale\": \"When the retention check returns no retention requirement, a disposal request can be automatically generated and routed to the approver, eliminating manual submission steps for the Verification Engineer.\",\n      \"required_data\": [\"Retention check result\", \"Sample identifier\", \"Sample status\"],\n      \"constraints\": [\"Automated submission must still produce a traceable request record in the Approval System\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"D3 - Review and Approve Disposal Request\",\n      \"rationale\": \"Structured approval routing with automated reminders and escalation paths can reduce approval cycle time. Full auto-approval is lower confidence given safety and compliance implications of disposal.\",\n      \"required_data\": [\"Disposal request details\", \"Approver assignment rules\"],\n      \"constraints\": [\"Final approval must involve a human approver for compliance traceability\", \"Escalation thresholds and timeouts must be defined\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A11 - Record and Execute Sample Disposal\",\n      \"rationale\": \"Automatic generation of the disposal record upon approval reduces manual data entry and ensures the sample tracking sheet and audit log are updated consistently and immediately.\",\n      \"required_data\": [\"Approved disposal order\", \"Sample identifier\", \"Approver identity\", \"Timestamp\"],\n      \"constraints\": [\"Physical disposal action itself remains manual\", \"Disposal record must be immutable once created for audit purposes\"],\n      \"confidence\": \"high\"\n    }\n  ],\n  \"remaining_gaps\": [\n    {\n      \"id\": \"G1\",\n      \"description\": \"No information is provided about what happens when a sample is lost or mislabeled during the physical confirmation step (A4). The exception handling path for unresolvable location discrepancies is undefined.\",\n      \"impact\": \"Medium - could cause process stalls with no defined resolution path\",\n      \"suggested_clarification\": \"What is the escalation and resolution procedure if a sample cannot be physically located during confirmation?\"\n    },\n    {\n      \"id\": \"G2\",\n      \"description\": \"The criteria governing what constitutes a 'retention requirement' are not specified. It is unclear whether retention rules are time-based, project-based, regulatory-based, or defined by another authority.\",\n      \"impact\": \"High - directly affects the reliability of D2 and any automation applied to A8\",\n      \"suggested_clarification\": \"What specific attributes or rules define a retention requirement, and where are these rules maintained?\"\n    },\n    {\n      \"id\": \"G3\",\n      \"description\": \"The role and identity of the 'Approver' for both transfer and disposal requests is not fully defined. It is unclear whether the same individual approves both, whether approval authority depends on sample type or risk level, and whether there is a delegation or escalation mechanism.\",\n      \"impact\": \"Medium - affects routing logic and automation design for D1 and D3\",\n      \"suggested_clarification\": \"Who holds approval authority for transfer versus disposal requests, and are there delegation or escalation rules?\"\n    },\n    {\n      \"id\": \"G4\",\n      \"description\": \"No process frequency, volume, or SLA data is available. Without this, it is not possible to assess automation ROI, prioritize bottlenecks, or define escalation timeout thresholds.\",\n      \"impact\": \"Low to Medium - limits quantitative process improvement analysis\",\n      \"suggested_clarification\": \"Approximately how many transfer and disposal requests are processed per period, and are there target turnaround times for each step?\"\n    },\n    {\n      \"id\": \"G5\",\n      \"description\": \"Integration capabilities between the sample tracking sheet, transfer request form, storage location registry, and approval system are not described. It is unknown whether these are separate manual tools or connected systems.\",\n      \"impact\": \"High - directly determines feasibility and scope of automation opportunities\",\n      \"suggested_clarification\": \"Are the current tools integrated or standalone? What data exchange mechanisms exist between them?\"\n    },\n    {\n      \"id\": \"G6\",\n      \"description\": \"The process for handling samples that are retained (A12) is not elaborated. There is no defined periodic review to reassess retained samples for future disposal eligibility.\",\n      \"impact\": \"Medium - retained samples may accumulate without a lifecycle exit path\",\n      \"suggested_clarification\": \"Is there a periodic review or expiry mechanism for retained samples, and who is responsible for triggering it?\"\n    }\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Identify Sample and Evaluation Purpose",
+            "actor": "Sample Requester",
+            "system": "Sample Tracking Sheet",
+            "inputs": [
+              "Sample identifier",
+              "Evaluation purpose",
+              "Target location"
+            ],
+            "outputs": [
+              "Identified sample record"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Submit Transfer Request",
+            "actor": "Sample Requester",
+            "system": "Transfer Request Form",
+            "inputs": [
+              "Identified sample record",
+              "Target location",
+              "Evaluation purpose"
+            ],
+            "outputs": [
+              "Transfer request submission"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Review and Approve Transfer Request",
+            "actor": "Approver",
+            "system": "Approval System",
+            "inputs": [
+              "Transfer request submission"
+            ],
+            "outputs": [
+              "Approved transfer order"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Physically Confirm Sample for Transfer",
+            "actor": "Sample Manager",
+            "system": "Sample Tracking Sheet",
+            "inputs": [
+              "Approved transfer order",
+              "Sample identifier"
+            ],
+            "outputs": [
+              "Physical confirmation note"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Move Sample to Target Location",
+            "actor": "Sample Manager",
+            "system": "Storage Location Registry",
+            "inputs": [
+              "Physical confirmation note",
+              "Target location"
+            ],
+            "outputs": [
+              "Updated storage location record"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Perform Sample Evaluation",
+            "actor": "Verification Engineer",
+            "system": "Sample Tracking Sheet",
+            "inputs": [
+              "Updated storage location record",
+              "Sample identifier"
+            ],
+            "outputs": [
+              "Evaluation results"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Update Sample Status Post-Evaluation",
+            "actor": "Verification Engineer",
+            "system": "Sample Tracking Sheet",
+            "inputs": [
+              "Evaluation results"
+            ],
+            "outputs": [
+              "Updated sample status"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Check Retention Requirement",
+            "actor": "Verification Engineer",
+            "system": "Sample Tracking Sheet",
+            "inputs": [
+              "Updated sample status"
+            ],
+            "outputs": [
+              "Retention check result"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Submit Disposal Request",
+            "actor": "Verification Engineer",
+            "system": "Approval System",
+            "inputs": [
+              "Retention check result (no retention required)",
+              "Sample identifier"
+            ],
+            "outputs": [
+              "Disposal request submission"
+            ]
+          },
+          {
+            "id": "A10",
+            "name": "Review and Approve Disposal Request",
+            "actor": "Approver",
+            "system": "Approval System",
+            "inputs": [
+              "Disposal request submission"
+            ],
+            "outputs": [
+              "Approved disposal order"
+            ]
+          },
+          {
+            "id": "A11",
+            "name": "Record and Execute Sample Disposal",
+            "actor": "Sample Manager",
+            "system": "Sample Tracking Sheet",
+            "inputs": [
+              "Approved disposal order"
+            ],
+            "outputs": [
+              "Disposal record",
+              "Updated sample tracking sheet"
+            ]
+          },
+          {
+            "id": "A12",
+            "name": "Retain Sample",
+            "actor": "Sample Manager",
+            "system": "Storage Location Registry",
+            "inputs": [
+              "Retention check result (retention required)",
+              "Sample identifier"
+            ],
+            "outputs": [
+              "Retention record"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the transfer request approved?",
+            "branches": [
+              {
+                "outcome": "Approved",
+                "next": "A4"
+              },
+              {
+                "outcome": "Rejected",
+                "next": "END_TRANSFER_REJECTED"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the sample have a retention requirement?",
+            "branches": [
+              {
+                "outcome": "No retention requirement",
+                "next": "A9"
+              },
+              {
+                "outcome": "Retention requirement exists",
+                "next": "A12"
+              }
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the disposal request approved?",
+            "branches": [
+              {
+                "outcome": "Approved",
+                "next": "A11"
+              },
+              {
+                "outcome": "Rejected / Hold",
+                "next": "A12"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Transfer request rejected by approver",
+            "trigger": "Approver rejects transfer request at D1",
+            "resolution": "Sample Requester is notified; request may be revised and resubmitted"
+          },
+          {
+            "id": "E2",
+            "description": "Sample not physically located during confirmation",
+            "trigger": "Sample Manager cannot confirm sample presence at A4",
+            "resolution": "Sample Requester and Verification Engineer are notified; sample location must be reconciled in Storage Location Registry"
+          },
+          {
+            "id": "E3",
+            "description": "Disposal request placed on hold or rejected",
+            "trigger": "Approver rejects disposal request at D3",
+            "resolution": "Sample is retained; Verification Engineer is notified; retention record is updated"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A4",
+            "type": "conditional",
+            "condition": "Approved"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A9",
+            "type": "conditional",
+            "condition": "No retention requirement"
+          },
+          {
+            "from": "D2",
+            "to": "A12",
+            "type": "conditional",
+            "condition": "Retention requirement exists"
+          },
+          {
+            "from": "A9",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A11",
+            "type": "conditional",
+            "condition": "Approved"
+          },
+          {
+            "from": "D3",
+            "to": "A12",
+            "type": "conditional",
+            "condition": "Rejected / Hold"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A2 - Submit Transfer Request",
+          "rationale": "A structured digital form with mandatory fields (sample identifier, evaluation purpose, target location) can replace manual form submission, reducing errors and enabling downstream routing without human intervention.",
+          "required_data": [
+            "Sample identifier",
+            "Evaluation purpose",
+            "Target location"
+          ],
+          "constraints": [
+            "Sample identifier must exist in Sample Tracking Sheet before submission",
+            "Target location must be valid in Storage Location Registry"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 - Review and Approve Transfer Request",
+          "rationale": "Rule-based auto-approval can be applied for standard, low-risk transfers where the sample exists and the target location is pre-validated. Exceptions requiring human review can be escalated automatically.",
+          "required_data": [
+            "Sample identifier validity",
+            "Target location validity",
+            "Evaluation purpose category"
+          ],
+          "constraints": [
+            "Manual override must remain available for edge cases",
+            "Audit trail of automated approvals must be maintained"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A5 - Move Sample to Target Location",
+          "rationale": "Automatic update of the Storage Location Registry upon physical confirmation eliminates manual registry updates and ensures real-time location accuracy.",
+          "required_data": [
+            "Physical confirmation note",
+            "Target location",
+            "Sample identifier"
+          ],
+          "constraints": [
+            "Physical confirmation step (A4) must remain manual due to compliance requirements",
+            "Integration between physical confirmation note and registry update needed"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A7 - Update Sample Status Post-Evaluation",
+          "rationale": "Automatic status update triggered upon completion of evaluation results entry reduces manual tracking overhead and ensures the sample tracking sheet is current without additional action by the engineer.",
+          "required_data": [
+            "Evaluation results",
+            "Sample identifier"
+          ],
+          "constraints": [
+            "Evaluation results must be formally recorded before trigger fires"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A8 - Check Retention Requirement",
+          "rationale": "Retention rules are deterministic (presence or absence of a retention flag). This check can be fully automated by querying the sample tracking sheet for retention attributes once evaluation status is updated.",
+          "required_data": [
+            "Updated sample status",
+            "Retention rules repository"
+          ],
+          "constraints": [
+            "Retention rules must be maintained and versioned centrally",
+            "Automated result must be auditable"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A9 - Submit Disposal Request",
+          "rationale": "When the retention check returns no retention requirement, a disposal request can be automatically generated and routed to the approver, eliminating manual submission steps for the Verification Engineer.",
+          "required_data": [
+            "Retention check result",
+            "Sample identifier",
+            "Sample status"
+          ],
+          "constraints": [
+            "Automated submission must still produce a traceable request record in the Approval System"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "D3 - Review and Approve Disposal Request",
+          "rationale": "Structured approval routing with automated reminders and escalation paths can reduce approval cycle time. Full auto-approval is lower confidence given safety and compliance implications of disposal.",
+          "required_data": [
+            "Disposal request details",
+            "Approver assignment rules"
+          ],
+          "constraints": [
+            "Final approval must involve a human approver for compliance traceability",
+            "Escalation thresholds and timeouts must be defined"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A11 - Record and Execute Sample Disposal",
+          "rationale": "Automatic generation of the disposal record upon approval reduces manual data entry and ensures the sample tracking sheet and audit log are updated consistently and immediately.",
+          "required_data": [
+            "Approved disposal order",
+            "Sample identifier",
+            "Approver identity",
+            "Timestamp"
+          ],
+          "constraints": [
+            "Physical disposal action itself remains manual",
+            "Disposal record must be immutable once created for audit purposes"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "remaining_gaps": [
+        {
+          "id": "G1",
+          "description": "No information is provided about what happens when a sample is lost or mislabeled during the physical confirmation step (A4). The exception handling path for unresolvable location discrepancies is undefined.",
+          "impact": "Medium - could cause process stalls with no defined resolution path",
+          "suggested_clarification": "What is the escalation and resolution procedure if a sample cannot be physically located during confirmation?"
+        },
+        {
+          "id": "G2",
+          "description": "The criteria governing what constitutes a 'retention requirement' are not specified. It is unclear whether retention rules are time-based, project-based, regulatory-based, or defined by another authority.",
+          "impact": "High - directly affects the reliability of D2 and any automation applied to A8",
+          "suggested_clarification": "What specific attributes or rules define a retention requirement, and where are these rules maintained?"
+        },
+        {
+          "id": "G3",
+          "description": "The role and identity of the 'Approver' for both transfer and disposal requests is not fully defined. It is unclear whether the same individual approves both, whether approval authority depends on sample type or risk level, and whether there is a delegation or escalation mechanism.",
+          "impact": "Medium - affects routing logic and automation design for D1 and D3",
+          "suggested_clarification": "Who holds approval authority for transfer versus disposal requests, and are there delegation or escalation rules?"
+        },
+        {
+          "id": "G4",
+          "description": "No process frequency, volume, or SLA data is available. Without this, it is not possible to assess automation ROI, prioritize bottlenecks, or define escalation timeout thresholds.",
+          "impact": "Low to Medium - limits quantitative process improvement analysis",
+          "suggested_clarification": "Approximately how many transfer and disposal requests are processed per period, and are there target turnaround times for each step?"
+        },
+        {
+          "id": "G5",
+          "description": "Integration capabilities between the sample tracking sheet, transfer request form, storage location registry, and approval system are not described. It is unknown whether these are separate manual tools or connected systems.",
+          "impact": "High - directly determines feasibility and scope of automation opportunities",
+          "suggested_clarification": "Are the current tools integrated or standalone? What data exchange mechanisms exist between them?"
+        },
+        {
+          "id": "G6",
+          "description": "The process for handling samples that are retained (A12) is not elaborated. There is no defined periodic review to reassess retained samples for future disposal eligibility.",
+          "impact": "Medium - retained samples may accumulate without a lifecycle exit path",
+          "suggested_clarification": "Is there a periodic review or expiry mechanism for retained samples, and who is responsible for triggering it?"
+        }
+      ]
+    }
+  }
+}

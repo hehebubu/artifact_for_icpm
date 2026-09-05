@@ -1,0 +1,442 @@
+{
+  "request": {
+    "stage": "oracle_answers",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S03",
+      "title": "Wafer Sample Transfer and Disposal Request",
+      "domain": "semiconductor_engineering",
+      "initial_description": "Samples are moved when they are needed for evaluation. After evaluation, unnecessary samples are checked and disposed of through a request process.",
+      "reference_workflow": {
+        "goal": "Move required wafer samples for evaluation and dispose of completed samples through traceable approval.",
+        "actors": [
+          "sample requester",
+          "sample manager",
+          "verification engineer",
+          "approver"
+        ],
+        "systems": [
+          "sample tracking sheet",
+          "transfer request form",
+          "approval system",
+          "storage location registry"
+        ],
+        "inputs": [
+          "sample identifier",
+          "evaluation purpose",
+          "target location",
+          "disposal reason"
+        ],
+        "outputs": [
+          "transfer approval",
+          "updated sample status",
+          "disposal record",
+          "physical confirmation note"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Identify required sample and evaluation purpose",
+            "actor": "sample requester"
+          },
+          {
+            "id": "A2",
+            "name": "Submit sample transfer request",
+            "actor": "sample requester"
+          },
+          {
+            "id": "A3",
+            "name": "Approve transfer request",
+            "actor": "approver"
+          },
+          {
+            "id": "A4",
+            "name": "Physically confirm sample",
+            "actor": "sample manager"
+          },
+          {
+            "id": "A5",
+            "name": "Move sample to target location",
+            "actor": "sample manager"
+          },
+          {
+            "id": "A6",
+            "name": "Update sample status after evaluation",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Submit disposal request for completed sample",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A8",
+            "name": "Approve and record disposal",
+            "actor": "approver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the sample available and correctly identified?",
+            "branches": [
+              "available",
+              "not found or mismatched"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is disposal allowed after evaluation?",
+            "branches": [
+              "allowed",
+              "retain sample"
+            ]
+          }
+        ],
+        "exceptions": [
+          "sample identifier mismatch",
+          "missing physical sample",
+          "approval delay",
+          "retention requirement"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Transfer request fields can be pre-filled from sample identifiers and evaluation purpose."
+          },
+          {
+            "target": "A6",
+            "rationale": "Status updates can be prompted automatically after scheduled evaluation completion."
+          },
+          {
+            "target": "A7",
+            "rationale": "Disposal candidates can be suggested when retention conditions are not met."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "approval actor",
+        "tracking system",
+        "physical confirmation",
+        "status update rule",
+        "retention decision",
+        "disposal record"
+      ]
+    },
+    "answers": "Q1. Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?\nAnswer: \n\nQ2. What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?\nAnswer: \n\nQ3. Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?\nAnswer: \n\nQ4. What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?\nAnswer: \n\nQ5. How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?\nAnswer: \n\nQ6. What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?\nAnswer: ",
+    "previousOutput": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No roles or responsible parties are identified for initiating sample transfers, performing evaluations, or submitting disposal requests.",
+          "why_it_matters": "Without knowing which roles (e.g., lab technician, process engineer, quality team) own each step, it is impossible to assess handoff points, automation boundaries, or where human judgment is required."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools are mentioned for tracking sample location, evaluation results, or disposal requests.",
+          "why_it_matters": "Automation feasibility depends heavily on whether a lab information management system, ERP, or tracking system exists; without this, integration opportunities cannot be assessed."
+        },
+        {
+          "category": "decision",
+          "gap": "The criteria for determining which samples are 'unnecessary' after evaluation are not defined.",
+          "why_it_matters": "This is a key branching decision in the workflow. Without explicit rules or thresholds, it cannot be automated or even consistently reconstructed from event logs."
+        },
+        {
+          "category": "input",
+          "gap": "The inputs required to initiate a sample transfer (e.g., request form, work order, evaluation schedule) are not specified.",
+          "why_it_matters": "Identifying trigger documents or data inputs is essential for determining whether initiation can be automated and what data must be captured at the start of the process."
+        },
+        {
+          "category": "output",
+          "gap": "The outputs of the disposal request process (e.g., disposal record, certificate, log entry) are not described.",
+          "why_it_matters": "Knowing the required outputs determines traceability and compliance needs, which directly affect automation design and audit trail requirements."
+        },
+        {
+          "category": "frequency",
+          "gap": "The volume and frequency of sample transfers and disposal requests are unknown.",
+          "why_it_matters": "Automation ROI assessment requires understanding how often these processes occur; low-frequency manual processes may not justify automation investment."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception scenarios are described, such as what happens if a sample is lost during transfer, fails evaluation, or if a disposal request is rejected.",
+          "why_it_matters": "Exception handling logic is critical for process completeness; unhandled exceptions in automation can cause process failures or compliance issues."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "It is unclear whether the disposal request requires any approval steps, regulatory sign-off, or safety review before samples are disposed of.",
+          "why_it_matters": "Approval chains introduce human-in-the-loop requirements and potential delays that must be explicitly modeled; missing this could lead to non-compliant automation."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The specific manual steps involved in physically moving samples and completing disposal requests are not described.",
+          "why_it_matters": "Identifying manual touchpoints is essential to quantify automation potential and determine which steps are candidates for robotic process automation or workflow orchestration."
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is unknown whether historical event logs or records exist for sample transfers and disposal requests.",
+          "why_it_matters": "Process mining requires historical data; if no structured logs exist, alternative discovery methods must be used and automation baselines cannot be established."
+        },
+        {
+          "category": "dependency",
+          "gap": "The relationship between the evaluation schedule and sample transfer timing is not defined, nor whether downstream processes depend on disposal completion.",
+          "why_it_matters": "Process dependencies affect sequencing logic and integration design; undocumented dependencies can cause bottlenecks or race conditions in an automated workflow."
+        },
+        {
+          "category": "integration_constraint",
+          "gap": "No information is provided about regulatory or safety standards governing wafer sample handling and disposal.",
+          "why_it_matters": "Semiconductor wafer samples may be subject to material safety or environmental regulations; these constraints shape what can be automated and what requires human oversight."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?",
+          "targets": [
+            "actor",
+            "input",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?",
+          "targets": [
+            "decision",
+            "output"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?",
+          "targets": [
+            "risk_or_approval",
+            "actor",
+            "exception"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?",
+          "targets": [
+            "system",
+            "data_availability",
+            "integration_constraint"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?",
+          "targets": [
+            "integration_constraint",
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No roles or responsible parties are identified for initiating sample transfers, performing evaluations, or submitting disposal requests.",
+          "why_it_matters": "Without knowing which roles (e.g., lab technician, process engineer, quality team) own each step, it is impossible to assess handoff points, automation boundaries, or where human judgment is required."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools are mentioned for tracking sample location, evaluation results, or disposal requests.",
+          "why_it_matters": "Automation feasibility depends heavily on whether a lab information management system, ERP, or tracking system exists; without this, integration opportunities cannot be assessed."
+        },
+        {
+          "category": "decision",
+          "gap": "The criteria for determining which samples are 'unnecessary' after evaluation are not defined.",
+          "why_it_matters": "This is a key branching decision in the workflow. Without explicit rules or thresholds, it cannot be automated or even consistently reconstructed from event logs."
+        },
+        {
+          "category": "input",
+          "gap": "The inputs required to initiate a sample transfer (e.g., request form, work order, evaluation schedule) are not specified.",
+          "why_it_matters": "Identifying trigger documents or data inputs is essential for determining whether initiation can be automated and what data must be captured at the start of the process."
+        },
+        {
+          "category": "output",
+          "gap": "The outputs of the disposal request process (e.g., disposal record, certificate, log entry) are not described.",
+          "why_it_matters": "Knowing the required outputs determines traceability and compliance needs, which directly affect automation design and audit trail requirements."
+        },
+        {
+          "category": "frequency",
+          "gap": "The volume and frequency of sample transfers and disposal requests are unknown.",
+          "why_it_matters": "Automation ROI assessment requires understanding how often these processes occur; low-frequency manual processes may not justify automation investment."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception scenarios are described, such as what happens if a sample is lost during transfer, fails evaluation, or if a disposal request is rejected.",
+          "why_it_matters": "Exception handling logic is critical for process completeness; unhandled exceptions in automation can cause process failures or compliance issues."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "It is unclear whether the disposal request requires any approval steps, regulatory sign-off, or safety review before samples are disposed of.",
+          "why_it_matters": "Approval chains introduce human-in-the-loop requirements and potential delays that must be explicitly modeled; missing this could lead to non-compliant automation."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The specific manual steps involved in physically moving samples and completing disposal requests are not described.",
+          "why_it_matters": "Identifying manual touchpoints is essential to quantify automation potential and determine which steps are candidates for robotic process automation or workflow orchestration."
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is unknown whether historical event logs or records exist for sample transfers and disposal requests.",
+          "why_it_matters": "Process mining requires historical data; if no structured logs exist, alternative discovery methods must be used and automation baselines cannot be established."
+        },
+        {
+          "category": "dependency",
+          "gap": "The relationship between the evaluation schedule and sample transfer timing is not defined, nor whether downstream processes depend on disposal completion.",
+          "why_it_matters": "Process dependencies affect sequencing logic and integration design; undocumented dependencies can cause bottlenecks or race conditions in an automated workflow."
+        },
+        {
+          "category": "integration_constraint",
+          "gap": "No information is provided about regulatory or safety standards governing wafer sample handling and disposal.",
+          "why_it_matters": "Semiconductor wafer samples may be subject to material safety or environmental regulations; these constraints shape what can be automated and what requires human oversight."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?",
+          "targets": [
+            "actor",
+            "input",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?",
+          "targets": [
+            "decision",
+            "output"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?",
+          "targets": [
+            "risk_or_approval",
+            "actor",
+            "exception"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?",
+          "targets": [
+            "system",
+            "data_availability",
+            "integration_constraint"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?",
+          "targets": [
+            "integration_constraint",
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "936a6d60-eab6-4b5e-82fd-93232c278aef",
+    "created_at": "2026-09-05T03:12:37.133Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "oracle_answers",
+    "raw_text": "{\n  \"answers\": [\n    {\n      \"question_id\": \"Q1\",\n      \"question\": \"Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?\",\n      \"answer\": \"The sample requester initiates the process. They first identify the required sample and its evaluation purpose, then submit a transfer request. The key inputs needed to start are the sample identifier, the evaluation purpose, and the target location.\"\n    },\n    {\n      \"question_id\": \"Q2\",\n      \"question\": \"What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?\",\n      \"answer\": \"After evaluation is complete, the verification engineer updates the sample status and checks whether a retention requirement applies. If no retention condition is met, the sample is considered eligible for disposal. If a retention requirement exists, the sample is kept rather than disposed of.\"\n    },\n    {\n      \"question_id\": \"Q3\",\n      \"question\": \"Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?\",\n      \"answer\": \"Yes, there is an approval step. After the verification engineer submits the disposal request, an approver reviews and records the disposal. The request would not proceed to disposal if a retention requirement is identified, effectively acting as a rejection or hold condition.\"\n    },\n    {\n      \"question_id\": \"Q4\",\n      \"question\": \"What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?\",\n      \"answer\": \"The process uses a sample tracking sheet to manage sample information, a transfer request form to initiate moves, a storage location registry to track where samples are held, and an approval system to handle both transfer and disposal approvals.\"\n    },\n    {\n      \"question_id\": \"Q5\",\n      \"question\": \"How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?\",\n      \"answer\": \"The reference process does not specify frequency or volume figures. Each transfer and disposal follows the same sequential workflow, but no batch patterns or peak period information is defined in the current process description.\"\n    },\n    {\n      \"question_id\": \"Q6\",\n      \"question\": \"What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?\",\n      \"answer\": \"The process includes a mandatory physical confirmation step performed by the sample manager before any sample is moved, and disposal must be formally approved and recorded. These steps suggest compliance and traceability requirements are built in, though specific regulatory standards are not named in the process definition. A physical confirmation note is produced as an output, indicating audit trail needs.\"\n    }\n  ]\n}",
+    "parsed": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "Who initiates a sample transfer request, and what information or trigger (e.g., evaluation schedule, work order) is required to start the process?",
+          "answer": "The sample requester initiates the process. They first identify the required sample and its evaluation purpose, then submit a transfer request. The key inputs needed to start are the sample identifier, the evaluation purpose, and the target location."
+        },
+        {
+          "question_id": "Q2",
+          "question": "What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?",
+          "answer": "After evaluation is complete, the verification engineer updates the sample status and checks whether a retention requirement applies. If no retention condition is met, the sample is considered eligible for disposal. If a retention requirement exists, the sample is kept rather than disposed of."
+        },
+        {
+          "question_id": "Q3",
+          "question": "Is there an approval workflow for disposal requests, and if so, who must approve it and under what conditions can it be rejected?",
+          "answer": "Yes, there is an approval step. After the verification engineer submits the disposal request, an approver reviews and records the disposal. The request would not proceed to disposal if a retention requirement is identified, effectively acting as a rejection or hold condition."
+        },
+        {
+          "question_id": "Q4",
+          "question": "What systems or tools are currently used to track sample locations, record evaluation results, and manage disposal requests?",
+          "answer": "The process uses a sample tracking sheet to manage sample information, a transfer request form to initiate moves, a storage location registry to track where samples are held, and an approval system to handle both transfer and disposal approvals."
+        },
+        {
+          "question_id": "Q5",
+          "question": "How frequently do sample transfers and disposal requests occur, and are there peak periods or batch patterns in this process?",
+          "answer": "The reference process does not specify frequency or volume figures. Each transfer and disposal follows the same sequential workflow, but no batch patterns or peak period information is defined in the current process description."
+        },
+        {
+          "question_id": "Q6",
+          "question": "What regulatory or safety requirements govern the physical handling and disposal of wafer samples, and do these impose mandatory manual steps?",
+          "answer": "The process includes a mandatory physical confirmation step performed by the sample manager before any sample is moved, and disposal must be formally approved and recorded. These steps suggest compliance and traceability requirements are built in, though specific regulatory standards are not named in the process definition. A physical confirmation note is produced as an output, indicating audit trail needs."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,713 @@
+{
+  "request": {
+    "stage": "update",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S01",
+      "title": "Verification Test Setup and Reporting",
+      "domain": "semiconductor_engineering",
+      "initial_description": "An engineer prepares a verification test, runs the evaluation, checks the results, and writes a short report. If something looks wrong, the engineer investigates and shares the result with related people.",
+      "reference_workflow": {
+        "goal": "Run a verification test and distribute a summarized result report.",
+        "actors": [
+          "verification engineer",
+          "review engineer",
+          "project owner"
+        ],
+        "systems": [
+          "test execution tool",
+          "result repository",
+          "report template",
+          "email or collaboration tool"
+        ],
+        "inputs": [
+          "test request",
+          "test condition",
+          "sample identifier",
+          "evaluation setup guide"
+        ],
+        "outputs": [
+          "test result files",
+          "summary report",
+          "issue list",
+          "review notification"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Review test request and conditions",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Prepare evaluation setup",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A3",
+            "name": "Run verification test",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Collect result files",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A5",
+            "name": "Check result validity",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A6",
+            "name": "Summarize findings in report",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Share report for review",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A8",
+            "name": "Review report and request clarification if needed",
+            "actor": "review engineer"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are the result files complete and readable?",
+            "branches": [
+              "complete",
+              "missing or corrupted"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Do the results contain abnormal patterns?",
+            "branches": [
+              "normal",
+              "abnormal"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing setup information",
+          "test execution failure",
+          "incomplete result files",
+          "unclear abnormal pattern"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A4",
+            "rationale": "Result file collection is repetitive and follows a standard folder or repository pattern."
+          },
+          {
+            "target": "A5",
+            "rationale": "Completeness and basic validity checks can be rule-based."
+          },
+          {
+            "target": "A6",
+            "rationale": "Report drafting can be supported by template filling and result summarization."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "test request input",
+        "sample identifier",
+        "systems used",
+        "result validity criteria",
+        "review actor",
+        "exception handling",
+        "report distribution channel"
+      ]
+    },
+    "answers": "Q1. What specific tools or systems are used at each stage — test preparation, test execution, result capture, and report generation — and do they expose any APIs or data export capabilities?\nAnswer: We use a dedicated test execution tool to run the verification tests, a result repository where result files are stored after each run, a report template for structuring the summary, and an email or collaboration tool for sharing the report. The result repository follows a standard folder structure, which makes file collection straightforward. API or export capabilities have not been formally assessed yet.\n\nQ2. What criteria or thresholds define that 'something looks wrong' in the results — are these numeric limits, rule-based checks, or purely based on engineer judgment?\nAnswer: There are two main checks. First, we verify whether the result files are complete and readable — this is a rule-based check on file presence and format. Second, the engineer reviews the content for abnormal patterns, which currently relies on engineer judgment. Formal numeric thresholds have not been documented.\n\nQ3. How frequently is this verification test workflow executed, and how much total engineer time does a typical end-to-end run take, broken down by activity if possible?\nAnswer: Frequency and per-activity time estimates are not formally tracked at this point. What we can say is that the workflow covers eight distinct activities from reviewing the test request through to the review engineer receiving the report, so end-to-end effort spans multiple steps across at least two people.\n\nQ4. Who are all the roles involved in this workflow, and at which specific steps do handoffs between people occur?\nAnswer: Three roles are involved: the verification engineer, the review engineer, and the project owner. The verification engineer handles all steps from reviewing the test request through sharing the report. The main handoff occurs when the report is passed to the review engineer, who then reviews it and may request clarification. The project owner is a stakeholder in the process but is not a direct actor in the activity steps.\n\nQ5. What is the expected format and destination of the short report, and who are the 'related people' the result is shared with during the investigation path?\nAnswer: The report is structured using a standard report template and delivered via email or a collaboration tool. The primary recipient is the review engineer. When something looks wrong, the outputs include an issue list in addition to the summary report, and a review notification is sent. The project owner may also be informed depending on the findings.\n\nQ6. Are there any formal approval, compliance, or audit requirements associated with the investigation findings or the final report before they can be shared or closed?\nAnswer: There is no formal approval gate explicitly defined in the current workflow. The review engineer can request clarification after receiving the report, but there is no documented sign-off or compliance step required before the report is distributed or the case is closed.",
+    "previousOutput": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "What specific tools or systems are used at each stage — test preparation, test execution, result capture, and report generation — and do they expose any APIs or data export capabilities?",
+          "answer": "We use a dedicated test execution tool to run the verification tests, a result repository where result files are stored after each run, a report template for structuring the summary, and an email or collaboration tool for sharing the report. The result repository follows a standard folder structure, which makes file collection straightforward. API or export capabilities have not been formally assessed yet."
+        },
+        {
+          "question_id": "Q2",
+          "question": "What criteria or thresholds define that 'something looks wrong' in the results — are these numeric limits, rule-based checks, or purely based on engineer judgment?",
+          "answer": "There are two main checks. First, we verify whether the result files are complete and readable — this is a rule-based check on file presence and format. Second, the engineer reviews the content for abnormal patterns, which currently relies on engineer judgment. Formal numeric thresholds have not been documented."
+        },
+        {
+          "question_id": "Q3",
+          "question": "How frequently is this verification test workflow executed, and how much total engineer time does a typical end-to-end run take, broken down by activity if possible?",
+          "answer": "Frequency and per-activity time estimates are not formally tracked at this point. What we can say is that the workflow covers eight distinct activities from reviewing the test request through to the review engineer receiving the report, so end-to-end effort spans multiple steps across at least two people."
+        },
+        {
+          "question_id": "Q4",
+          "question": "Who are all the roles involved in this workflow, and at which specific steps do handoffs between people occur?",
+          "answer": "Three roles are involved: the verification engineer, the review engineer, and the project owner. The verification engineer handles all steps from reviewing the test request through sharing the report. The main handoff occurs when the report is passed to the review engineer, who then reviews it and may request clarification. The project owner is a stakeholder in the process but is not a direct actor in the activity steps."
+        },
+        {
+          "question_id": "Q5",
+          "question": "What is the expected format and destination of the short report, and who are the 'related people' the result is shared with during the investigation path?",
+          "answer": "The report is structured using a standard report template and delivered via email or a collaboration tool. The primary recipient is the review engineer. When something looks wrong, the outputs include an issue list in addition to the summary report, and a review notification is sent. The project owner may also be informed depending on the findings."
+        },
+        {
+          "question_id": "Q6",
+          "question": "Are there any formal approval, compliance, or audit requirements associated with the investigation findings or the final report before they can be shared or closed?",
+          "answer": "There is no formal approval gate explicitly defined in the current workflow. The review engineer can request clarification after receiving the report, but there is no documented sign-off or compliance step required before the report is distributed or the case is closed."
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No distinction between roles involved — it is unclear whether one engineer handles all steps or if multiple roles (e.g., test engineer, reviewer, approver) are involved at different stages.",
+          "why_it_matters": "Role separation directly affects where automation can be applied and where human-in-the-loop checkpoints must remain."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools are mentioned for test execution, result capture, or report generation.",
+          "why_it_matters": "Without knowing the systems involved, it is impossible to assess integration feasibility or identify automation entry points."
+        },
+        {
+          "category": "input",
+          "gap": "The inputs required to prepare the verification test (e.g., test specifications, requirements documents, prior results) are not described.",
+          "why_it_matters": "Missing input definitions prevent assessment of data readiness and upstream dependencies for automation."
+        },
+        {
+          "category": "output",
+          "gap": "The format, destination, and audience of the short report are unspecified.",
+          "why_it_matters": "Report structure and delivery method determine whether report generation can be automated and what data needs to be captured upstream."
+        },
+        {
+          "category": "decision",
+          "gap": "The criteria for determining 'something looks wrong' are undefined — no threshold, rule, or condition is described.",
+          "why_it_matters": "Without explicit decision logic, automation cannot replicate the branching condition, and the investigation path cannot be triggered programmatically."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception handling paths are described beyond the single investigation branch — it is unclear what happens if the investigation is inconclusive or if the test cannot be run.",
+          "why_it_matters": "Undefined exceptions lead to incomplete process models and create gaps in automation coverage."
+        },
+        {
+          "category": "frequency",
+          "gap": "There is no information on how often this workflow is executed (per day, sprint, release cycle, etc.).",
+          "why_it_matters": "Frequency is a primary driver of automation ROI estimation and prioritization."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "Time spent on each step (preparation, execution, result checking, reporting, investigation) is not quantified.",
+          "why_it_matters": "Without effort estimates per activity, it is impossible to identify the highest-value automation targets."
+        },
+        {
+          "category": "dependency",
+          "gap": "Dependencies on upstream processes (e.g., requirement sign-off, environment availability) or downstream consumers (e.g., who acts on the shared result) are not mentioned.",
+          "why_it_matters": "Hidden dependencies can block automation or create synchronization issues in an automated pipeline."
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is unknown whether test results are stored in a structured, machine-readable format or exist only as manual observations.",
+          "why_it_matters": "Automation of result checking and report generation requires structured data; unstructured data requires additional processing steps."
+        },
+        {
+          "category": "integration_constraint",
+          "gap": "No information is provided about access controls, API availability, or data exchange protocols for any involved systems.",
+          "why_it_matters": "Integration constraints can block or significantly complicate automation implementation even when the process logic is well understood."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "It is unclear whether the report or investigation findings require formal approval before being shared, or if there are compliance/audit requirements.",
+          "why_it_matters": "Approval gates must be preserved in automated workflows and may require digital sign-off mechanisms."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "What specific tools or systems are used at each stage — test preparation, test execution, result capture, and report generation — and do they expose any APIs or data export capabilities?",
+          "targets": [
+            "system",
+            "integration_constraint",
+            "data_availability"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What criteria or thresholds define that 'something looks wrong' in the results — are these numeric limits, rule-based checks, or purely based on engineer judgment?",
+          "targets": [
+            "decision",
+            "exception"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "How frequently is this verification test workflow executed, and how much total engineer time does a typical end-to-end run take, broken down by activity if possible?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Who are all the roles involved in this workflow, and at which specific steps do handoffs between people occur?",
+          "targets": [
+            "actor",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "What is the expected format and destination of the short report, and who are the 'related people' the result is shared with during the investigation path?",
+          "targets": [
+            "output",
+            "actor",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Are there any formal approval, compliance, or audit requirements associated with the investigation findings or the final report before they can be shared or closed?",
+          "targets": [
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "f5b20f9b-28af-4e9e-b9d2-1cd0b443b2bb",
+    "created_at": "2026-09-05T02:53:16.503Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "update",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Review Test Request\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Email or Collaboration Tool\",\n        \"inputs\": [\"Test request document\"],\n        \"outputs\": [\"Reviewed and accepted test request\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Prepare Verification Test\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Test Execution Tool\",\n        \"inputs\": [\"Reviewed test request\", \"Test configuration parameters\"],\n        \"outputs\": [\"Configured test environment\", \"Test setup artifacts\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Run Verification Test\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Test Execution Tool\",\n        \"inputs\": [\"Configured test environment\"],\n        \"outputs\": [\"Raw result files\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Collect and Validate Result Files\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Result Repository\",\n        \"inputs\": [\"Raw result files\"],\n        \"outputs\": [\"Validated result files\", \"File completeness and readability check outcome\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Analyze Results for Abnormal Patterns\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Result Repository\",\n        \"inputs\": [\"Validated result files\"],\n        \"outputs\": [\"Analysis findings\", \"Anomaly judgment (pass or flag)\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Investigate Issue\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Test Execution Tool / Result Repository\",\n        \"inputs\": [\"Flagged anomaly findings\"],\n        \"outputs\": [\"Issue list\", \"Root cause notes\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Write Summary Report\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Report Template\",\n        \"inputs\": [\"Analysis findings\", \"Issue list (if applicable)\", \"Root cause notes (if applicable)\"],\n        \"outputs\": [\"Completed summary report\", \"Issue list document (if applicable)\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Share Report and Notify Recipients\",\n        \"actor\": \"Verification Engineer\",\n        \"system\": \"Email or Collaboration Tool\",\n        \"inputs\": [\"Completed summary report\", \"Issue list document (if applicable)\"],\n        \"outputs\": [\"Report delivered to Review Engineer\", \"Review notification sent\", \"Project Owner informed (conditional)\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Review Report and Request Clarification (if needed)\",\n        \"actor\": \"Review Engineer\",\n        \"system\": \"Email or Collaboration Tool\",\n        \"inputs\": [\"Delivered summary report\", \"Issue list document (if applicable)\"],\n        \"outputs\": [\"Review outcome\", \"Clarification request (if needed)\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Are result files complete and readable?\",\n        \"branches\": [\n          {\n            \"outcome\": \"Yes — files are complete and readable\",\n            \"next\": \"A5\"\n          },\n          {\n            \"outcome\": \"No — files are missing or unreadable\",\n            \"next\": \"A6\"\n          }\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Do the result contents show abnormal patterns (engineer judgment)?\",\n        \"branches\": [\n          {\n            \"outcome\": \"No abnormal patterns detected\",\n            \"next\": \"A7\"\n          },\n          {\n            \"outcome\": \"Abnormal patterns detected\",\n            \"next\": \"A6\"\n          }\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Does the Review Engineer require clarification after reviewing the report?\",\n        \"branches\": [\n          {\n            \"outcome\": \"No clarification needed — process closed\",\n            \"next\": \"END\"\n          },\n          {\n            \"outcome\": \"Clarification requested — loop back to Verification Engineer\",\n            \"next\": \"A7\"\n          }\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"description\": \"Result files are missing or unreadable after test execution\",\n        \"trigger\": \"D1 negative branch\",\n        \"handling\": \"Verification Engineer investigates via A6 before proceeding to report writing\"\n      },\n      {\n        \"id\": \"E2\",\n        \"description\": \"Abnormal patterns detected in result content that cannot be resolved by the Verification Engineer alone\",\n        \"trigger\": \"D2 negative branch\",\n        \"handling\": \"Issue list is compiled and Project Owner may be informed in addition to Review Engineer\"\n      },\n      {\n        \"id\": \"E3\",\n        \"description\": \"Review Engineer requests clarification after receiving the report\",\n        \"trigger\": \"D3 clarification branch\",\n        \"handling\": \"Verification Engineer revises or supplements the report and re-shares\"\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"A4\", \"type\": \"control_flow\"},\n      {\"from\": \"A4\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A5\", \"type\": \"conditional\", \"condition\": \"Files complete and readable\"},\n      {\"from\": \"D1\", \"to\": \"A6\", \"type\": \"conditional\", \"condition\": \"Files missing or unreadable\"},\n      {\"from\": \"A5\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A7\", \"type\": \"conditional\", \"condition\": \"No abnormal patterns\"},\n      {\"from\": \"D2\", \"to\": \"A6\", \"type\": \"conditional\", \"condition\": \"Abnormal patterns detected\"},\n      {\"from\": \"A6\", \"to\": \"A7\", \"type\": \"control_flow\"},\n      {\"from\": \"A7\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A8\", \"to\": \"A9\", \"type\": \"control_flow\"},\n      {\"from\": \"A9\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A7\", \"type\": \"conditional\", \"condition\": \"Clarification requested\"},\n      {\"from\": \"D3\", \"to\": \"END\", \"type\": \"conditional\", \"condition\": \"No clarification needed\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A4 — Collect and Validate Result Files\",\n      \"rationale\": \"File presence and readability checks are explicitly described as rule-based. The result repository uses a standard folder structure, making automated file collection and format validation straightforward without engineer involvement.\",\n      \"required_data\": [\"Expected file list per test run\", \"Standard folder structure definition\", \"Accepted file formats\"],\n      \"constraints\": [\"Result repository must be accessible programmatically; API or export capability not yet formally assessed\", \"File naming conventions must be consistent across runs\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D1 — Are result files complete and readable?\",\n      \"rationale\": \"This decision directly follows the rule-based file check in A4 and can be fully automated using the same scripted validation, routing the flow to A5 or A6 without engineer input.\",\n      \"required_data\": [\"Output of automated file validation in A4\", \"Defined completeness criteria (e.g., expected file count, size thresholds)\"],\n      \"constraints\": [\"Completeness criteria must be formally documented before automation is reliable\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A3 — Run Verification Test\",\n      \"rationale\": \"Test execution is performed through a dedicated test execution tool, which is a strong indicator that execution could be triggered programmatically via a script or scheduled job, reducing manual initiation effort.\",\n      \"required_data\": [\"Test execution tool interface or command-line access\", \"Test configuration parameters from A2\"],\n      \"constraints\": [\"API or automation interface of the test execution tool has not been formally assessed\", \"Test environment must be fully configured before triggering\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A7 — Write Summary Report\",\n      \"rationale\": \"A standard report template is already in use. When results are normal, report content is predictable and structured, enabling partial automation such as auto-populating template fields from result data and analysis outputs.\",\n      \"required_data\": [\"Validated result files\", \"Analysis findings\", \"Issue list (if applicable)\", \"Report template field definitions\"],\n      \"constraints\": [\"Engineer narrative and judgment-based commentary cannot be fully automated\", \"Automation limited to structured, data-driven fields in the template\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A8 — Share Report and Notify Recipients\",\n      \"rationale\": \"Report distribution via email or collaboration tool is a repeatable, rule-based task. Once the report is finalized, automated dispatch to fixed recipients (Review Engineer, conditionally Project Owner) is feasible.\",\n      \"required_data\": [\"Finalized report document\", \"Recipient list with conditional logic for Project Owner\", \"Email or collaboration tool integration capability\"],\n      \"constraints\": [\"Conditional notification to Project Owner requires a documented trigger rule\", \"Collaboration tool API access must be confirmed\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A5 — Analyze Results for Abnormal Patterns\",\n      \"rationale\": \"While currently judgment-based, establishing even lightweight heuristic rules or statistical baselines from historical result files could enable partial automated flagging, reducing the cognitive load on the engineer.\",\n      \"required_data\": [\"Historical result files for baseline definition\", \"Documented examples of abnormal patterns\", \"Agreed heuristic or statistical thresholds\"],\n      \"constraints\": [\"Formal thresholds not yet documented — significant prerequisite gap\", \"Residual engineer judgment likely still required for borderline cases\", \"Low confidence until thresholds are formalized\"],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"remaining_gaps\": [\n    {\n      \"id\": \"G1\",\n      \"description\": \"API and programmatic export capabilities of the test execution tool and result repository have not been formally assessed. This is a prerequisite for automating A3, A4, and D1.\",\n      \"impact\": \"Blocks high-confidence automation of test execution triggering and file validation steps\",\n      \"recommended_action\": \"Conduct a technical assessment of available interfaces for the test execution tool and result repository\"\n    },\n    {\n      \"id\": \"G2\",\n      \"description\": \"Formal numeric or rule-based thresholds for detecting abnormal patterns in result content have not been documented. The current process relies entirely on engineer judgment.\",\n      \"impact\": \"Prevents reliable automation or even semi-automation of A5 and D2; increases process variability and risk of inconsistent outcomes\",\n      \"recommended_action\": \"Facilitate a structured workshop with verification engineers to elicit and document pattern detection rules or acceptable value ranges\"\n    },\n    {\n      \"id\": \"G3\",\n      \"description\": \"Workflow execution frequency and per-activity time data are not tracked. Without this, it is not possible to quantify the efficiency impact of automation or prioritize improvements by effort saved.\",\n      \"impact\": \"Limits the ability to build a business case for automation investment or to identify the highest-value bottlenecks\",\n      \"recommended_action\": \"Introduce lightweight time-tracking or logging on at least a sample of workflow executions to establish baseline metrics\"\n    },\n    {\n      \"id\": \"G4\",\n      \"description\": \"The conditional rule for informing the Project Owner during the investigation path is not formally defined. It is currently described as 'depending on the findings' without a documented trigger.\",\n      \"impact\": \"Prevents automation of conditional notification in A8 and creates inconsistency in stakeholder communication\",\n      \"recommended_action\": \"Define and document the specific criteria under which the Project Owner must be notified\"\n    },\n    {\n      \"id\": \"G5\",\n      \"description\": \"There is no formal closure condition or end state defined for the workflow after the Review Engineer completes the review or after clarification is resolved.\",\n      \"impact\": \"Without a defined end state, process mining event logs cannot reliably detect case completion, and cycle time metrics will be inaccurate\",\n      \"recommended_action\": \"Define explicit closure criteria and a corresponding closing activity or status marker in the collaboration or tracking tool\"\n    }\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Review Test Request",
+            "actor": "Verification Engineer",
+            "system": "Email or Collaboration Tool",
+            "inputs": [
+              "Test request document"
+            ],
+            "outputs": [
+              "Reviewed and accepted test request"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Prepare Verification Test",
+            "actor": "Verification Engineer",
+            "system": "Test Execution Tool",
+            "inputs": [
+              "Reviewed test request",
+              "Test configuration parameters"
+            ],
+            "outputs": [
+              "Configured test environment",
+              "Test setup artifacts"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Run Verification Test",
+            "actor": "Verification Engineer",
+            "system": "Test Execution Tool",
+            "inputs": [
+              "Configured test environment"
+            ],
+            "outputs": [
+              "Raw result files"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Collect and Validate Result Files",
+            "actor": "Verification Engineer",
+            "system": "Result Repository",
+            "inputs": [
+              "Raw result files"
+            ],
+            "outputs": [
+              "Validated result files",
+              "File completeness and readability check outcome"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Analyze Results for Abnormal Patterns",
+            "actor": "Verification Engineer",
+            "system": "Result Repository",
+            "inputs": [
+              "Validated result files"
+            ],
+            "outputs": [
+              "Analysis findings",
+              "Anomaly judgment (pass or flag)"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Investigate Issue",
+            "actor": "Verification Engineer",
+            "system": "Test Execution Tool / Result Repository",
+            "inputs": [
+              "Flagged anomaly findings"
+            ],
+            "outputs": [
+              "Issue list",
+              "Root cause notes"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Write Summary Report",
+            "actor": "Verification Engineer",
+            "system": "Report Template",
+            "inputs": [
+              "Analysis findings",
+              "Issue list (if applicable)",
+              "Root cause notes (if applicable)"
+            ],
+            "outputs": [
+              "Completed summary report",
+              "Issue list document (if applicable)"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Share Report and Notify Recipients",
+            "actor": "Verification Engineer",
+            "system": "Email or Collaboration Tool",
+            "inputs": [
+              "Completed summary report",
+              "Issue list document (if applicable)"
+            ],
+            "outputs": [
+              "Report delivered to Review Engineer",
+              "Review notification sent",
+              "Project Owner informed (conditional)"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Review Report and Request Clarification (if needed)",
+            "actor": "Review Engineer",
+            "system": "Email or Collaboration Tool",
+            "inputs": [
+              "Delivered summary report",
+              "Issue list document (if applicable)"
+            ],
+            "outputs": [
+              "Review outcome",
+              "Clarification request (if needed)"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are result files complete and readable?",
+            "branches": [
+              {
+                "outcome": "Yes — files are complete and readable",
+                "next": "A5"
+              },
+              {
+                "outcome": "No — files are missing or unreadable",
+                "next": "A6"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Do the result contents show abnormal patterns (engineer judgment)?",
+            "branches": [
+              {
+                "outcome": "No abnormal patterns detected",
+                "next": "A7"
+              },
+              {
+                "outcome": "Abnormal patterns detected",
+                "next": "A6"
+              }
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Does the Review Engineer require clarification after reviewing the report?",
+            "branches": [
+              {
+                "outcome": "No clarification needed — process closed",
+                "next": "END"
+              },
+              {
+                "outcome": "Clarification requested — loop back to Verification Engineer",
+                "next": "A7"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Result files are missing or unreadable after test execution",
+            "trigger": "D1 negative branch",
+            "handling": "Verification Engineer investigates via A6 before proceeding to report writing"
+          },
+          {
+            "id": "E2",
+            "description": "Abnormal patterns detected in result content that cannot be resolved by the Verification Engineer alone",
+            "trigger": "D2 negative branch",
+            "handling": "Issue list is compiled and Project Owner may be informed in addition to Review Engineer"
+          },
+          {
+            "id": "E3",
+            "description": "Review Engineer requests clarification after receiving the report",
+            "trigger": "D3 clarification branch",
+            "handling": "Verification Engineer revises or supplements the report and re-shares"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A5",
+            "type": "conditional",
+            "condition": "Files complete and readable"
+          },
+          {
+            "from": "D1",
+            "to": "A6",
+            "type": "conditional",
+            "condition": "Files missing or unreadable"
+          },
+          {
+            "from": "A5",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A7",
+            "type": "conditional",
+            "condition": "No abnormal patterns"
+          },
+          {
+            "from": "D2",
+            "to": "A6",
+            "type": "conditional",
+            "condition": "Abnormal patterns detected"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "A9",
+            "type": "control_flow"
+          },
+          {
+            "from": "A9",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A7",
+            "type": "conditional",
+            "condition": "Clarification requested"
+          },
+          {
+            "from": "D3",
+            "to": "END",
+            "type": "conditional",
+            "condition": "No clarification needed"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A4 — Collect and Validate Result Files",
+          "rationale": "File presence and readability checks are explicitly described as rule-based. The result repository uses a standard folder structure, making automated file collection and format validation straightforward without engineer involvement.",
+          "required_data": [
+            "Expected file list per test run",
+            "Standard folder structure definition",
+            "Accepted file formats"
+          ],
+          "constraints": [
+            "Result repository must be accessible programmatically; API or export capability not yet formally assessed",
+            "File naming conventions must be consistent across runs"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 — Are result files complete and readable?",
+          "rationale": "This decision directly follows the rule-based file check in A4 and can be fully automated using the same scripted validation, routing the flow to A5 or A6 without engineer input.",
+          "required_data": [
+            "Output of automated file validation in A4",
+            "Defined completeness criteria (e.g., expected file count, size thresholds)"
+          ],
+          "constraints": [
+            "Completeness criteria must be formally documented before automation is reliable"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A3 — Run Verification Test",
+          "rationale": "Test execution is performed through a dedicated test execution tool, which is a strong indicator that execution could be triggered programmatically via a script or scheduled job, reducing manual initiation effort.",
+          "required_data": [
+            "Test execution tool interface or command-line access",
+            "Test configuration parameters from A2"
+          ],
+          "constraints": [
+            "API or automation interface of the test execution tool has not been formally assessed",
+            "Test environment must be fully configured before triggering"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A7 — Write Summary Report",
+          "rationale": "A standard report template is already in use. When results are normal, report content is predictable and structured, enabling partial automation such as auto-populating template fields from result data and analysis outputs.",
+          "required_data": [
+            "Validated result files",
+            "Analysis findings",
+            "Issue list (if applicable)",
+            "Report template field definitions"
+          ],
+          "constraints": [
+            "Engineer narrative and judgment-based commentary cannot be fully automated",
+            "Automation limited to structured, data-driven fields in the template"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A8 — Share Report and Notify Recipients",
+          "rationale": "Report distribution via email or collaboration tool is a repeatable, rule-based task. Once the report is finalized, automated dispatch to fixed recipients (Review Engineer, conditionally Project Owner) is feasible.",
+          "required_data": [
+            "Finalized report document",
+            "Recipient list with conditional logic for Project Owner",
+            "Email or collaboration tool integration capability"
+          ],
+          "constraints": [
+            "Conditional notification to Project Owner requires a documented trigger rule",
+            "Collaboration tool API access must be confirmed"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A5 — Analyze Results for Abnormal Patterns",
+          "rationale": "While currently judgment-based, establishing even lightweight heuristic rules or statistical baselines from historical result files could enable partial automated flagging, reducing the cognitive load on the engineer.",
+          "required_data": [
+            "Historical result files for baseline definition",
+            "Documented examples of abnormal patterns",
+            "Agreed heuristic or statistical thresholds"
+          ],
+          "constraints": [
+            "Formal thresholds not yet documented — significant prerequisite gap",
+            "Residual engineer judgment likely still required for borderline cases",
+            "Low confidence until thresholds are formalized"
+          ],
+          "confidence": "low"
+        }
+      ],
+      "remaining_gaps": [
+        {
+          "id": "G1",
+          "description": "API and programmatic export capabilities of the test execution tool and result repository have not been formally assessed. This is a prerequisite for automating A3, A4, and D1.",
+          "impact": "Blocks high-confidence automation of test execution triggering and file validation steps",
+          "recommended_action": "Conduct a technical assessment of available interfaces for the test execution tool and result repository"
+        },
+        {
+          "id": "G2",
+          "description": "Formal numeric or rule-based thresholds for detecting abnormal patterns in result content have not been documented. The current process relies entirely on engineer judgment.",
+          "impact": "Prevents reliable automation or even semi-automation of A5 and D2; increases process variability and risk of inconsistent outcomes",
+          "recommended_action": "Facilitate a structured workshop with verification engineers to elicit and document pattern detection rules or acceptable value ranges"
+        },
+        {
+          "id": "G3",
+          "description": "Workflow execution frequency and per-activity time data are not tracked. Without this, it is not possible to quantify the efficiency impact of automation or prioritize improvements by effort saved.",
+          "impact": "Limits the ability to build a business case for automation investment or to identify the highest-value bottlenecks",
+          "recommended_action": "Introduce lightweight time-tracking or logging on at least a sample of workflow executions to establish baseline metrics"
+        },
+        {
+          "id": "G4",
+          "description": "The conditional rule for informing the Project Owner during the investigation path is not formally defined. It is currently described as 'depending on the findings' without a documented trigger.",
+          "impact": "Prevents automation of conditional notification in A8 and creates inconsistency in stakeholder communication",
+          "recommended_action": "Define and document the specific criteria under which the Project Owner must be notified"
+        },
+        {
+          "id": "G5",
+          "description": "There is no formal closure condition or end state defined for the workflow after the Review Engineer completes the review or after clarification is resolved.",
+          "impact": "Without a defined end state, process mining event logs cannot reliably detect case completion, and cycle time metrics will be inaccurate",
+          "recommended_action": "Define explicit closure criteria and a corresponding closing activity or status marker in the collaboration or tracking tool"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "request": {
+    "stage": "questions",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S01",
+      "title": "Verification Test Setup and Reporting",
+      "domain": "semiconductor_engineering",
+      "initial_description": "An engineer prepares a verification test, runs the evaluation, checks the results, and writes a short report. If something looks wrong, the engineer investigates and shares the result with related people.",
+      "reference_workflow": {
+        "goal": "Run a verification test and distribute a summarized result report.",
+        "actors": [
+          "verification engineer",
+          "review engineer",
+          "project owner"
+        ],
+        "systems": [
+          "test execution tool",
+          "result repository",
+          "report template",
+          "email or collaboration tool"
+        ],
+        "inputs": [
+          "test request",
+          "test condition",
+          "sample identifier",
+          "evaluation setup guide"
+        ],
+        "outputs": [
+          "test result files",
+          "summary report",
+          "issue list",
+          "review notification"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Review test request and conditions",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Prepare evaluation setup",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A3",
+            "name": "Run verification test",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Collect result files",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A5",
+            "name": "Check result validity",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A6",
+            "name": "Summarize findings in report",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Share report for review",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A8",
+            "name": "Review report and request clarification if needed",
+            "actor": "review engineer"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are the result files complete and readable?",
+            "branches": [
+              "complete",
+              "missing or corrupted"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Do the results contain abnormal patterns?",
+            "branches": [
+              "normal",
+              "abnormal"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing setup information",
+          "test execution failure",
+          "incomplete result files",
+          "unclear abnormal pattern"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A4",
+            "rationale": "Result file collection is repetitive and follows a standard folder or repository pattern."
+          },
+          {
+            "target": "A5",
+            "rationale": "Completeness and basic validity checks can be rule-based."
+          },
+          {
+            "target": "A6",
+            "rationale": "Report drafting can be supported by template filling and result summarization."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "test request input",
+        "sample identifier",
+        "systems used",
+        "result validity criteria",
+        "review actor",
+        "exception handling",
+        "report distribution channel"
+      ]
+    },
+    "answers": "",
+    "previousOutput": null,
+    "questions": null
+  },
+  "result": {
+    "id": "3d5bb098-5f75-45fb-90b7-7391eda6b42b",
+    "created_at": "2026-09-05T02:51:57.702Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "questions",
+    "raw_text": "{\n  \"missing_information\": [\n    {\n      \"category\": \"actor\",\n      \"gap\": \"No distinction between roles involved — it is unclear whether one engineer handles all steps or if multiple roles (e.g., test engineer, reviewer, approver) are involved at different stages.\",\n      \"why_it_matters\": \"Role separation directly affects where automation can be applied and where human-in-the-loop checkpoints must remain.\"\n    },\n    {\n      \"category\": \"system\",\n      \"gap\": \"No systems or tools are mentioned for test execution, result capture, or report generation.\",\n      \"why_it_matters\": \"Without knowing the systems involved, it is impossible to assess integration feasibility or identify automation entry points.\"\n    },\n    {\n      \"category\": \"input\",\n      \"gap\": \"The inputs required to prepare the verification test (e.g., test specifications, requirements documents, prior results) are not described.\",\n      \"why_it_matters\": \"Missing input definitions prevent assessment of data readiness and upstream dependencies for automation.\"\n    },\n    {\n      \"category\": \"output\",\n      \"gap\": \"The format, destination, and audience of the short report are unspecified.\",\n      \"why_it_matters\": \"Report structure and delivery method determine whether report generation can be automated and what data needs to be captured upstream.\"\n    },\n    {\n      \"category\": \"decision\",\n      \"gap\": \"The criteria for determining 'something looks wrong' are undefined — no threshold, rule, or condition is described.\",\n      \"why_it_matters\": \"Without explicit decision logic, automation cannot replicate the branching condition, and the investigation path cannot be triggered programmatically.\"\n    },\n    {\n      \"category\": \"exception\",\n      \"gap\": \"No exception handling paths are described beyond the single investigation branch — it is unclear what happens if the investigation is inconclusive or if the test cannot be run.\",\n      \"why_it_matters\": \"Undefined exceptions lead to incomplete process models and create gaps in automation coverage.\"\n    },\n    {\n      \"category\": \"frequency\",\n      \"gap\": \"There is no information on how often this workflow is executed (per day, sprint, release cycle, etc.).\",\n      \"why_it_matters\": \"Frequency is a primary driver of automation ROI estimation and prioritization.\"\n    },\n    {\n      \"category\": \"manual_effort\",\n      \"gap\": \"Time spent on each step (preparation, execution, result checking, reporting, investigation) is not quantified.\",\n      \"why_it_matters\": \"Without effort estimates per activity, it is impossible to identify the highest-value automation targets.\"\n    },\n    {\n      \"category\": \"dependency\",\n      \"gap\": \"Dependencies on upstream processes (e.g., requirement sign-off, environment availability) or downstream consumers (e.g., who acts on the shared result) are not mentioned.\",\n      \"why_it_matters\": \"Hidden dependencies can block automation or create synchronization issues in an automated pipeline.\"\n    },\n    {\n      \"category\": \"data_availability\",\n      \"gap\": \"It is unknown whether test results are stored in a structured, machine-readable format or exist only as manual observations.\",\n      \"why_it_matters\": \"Automation of result checking and report generation requires structured data; unstructured data requires additional processing steps.\"\n    },\n    {\n      \"category\": \"integration_constraint\",\n      \"gap\": \"No information is provided about access controls, API availability, or data exchange protocols for any involved systems.\",\n      \"why_it_matters\": \"Integration constraints can block or significantly complicate automation implementation even when the process logic is well understood.\"\n    },\n    {\n      \"category\": \"risk_or_approval\",\n      \"gap\": \"It is unclear whether the report or investigation findings require formal approval before being shared, or if there are compliance/audit requirements.\",\n      \"why_it_matters\": \"Approval gates must be preserved in automated workflows and may require digital sign-off mechanisms.\"\n    }\n  ],\n  \"clarification_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"What specific tools or systems are used at each stage — test preparation, test execution, result capture, and report generation — and do they expose any APIs or data export capabilities?\",\n      \"targets\": [\"system\", \"integration_constraint\", \"data_availability\"]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"What criteria or thresholds define that 'something looks wrong' in the results — are these numeric limits, rule-based checks, or purely based on engineer judgment?\",\n      \"targets\": [\"decision\", \"exception\"]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"How frequently is this verification test workflow executed, and how much total engineer time does a typical end-to-end run take, broken down by activity if possible?\",\n      \"targets\": [\"frequency\", \"manual_effort\"]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"Who are all the roles involved in this workflow, and at which specific steps do handoffs between people occur?\",\n      \"targets\": [\"actor\", \"dependency\"]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"What is the expected format and destination of the short report, and who are the 'related people' the result is shared with during the investigation path?\",\n      \"targets\": [\"output\", \"actor\", \"dependency\"]\n    },\n    {\n      \"id\": \"Q6\",\n      \"question\": \"Are there any formal approval, compliance, or audit requirements associated with the investigation findings or the final report before they can be shared or closed?\",\n      \"targets\": [\"risk_or_approval\", \"exception\"]\n    }\n  ]\n}",
+    "parsed": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No distinction between roles involved — it is unclear whether one engineer handles all steps or if multiple roles (e.g., test engineer, reviewer, approver) are involved at different stages.",
+          "why_it_matters": "Role separation directly affects where automation can be applied and where human-in-the-loop checkpoints must remain."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools are mentioned for test execution, result capture, or report generation.",
+          "why_it_matters": "Without knowing the systems involved, it is impossible to assess integration feasibility or identify automation entry points."
+        },
+        {
+          "category": "input",
+          "gap": "The inputs required to prepare the verification test (e.g., test specifications, requirements documents, prior results) are not described.",
+          "why_it_matters": "Missing input definitions prevent assessment of data readiness and upstream dependencies for automation."
+        },
+        {
+          "category": "output",
+          "gap": "The format, destination, and audience of the short report are unspecified.",
+          "why_it_matters": "Report structure and delivery method determine whether report generation can be automated and what data needs to be captured upstream."
+        },
+        {
+          "category": "decision",
+          "gap": "The criteria for determining 'something looks wrong' are undefined — no threshold, rule, or condition is described.",
+          "why_it_matters": "Without explicit decision logic, automation cannot replicate the branching condition, and the investigation path cannot be triggered programmatically."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception handling paths are described beyond the single investigation branch — it is unclear what happens if the investigation is inconclusive or if the test cannot be run.",
+          "why_it_matters": "Undefined exceptions lead to incomplete process models and create gaps in automation coverage."
+        },
+        {
+          "category": "frequency",
+          "gap": "There is no information on how often this workflow is executed (per day, sprint, release cycle, etc.).",
+          "why_it_matters": "Frequency is a primary driver of automation ROI estimation and prioritization."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "Time spent on each step (preparation, execution, result checking, reporting, investigation) is not quantified.",
+          "why_it_matters": "Without effort estimates per activity, it is impossible to identify the highest-value automation targets."
+        },
+        {
+          "category": "dependency",
+          "gap": "Dependencies on upstream processes (e.g., requirement sign-off, environment availability) or downstream consumers (e.g., who acts on the shared result) are not mentioned.",
+          "why_it_matters": "Hidden dependencies can block automation or create synchronization issues in an automated pipeline."
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is unknown whether test results are stored in a structured, machine-readable format or exist only as manual observations.",
+          "why_it_matters": "Automation of result checking and report generation requires structured data; unstructured data requires additional processing steps."
+        },
+        {
+          "category": "integration_constraint",
+          "gap": "No information is provided about access controls, API availability, or data exchange protocols for any involved systems.",
+          "why_it_matters": "Integration constraints can block or significantly complicate automation implementation even when the process logic is well understood."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "It is unclear whether the report or investigation findings require formal approval before being shared, or if there are compliance/audit requirements.",
+          "why_it_matters": "Approval gates must be preserved in automated workflows and may require digital sign-off mechanisms."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "What specific tools or systems are used at each stage — test preparation, test execution, result capture, and report generation — and do they expose any APIs or data export capabilities?",
+          "targets": [
+            "system",
+            "integration_constraint",
+            "data_availability"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What criteria or thresholds define that 'something looks wrong' in the results — are these numeric limits, rule-based checks, or purely based on engineer judgment?",
+          "targets": [
+            "decision",
+            "exception"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "How frequently is this verification test workflow executed, and how much total engineer time does a typical end-to-end run take, broken down by activity if possible?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Who are all the roles involved in this workflow, and at which specific steps do handoffs between people occur?",
+          "targets": [
+            "actor",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "What is the expected format and destination of the short report, and who are the 'related people' the result is shared with during the investigation path?",
+          "targets": [
+            "output",
+            "actor",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Are there any formal approval, compliance, or audit requirements associated with the investigation findings or the final report before they can be shared or closed?",
+          "targets": [
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "request": {
+    "stage": "oracle_answers",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S05",
+      "title": "Specification Document Review",
+      "domain": "engineering_documentation",
+      "initial_description": "An engineer reviews a specification document to check whether new features are reflected correctly and whether there are typos or missing details.",
+      "reference_workflow": {
+        "goal": "Review a specification document for feature coverage, consistency, and editorial errors.",
+        "actors": [
+          "document reviewer",
+          "feature owner",
+          "document author",
+          "approver"
+        ],
+        "systems": [
+          "document repository",
+          "change request tracker",
+          "review checklist",
+          "commenting tool"
+        ],
+        "inputs": [
+          "specification document",
+          "feature change list",
+          "previous document version",
+          "review checklist"
+        ],
+        "outputs": [
+          "review comments",
+          "change request list",
+          "approval decision",
+          "updated document"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect document and related change list",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A2",
+            "name": "Compare feature changes with document content",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A3",
+            "name": "Check terminology and formatting consistency",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A4",
+            "name": "Record comments and requested revisions",
+            "actor": "document reviewer"
+          },
+          {
+            "id": "A5",
+            "name": "Revise document based on comments",
+            "actor": "document author"
+          },
+          {
+            "id": "A6",
+            "name": "Confirm revisions with feature owner",
+            "actor": "feature owner"
+          },
+          {
+            "id": "A7",
+            "name": "Approve final document",
+            "actor": "approver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all feature changes reflected?",
+            "branches": [
+              "complete",
+              "missing changes"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are the revisions acceptable?",
+            "branches": [
+              "approve",
+              "request another revision"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing change list",
+          "conflicting terminology",
+          "unclear feature owner",
+          "unresolved comments"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Feature coverage can be checked by comparing change lists and document sections."
+          },
+          {
+            "target": "A3",
+            "rationale": "Terminology, formatting, and typo checks can be automated."
+          },
+          {
+            "target": "A4",
+            "rationale": "Review comments can be grouped by section, severity, and owner."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "change list input",
+        "document repository",
+        "feature owner",
+        "approval decision",
+        "revision loop",
+        "review checklist"
+      ]
+    },
+    "answers": "Q1. Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?\nAnswer: \n\nQ2. What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?\nAnswer: \n\nQ3. What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?\nAnswer: \n\nQ4. What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?\nAnswer: \n\nQ5. How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?\nAnswer: \n\nQ6. Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?\nAnswer: ",
+    "previousOutput": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No information on who performs the review — single engineer, a team, or a rotating role. Seniority or domain expertise requirements are also unspecified.",
+          "why_it_matters": "Automation scope and handoff logic depend on whether one or multiple actors are involved. Role-based routing rules cannot be defined without this."
+        },
+        {
+          "category": "input",
+          "gap": "The format, source, and versioning scheme of the specification document are not described (e.g., structured template, free-form text, wiki page, PDF).",
+          "why_it_matters": "Automation feasibility for parsing or comparing documents depends heavily on whether the input is machine-readable and consistently structured."
+        },
+        {
+          "category": "output",
+          "gap": "There is no defined output artifact described — it is unclear whether the reviewer produces a formal review report, annotated document, ticket, or verbal feedback.",
+          "why_it_matters": "Without a defined output, it is impossible to assess what automation could generate or route, and process completion cannot be detected."
+        },
+        {
+          "category": "decision",
+          "gap": "No decision criteria are specified for what constitutes an acceptable specification versus one requiring revision. There is no defined threshold for typos, missing details, or feature completeness.",
+          "why_it_matters": "Automation or assisted-review tools require explicit rules or checklists to replicate or support human judgment at decision points."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception paths are described — what happens if the document is severely incomplete, if the reviewer is unavailable, or if conflicting feature requirements are found.",
+          "why_it_matters": "Exception handling is essential for end-to-end workflow automation; unhandled exceptions cause process breakdowns that block automation deployment."
+        },
+        {
+          "category": "frequency",
+          "gap": "The frequency and volume of reviews are not mentioned — whether this happens once per release cycle, daily, or on-demand is unknown.",
+          "why_it_matters": "Frequency and volume determine automation ROI and whether batch processing, real-time triggers, or scheduled jobs are the appropriate automation pattern."
+        },
+        {
+          "category": "dependency",
+          "gap": "There is no indication of upstream dependencies (e.g., who authored the document, what triggers the review) or downstream dependencies (e.g., what process is unblocked after review).",
+          "why_it_matters": "Without knowing triggers and downstream consumers, the workflow cannot be correctly modeled or integrated into a broader automated pipeline."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The time and effort required per review are not quantified — no estimate of how long the review takes or which sub-steps are most time-consuming.",
+          "why_it_matters": "Manual effort data is required to prioritize automation opportunities and build a business case for investment."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools used during the review process are identified — it is unknown whether the engineer uses a document management system, diff tool, or issue tracker.",
+          "why_it_matters": "System identification is necessary to determine integration points for automation and to assess data accessibility."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "There is no mention of whether the review outcome requires sign-off from a stakeholder or approval gate before the specification is considered finalized.",
+          "why_it_matters": "Approval gates affect workflow routing, SLA definition, and whether human-in-the-loop steps must be preserved in any automated solution."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?",
+          "targets": [
+            "actor"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?",
+          "targets": [
+            "input",
+            "system"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?",
+          "targets": [
+            "output",
+            "system"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?",
+          "targets": [
+            "decision"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?",
+          "targets": [
+            "frequency",
+            "manual_effort",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?",
+          "targets": [
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No information on who performs the review — single engineer, a team, or a rotating role. Seniority or domain expertise requirements are also unspecified.",
+          "why_it_matters": "Automation scope and handoff logic depend on whether one or multiple actors are involved. Role-based routing rules cannot be defined without this."
+        },
+        {
+          "category": "input",
+          "gap": "The format, source, and versioning scheme of the specification document are not described (e.g., structured template, free-form text, wiki page, PDF).",
+          "why_it_matters": "Automation feasibility for parsing or comparing documents depends heavily on whether the input is machine-readable and consistently structured."
+        },
+        {
+          "category": "output",
+          "gap": "There is no defined output artifact described — it is unclear whether the reviewer produces a formal review report, annotated document, ticket, or verbal feedback.",
+          "why_it_matters": "Without a defined output, it is impossible to assess what automation could generate or route, and process completion cannot be detected."
+        },
+        {
+          "category": "decision",
+          "gap": "No decision criteria are specified for what constitutes an acceptable specification versus one requiring revision. There is no defined threshold for typos, missing details, or feature completeness.",
+          "why_it_matters": "Automation or assisted-review tools require explicit rules or checklists to replicate or support human judgment at decision points."
+        },
+        {
+          "category": "exception",
+          "gap": "No exception paths are described — what happens if the document is severely incomplete, if the reviewer is unavailable, or if conflicting feature requirements are found.",
+          "why_it_matters": "Exception handling is essential for end-to-end workflow automation; unhandled exceptions cause process breakdowns that block automation deployment."
+        },
+        {
+          "category": "frequency",
+          "gap": "The frequency and volume of reviews are not mentioned — whether this happens once per release cycle, daily, or on-demand is unknown.",
+          "why_it_matters": "Frequency and volume determine automation ROI and whether batch processing, real-time triggers, or scheduled jobs are the appropriate automation pattern."
+        },
+        {
+          "category": "dependency",
+          "gap": "There is no indication of upstream dependencies (e.g., who authored the document, what triggers the review) or downstream dependencies (e.g., what process is unblocked after review).",
+          "why_it_matters": "Without knowing triggers and downstream consumers, the workflow cannot be correctly modeled or integrated into a broader automated pipeline."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The time and effort required per review are not quantified — no estimate of how long the review takes or which sub-steps are most time-consuming.",
+          "why_it_matters": "Manual effort data is required to prioritize automation opportunities and build a business case for investment."
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools used during the review process are identified — it is unknown whether the engineer uses a document management system, diff tool, or issue tracker.",
+          "why_it_matters": "System identification is necessary to determine integration points for automation and to assess data accessibility."
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "There is no mention of whether the review outcome requires sign-off from a stakeholder or approval gate before the specification is considered finalized.",
+          "why_it_matters": "Approval gates affect workflow routing, SLA definition, and whether human-in-the-loop steps must be preserved in any automated solution."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?",
+          "targets": [
+            "actor"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?",
+          "targets": [
+            "input",
+            "system"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?",
+          "targets": [
+            "output",
+            "system"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?",
+          "targets": [
+            "decision"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?",
+          "targets": [
+            "frequency",
+            "manual_effort",
+            "dependency"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?",
+          "targets": [
+            "risk_or_approval",
+            "exception"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "0fe3f86c-30ae-415a-aa5a-400ddff77c24",
+    "created_at": "2026-09-05T03:31:06.685Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "oracle_answers",
+    "raw_text": "{\n  \"answers\": [\n    {\n      \"question_id\": \"Q1\",\n      \"question\": \"Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?\",\n      \"answer\": \"The review is performed by a designated document reviewer. Additional actors are involved at later stages: a document author who owns the specification content, a feature owner who confirms that revisions are technically correct, and an approver who provides final sign-off. No specific seniority or certification criteria are defined, but the feature owner implies domain expertise is expected at the confirmation step.\"\n    },\n    {\n      \"question_id\": \"Q2\",\n      \"question\": \"What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?\",\n      \"answer\": \"The specification document is stored in a document repository. A feature change list and the previous document version are also pulled as inputs, suggesting version-controlled, structured artifacts. A review checklist is used alongside the document, implying a consistent schema or template is followed across reviews.\"\n    },\n    {\n      \"question_id\": \"Q3\",\n      \"question\": \"What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?\",\n      \"answer\": \"The review produces review comments and a change request list, which are recorded using a commenting tool and a change request tracker. After revisions are made and confirmed, an approval decision is issued and an updated document is produced. These outputs are stored back in the document repository.\"\n    },\n    {\n      \"question_id\": \"Q4\",\n      \"question\": \"What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?\",\n      \"answer\": \"The reviewer uses a review checklist to guide the process. Two main criteria are evaluated: whether all feature changes are reflected in the document, and whether terminology and formatting are consistent. Findings are recorded as comments or change requests. The workflow includes a decision point on whether all feature changes are covered, indicating feature completeness is treated as a primary acceptance criterion. Explicit severity tiers are not defined in the current process.\"\n    },\n    {\n      \"question_id\": \"Q5\",\n      \"question\": \"How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?\",\n      \"answer\": \"The trigger for a review is the availability of a specification document and its associated feature change list — the reviewer first collects these before any analysis begins. Frequency and duration per review are not specified in the current workflow definition. The process appears to be initiated on demand rather than on a fixed schedule.\"\n    },\n    {\n      \"question_id\": \"Q6\",\n      \"question\": \"Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?\",\n      \"answer\": \"Yes, there is a formal approval step: an approver must approve the final document before the process concludes. If revisions are not acceptable, the workflow loops back to request another revision cycle. Defined exception cases include a missing change list, conflicting terminology, an unclear or unavailable feature owner, and unresolved comments — each of these can block progress through the workflow. Reviewer unavailability is not explicitly handled by a fallback rule in the current process.\"\n    }\n  ]\n}",
+    "parsed": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "Who performs the specification review — a single designated engineer, a pool of reviewers, or a cross-functional team — and are there any required qualifications or domain expertise criteria for the reviewer?",
+          "answer": "The review is performed by a designated document reviewer. Additional actors are involved at later stages: a document author who owns the specification content, a feature owner who confirms that revisions are technically correct, and an approver who provides final sign-off. No specific seniority or certification criteria are defined, but the feature owner implies domain expertise is expected at the confirmation step."
+        },
+        {
+          "question_id": "Q2",
+          "question": "What is the format and source of the specification document — for example, is it a structured template in a document management system, a free-form wiki page, or a PDF — and does it follow a consistent schema across reviews?",
+          "answer": "The specification document is stored in a document repository. A feature change list and the previous document version are also pulled as inputs, suggesting version-controlled, structured artifacts. A review checklist is used alongside the document, implying a consistent schema or template is followed across reviews."
+        },
+        {
+          "question_id": "Q3",
+          "question": "What is the expected output of a completed review — for example, an annotated document, a formal review report, a set of issue tickets, or a simple approval status — and where is this output recorded?",
+          "answer": "The review produces review comments and a change request list, which are recorded using a commenting tool and a change request tracker. After revisions are made and confirmed, an approval decision is issued and an updated document is produced. These outputs are stored back in the document repository."
+        },
+        {
+          "question_id": "Q4",
+          "question": "What criteria or checklist does the engineer use to determine whether a specification is acceptable, and how are findings categorized — for instance, by severity such as blocking defect, minor typo, or enhancement request?",
+          "answer": "The reviewer uses a review checklist to guide the process. Two main criteria are evaluated: whether all feature changes are reflected in the document, and whether terminology and formatting are consistent. Findings are recorded as comments or change requests. The workflow includes a decision point on whether all feature changes are covered, indicating feature completeness is treated as a primary acceptance criterion. Explicit severity tiers are not defined in the current process."
+        },
+        {
+          "question_id": "Q5",
+          "question": "How often do specification reviews occur, approximately how long does a single review take, and what triggers a review to begin — for example, a document submission event, a sprint milestone, or a manual request?",
+          "answer": "The trigger for a review is the availability of a specification document and its associated feature change list — the reviewer first collects these before any analysis begins. Frequency and duration per review are not specified in the current workflow definition. The process appears to be initiated on demand rather than on a fixed schedule."
+        },
+        {
+          "question_id": "Q6",
+          "question": "Is there a formal approval or sign-off step required after the review, and what happens when a document is found to be critically incomplete or when the reviewer is unavailable?",
+          "answer": "Yes, there is a formal approval step: an approver must approve the final document before the process concludes. If revisions are not acceptable, the workflow loops back to request another revision cycle. Defined exception cases include a missing change list, conflicting terminology, an unclear or unavailable feature owner, and unresolved comments — each of these can block progress through the workflow. Reviewer unavailability is not explicitly handled by a fallback rule in the current process."
+        }
+      ]
+    }
+  }
+}

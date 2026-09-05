@@ -1,0 +1,609 @@
+{
+  "request": {
+    "stage": "questions",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S07",
+      "title": "Meeting Summary and Email Reporting",
+      "domain": "office_workflow",
+      "initial_description": "After a meeting, the contents are summarized and shared by email with the relevant people.",
+      "reference_workflow": {
+        "goal": "Summarize meeting content and distribute decisions, owners, and deadlines to relevant stakeholders.",
+        "actors": [
+          "meeting participant",
+          "minute taker",
+          "decision owner",
+          "recipient"
+        ],
+        "systems": [
+          "calendar system",
+          "meeting transcript or notes",
+          "email client",
+          "task tracker"
+        ],
+        "inputs": [
+          "meeting agenda",
+          "meeting notes or transcript",
+          "participant list",
+          "action-item list"
+        ],
+        "outputs": [
+          "meeting summary email",
+          "decision list",
+          "action-item assignments",
+          "task tracker updates"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect meeting notes or transcript",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A2",
+            "name": "Extract decisions and action items",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A3",
+            "name": "Confirm unclear items with decision owners",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A4",
+            "name": "Draft summary email",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A5",
+            "name": "Attach or link supporting materials",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A6",
+            "name": "Send email to relevant recipients",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A7",
+            "name": "Update task tracker if needed",
+            "actor": "decision owner"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all action items assigned to owners?",
+            "branches": [
+              "assigned",
+              "clarification needed"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the meeting require task tracking?",
+            "branches": [
+              "tracker update needed",
+              "email only"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing transcript",
+          "unclear decision owner",
+          "recipient list incomplete",
+          "confidential content included"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Decision and action-item extraction can be supported by summarization models."
+          },
+          {
+            "target": "A4",
+            "rationale": "Email drafting can be template-based."
+          },
+          {
+            "target": "A7",
+            "rationale": "Task tracker updates can be generated from action-item tables."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "source of notes",
+        "recipient list",
+        "decision owner",
+        "confidentiality check",
+        "task tracker condition",
+        "supporting materials"
+      ]
+    },
+    "answers": "",
+    "previousOutput": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Conduct Meeting",
+            "actor": "Meeting Organizer / Participants",
+            "system": "Video Conferencing or In-Person",
+            "inputs": [
+              "Meeting agenda",
+              "Participant list",
+              "Pre-read materials"
+            ],
+            "outputs": [
+              "Raw meeting notes",
+              "Action items",
+              "Decisions made"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Capture Meeting Notes",
+            "actor": "Note Taker / Meeting Organizer",
+            "system": "Text editor or note-taking application",
+            "inputs": [
+              "Verbal discussions",
+              "Shared documents during meeting"
+            ],
+            "outputs": [
+              "Raw unstructured meeting notes"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Draft Meeting Summary",
+            "actor": "Meeting Organizer / Note Taker",
+            "system": "Word processor or email client",
+            "inputs": [
+              "Raw meeting notes",
+              "Agenda",
+              "Participant list"
+            ],
+            "outputs": [
+              "Draft meeting summary document"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Review and Approve Summary",
+            "actor": "Meeting Organizer or Senior Participant",
+            "system": "Word processor or email client",
+            "inputs": [
+              "Draft meeting summary"
+            ],
+            "outputs": [
+              "Approved meeting summary"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Identify Distribution List",
+            "actor": "Meeting Organizer",
+            "system": "Email client or contacts directory",
+            "inputs": [
+              "Participant list",
+              "Stakeholder list",
+              "Meeting type classification"
+            ],
+            "outputs": [
+              "Confirmed email distribution list"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Compose Summary Email",
+            "actor": "Meeting Organizer",
+            "system": "Email client",
+            "inputs": [
+              "Approved meeting summary",
+              "Distribution list",
+              "Email template (if any)"
+            ],
+            "outputs": [
+              "Drafted summary email with attachment or inline content"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Send Summary Email",
+            "actor": "Meeting Organizer",
+            "system": "Email client",
+            "inputs": [
+              "Drafted summary email",
+              "Distribution list"
+            ],
+            "outputs": [
+              "Sent email confirmation",
+              "Delivery receipts"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Archive Meeting Summary",
+            "actor": "Meeting Organizer / Admin",
+            "system": "Document management system or shared drive",
+            "inputs": [
+              "Approved meeting summary",
+              "Meeting metadata"
+            ],
+            "outputs": [
+              "Archived summary record"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the draft meeting summary accurate and complete?",
+            "branches": [
+              "Yes: Proceed to identify distribution list",
+              "No: Return to note taker for revision and re-drafting"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are there additional stakeholders beyond meeting attendees who should receive the summary?",
+            "branches": [
+              "Yes: Expand distribution list to include additional stakeholders",
+              "No: Use attendee list as distribution list"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Does the summary contain sensitive or confidential information?",
+            "branches": [
+              "Yes: Apply access restrictions, limit distribution, or seek approval before sending",
+              "No: Proceed with standard distribution"
+            ]
+          }
+        ],
+        "exceptions": [
+          "Meeting notes are incomplete or missing due to note taker absence",
+          "Key decisions or action items are disputed by participants",
+          "Distribution list is incorrect or outdated, causing misdirected emails",
+          "Email delivery failure for one or more recipients",
+          "Summary contains confidential content shared inadvertently with wrong audience",
+          "Meeting recording or transcript is unavailable for reference during summarization",
+          "Delay in approval causes summary to be sent long after the meeting"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A4",
+            "type": "conditional",
+            "condition": "Draft is accurate"
+          },
+          {
+            "from": "D1",
+            "to": "A3",
+            "type": "conditional",
+            "condition": "Draft needs revision"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A7",
+            "type": "conditional",
+            "condition": "No sensitive content or approval obtained"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A2 - Capture Meeting Notes",
+          "rationale": "AI-powered transcription tools can automatically capture spoken content during meetings in real time, reducing reliance on manual note taking and improving accuracy and completeness.",
+          "required_data": [
+            "Meeting audio or video stream",
+            "Speaker identification data",
+            "Meeting calendar metadata"
+          ],
+          "constraints": [
+            "Participant consent required for recording",
+            "Audio quality must be sufficient",
+            "Multi-language meetings may reduce transcription accuracy"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A3 - Draft Meeting Summary",
+          "rationale": "Large language models can automatically generate structured summaries from transcripts or raw notes, identifying key decisions, action items, and discussion points with minimal manual effort.",
+          "required_data": [
+            "Raw meeting transcript or notes",
+            "Agenda",
+            "Participant roles"
+          ],
+          "constraints": [
+            "Output quality depends on transcript quality",
+            "Sensitive topics may require human oversight before distribution",
+            "Model must be configured for organizational tone and format"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D1 - Is the draft meeting summary accurate and complete?",
+          "rationale": "Automated quality checks can flag incomplete summaries, missing action item owners, or absent decision records before routing for human review, reducing revision cycles.",
+          "required_data": [
+            "Draft summary content",
+            "Agenda items",
+            "Expected output schema"
+          ],
+          "constraints": [
+            "Rules for completeness must be predefined",
+            "Subjective accuracy still requires human judgment"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A5 - Identify Distribution List",
+          "rationale": "Distribution lists can be automatically derived from meeting calendar invites, role-based rules, or project membership data, reducing manual lookup effort and errors.",
+          "required_data": [
+            "Calendar invite attendee list",
+            "Stakeholder registry",
+            "Meeting type classification"
+          ],
+          "constraints": [
+            "Stakeholder registry must be current and accessible",
+            "Edge cases such as external guests may require manual verification"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A6 - Compose Summary Email",
+          "rationale": "Email composition can be fully automated using predefined templates populated with the approved summary, action items, and distribution list, eliminating manual formatting effort.",
+          "required_data": [
+            "Approved meeting summary",
+            "Distribution list",
+            "Email template",
+            "Meeting metadata such as date and title"
+          ],
+          "constraints": [
+            "Template must be maintained and version-controlled",
+            "Personalization requirements may limit full automation"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A7 - Send Summary Email",
+          "rationale": "Automated email dispatch can be triggered immediately upon summary approval, ensuring timely delivery without manual intervention and enabling delivery tracking.",
+          "required_data": [
+            "Approved drafted email",
+            "Distribution list",
+            "Send trigger event"
+          ],
+          "constraints": [
+            "Email system integration required",
+            "Sensitive content classification must be resolved before automated sending",
+            "Approval gate must be enforced programmatically"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A8 - Archive Meeting Summary",
+          "rationale": "Archiving can be automated upon email send confirmation, storing the summary in a predefined location with standardized naming and tagging for future retrieval.",
+          "required_data": [
+            "Approved meeting summary",
+            "Meeting metadata",
+            "Document management system access credentials"
+          ],
+          "constraints": [
+            "Folder structure and naming conventions must be standardized",
+            "Access control policies must be applied automatically"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D3 - Does the summary contain sensitive or confidential information?",
+          "rationale": "Automated content classification can scan summaries for sensitive keywords, data categories, or named entities and flag them before distribution, reducing risk of inadvertent disclosure.",
+          "required_data": [
+            "Summary text",
+            "Sensitivity classification rules or model",
+            "Data classification taxonomy"
+          ],
+          "constraints": [
+            "Classification rules must be maintained and updated",
+            "False positives may create unnecessary delays",
+            "Final determination may still require human review"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "Meetings are scheduled through a calendar system that contains attendee and agenda information.",
+        "A designated note taker or meeting organizer is always present or assigned.",
+        "The organization has access to or can adopt AI transcription or summarization tooling.",
+        "An email system is available and accessible programmatically for automated dispatch.",
+        "A document management system or shared drive exists for archiving purposes.",
+        "Participant consent for recording is either already in place or can be established.",
+        "The frequency of meetings is regular enough to justify automation investment.",
+        "Meeting summaries follow a consistent structure including decisions, action items, and next steps.",
+        "Distribution lists can be partially or fully derived from structured data sources such as calendar invites or project registries.",
+        "Sensitive content classification is a recognized concern and some governance rules exist or can be defined."
+      ]
+    },
+    "questions": null
+  },
+  "result": {
+    "id": "12ea1912-8221-48d5-8708-bc2029c514ea",
+    "created_at": "2026-09-05T03:45:37.847Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "questions",
+    "raw_text": "{\n  \"missing_information\": [\n    {\n      \"category\": \"actor\",\n      \"gap\": \"No information on who is responsible for creating the meeting summary (e.g., meeting host, designated note-taker, rotating role, or an automated transcription tool).\",\n      \"why_it_matters\": \"Identifying the actor determines whether summarization is a manual human task or already partially automated, directly affecting automation potential.\"\n    },\n    {\n      \"category\": \"input\",\n      \"gap\": \"No details on the source material for the summary (e.g., handwritten notes, audio recording, video recording, chat transcript, shared document during meeting).\",\n      \"why_it_matters\": \"The input format determines which automation tools (e.g., speech-to-text, AI summarization) are applicable and what integration is needed.\"\n    },\n    {\n      \"category\": \"system\",\n      \"gap\": \"No information on the meeting platform used (e.g., video conferencing, in-person, phone), nor the email system used for distribution.\",\n      \"why_it_matters\": \"System identification is essential to assess API availability, integration feasibility, and whether native automation hooks exist.\"\n    },\n    {\n      \"category\": \"decision\",\n      \"gap\": \"No criteria defined for determining who the 'relevant people' are for email distribution (e.g., attendees only, additional stakeholders, management escalation).\",\n      \"why_it_matters\": \"Without a clear rule for recipient selection, the distribution step cannot be automated reliably and may require manual judgment each time.\"\n    },\n    {\n      \"category\": \"output\",\n      \"gap\": \"No standard format or template specified for the meeting summary (e.g., bullet points, action items section, decisions log, structured template).\",\n      \"why_it_matters\": \"A lack of output standardization means automation cannot reliably generate or validate the summary content before sending.\"\n    },\n    {\n      \"category\": \"frequency\",\n      \"gap\": \"No information on how often meetings occur, the volume of summaries produced per week or month, or whether meeting types vary (e.g., recurring vs. ad hoc).\",\n      \"why_it_matters\": \"Frequency and volume data are critical for estimating automation ROI and prioritizing implementation effort.\"\n    },\n    {\n      \"category\": \"manual_effort\",\n      \"gap\": \"No estimate of the time spent per meeting on summarization and email preparation, nor the total effort across the organization.\",\n      \"why_it_matters\": \"Without effort estimates, it is impossible to quantify the automation benefit or build a business case.\"\n    },\n    {\n      \"category\": \"exception\",\n      \"gap\": \"No information on exception cases such as confidential meetings, partially attended meetings, meetings with no clear outcomes, or failed email delivery.\",\n      \"why_it_matters\": \"Unhandled exceptions can cause automation failures or data governance violations if sensitive content is distributed incorrectly.\"\n    },\n    {\n      \"category\": \"dependency\",\n      \"gap\": \"No details on whether action items from the summary feed into downstream systems (e.g., task management, CRM, project tracking tools).\",\n      \"why_it_matters\": \"If summaries trigger downstream workflows, a broader automation scope may be needed and integration dependencies must be mapped.\"\n    },\n    {\n      \"category\": \"data_availability\",\n      \"gap\": \"No clarity on whether meeting recordings or transcripts are currently stored and accessible in a structured, retrievable format.\",\n      \"why_it_matters\": \"Automation of summarization depends on having reliable, machine-readable input data; unavailability blocks AI-assisted approaches.\"\n    }\n  ],\n  \"clarification_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"Who currently creates the meeting summary, and what source material do they use (e.g., personal notes, recording, transcript)?\",\n      \"targets\": [\"actor\", \"input\"]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"Which platform is used to host meetings, and which email system is used to distribute the summary?\",\n      \"targets\": [\"system\", \"integration_constraint\"]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"How is the list of email recipients determined after each meeting — is it always the attendees, or does someone manually curate the distribution list?\",\n      \"targets\": [\"decision\", \"actor\"]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"Is there a standard template or required structure for the meeting summary (e.g., attendees, decisions, action items, deadlines), or does the format vary?\",\n      \"targets\": [\"output\", \"input\"]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"Approximately how many meetings per week require a summary and email, and how much time on average does the full process take per meeting?\",\n      \"targets\": [\"frequency\", \"manual_effort\"]\n    },\n    {\n      \"id\": \"Q6\",\n      \"question\": \"Are there any meetings considered confidential or sensitive where the normal summarization and distribution process should not apply, and if so, how are these currently handled?\",\n      \"targets\": [\"exception\", \"risk_or_approval\"]\n    }\n  ]\n}",
+    "parsed": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No information on who is responsible for creating the meeting summary (e.g., meeting host, designated note-taker, rotating role, or an automated transcription tool).",
+          "why_it_matters": "Identifying the actor determines whether summarization is a manual human task or already partially automated, directly affecting automation potential."
+        },
+        {
+          "category": "input",
+          "gap": "No details on the source material for the summary (e.g., handwritten notes, audio recording, video recording, chat transcript, shared document during meeting).",
+          "why_it_matters": "The input format determines which automation tools (e.g., speech-to-text, AI summarization) are applicable and what integration is needed."
+        },
+        {
+          "category": "system",
+          "gap": "No information on the meeting platform used (e.g., video conferencing, in-person, phone), nor the email system used for distribution.",
+          "why_it_matters": "System identification is essential to assess API availability, integration feasibility, and whether native automation hooks exist."
+        },
+        {
+          "category": "decision",
+          "gap": "No criteria defined for determining who the 'relevant people' are for email distribution (e.g., attendees only, additional stakeholders, management escalation).",
+          "why_it_matters": "Without a clear rule for recipient selection, the distribution step cannot be automated reliably and may require manual judgment each time."
+        },
+        {
+          "category": "output",
+          "gap": "No standard format or template specified for the meeting summary (e.g., bullet points, action items section, decisions log, structured template).",
+          "why_it_matters": "A lack of output standardization means automation cannot reliably generate or validate the summary content before sending."
+        },
+        {
+          "category": "frequency",
+          "gap": "No information on how often meetings occur, the volume of summaries produced per week or month, or whether meeting types vary (e.g., recurring vs. ad hoc).",
+          "why_it_matters": "Frequency and volume data are critical for estimating automation ROI and prioritizing implementation effort."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "No estimate of the time spent per meeting on summarization and email preparation, nor the total effort across the organization.",
+          "why_it_matters": "Without effort estimates, it is impossible to quantify the automation benefit or build a business case."
+        },
+        {
+          "category": "exception",
+          "gap": "No information on exception cases such as confidential meetings, partially attended meetings, meetings with no clear outcomes, or failed email delivery.",
+          "why_it_matters": "Unhandled exceptions can cause automation failures or data governance violations if sensitive content is distributed incorrectly."
+        },
+        {
+          "category": "dependency",
+          "gap": "No details on whether action items from the summary feed into downstream systems (e.g., task management, CRM, project tracking tools).",
+          "why_it_matters": "If summaries trigger downstream workflows, a broader automation scope may be needed and integration dependencies must be mapped."
+        },
+        {
+          "category": "data_availability",
+          "gap": "No clarity on whether meeting recordings or transcripts are currently stored and accessible in a structured, retrievable format.",
+          "why_it_matters": "Automation of summarization depends on having reliable, machine-readable input data; unavailability blocks AI-assisted approaches."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who currently creates the meeting summary, and what source material do they use (e.g., personal notes, recording, transcript)?",
+          "targets": [
+            "actor",
+            "input"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Which platform is used to host meetings, and which email system is used to distribute the summary?",
+          "targets": [
+            "system",
+            "integration_constraint"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "How is the list of email recipients determined after each meeting — is it always the attendees, or does someone manually curate the distribution list?",
+          "targets": [
+            "decision",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Is there a standard template or required structure for the meeting summary (e.g., attendees, decisions, action items, deadlines), or does the format vary?",
+          "targets": [
+            "output",
+            "input"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Approximately how many meetings per week require a summary and email, and how much time on average does the full process take per meeting?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Are there any meetings considered confidential or sensitive where the normal summarization and distribution process should not apply, and if so, how are these currently handled?",
+          "targets": [
+            "exception",
+            "risk_or_approval"
+          ]
+        }
+      ]
+    }
+  }
+}

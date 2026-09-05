@@ -1,0 +1,404 @@
+{
+  "request": {
+    "stage": "oracle_answers",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S07",
+      "title": "Meeting Summary and Email Reporting",
+      "domain": "office_workflow",
+      "initial_description": "After a meeting, the contents are summarized and shared by email with the relevant people.",
+      "reference_workflow": {
+        "goal": "Summarize meeting content and distribute decisions, owners, and deadlines to relevant stakeholders.",
+        "actors": [
+          "meeting participant",
+          "minute taker",
+          "decision owner",
+          "recipient"
+        ],
+        "systems": [
+          "calendar system",
+          "meeting transcript or notes",
+          "email client",
+          "task tracker"
+        ],
+        "inputs": [
+          "meeting agenda",
+          "meeting notes or transcript",
+          "participant list",
+          "action-item list"
+        ],
+        "outputs": [
+          "meeting summary email",
+          "decision list",
+          "action-item assignments",
+          "task tracker updates"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect meeting notes or transcript",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A2",
+            "name": "Extract decisions and action items",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A3",
+            "name": "Confirm unclear items with decision owners",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A4",
+            "name": "Draft summary email",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A5",
+            "name": "Attach or link supporting materials",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A6",
+            "name": "Send email to relevant recipients",
+            "actor": "minute taker"
+          },
+          {
+            "id": "A7",
+            "name": "Update task tracker if needed",
+            "actor": "decision owner"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all action items assigned to owners?",
+            "branches": [
+              "assigned",
+              "clarification needed"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the meeting require task tracking?",
+            "branches": [
+              "tracker update needed",
+              "email only"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing transcript",
+          "unclear decision owner",
+          "recipient list incomplete",
+          "confidential content included"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Decision and action-item extraction can be supported by summarization models."
+          },
+          {
+            "target": "A4",
+            "rationale": "Email drafting can be template-based."
+          },
+          {
+            "target": "A7",
+            "rationale": "Task tracker updates can be generated from action-item tables."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "source of notes",
+        "recipient list",
+        "decision owner",
+        "confidentiality check",
+        "task tracker condition",
+        "supporting materials"
+      ]
+    },
+    "answers": "Q1. Who currently creates the meeting summary, and what source material do they use (e.g., personal notes, recording, transcript)?\nAnswer: \n\nQ2. Which platform is used to host meetings, and which email system is used to distribute the summary?\nAnswer: \n\nQ3. How is the list of email recipients determined after each meeting — is it always the attendees, or does someone manually curate the distribution list?\nAnswer: \n\nQ4. Is there a standard template or required structure for the meeting summary (e.g., attendees, decisions, action items, deadlines), or does the format vary?\nAnswer: \n\nQ5. Approximately how many meetings per week require a summary and email, and how much time on average does the full process take per meeting?\nAnswer: \n\nQ6. Are there any meetings considered confidential or sensitive where the normal summarization and distribution process should not apply, and if so, how are these currently handled?\nAnswer: ",
+    "previousOutput": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No information on who is responsible for creating the meeting summary (e.g., meeting host, designated note-taker, rotating role, or an automated transcription tool).",
+          "why_it_matters": "Identifying the actor determines whether summarization is a manual human task or already partially automated, directly affecting automation potential."
+        },
+        {
+          "category": "input",
+          "gap": "No details on the source material for the summary (e.g., handwritten notes, audio recording, video recording, chat transcript, shared document during meeting).",
+          "why_it_matters": "The input format determines which automation tools (e.g., speech-to-text, AI summarization) are applicable and what integration is needed."
+        },
+        {
+          "category": "system",
+          "gap": "No information on the meeting platform used (e.g., video conferencing, in-person, phone), nor the email system used for distribution.",
+          "why_it_matters": "System identification is essential to assess API availability, integration feasibility, and whether native automation hooks exist."
+        },
+        {
+          "category": "decision",
+          "gap": "No criteria defined for determining who the 'relevant people' are for email distribution (e.g., attendees only, additional stakeholders, management escalation).",
+          "why_it_matters": "Without a clear rule for recipient selection, the distribution step cannot be automated reliably and may require manual judgment each time."
+        },
+        {
+          "category": "output",
+          "gap": "No standard format or template specified for the meeting summary (e.g., bullet points, action items section, decisions log, structured template).",
+          "why_it_matters": "A lack of output standardization means automation cannot reliably generate or validate the summary content before sending."
+        },
+        {
+          "category": "frequency",
+          "gap": "No information on how often meetings occur, the volume of summaries produced per week or month, or whether meeting types vary (e.g., recurring vs. ad hoc).",
+          "why_it_matters": "Frequency and volume data are critical for estimating automation ROI and prioritizing implementation effort."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "No estimate of the time spent per meeting on summarization and email preparation, nor the total effort across the organization.",
+          "why_it_matters": "Without effort estimates, it is impossible to quantify the automation benefit or build a business case."
+        },
+        {
+          "category": "exception",
+          "gap": "No information on exception cases such as confidential meetings, partially attended meetings, meetings with no clear outcomes, or failed email delivery.",
+          "why_it_matters": "Unhandled exceptions can cause automation failures or data governance violations if sensitive content is distributed incorrectly."
+        },
+        {
+          "category": "dependency",
+          "gap": "No details on whether action items from the summary feed into downstream systems (e.g., task management, CRM, project tracking tools).",
+          "why_it_matters": "If summaries trigger downstream workflows, a broader automation scope may be needed and integration dependencies must be mapped."
+        },
+        {
+          "category": "data_availability",
+          "gap": "No clarity on whether meeting recordings or transcripts are currently stored and accessible in a structured, retrievable format.",
+          "why_it_matters": "Automation of summarization depends on having reliable, machine-readable input data; unavailability blocks AI-assisted approaches."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who currently creates the meeting summary, and what source material do they use (e.g., personal notes, recording, transcript)?",
+          "targets": [
+            "actor",
+            "input"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Which platform is used to host meetings, and which email system is used to distribute the summary?",
+          "targets": [
+            "system",
+            "integration_constraint"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "How is the list of email recipients determined after each meeting — is it always the attendees, or does someone manually curate the distribution list?",
+          "targets": [
+            "decision",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Is there a standard template or required structure for the meeting summary (e.g., attendees, decisions, action items, deadlines), or does the format vary?",
+          "targets": [
+            "output",
+            "input"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Approximately how many meetings per week require a summary and email, and how much time on average does the full process take per meeting?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Are there any meetings considered confidential or sensitive where the normal summarization and distribution process should not apply, and if so, how are these currently handled?",
+          "targets": [
+            "exception",
+            "risk_or_approval"
+          ]
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No information on who is responsible for creating the meeting summary (e.g., meeting host, designated note-taker, rotating role, or an automated transcription tool).",
+          "why_it_matters": "Identifying the actor determines whether summarization is a manual human task or already partially automated, directly affecting automation potential."
+        },
+        {
+          "category": "input",
+          "gap": "No details on the source material for the summary (e.g., handwritten notes, audio recording, video recording, chat transcript, shared document during meeting).",
+          "why_it_matters": "The input format determines which automation tools (e.g., speech-to-text, AI summarization) are applicable and what integration is needed."
+        },
+        {
+          "category": "system",
+          "gap": "No information on the meeting platform used (e.g., video conferencing, in-person, phone), nor the email system used for distribution.",
+          "why_it_matters": "System identification is essential to assess API availability, integration feasibility, and whether native automation hooks exist."
+        },
+        {
+          "category": "decision",
+          "gap": "No criteria defined for determining who the 'relevant people' are for email distribution (e.g., attendees only, additional stakeholders, management escalation).",
+          "why_it_matters": "Without a clear rule for recipient selection, the distribution step cannot be automated reliably and may require manual judgment each time."
+        },
+        {
+          "category": "output",
+          "gap": "No standard format or template specified for the meeting summary (e.g., bullet points, action items section, decisions log, structured template).",
+          "why_it_matters": "A lack of output standardization means automation cannot reliably generate or validate the summary content before sending."
+        },
+        {
+          "category": "frequency",
+          "gap": "No information on how often meetings occur, the volume of summaries produced per week or month, or whether meeting types vary (e.g., recurring vs. ad hoc).",
+          "why_it_matters": "Frequency and volume data are critical for estimating automation ROI and prioritizing implementation effort."
+        },
+        {
+          "category": "manual_effort",
+          "gap": "No estimate of the time spent per meeting on summarization and email preparation, nor the total effort across the organization.",
+          "why_it_matters": "Without effort estimates, it is impossible to quantify the automation benefit or build a business case."
+        },
+        {
+          "category": "exception",
+          "gap": "No information on exception cases such as confidential meetings, partially attended meetings, meetings with no clear outcomes, or failed email delivery.",
+          "why_it_matters": "Unhandled exceptions can cause automation failures or data governance violations if sensitive content is distributed incorrectly."
+        },
+        {
+          "category": "dependency",
+          "gap": "No details on whether action items from the summary feed into downstream systems (e.g., task management, CRM, project tracking tools).",
+          "why_it_matters": "If summaries trigger downstream workflows, a broader automation scope may be needed and integration dependencies must be mapped."
+        },
+        {
+          "category": "data_availability",
+          "gap": "No clarity on whether meeting recordings or transcripts are currently stored and accessible in a structured, retrievable format.",
+          "why_it_matters": "Automation of summarization depends on having reliable, machine-readable input data; unavailability blocks AI-assisted approaches."
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who currently creates the meeting summary, and what source material do they use (e.g., personal notes, recording, transcript)?",
+          "targets": [
+            "actor",
+            "input"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "Which platform is used to host meetings, and which email system is used to distribute the summary?",
+          "targets": [
+            "system",
+            "integration_constraint"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "How is the list of email recipients determined after each meeting — is it always the attendees, or does someone manually curate the distribution list?",
+          "targets": [
+            "decision",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "Is there a standard template or required structure for the meeting summary (e.g., attendees, decisions, action items, deadlines), or does the format vary?",
+          "targets": [
+            "output",
+            "input"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "Approximately how many meetings per week require a summary and email, and how much time on average does the full process take per meeting?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "Are there any meetings considered confidential or sensitive where the normal summarization and distribution process should not apply, and if so, how are these currently handled?",
+          "targets": [
+            "exception",
+            "risk_or_approval"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "619a0827-07e1-41da-8903-257a3fde0081",
+    "created_at": "2026-09-05T03:46:05.395Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "oracle_answers",
+    "raw_text": "{\n  \"answers\": [\n    {\n      \"question_id\": \"Q1\",\n      \"question\": \"Who currently creates the meeting summary, and what source material do they use (e.g., personal notes, recording, transcript)?\",\n      \"answer\": \"A designated minute taker is responsible for creating the summary. They work from meeting notes or a transcript, along with the meeting agenda and a list of action items captured during the meeting.\"\n    },\n    {\n      \"question_id\": \"Q2\",\n      \"question\": \"Which platform is used to host meetings, and which email system is used to distribute the summary?\",\n      \"answer\": \"Meetings are tracked via a calendar system. The summary is distributed using an email client. There is also a task tracker involved if action items need to be logged after the meeting.\"\n    },\n    {\n      \"question_id\": \"Q3\",\n      \"question\": \"How is the list of email recipients determined after each meeting — is it always the attendees, or does someone manually curate the distribution list?\",\n      \"answer\": \"The minute taker manually determines the relevant recipients. The list is not always limited to attendees — it may include additional stakeholders depending on the meeting content and decisions made.\"\n    },\n    {\n      \"question_id\": \"Q4\",\n      \"question\": \"Is there a standard template or required structure for the meeting summary (e.g., attendees, decisions, action items, deadlines), or does the format vary?\",\n      \"answer\": \"There is an expected structure: the summary should include decisions made, action items with assigned owners, and deadlines. Supporting materials may also be attached or linked. The format is consistent enough to support templating.\"\n    },\n    {\n      \"question_id\": \"Q5\",\n      \"question\": \"Approximately how many meetings per week require a summary and email, and how much time on average does the full process take per meeting?\",\n      \"answer\": \"That level of volume and time detail is not currently tracked formally. The process involves multiple steps — collecting notes, extracting decisions and action items, confirming unclear items, drafting and sending the email, and optionally updating a task tracker — so the effort per meeting is non-trivial but varies.\"\n    },\n    {\n      \"question_id\": \"Q6\",\n      \"question\": \"Are there any meetings considered confidential or sensitive where the normal summarization and distribution process should not apply, and if so, how are these currently handled?\",\n      \"answer\": \"Confidential content is recognized as an exception case. When confidential material is included in meeting notes, it poses a risk in the current process since there is no formal handling rule defined — it is flagged as an unresolved exception that can cause issues if distributed through the standard email flow.\"\n    }\n  ]\n}",
+    "parsed": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "Who currently creates the meeting summary, and what source material do they use (e.g., personal notes, recording, transcript)?",
+          "answer": "A designated minute taker is responsible for creating the summary. They work from meeting notes or a transcript, along with the meeting agenda and a list of action items captured during the meeting."
+        },
+        {
+          "question_id": "Q2",
+          "question": "Which platform is used to host meetings, and which email system is used to distribute the summary?",
+          "answer": "Meetings are tracked via a calendar system. The summary is distributed using an email client. There is also a task tracker involved if action items need to be logged after the meeting."
+        },
+        {
+          "question_id": "Q3",
+          "question": "How is the list of email recipients determined after each meeting — is it always the attendees, or does someone manually curate the distribution list?",
+          "answer": "The minute taker manually determines the relevant recipients. The list is not always limited to attendees — it may include additional stakeholders depending on the meeting content and decisions made."
+        },
+        {
+          "question_id": "Q4",
+          "question": "Is there a standard template or required structure for the meeting summary (e.g., attendees, decisions, action items, deadlines), or does the format vary?",
+          "answer": "There is an expected structure: the summary should include decisions made, action items with assigned owners, and deadlines. Supporting materials may also be attached or linked. The format is consistent enough to support templating."
+        },
+        {
+          "question_id": "Q5",
+          "question": "Approximately how many meetings per week require a summary and email, and how much time on average does the full process take per meeting?",
+          "answer": "That level of volume and time detail is not currently tracked formally. The process involves multiple steps — collecting notes, extracting decisions and action items, confirming unclear items, drafting and sending the email, and optionally updating a task tracker — so the effort per meeting is non-trivial but varies."
+        },
+        {
+          "question_id": "Q6",
+          "question": "Are there any meetings considered confidential or sensitive where the normal summarization and distribution process should not apply, and if so, how are these currently handled?",
+          "answer": "Confidential content is recognized as an exception case. When confidential material is included in meeting notes, it poses a risk in the current process since there is no formal handling rule defined — it is flagged as an unresolved exception that can cause issues if distributed through the standard email flow."
+        }
+      ]
+    }
+  }
+}

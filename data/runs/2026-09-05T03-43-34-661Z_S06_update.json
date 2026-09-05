@@ -1,0 +1,739 @@
+{
+  "request": {
+    "stage": "update",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S06",
+      "title": "Vendor Meeting and Improvement Action Follow-up",
+      "domain": "engineering_coordination",
+      "initial_description": "The team meets with an equipment vendor to discuss improvement ideas. After the meeting, someone summarizes the discussion and follows up on action items.",
+      "reference_workflow": {
+        "goal": "Coordinate a vendor meeting, capture improvement decisions, and track follow-up actions.",
+        "actors": [
+          "equipment engineer",
+          "vendor representative",
+          "meeting organizer",
+          "action-item owner",
+          "manager"
+        ],
+        "systems": [
+          "calendar system",
+          "meeting notes",
+          "action-item tracker",
+          "shared document repository"
+        ],
+        "inputs": [
+          "improvement request",
+          "equipment issue summary",
+          "meeting agenda",
+          "vendor proposal"
+        ],
+        "outputs": [
+          "meeting minutes",
+          "action-item list",
+          "owner and due date assignments",
+          "updated improvement proposal"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Prepare agenda and issue summary",
+            "actor": "equipment engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Schedule meeting with vendor",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A3",
+            "name": "Discuss improvement options",
+            "actor": "equipment engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Record decisions and open questions",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A5",
+            "name": "Assign action-item owners and due dates",
+            "actor": "manager"
+          },
+          {
+            "id": "A6",
+            "name": "Share meeting summary",
+            "actor": "meeting organizer"
+          },
+          {
+            "id": "A7",
+            "name": "Track action-item progress",
+            "actor": "action-item owner"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the proposed improvement technically feasible?",
+            "branches": [
+              "feasible",
+              "requires revision"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are action items clearly owned?",
+            "branches": [
+              "owned",
+              "owner missing"
+            ]
+          }
+        ],
+        "exceptions": [
+          "agenda not prepared",
+          "vendor proposal incomplete",
+          "unclear owner",
+          "missed follow-up deadline"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Meeting scheduling can be assisted by calendar availability checks."
+          },
+          {
+            "target": "A4",
+            "rationale": "Meeting notes can be summarized into decisions, open questions, and action items."
+          },
+          {
+            "target": "A7",
+            "rationale": "Action-item reminders and status tracking can be automated."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "agenda input",
+        "meeting organizer",
+        "action-item owner",
+        "due date",
+        "tracker system",
+        "feasibility decision"
+      ]
+    },
+    "answers": "Q1. Who are the defined roles responsible for organizing the meeting, capturing notes during the session, and producing the formal summary afterward?\nAnswer: The meeting organizer handles scheduling, captures decisions and open questions during the session, and produces and shares the formal summary. The equipment engineer leads the technical discussion. A manager assigns action-item owners and due dates after the meeting.\n\nQ2. What tools or systems are currently used to schedule meetings, record discussion notes, distribute summaries, and track action items to completion?\nAnswer: A calendar system is used for scheduling. Meeting notes are captured in a dedicated notes tool. Summaries and related documents are stored in a shared document repository. Action items are tracked in a separate action-item tracker.\n\nQ3. What is the expected format and required content of the meeting summary, and who are its intended recipients?\nAnswer: The summary takes the form of meeting minutes and includes recorded decisions, open questions, an action-item list, and owner and due date assignments. It is distributed to all relevant participants, including the equipment engineer, action-item owners, and the manager.\n\nQ4. How are improvement ideas evaluated and prioritized after the meeting, and who has the authority to approve resource commitments or next steps?\nAnswer: Improvement ideas are evaluated against technical feasibility. If an idea is not feasible as proposed, it is flagged for revision before moving forward. The manager holds authority to assign ownership and commit resources by assigning action-item owners and due dates.\n\nQ5. How often do these vendor meetings occur, and what is the expected turnaround time for delivering the summary and completing follow-up actions?\nAnswer: Meeting cadence is not explicitly fixed in our current process definition. However, the summary is expected to be shared promptly after the meeting, and action-item owners are expected to track progress against assigned due dates set during the post-meeting assignment step.\n\nQ6. What happens when action items are not completed on time or when the vendor does not respond to follow-up requests — is there an escalation path?\nAnswer: Missed follow-up deadlines and unclear or missing action-item ownership are recognized exception cases. When an action item lacks a clear owner, it is flagged and must be reassigned before progressing. Missed deadlines currently lack a formal escalation path, which is a known gap in the process.",
+    "previousOutput": {
+      "answers": [
+        {
+          "question_id": "Q1",
+          "question": "Who are the defined roles responsible for organizing the meeting, capturing notes during the session, and producing the formal summary afterward?",
+          "answer": "The meeting organizer handles scheduling, captures decisions and open questions during the session, and produces and shares the formal summary. The equipment engineer leads the technical discussion. A manager assigns action-item owners and due dates after the meeting."
+        },
+        {
+          "question_id": "Q2",
+          "question": "What tools or systems are currently used to schedule meetings, record discussion notes, distribute summaries, and track action items to completion?",
+          "answer": "A calendar system is used for scheduling. Meeting notes are captured in a dedicated notes tool. Summaries and related documents are stored in a shared document repository. Action items are tracked in a separate action-item tracker."
+        },
+        {
+          "question_id": "Q3",
+          "question": "What is the expected format and required content of the meeting summary, and who are its intended recipients?",
+          "answer": "The summary takes the form of meeting minutes and includes recorded decisions, open questions, an action-item list, and owner and due date assignments. It is distributed to all relevant participants, including the equipment engineer, action-item owners, and the manager."
+        },
+        {
+          "question_id": "Q4",
+          "question": "How are improvement ideas evaluated and prioritized after the meeting, and who has the authority to approve resource commitments or next steps?",
+          "answer": "Improvement ideas are evaluated against technical feasibility. If an idea is not feasible as proposed, it is flagged for revision before moving forward. The manager holds authority to assign ownership and commit resources by assigning action-item owners and due dates."
+        },
+        {
+          "question_id": "Q5",
+          "question": "How often do these vendor meetings occur, and what is the expected turnaround time for delivering the summary and completing follow-up actions?",
+          "answer": "Meeting cadence is not explicitly fixed in our current process definition. However, the summary is expected to be shared promptly after the meeting, and action-item owners are expected to track progress against assigned due dates set during the post-meeting assignment step."
+        },
+        {
+          "question_id": "Q6",
+          "question": "What happens when action items are not completed on time or when the vendor does not respond to follow-up requests — is there an escalation path?",
+          "answer": "Missed follow-up deadlines and unclear or missing action-item ownership are recognized exception cases. When an action item lacks a clear owner, it is flagged and must be reassigned before progressing. Missed deadlines currently lack a formal escalation path, which is a known gap in the process."
+        }
+      ]
+    },
+    "questions": {
+      "missing_information": [
+        {
+          "category": "actor",
+          "gap": "No specific roles are identified for meeting participants (e.g., who from the team attends, which vendor representatives are involved, who is responsible for the summary)",
+          "why_it_matters": "Without defined actors, it is impossible to assign ownership of tasks, determine authorization levels, or map the workflow to specific job functions for automation targeting"
+        },
+        {
+          "category": "system",
+          "gap": "No systems or tools are mentioned for scheduling the meeting, capturing notes, distributing summaries, or tracking action items",
+          "why_it_matters": "Automation potential depends heavily on whether existing platforms (e.g., calendaring, note-taking, task management) are already in use or need to be introduced"
+        },
+        {
+          "category": "output",
+          "gap": "The format, destination, and required content of the meeting summary are undefined",
+          "why_it_matters": "Automating summary generation or distribution requires knowing the expected output structure, recipients, and storage location"
+        },
+        {
+          "category": "input",
+          "gap": "There is no information about what materials or data are prepared or shared before or during the meeting (e.g., agendas, improvement proposals, equipment data)",
+          "why_it_matters": "Pre-meeting inputs affect what can be automated in preparation steps and what data sources need to be integrated"
+        },
+        {
+          "category": "decision",
+          "gap": "No decision criteria are defined for evaluating or prioritizing improvement ideas raised during the meeting",
+          "why_it_matters": "Without decision logic, it is unclear how action items are selected, escalated, or rejected, making it difficult to model branching paths or automate approvals"
+        },
+        {
+          "category": "frequency",
+          "gap": "Meeting cadence and follow-up timelines are not specified",
+          "why_it_matters": "Frequency determines the volume of process instances and affects the ROI calculation for automation investment"
+        },
+        {
+          "category": "manual_effort",
+          "gap": "The effort involved in summarizing the discussion and following up on action items is not quantified",
+          "why_it_matters": "Without effort estimates, it is not possible to assess how much time could be saved through automation or prioritize this process against others"
+        },
+        {
+          "category": "exception",
+          "gap": "No exception handling is described for scenarios such as missed follow-ups, unresolved action items, vendor non-response, or meeting cancellations",
+          "why_it_matters": "Exception paths are critical for building robust automated workflows and ensuring process continuity"
+        },
+        {
+          "category": "dependency",
+          "gap": "Dependencies between this workflow and upstream or downstream processes (e.g., maintenance planning, procurement, approval chains) are not mentioned",
+          "why_it_matters": "Automation of follow-up actions may trigger or require input from adjacent processes, which must be mapped to avoid integration gaps"
+        },
+        {
+          "category": "risk_or_approval",
+          "gap": "No approval mechanism is defined for acting on improvement ideas or committing resources based on vendor recommendations",
+          "why_it_matters": "Approvals introduce human-in-the-loop requirements that constrain what can be fully automated and must be reflected in the process model"
+        },
+        {
+          "category": "data_availability",
+          "gap": "It is unclear whether meeting notes and action items are recorded in a structured or unstructured format, and whether historical records exist",
+          "why_it_matters": "Structured data enables automation and analytics; unstructured notes would require NLP capabilities and add complexity to any automation solution"
+        }
+      ],
+      "clarification_questions": [
+        {
+          "id": "Q1",
+          "question": "Who are the defined roles responsible for organizing the meeting, capturing notes during the session, and producing the formal summary afterward?",
+          "targets": [
+            "actor",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q2",
+          "question": "What tools or systems are currently used to schedule meetings, record discussion notes, distribute summaries, and track action items to completion?",
+          "targets": [
+            "system",
+            "data_availability"
+          ]
+        },
+        {
+          "id": "Q3",
+          "question": "What is the expected format and required content of the meeting summary, and who are its intended recipients?",
+          "targets": [
+            "output",
+            "actor"
+          ]
+        },
+        {
+          "id": "Q4",
+          "question": "How are improvement ideas evaluated and prioritized after the meeting, and who has the authority to approve resource commitments or next steps?",
+          "targets": [
+            "decision",
+            "risk_or_approval"
+          ]
+        },
+        {
+          "id": "Q5",
+          "question": "How often do these vendor meetings occur, and what is the expected turnaround time for delivering the summary and completing follow-up actions?",
+          "targets": [
+            "frequency",
+            "manual_effort"
+          ]
+        },
+        {
+          "id": "Q6",
+          "question": "What happens when action items are not completed on time or when the vendor does not respond to follow-up requests — is there an escalation path?",
+          "targets": [
+            "exception",
+            "dependency"
+          ]
+        }
+      ]
+    }
+  },
+  "result": {
+    "id": "6282ac84-95b9-4a97-b87b-202d724c519c",
+    "created_at": "2026-09-05T03:43:34.656Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "update",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Schedule Vendor Meeting\",\n        \"actor\": \"Meeting Organizer\",\n        \"system\": \"Calendar System\",\n        \"inputs\": [\"Vendor availability\", \"Participant list\", \"Meeting agenda topics\"],\n        \"outputs\": [\"Calendar invite\", \"Confirmed meeting time and attendees\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Conduct Vendor Meeting and Capture Notes\",\n        \"actor\": \"Meeting Organizer (notes); Equipment Engineer (technical lead)\",\n        \"system\": \"Notes Tool\",\n        \"inputs\": [\"Meeting agenda\", \"Confirmed attendees\", \"Prior action items or context\"],\n        \"outputs\": [\"Raw meeting notes\", \"Recorded decisions\", \"Open questions\", \"Improvement ideas raised\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Evaluate Technical Feasibility of Improvement Ideas\",\n        \"actor\": \"Equipment Engineer\",\n        \"system\": \"Notes Tool / Shared Document Repository\",\n        \"inputs\": [\"Improvement ideas from meeting notes\"],\n        \"outputs\": [\"Feasibility assessment per idea (feasible / not feasible as proposed)\"]\n      },\n      {\n        \"id\": \"D1\",\n        \"name\": \"Is Each Improvement Idea Technically Feasible?\",\n        \"condition\": \"Improvement idea assessed as technically feasible\",\n        \"branches\": [\n          \"Yes — include in action-item list for assignment\",\n          \"No — flag for revision before progressing\"\n        ]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Flag Infeasible Ideas for Revision\",\n        \"actor\": \"Equipment Engineer\",\n        \"system\": \"Notes Tool / Shared Document Repository\",\n        \"inputs\": [\"Infeasible improvement ideas\"],\n        \"outputs\": [\"Flagged ideas with revision notes\", \"Items held pending rework\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Produce and Distribute Meeting Summary\",\n        \"actor\": \"Meeting Organizer\",\n        \"system\": \"Shared Document Repository\",\n        \"inputs\": [\"Raw meeting notes\", \"Feasibility assessments\", \"Recorded decisions\", \"Open questions\", \"Action-item candidates\"],\n        \"outputs\": [\"Formal meeting minutes document (decisions, open questions, action-item list, owner placeholders, due date placeholders)\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Assign Action-Item Owners and Due Dates\",\n        \"actor\": \"Manager\",\n        \"system\": \"Action-Item Tracker\",\n        \"inputs\": [\"Meeting minutes\", \"Action-item list\", \"Resource availability\"],\n        \"outputs\": [\"Action items with assigned owners and due dates in tracker\"]\n      },\n      {\n        \"id\": \"D2\",\n        \"name\": \"Does Each Action Item Have a Clear Owner?\",\n        \"condition\": \"Action item has an identified and confirmed owner\",\n        \"branches\": [\n          \"Yes — action item is active and owner tracks progress\",\n          \"No — flag item and reassign before progressing\"\n        ]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Flag and Reassign Ownerless Action Items\",\n        \"actor\": \"Manager\",\n        \"system\": \"Action-Item Tracker\",\n        \"inputs\": [\"Action items lacking assigned owners\"],\n        \"outputs\": [\"Reassigned action items with confirmed owners\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Distribute Final Meeting Summary to All Recipients\",\n        \"actor\": \"Meeting Organizer\",\n        \"system\": \"Shared Document Repository\",\n        \"inputs\": [\"Finalized meeting minutes with owner and due date assignments\"],\n        \"outputs\": [\"Summary distributed to equipment engineer, action-item owners, and manager\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Track Action-Item Progress Against Due Dates\",\n        \"actor\": \"Action-Item Owners\",\n        \"system\": \"Action-Item Tracker\",\n        \"inputs\": [\"Assigned action items\", \"Due dates\"],\n        \"outputs\": [\"Progress updates\", \"Completion status per action item\"]\n      },\n      {\n        \"id\": \"D3\",\n        \"name\": \"Are Action Items Completed by Due Date?\",\n        \"condition\": \"Action item marked complete on or before assigned due date\",\n        \"branches\": [\n          \"Yes — action item closed in tracker\",\n          \"No — missed deadline exception triggered (no formal escalation path currently)\"\n        ]\n      },\n      {\n        \"id\": \"A10\",\n        \"name\": \"Flag Missed Deadline (Manual, No Formal Escalation)\",\n        \"actor\": \"Meeting Organizer / Manager\",\n        \"system\": \"Action-Item Tracker\",\n        \"inputs\": [\"Overdue action items\"],\n        \"outputs\": [\"Flagged overdue items\", \"Ad hoc follow-up (no defined escalation path)\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is the improvement idea technically feasible as proposed?\",\n        \"branches\": [\n          \"Feasible — proceed to include in action-item list\",\n          \"Not feasible — flag for revision before progressing\"\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Does the action item have a clear, confirmed owner?\",\n        \"branches\": [\n          \"Owner confirmed — item is active in tracker\",\n          \"No owner — flag and reassign before progressing\"\n        ]\n      },\n      {\n        \"id\": \"D3\",\n        \"condition\": \"Is the action item completed by its assigned due date?\",\n        \"branches\": [\n          \"Completed on time — close item in tracker\",\n          \"Not completed — flag as overdue; no formal escalation path currently exists\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"description\": \"Improvement idea is not technically feasible as proposed\",\n        \"trigger\": \"Feasibility assessment returns negative result\",\n        \"handler\": \"Equipment Engineer flags the idea for revision; idea is held and not actioned until revised\",\n        \"affected_activities\": [\"A3\", \"A4\"]\n      },\n      {\n        \"id\": \"E2\",\n        \"description\": \"Action item has no clear owner after manager assignment step\",\n        \"trigger\": \"Action-item tracker entry lacks an assigned owner\",\n        \"handler\": \"Item is flagged and must be reassigned by the manager before it can progress\",\n        \"affected_activities\": [\"A6\", \"A7\"]\n      },\n      {\n        \"id\": \"E3\",\n        \"description\": \"Action item not completed by assigned due date\",\n        \"trigger\": \"Due date passes without completion status update in tracker\",\n        \"handler\": \"Item is flagged as overdue; follow-up is ad hoc; no formal escalation path exists — recognized process gap\",\n        \"affected_activities\": [\"A9\", \"A10\"]\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A4\", \"type\": \"conditional\", \"condition\": \"Not feasible\"},\n      {\"from\": \"D1\", \"to\": \"A5\", \"type\": \"conditional\", \"condition\": \"Feasible\"},\n      {\"from\": \"A4\", \"to\": \"A3\", \"type\": \"control_flow\", \"note\": \"Revised idea re-enters feasibility evaluation\"},\n      {\"from\": \"A5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A7\", \"type\": \"conditional\", \"condition\": \"No owner\"},\n      {\"from\": \"D2\", \"to\": \"A8\", \"type\": \"conditional\", \"condition\": \"Owner confirmed\"},\n      {\"from\": \"A7\", \"to\": \"A8\", \"type\": \"control_flow\"},\n      {\"from\": \"A8\", \"to\": \"A9\", \"type\": \"control_flow\"},\n      {\"from\": \"A9\", \"to\": \"D3\", \"type\": \"control_flow\"},\n      {\"from\": \"D3\", \"to\": \"A10\", \"type\": \"conditional\", \"condition\": \"Not completed by due date\"},\n      {\"from\": \"D3\", \"to\": \"A9\", \"type\": \"conditional\", \"condition\": \"Completed — close item in tracker\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A1 — Schedule Vendor Meeting\",\n      \"rationale\": \"Meeting scheduling via a calendar system is a well-defined, repeatable task. Automated scheduling assistants can propose meeting times, send invites, and confirm attendance without manual coordination.\",\n      \"required_data\": [\"Participant availability from calendar system\", \"Agenda template\", \"Vendor contact information\"],\n      \"constraints\": [\"Vendor must be reachable through or integrated with the calendar system\", \"Agenda topics may require human input before automation can populate invite details\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A5 — Produce and Distribute Meeting Summary\",\n      \"rationale\": \"If meeting notes are captured in a structured format in the notes tool, a template-driven automation can compile decisions, open questions, and action-item candidates into formatted meeting minutes and post them to the shared document repository.\",\n      \"required_data\": [\"Structured notes output from notes tool\", \"Feasibility assessment results\", \"Participant and recipient list\"],\n      \"constraints\": [\"Notes must be captured in a sufficiently structured format; free-form prose reduces automation accuracy\", \"Human review recommended before distribution to ensure completeness\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A8 — Distribute Final Meeting Summary to All Recipients\",\n      \"rationale\": \"Once the summary document is finalized and stored in the shared document repository, automated notification or distribution to a predefined recipient list (equipment engineer, action-item owners, manager) is straightforward.\",\n      \"required_data\": [\"Finalized summary document\", \"Recipient list from calendar invite or participant registry\"],\n      \"constraints\": [\"Recipient list must be maintained and accurate\", \"Distribution should be triggered only after manager completes owner and due date assignments\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"D2 — Does Each Action Item Have a Clear Owner?\",\n      \"rationale\": \"The action-item tracker can be configured with a validation rule that prevents an action item from being set to active status unless an owner field is populated, automating the detection of ownerless items and triggering an alert to the manager.\",\n      \"required_data\": [\"Action-item tracker field definitions\", \"Owner field validation logic\"],\n      \"constraints\": [\"Requires tracker system to support mandatory field enforcement or workflow rules\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A9 and D3 — Track Action-Item Progress and Detect Missed Deadlines\",\n      \"rationale\": \"The action-item tracker can automatically monitor due dates and generate overdue notifications to assigned owners and the manager when items pass their due date without a completion update, partially addressing the known escalation gap.\",\n      \"required_data\": [\"Action-item due dates\", \"Completion status field\", \"Owner and manager contact information\"],\n      \"constraints\": [\"Does not replace a formal escalation policy — automated reminders address notification but not authority to escalate or reassign\", \"Escalation rules and thresholds must be defined before full automation can be implemented\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A3 and D1 — Feasibility Evaluation of Improvement Ideas\",\n      \"rationale\": \"Structured feasibility criteria could be encoded into a decision-support checklist within the notes tool or document repository, prompting the equipment engineer through evaluation dimensions and auto-categorizing outcomes, reducing inconsistency.\",\n      \"required_data\": [\"Defined feasibility criteria and evaluation dimensions\", \"Improvement idea descriptions in structured format\"],\n      \"constraints\": [\"Full automation of feasibility judgment is not appropriate — expert engineering assessment is required; automation supports, not replaces, the engineer\", \"Criteria must be formally defined, which is currently not confirmed\"],\n      \"confidence\": \"low\"\n    }\n  ],\n  \"remaining_gaps\": [\n    {\n      \"id\": \"G1\",\n      \"description\": \"No formal escalation path exists for missed action-item deadlines\",\n      \"impact\": \"Overdue items may remain unresolved indefinitely with no structured mechanism to escalate to management or reassign to another owner, creating risk of improvement ideas stalling\",\n      \"recommended_action\": \"Define and document an escalation policy specifying thresholds (e.g., days overdue), escalation targets (e.g., manager, senior manager), and required actions upon escalation\"\n    },\n    {\n      \"id\": \"G2\",\n      \"description\": \"Meeting cadence is undefined\",\n      \"impact\": \"Without a fixed or minimum recurrence schedule, vendor engagement frequency is unpredictable, making it difficult to plan improvement cycles or measure process velocity\",\n      \"recommended_action\": \"Establish a minimum meeting cadence (e.g., quarterly or event-triggered) and encode it as a process standard\"\n    },\n    {\n      \"id\": \"G3\",\n      \"description\": \"Turnaround time for summary delivery is described as 'prompt' but not formally defined\",\n      \"impact\": \"Ambiguous turnaround expectations can lead to delays in action-item assignment and owner notification, reducing follow-up effectiveness\",\n      \"recommended_action\": \"Define a specific maximum turnaround time (e.g., within 2 business days of the meeting) for summary production and distribution\"\n    },\n    {\n      \"id\": \"G4\",\n      \"description\": \"No defined process for vendor non-response to follow-up requests\",\n      \"impact\": \"If the vendor does not respond to follow-up on improvement ideas or commitments made during the meeting, there is no documented path to escalate or seek an alternative resolution\",\n      \"recommended_action\": \"Define a vendor follow-up protocol specifying retry intervals, escalation contacts on the vendor side, and internal escalation steps if the vendor remains unresponsive\"\n    },\n    {\n      \"id\": \"G5\",\n      \"description\": \"Re-evaluation loop for revised infeasible ideas lacks defined criteria or time limit\",\n      \"impact\": \"Ideas flagged for revision may re-enter feasibility evaluation multiple times without a clear acceptance threshold or maximum iteration count, potentially creating indefinite loops\",\n      \"recommended_action\": \"Define revision criteria and a maximum number of revision cycles before an idea is formally closed or escalated for a broader review decision\"\n    },\n    {\n      \"id\": \"G6\",\n      \"description\": \"Integration between notes tool, shared document repository, and action-item tracker is not described\",\n      \"impact\": \"Manual transfer of information between systems introduces transcription errors, duplication risk, and delay\",\n      \"recommended_action\": \"Assess whether the three systems can be integrated or replaced with a unified platform; at minimum, define data handoff protocols between systems\"\n    }\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Schedule Vendor Meeting",
+            "actor": "Meeting Organizer",
+            "system": "Calendar System",
+            "inputs": [
+              "Vendor availability",
+              "Participant list",
+              "Meeting agenda topics"
+            ],
+            "outputs": [
+              "Calendar invite",
+              "Confirmed meeting time and attendees"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Conduct Vendor Meeting and Capture Notes",
+            "actor": "Meeting Organizer (notes); Equipment Engineer (technical lead)",
+            "system": "Notes Tool",
+            "inputs": [
+              "Meeting agenda",
+              "Confirmed attendees",
+              "Prior action items or context"
+            ],
+            "outputs": [
+              "Raw meeting notes",
+              "Recorded decisions",
+              "Open questions",
+              "Improvement ideas raised"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Evaluate Technical Feasibility of Improvement Ideas",
+            "actor": "Equipment Engineer",
+            "system": "Notes Tool / Shared Document Repository",
+            "inputs": [
+              "Improvement ideas from meeting notes"
+            ],
+            "outputs": [
+              "Feasibility assessment per idea (feasible / not feasible as proposed)"
+            ]
+          },
+          {
+            "id": "D1",
+            "name": "Is Each Improvement Idea Technically Feasible?",
+            "condition": "Improvement idea assessed as technically feasible",
+            "branches": [
+              "Yes — include in action-item list for assignment",
+              "No — flag for revision before progressing"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Flag Infeasible Ideas for Revision",
+            "actor": "Equipment Engineer",
+            "system": "Notes Tool / Shared Document Repository",
+            "inputs": [
+              "Infeasible improvement ideas"
+            ],
+            "outputs": [
+              "Flagged ideas with revision notes",
+              "Items held pending rework"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Produce and Distribute Meeting Summary",
+            "actor": "Meeting Organizer",
+            "system": "Shared Document Repository",
+            "inputs": [
+              "Raw meeting notes",
+              "Feasibility assessments",
+              "Recorded decisions",
+              "Open questions",
+              "Action-item candidates"
+            ],
+            "outputs": [
+              "Formal meeting minutes document (decisions, open questions, action-item list, owner placeholders, due date placeholders)"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Assign Action-Item Owners and Due Dates",
+            "actor": "Manager",
+            "system": "Action-Item Tracker",
+            "inputs": [
+              "Meeting minutes",
+              "Action-item list",
+              "Resource availability"
+            ],
+            "outputs": [
+              "Action items with assigned owners and due dates in tracker"
+            ]
+          },
+          {
+            "id": "D2",
+            "name": "Does Each Action Item Have a Clear Owner?",
+            "condition": "Action item has an identified and confirmed owner",
+            "branches": [
+              "Yes — action item is active and owner tracks progress",
+              "No — flag item and reassign before progressing"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Flag and Reassign Ownerless Action Items",
+            "actor": "Manager",
+            "system": "Action-Item Tracker",
+            "inputs": [
+              "Action items lacking assigned owners"
+            ],
+            "outputs": [
+              "Reassigned action items with confirmed owners"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Distribute Final Meeting Summary to All Recipients",
+            "actor": "Meeting Organizer",
+            "system": "Shared Document Repository",
+            "inputs": [
+              "Finalized meeting minutes with owner and due date assignments"
+            ],
+            "outputs": [
+              "Summary distributed to equipment engineer, action-item owners, and manager"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Track Action-Item Progress Against Due Dates",
+            "actor": "Action-Item Owners",
+            "system": "Action-Item Tracker",
+            "inputs": [
+              "Assigned action items",
+              "Due dates"
+            ],
+            "outputs": [
+              "Progress updates",
+              "Completion status per action item"
+            ]
+          },
+          {
+            "id": "D3",
+            "name": "Are Action Items Completed by Due Date?",
+            "condition": "Action item marked complete on or before assigned due date",
+            "branches": [
+              "Yes — action item closed in tracker",
+              "No — missed deadline exception triggered (no formal escalation path currently)"
+            ]
+          },
+          {
+            "id": "A10",
+            "name": "Flag Missed Deadline (Manual, No Formal Escalation)",
+            "actor": "Meeting Organizer / Manager",
+            "system": "Action-Item Tracker",
+            "inputs": [
+              "Overdue action items"
+            ],
+            "outputs": [
+              "Flagged overdue items",
+              "Ad hoc follow-up (no defined escalation path)"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the improvement idea technically feasible as proposed?",
+            "branches": [
+              "Feasible — proceed to include in action-item list",
+              "Not feasible — flag for revision before progressing"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the action item have a clear, confirmed owner?",
+            "branches": [
+              "Owner confirmed — item is active in tracker",
+              "No owner — flag and reassign before progressing"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the action item completed by its assigned due date?",
+            "branches": [
+              "Completed on time — close item in tracker",
+              "Not completed — flag as overdue; no formal escalation path currently exists"
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Improvement idea is not technically feasible as proposed",
+            "trigger": "Feasibility assessment returns negative result",
+            "handler": "Equipment Engineer flags the idea for revision; idea is held and not actioned until revised",
+            "affected_activities": [
+              "A3",
+              "A4"
+            ]
+          },
+          {
+            "id": "E2",
+            "description": "Action item has no clear owner after manager assignment step",
+            "trigger": "Action-item tracker entry lacks an assigned owner",
+            "handler": "Item is flagged and must be reassigned by the manager before it can progress",
+            "affected_activities": [
+              "A6",
+              "A7"
+            ]
+          },
+          {
+            "id": "E3",
+            "description": "Action item not completed by assigned due date",
+            "trigger": "Due date passes without completion status update in tracker",
+            "handler": "Item is flagged as overdue; follow-up is ad hoc; no formal escalation path exists — recognized process gap",
+            "affected_activities": [
+              "A9",
+              "A10"
+            ]
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A4",
+            "type": "conditional",
+            "condition": "Not feasible"
+          },
+          {
+            "from": "D1",
+            "to": "A5",
+            "type": "conditional",
+            "condition": "Feasible"
+          },
+          {
+            "from": "A4",
+            "to": "A3",
+            "type": "control_flow",
+            "note": "Revised idea re-enters feasibility evaluation"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A7",
+            "type": "conditional",
+            "condition": "No owner"
+          },
+          {
+            "from": "D2",
+            "to": "A8",
+            "type": "conditional",
+            "condition": "Owner confirmed"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          },
+          {
+            "from": "A8",
+            "to": "A9",
+            "type": "control_flow"
+          },
+          {
+            "from": "A9",
+            "to": "D3",
+            "type": "control_flow"
+          },
+          {
+            "from": "D3",
+            "to": "A10",
+            "type": "conditional",
+            "condition": "Not completed by due date"
+          },
+          {
+            "from": "D3",
+            "to": "A9",
+            "type": "conditional",
+            "condition": "Completed — close item in tracker"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A1 — Schedule Vendor Meeting",
+          "rationale": "Meeting scheduling via a calendar system is a well-defined, repeatable task. Automated scheduling assistants can propose meeting times, send invites, and confirm attendance without manual coordination.",
+          "required_data": [
+            "Participant availability from calendar system",
+            "Agenda template",
+            "Vendor contact information"
+          ],
+          "constraints": [
+            "Vendor must be reachable through or integrated with the calendar system",
+            "Agenda topics may require human input before automation can populate invite details"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A5 — Produce and Distribute Meeting Summary",
+          "rationale": "If meeting notes are captured in a structured format in the notes tool, a template-driven automation can compile decisions, open questions, and action-item candidates into formatted meeting minutes and post them to the shared document repository.",
+          "required_data": [
+            "Structured notes output from notes tool",
+            "Feasibility assessment results",
+            "Participant and recipient list"
+          ],
+          "constraints": [
+            "Notes must be captured in a sufficiently structured format; free-form prose reduces automation accuracy",
+            "Human review recommended before distribution to ensure completeness"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A8 — Distribute Final Meeting Summary to All Recipients",
+          "rationale": "Once the summary document is finalized and stored in the shared document repository, automated notification or distribution to a predefined recipient list (equipment engineer, action-item owners, manager) is straightforward.",
+          "required_data": [
+            "Finalized summary document",
+            "Recipient list from calendar invite or participant registry"
+          ],
+          "constraints": [
+            "Recipient list must be maintained and accurate",
+            "Distribution should be triggered only after manager completes owner and due date assignments"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "D2 — Does Each Action Item Have a Clear Owner?",
+          "rationale": "The action-item tracker can be configured with a validation rule that prevents an action item from being set to active status unless an owner field is populated, automating the detection of ownerless items and triggering an alert to the manager.",
+          "required_data": [
+            "Action-item tracker field definitions",
+            "Owner field validation logic"
+          ],
+          "constraints": [
+            "Requires tracker system to support mandatory field enforcement or workflow rules"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A9 and D3 — Track Action-Item Progress and Detect Missed Deadlines",
+          "rationale": "The action-item tracker can automatically monitor due dates and generate overdue notifications to assigned owners and the manager when items pass their due date without a completion update, partially addressing the known escalation gap.",
+          "required_data": [
+            "Action-item due dates",
+            "Completion status field",
+            "Owner and manager contact information"
+          ],
+          "constraints": [
+            "Does not replace a formal escalation policy — automated reminders address notification but not authority to escalate or reassign",
+            "Escalation rules and thresholds must be defined before full automation can be implemented"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A3 and D1 — Feasibility Evaluation of Improvement Ideas",
+          "rationale": "Structured feasibility criteria could be encoded into a decision-support checklist within the notes tool or document repository, prompting the equipment engineer through evaluation dimensions and auto-categorizing outcomes, reducing inconsistency.",
+          "required_data": [
+            "Defined feasibility criteria and evaluation dimensions",
+            "Improvement idea descriptions in structured format"
+          ],
+          "constraints": [
+            "Full automation of feasibility judgment is not appropriate — expert engineering assessment is required; automation supports, not replaces, the engineer",
+            "Criteria must be formally defined, which is currently not confirmed"
+          ],
+          "confidence": "low"
+        }
+      ],
+      "remaining_gaps": [
+        {
+          "id": "G1",
+          "description": "No formal escalation path exists for missed action-item deadlines",
+          "impact": "Overdue items may remain unresolved indefinitely with no structured mechanism to escalate to management or reassign to another owner, creating risk of improvement ideas stalling",
+          "recommended_action": "Define and document an escalation policy specifying thresholds (e.g., days overdue), escalation targets (e.g., manager, senior manager), and required actions upon escalation"
+        },
+        {
+          "id": "G2",
+          "description": "Meeting cadence is undefined",
+          "impact": "Without a fixed or minimum recurrence schedule, vendor engagement frequency is unpredictable, making it difficult to plan improvement cycles or measure process velocity",
+          "recommended_action": "Establish a minimum meeting cadence (e.g., quarterly or event-triggered) and encode it as a process standard"
+        },
+        {
+          "id": "G3",
+          "description": "Turnaround time for summary delivery is described as 'prompt' but not formally defined",
+          "impact": "Ambiguous turnaround expectations can lead to delays in action-item assignment and owner notification, reducing follow-up effectiveness",
+          "recommended_action": "Define a specific maximum turnaround time (e.g., within 2 business days of the meeting) for summary production and distribution"
+        },
+        {
+          "id": "G4",
+          "description": "No defined process for vendor non-response to follow-up requests",
+          "impact": "If the vendor does not respond to follow-up on improvement ideas or commitments made during the meeting, there is no documented path to escalate or seek an alternative resolution",
+          "recommended_action": "Define a vendor follow-up protocol specifying retry intervals, escalation contacts on the vendor side, and internal escalation steps if the vendor remains unresponsive"
+        },
+        {
+          "id": "G5",
+          "description": "Re-evaluation loop for revised infeasible ideas lacks defined criteria or time limit",
+          "impact": "Ideas flagged for revision may re-enter feasibility evaluation multiple times without a clear acceptance threshold or maximum iteration count, potentially creating indefinite loops",
+          "recommended_action": "Define revision criteria and a maximum number of revision cycles before an idea is formally closed or escalated for a broader review decision"
+        },
+        {
+          "id": "G6",
+          "description": "Integration between notes tool, shared document repository, and action-item tracker is not described",
+          "impact": "Manual transfer of information between systems introduces transcription errors, duplication risk, and delay",
+          "recommended_action": "Assess whether the three systems can be integrated or replaced with a unified platform; at minimum, define data handoff protocols between systems"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "one_shot": {
+    "runs": 8,
+    "overall_score_mean": 0.725,
+    "category_score_mean": {
+      "activities": 0.805,
+      "actors": 0.625,
+      "systems": 0.667,
+      "inputs": 0.719,
+      "outputs": 0.767,
+      "decisions": 0.688,
+      "exceptions": 0.531,
+      "automation_opportunities": 1.0
+    }
+  },
+  "checklist": {
+    "runs": 8,
+    "overall_score_mean": 0.753,
+    "category_score_mean": {
+      "activities": 0.879,
+      "actors": 0.465,
+      "systems": 0.771,
+      "inputs": 0.656,
+      "outputs": 0.783,
+      "decisions": 0.75,
+      "exceptions": 0.719,
+      "automation_opportunities": 1.0
+    }
+  },
+  "update": {
+    "runs": 8,
+    "overall_score_mean": 0.925,
+    "category_score_mean": {
+      "activities": 0.967,
+      "actors": 0.933,
+      "systems": 1.0,
+      "inputs": 0.781,
+      "outputs": 0.969,
+      "decisions": 0.938,
+      "exceptions": 0.812,
+      "automation_opportunities": 1.0
+    }
+  }
+}

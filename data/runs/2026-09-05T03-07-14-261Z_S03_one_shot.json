@@ -1,0 +1,581 @@
+{
+  "request": {
+    "stage": "one_shot",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S03",
+      "title": "Wafer Sample Transfer and Disposal Request",
+      "domain": "semiconductor_engineering",
+      "initial_description": "Samples are moved when they are needed for evaluation. After evaluation, unnecessary samples are checked and disposed of through a request process.",
+      "reference_workflow": {
+        "goal": "Move required wafer samples for evaluation and dispose of completed samples through traceable approval.",
+        "actors": [
+          "sample requester",
+          "sample manager",
+          "verification engineer",
+          "approver"
+        ],
+        "systems": [
+          "sample tracking sheet",
+          "transfer request form",
+          "approval system",
+          "storage location registry"
+        ],
+        "inputs": [
+          "sample identifier",
+          "evaluation purpose",
+          "target location",
+          "disposal reason"
+        ],
+        "outputs": [
+          "transfer approval",
+          "updated sample status",
+          "disposal record",
+          "physical confirmation note"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Identify required sample and evaluation purpose",
+            "actor": "sample requester"
+          },
+          {
+            "id": "A2",
+            "name": "Submit sample transfer request",
+            "actor": "sample requester"
+          },
+          {
+            "id": "A3",
+            "name": "Approve transfer request",
+            "actor": "approver"
+          },
+          {
+            "id": "A4",
+            "name": "Physically confirm sample",
+            "actor": "sample manager"
+          },
+          {
+            "id": "A5",
+            "name": "Move sample to target location",
+            "actor": "sample manager"
+          },
+          {
+            "id": "A6",
+            "name": "Update sample status after evaluation",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Submit disposal request for completed sample",
+            "actor": "verification engineer"
+          },
+          {
+            "id": "A8",
+            "name": "Approve and record disposal",
+            "actor": "approver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the sample available and correctly identified?",
+            "branches": [
+              "available",
+              "not found or mismatched"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is disposal allowed after evaluation?",
+            "branches": [
+              "allowed",
+              "retain sample"
+            ]
+          }
+        ],
+        "exceptions": [
+          "sample identifier mismatch",
+          "missing physical sample",
+          "approval delay",
+          "retention requirement"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Transfer request fields can be pre-filled from sample identifiers and evaluation purpose."
+          },
+          {
+            "target": "A6",
+            "rationale": "Status updates can be prompted automatically after scheduled evaluation completion."
+          },
+          {
+            "target": "A7",
+            "rationale": "Disposal candidates can be suggested when retention conditions are not met."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "approval actor",
+        "tracking system",
+        "physical confirmation",
+        "status update rule",
+        "retention decision",
+        "disposal record"
+      ]
+    },
+    "answers": "",
+    "previousOutput": null,
+    "questions": null
+  },
+  "result": {
+    "id": "93d55224-f61f-47a7-8614-28bf23b90eda",
+    "created_at": "2026-09-05T03:07:14.253Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "one_shot",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Identify Wafer Sample Transfer Need\",\n        \"actor\": \"Process Engineer / Lab Technician\",\n        \"system\": \"Sample Management System\",\n        \"inputs\": [\"evaluation request\", \"sample inventory list\"],\n        \"outputs\": [\"transfer request document\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Initiate Sample Transfer Request\",\n        \"actor\": \"Process Engineer\",\n        \"system\": \"Sample Management System\",\n        \"inputs\": [\"transfer request document\", \"sample location details\"],\n        \"outputs\": [\"approved transfer order\"]\n      },\n      {\n        \"id\": \"A3\",\n        \"name\": \"Retrieve Wafer Sample from Storage\",\n        \"actor\": \"Lab Technician\",\n        \"system\": \"Inventory / Storage System\",\n        \"inputs\": [\"approved transfer order\", \"storage location map\"],\n        \"outputs\": [\"retrieved wafer sample\", \"updated inventory record\"]\n      },\n      {\n        \"id\": \"A4\",\n        \"name\": \"Transport Wafer Sample to Evaluation Area\",\n        \"actor\": \"Lab Technician\",\n        \"system\": \"N/A\",\n        \"inputs\": [\"retrieved wafer sample\", \"transfer order\"],\n        \"outputs\": [\"wafer sample at evaluation station\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Conduct Wafer Sample Evaluation\",\n        \"actor\": \"Quality Engineer / Analyst\",\n        \"system\": \"Evaluation / Metrology System\",\n        \"inputs\": [\"wafer sample at evaluation station\", \"evaluation criteria\"],\n        \"outputs\": [\"evaluation report\", \"evaluation status\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Review Evaluation Results and Classify Sample\",\n        \"actor\": \"Quality Engineer / Process Engineer\",\n        \"system\": \"Sample Management System\",\n        \"inputs\": [\"evaluation report\"],\n        \"outputs\": [\"sample classification decision (retain / dispose)\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Return Sample to Storage\",\n        \"actor\": \"Lab Technician\",\n        \"system\": \"Inventory / Storage System\",\n        \"inputs\": [\"sample classification decision\", \"wafer sample\"],\n        \"outputs\": [\"updated inventory record\", \"sample returned to storage\"]\n      },\n      {\n        \"id\": \"A8\",\n        \"name\": \"Initiate Disposal Request\",\n        \"actor\": \"Process Engineer / Quality Engineer\",\n        \"system\": \"Sample Management System / EHS System\",\n        \"inputs\": [\"sample classification decision\", \"disposal policy\"],\n        \"outputs\": [\"disposal request form\"]\n      },\n      {\n        \"id\": \"A9\",\n        \"name\": \"Review and Approve Disposal Request\",\n        \"actor\": \"Lab Manager / EHS Officer\",\n        \"system\": \"EHS System / Approval Workflow System\",\n        \"inputs\": [\"disposal request form\"],\n        \"outputs\": [\"approved disposal request\"]\n      },\n      {\n        \"id\": \"A10\",\n        \"name\": \"Execute Wafer Sample Disposal\",\n        \"actor\": \"Lab Technician / EHS Personnel\",\n        \"system\": \"EHS System\",\n        \"inputs\": [\"approved disposal request\", \"disposal procedure guidelines\"],\n        \"outputs\": [\"disposed wafer sample\", \"disposal record / certificate\"]\n      },\n      {\n        \"id\": \"A11\",\n        \"name\": \"Update Sample Inventory and Close Request\",\n        \"actor\": \"Lab Technician / System Administrator\",\n        \"system\": \"Sample Management System / Inventory System\",\n        \"inputs\": [\"disposal record\", \"approved disposal request\"],\n        \"outputs\": [\"updated inventory\", \"closed request record\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Is the wafer sample needed for further evaluation or future use?\",\n        \"branches\": [\n          {\"outcome\": \"Yes - Retain\", \"next\": \"A7\"},\n          {\"outcome\": \"No - Dispose\", \"next\": \"A8\"}\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Is the disposal request approved by Lab Manager / EHS Officer?\",\n        \"branches\": [\n          {\"outcome\": \"Approved\", \"next\": \"A10\"},\n          {\"outcome\": \"Rejected / Revision Required\", \"next\": \"A8\"}\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"description\": \"Wafer sample not found in storage at expected location\",\n        \"trigger\": \"Sample missing during retrieval (A3)\",\n        \"handling\": \"Escalate to Lab Manager; conduct inventory audit; suspend transfer request until resolved\"\n      },\n      {\n        \"id\": \"E2\",\n        \"description\": \"Wafer sample damaged during transport\",\n        \"trigger\": \"Physical damage detected during A4 or A5\",\n        \"handling\": \"Document damage; notify Process Engineer; determine if evaluation can proceed or sample must be disposed immediately\"\n      },\n      {\n        \"id\": \"E3\",\n        \"description\": \"Disposal request rejected due to non-compliance or insufficient documentation\",\n        \"trigger\": \"Rejection at D2\",\n        \"handling\": \"Return to requester with rejection reason; requester revises and resubmits disposal request\"\n      },\n      {\n        \"id\": \"E4\",\n        \"description\": \"Regulatory or EHS constraint prevents standard disposal method\",\n        \"trigger\": \"Special material classification identified during A8 or A9\",\n        \"handling\": \"Route to EHS Officer for special handling procedure; engage certified disposal vendor if required\"\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"A3\", \"type\": \"control_flow\"},\n      {\"from\": \"A3\", \"to\": \"A4\", \"type\": \"control_flow\"},\n      {\"from\": \"A4\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A5\", \"to\": \"A6\", \"type\": \"control_flow\"},\n      {\"from\": \"A6\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A7\", \"type\": \"conditional\", \"condition\": \"Retain\"},\n      {\"from\": \"D1\", \"to\": \"A8\", \"type\": \"conditional\", \"condition\": \"Dispose\"},\n      {\"from\": \"A8\", \"to\": \"A9\", \"type\": \"control_flow\"},\n      {\"from\": \"A9\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A10\", \"type\": \"conditional\", \"condition\": \"Approved\"},\n      {\"from\": \"D2\", \"to\": \"A8\", \"type\": \"conditional\", \"condition\": \"Rejected\"},\n      {\"from\": \"A10\", \"to\": \"A11\", \"type\": \"control_flow\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A1 - Identify Wafer Sample Transfer Need\",\n      \"rationale\": \"Transfer needs can be automatically triggered by evaluation scheduling systems when a new evaluation request is logged, eliminating manual identification steps.\",\n      \"required_data\": [\"evaluation schedule\", \"sample inventory data\", \"evaluation request records\"],\n      \"constraints\": [\"requires integration between evaluation scheduling and sample management systems\", \"automated triggers must handle priority overrides\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A2 - Initiate Sample Transfer Request\",\n      \"rationale\": \"Transfer requests with standard parameters (known sample, known destination, standard urgency) can be auto-generated and routed without manual initiation.\",\n      \"required_data\": [\"evaluation request details\", \"sample ID\", \"destination lab location\", \"requester identity\"],\n      \"constraints\": [\"non-standard or high-value samples may still require manual review\", \"access control rules must be encoded\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A3 - Retrieve Wafer Sample from Storage\",\n      \"rationale\": \"In facilities with automated storage and retrieval systems (ASRS), sample retrieval can be fully automated based on the approved transfer order.\",\n      \"required_data\": [\"sample ID\", \"storage location\", \"approved transfer order\"],\n      \"constraints\": [\"requires physical automation infrastructure (ASRS or robotic handlers)\", \"manual fallback needed for exception cases\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A5 - Conduct Wafer Sample Evaluation\",\n      \"rationale\": \"Certain evaluation steps (dimensional measurement, defect scanning) can be automated using metrology tools integrated with the evaluation system.\",\n      \"required_data\": [\"evaluation criteria\", \"metrology tool specifications\", \"wafer sample attributes\"],\n      \"constraints\": [\"not all evaluation types are automatable; some require human judgment\", \"equipment calibration must be maintained\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"D1 - Is the wafer sample needed for further use?\",\n      \"rationale\": \"Classification rules based on evaluation outcome scores, sample age, and predefined retention policies can automate the retain/dispose decision for clear-cut cases.\",\n      \"required_data\": [\"evaluation report results\", \"sample retention policy rules\", \"sample age and usage history\"],\n      \"constraints\": [\"borderline or ambiguous cases must be escalated to human review\", \"policy rules must be kept current\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A8 - Initiate Disposal Request\",\n      \"rationale\": \"When the dispose decision is made, disposal request forms can be auto-populated using sample metadata, classification, and applicable disposal method from policy rules.\",\n      \"required_data\": [\"sample ID\", \"sample material type\", \"classification decision\", \"disposal policy database\"],\n      \"constraints\": [\"special material categories may require manual annotation\", \"regulatory fields must be validated before submission\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A9 - Review and Approve Disposal Request\",\n      \"rationale\": \"Routine disposal requests meeting standard criteria (material type, quantity thresholds, standard disposal method) can be auto-approved via rule-based workflow.\",\n      \"required_data\": [\"disposal request form\", \"approval threshold rules\", \"EHS compliance checklist\"],\n      \"constraints\": [\"hazardous or regulated materials must always require human approval\", \"audit trail must be preserved for all auto-approvals\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A11 - Update Sample Inventory and Close Request\",\n      \"rationale\": \"Upon receipt of disposal certificate or confirmation, inventory records can be automatically updated and the request automatically closed without manual data entry.\",\n      \"required_data\": [\"disposal record\", \"sample ID\", \"inventory system API\"],\n      \"constraints\": [\"requires reliable disposal confirmation signal from EHS system\", \"data integrity checks must be in place\"],\n      \"confidence\": \"high\"\n    }\n  ],\n  \"assumptions\": [\n    \"Wafer samples are physical semiconductor wafer specimens used for quality evaluation and process verification purposes.\",\n    \"A sample management system exists to track sample identities, locations, and statuses.\",\n    \"An EHS (Environmental Health and Safety) system or equivalent is used to manage disposal compliance and documentation.\",\n    \"Sample transfer occurs within the same facility or between nearby facility areas; long-distance logistics are not considered in scope.\",\n    \"Evaluation is performed in a designated lab or metrology area by qualified personnel.\",\n    \"Disposal is subject to regulatory or internal EHS requirements and requires formal approval before execution.\",\n    \"Samples classified as 'retain' are returned to storage for potential future use.\",\n    \"Multiple samples may be involved in a single transfer or disposal batch, but the workflow is modeled at the individual sample level.\",\n    \"Automated storage and retrieval infrastructure may not be present in all implementations; automation confidence for A3 reflects this uncertainty.\",\n    \"The disposal process assumes at least a two-level approval hierarchy (requester + approver) for compliance purposes.\"\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Identify Wafer Sample Transfer Need",
+            "actor": "Process Engineer / Lab Technician",
+            "system": "Sample Management System",
+            "inputs": [
+              "evaluation request",
+              "sample inventory list"
+            ],
+            "outputs": [
+              "transfer request document"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Initiate Sample Transfer Request",
+            "actor": "Process Engineer",
+            "system": "Sample Management System",
+            "inputs": [
+              "transfer request document",
+              "sample location details"
+            ],
+            "outputs": [
+              "approved transfer order"
+            ]
+          },
+          {
+            "id": "A3",
+            "name": "Retrieve Wafer Sample from Storage",
+            "actor": "Lab Technician",
+            "system": "Inventory / Storage System",
+            "inputs": [
+              "approved transfer order",
+              "storage location map"
+            ],
+            "outputs": [
+              "retrieved wafer sample",
+              "updated inventory record"
+            ]
+          },
+          {
+            "id": "A4",
+            "name": "Transport Wafer Sample to Evaluation Area",
+            "actor": "Lab Technician",
+            "system": "N/A",
+            "inputs": [
+              "retrieved wafer sample",
+              "transfer order"
+            ],
+            "outputs": [
+              "wafer sample at evaluation station"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Conduct Wafer Sample Evaluation",
+            "actor": "Quality Engineer / Analyst",
+            "system": "Evaluation / Metrology System",
+            "inputs": [
+              "wafer sample at evaluation station",
+              "evaluation criteria"
+            ],
+            "outputs": [
+              "evaluation report",
+              "evaluation status"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Review Evaluation Results and Classify Sample",
+            "actor": "Quality Engineer / Process Engineer",
+            "system": "Sample Management System",
+            "inputs": [
+              "evaluation report"
+            ],
+            "outputs": [
+              "sample classification decision (retain / dispose)"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Return Sample to Storage",
+            "actor": "Lab Technician",
+            "system": "Inventory / Storage System",
+            "inputs": [
+              "sample classification decision",
+              "wafer sample"
+            ],
+            "outputs": [
+              "updated inventory record",
+              "sample returned to storage"
+            ]
+          },
+          {
+            "id": "A8",
+            "name": "Initiate Disposal Request",
+            "actor": "Process Engineer / Quality Engineer",
+            "system": "Sample Management System / EHS System",
+            "inputs": [
+              "sample classification decision",
+              "disposal policy"
+            ],
+            "outputs": [
+              "disposal request form"
+            ]
+          },
+          {
+            "id": "A9",
+            "name": "Review and Approve Disposal Request",
+            "actor": "Lab Manager / EHS Officer",
+            "system": "EHS System / Approval Workflow System",
+            "inputs": [
+              "disposal request form"
+            ],
+            "outputs": [
+              "approved disposal request"
+            ]
+          },
+          {
+            "id": "A10",
+            "name": "Execute Wafer Sample Disposal",
+            "actor": "Lab Technician / EHS Personnel",
+            "system": "EHS System",
+            "inputs": [
+              "approved disposal request",
+              "disposal procedure guidelines"
+            ],
+            "outputs": [
+              "disposed wafer sample",
+              "disposal record / certificate"
+            ]
+          },
+          {
+            "id": "A11",
+            "name": "Update Sample Inventory and Close Request",
+            "actor": "Lab Technician / System Administrator",
+            "system": "Sample Management System / Inventory System",
+            "inputs": [
+              "disposal record",
+              "approved disposal request"
+            ],
+            "outputs": [
+              "updated inventory",
+              "closed request record"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the wafer sample needed for further evaluation or future use?",
+            "branches": [
+              {
+                "outcome": "Yes - Retain",
+                "next": "A7"
+              },
+              {
+                "outcome": "No - Dispose",
+                "next": "A8"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the disposal request approved by Lab Manager / EHS Officer?",
+            "branches": [
+              {
+                "outcome": "Approved",
+                "next": "A10"
+              },
+              {
+                "outcome": "Rejected / Revision Required",
+                "next": "A8"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Wafer sample not found in storage at expected location",
+            "trigger": "Sample missing during retrieval (A3)",
+            "handling": "Escalate to Lab Manager; conduct inventory audit; suspend transfer request until resolved"
+          },
+          {
+            "id": "E2",
+            "description": "Wafer sample damaged during transport",
+            "trigger": "Physical damage detected during A4 or A5",
+            "handling": "Document damage; notify Process Engineer; determine if evaluation can proceed or sample must be disposed immediately"
+          },
+          {
+            "id": "E3",
+            "description": "Disposal request rejected due to non-compliance or insufficient documentation",
+            "trigger": "Rejection at D2",
+            "handling": "Return to requester with rejection reason; requester revises and resubmits disposal request"
+          },
+          {
+            "id": "E4",
+            "description": "Regulatory or EHS constraint prevents standard disposal method",
+            "trigger": "Special material classification identified during A8 or A9",
+            "handling": "Route to EHS Officer for special handling procedure; engage certified disposal vendor if required"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A7",
+            "type": "conditional",
+            "condition": "Retain"
+          },
+          {
+            "from": "D1",
+            "to": "A8",
+            "type": "conditional",
+            "condition": "Dispose"
+          },
+          {
+            "from": "A8",
+            "to": "A9",
+            "type": "control_flow"
+          },
+          {
+            "from": "A9",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A10",
+            "type": "conditional",
+            "condition": "Approved"
+          },
+          {
+            "from": "D2",
+            "to": "A8",
+            "type": "conditional",
+            "condition": "Rejected"
+          },
+          {
+            "from": "A10",
+            "to": "A11",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "A1 - Identify Wafer Sample Transfer Need",
+          "rationale": "Transfer needs can be automatically triggered by evaluation scheduling systems when a new evaluation request is logged, eliminating manual identification steps.",
+          "required_data": [
+            "evaluation schedule",
+            "sample inventory data",
+            "evaluation request records"
+          ],
+          "constraints": [
+            "requires integration between evaluation scheduling and sample management systems",
+            "automated triggers must handle priority overrides"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A2 - Initiate Sample Transfer Request",
+          "rationale": "Transfer requests with standard parameters (known sample, known destination, standard urgency) can be auto-generated and routed without manual initiation.",
+          "required_data": [
+            "evaluation request details",
+            "sample ID",
+            "destination lab location",
+            "requester identity"
+          ],
+          "constraints": [
+            "non-standard or high-value samples may still require manual review",
+            "access control rules must be encoded"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A3 - Retrieve Wafer Sample from Storage",
+          "rationale": "In facilities with automated storage and retrieval systems (ASRS), sample retrieval can be fully automated based on the approved transfer order.",
+          "required_data": [
+            "sample ID",
+            "storage location",
+            "approved transfer order"
+          ],
+          "constraints": [
+            "requires physical automation infrastructure (ASRS or robotic handlers)",
+            "manual fallback needed for exception cases"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A5 - Conduct Wafer Sample Evaluation",
+          "rationale": "Certain evaluation steps (dimensional measurement, defect scanning) can be automated using metrology tools integrated with the evaluation system.",
+          "required_data": [
+            "evaluation criteria",
+            "metrology tool specifications",
+            "wafer sample attributes"
+          ],
+          "constraints": [
+            "not all evaluation types are automatable; some require human judgment",
+            "equipment calibration must be maintained"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "D1 - Is the wafer sample needed for further use?",
+          "rationale": "Classification rules based on evaluation outcome scores, sample age, and predefined retention policies can automate the retain/dispose decision for clear-cut cases.",
+          "required_data": [
+            "evaluation report results",
+            "sample retention policy rules",
+            "sample age and usage history"
+          ],
+          "constraints": [
+            "borderline or ambiguous cases must be escalated to human review",
+            "policy rules must be kept current"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A8 - Initiate Disposal Request",
+          "rationale": "When the dispose decision is made, disposal request forms can be auto-populated using sample metadata, classification, and applicable disposal method from policy rules.",
+          "required_data": [
+            "sample ID",
+            "sample material type",
+            "classification decision",
+            "disposal policy database"
+          ],
+          "constraints": [
+            "special material categories may require manual annotation",
+            "regulatory fields must be validated before submission"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A9 - Review and Approve Disposal Request",
+          "rationale": "Routine disposal requests meeting standard criteria (material type, quantity thresholds, standard disposal method) can be auto-approved via rule-based workflow.",
+          "required_data": [
+            "disposal request form",
+            "approval threshold rules",
+            "EHS compliance checklist"
+          ],
+          "constraints": [
+            "hazardous or regulated materials must always require human approval",
+            "audit trail must be preserved for all auto-approvals"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A11 - Update Sample Inventory and Close Request",
+          "rationale": "Upon receipt of disposal certificate or confirmation, inventory records can be automatically updated and the request automatically closed without manual data entry.",
+          "required_data": [
+            "disposal record",
+            "sample ID",
+            "inventory system API"
+          ],
+          "constraints": [
+            "requires reliable disposal confirmation signal from EHS system",
+            "data integrity checks must be in place"
+          ],
+          "confidence": "high"
+        }
+      ],
+      "assumptions": [
+        "Wafer samples are physical semiconductor wafer specimens used for quality evaluation and process verification purposes.",
+        "A sample management system exists to track sample identities, locations, and statuses.",
+        "An EHS (Environmental Health and Safety) system or equivalent is used to manage disposal compliance and documentation.",
+        "Sample transfer occurs within the same facility or between nearby facility areas; long-distance logistics are not considered in scope.",
+        "Evaluation is performed in a designated lab or metrology area by qualified personnel.",
+        "Disposal is subject to regulatory or internal EHS requirements and requires formal approval before execution.",
+        "Samples classified as 'retain' are returned to storage for potential future use.",
+        "Multiple samples may be involved in a single transfer or disposal batch, but the workflow is modeled at the individual sample level.",
+        "Automated storage and retrieval infrastructure may not be present in all implementations; automation confidence for A3 reflects this uncertainty.",
+        "The disposal process assumes at least a two-level approval hierarchy (requester + approver) for compliance purposes."
+      ]
+    }
+  }
+}

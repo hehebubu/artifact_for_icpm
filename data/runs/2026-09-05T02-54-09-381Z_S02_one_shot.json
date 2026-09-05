@@ -1,0 +1,554 @@
+{
+  "request": {
+    "stage": "one_shot",
+    "model": "claude-sonnet-4-6",
+    "scenario": {
+      "id": "S02",
+      "title": "Equipment-Specific Measurement Workflow",
+      "domain": "semiconductor_engineering",
+      "initial_description": "A wafer is measured using one of several tools. The exact preparation and measurement steps differ by tool, and the engineer records the result after measurement.",
+      "reference_workflow": {
+        "goal": "Measure a wafer using the appropriate equipment-specific procedure and record the result.",
+        "actors": [
+          "measurement engineer",
+          "equipment owner",
+          "requester"
+        ],
+        "systems": [
+          "measurement equipment",
+          "equipment reservation system",
+          "measurement result repository"
+        ],
+        "inputs": [
+          "measurement request",
+          "wafer identifier",
+          "measurement recipe",
+          "equipment availability"
+        ],
+        "outputs": [
+          "measurement result",
+          "equipment usage record",
+          "request completion notice"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Confirm measurement request and wafer identifier",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A2",
+            "name": "Select suitable measurement equipment",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A3",
+            "name": "Check equipment availability and reserve slot",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A4",
+            "name": "Prepare wafer according to equipment procedure",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A5",
+            "name": "Run measurement recipe",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A6",
+            "name": "Validate measurement output",
+            "actor": "measurement engineer"
+          },
+          {
+            "id": "A7",
+            "name": "Upload result and notify requester",
+            "actor": "measurement engineer"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Which equipment is required for the requested measurement?",
+            "branches": [
+              "equipment type A",
+              "equipment type B",
+              "equipment type C"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the equipment available and qualified?",
+            "branches": [
+              "available",
+              "unavailable or under maintenance"
+            ]
+          },
+          {
+            "id": "D3",
+            "condition": "Is the measurement output valid?",
+            "branches": [
+              "valid",
+              "invalid or noisy"
+            ]
+          }
+        ],
+        "exceptions": [
+          "equipment unavailable",
+          "wafer information mismatch",
+          "recipe not approved",
+          "invalid measurement output"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Equipment selection can be recommended from measurement type and wafer condition."
+          },
+          {
+            "target": "A3",
+            "rationale": "Reservation checks can be automated through system integration."
+          },
+          {
+            "target": "A6",
+            "rationale": "Output validity can be partially checked using rule-based thresholds or historical patterns."
+          }
+        ]
+      },
+      "intentionally_missing_in_initial_description": [
+        "equipment selection rule",
+        "reservation step",
+        "recipe approval",
+        "validity criteria",
+        "requester notification",
+        "exception path"
+      ]
+    },
+    "answers": "",
+    "previousOutput": null,
+    "questions": null
+  },
+  "result": {
+    "id": "d8bf455b-c789-44a1-badd-d110493964a4",
+    "created_at": "2026-09-05T02:54:09.371Z",
+    "model": "claude-sonnet-4-6",
+    "stage": "one_shot",
+    "raw_text": "```json\n{\n  \"workflow\": {\n    \"activities\": [\n      {\n        \"id\": \"A1\",\n        \"name\": \"Receive Wafer for Measurement\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Lab Management System\",\n        \"inputs\": [\"Wafer lot ID\", \"Measurement request\"],\n        \"outputs\": [\"Wafer checked in\", \"Measurement job ticket\"]\n      },\n      {\n        \"id\": \"A2\",\n        \"name\": \"Identify Measurement Tool\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Lab Management System\",\n        \"inputs\": [\"Measurement job ticket\", \"Tool availability status\"],\n        \"outputs\": [\"Selected tool ID\"]\n      },\n      {\n        \"id\": \"A3a\",\n        \"name\": \"Prepare Wafer for Tool A\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Tool A Controller\",\n        \"inputs\": [\"Wafer\", \"Tool A preparation recipe\"],\n        \"outputs\": [\"Wafer prepared for Tool A\"]\n      },\n      {\n        \"id\": \"A3b\",\n        \"name\": \"Prepare Wafer for Tool B\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Tool B Controller\",\n        \"inputs\": [\"Wafer\", \"Tool B preparation recipe\"],\n        \"outputs\": [\"Wafer prepared for Tool B\"]\n      },\n      {\n        \"id\": \"A3c\",\n        \"name\": \"Prepare Wafer for Tool C\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Tool C Controller\",\n        \"inputs\": [\"Wafer\", \"Tool C preparation recipe\"],\n        \"outputs\": [\"Wafer prepared for Tool C\"]\n      },\n      {\n        \"id\": \"A4a\",\n        \"name\": \"Perform Measurement on Tool A\",\n        \"actor\": \"Tool A / Engineer\",\n        \"system\": \"Tool A Controller\",\n        \"inputs\": [\"Wafer prepared for Tool A\", \"Tool A measurement parameters\"],\n        \"outputs\": [\"Raw measurement data from Tool A\"]\n      },\n      {\n        \"id\": \"A4b\",\n        \"name\": \"Perform Measurement on Tool B\",\n        \"actor\": \"Tool B / Engineer\",\n        \"system\": \"Tool B Controller\",\n        \"inputs\": [\"Wafer prepared for Tool B\", \"Tool B measurement parameters\"],\n        \"outputs\": [\"Raw measurement data from Tool B\"]\n      },\n      {\n        \"id\": \"A4c\",\n        \"name\": \"Perform Measurement on Tool C\",\n        \"actor\": \"Tool C / Engineer\",\n        \"system\": \"Tool C Controller\",\n        \"inputs\": [\"Wafer prepared for Tool C\", \"Tool C measurement parameters\"],\n        \"outputs\": [\"Raw measurement data from Tool C\"]\n      },\n      {\n        \"id\": \"A5\",\n        \"name\": \"Review and Validate Measurement Result\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Data Analysis System\",\n        \"inputs\": [\"Raw measurement data\", \"Acceptance criteria\"],\n        \"outputs\": [\"Validated measurement result\", \"Pass/Fail flag\"]\n      },\n      {\n        \"id\": \"A6\",\n        \"name\": \"Record Measurement Result\",\n        \"actor\": \"Engineer\",\n        \"system\": \"Lab Management System\",\n        \"inputs\": [\"Validated measurement result\", \"Wafer lot ID\", \"Tool ID\"],\n        \"outputs\": [\"Measurement record entry\", \"Updated wafer history\"]\n      },\n      {\n        \"id\": \"A7\",\n        \"name\": \"Escalate Measurement Failure\",\n        \"actor\": \"Engineer / Supervisor\",\n        \"system\": \"Lab Management System\",\n        \"inputs\": [\"Fail flag\", \"Raw measurement data\"],\n        \"outputs\": [\"Escalation ticket\", \"Rework or re-measurement request\"]\n      }\n    ],\n    \"decisions\": [\n      {\n        \"id\": \"D1\",\n        \"condition\": \"Which measurement tool is selected?\",\n        \"branches\": [\n          {\"label\": \"Tool A\", \"next\": \"A3a\"},\n          {\"label\": \"Tool B\", \"next\": \"A3b\"},\n          {\"label\": \"Tool C\", \"next\": \"A3c\"}\n        ]\n      },\n      {\n        \"id\": \"D2\",\n        \"condition\": \"Is the measurement result valid and within acceptance criteria?\",\n        \"branches\": [\n          {\"label\": \"Yes - Pass\", \"next\": \"A6\"},\n          {\"label\": \"No - Fail\", \"next\": \"A7\"}\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"id\": \"E1\",\n        \"description\": \"Selected tool is unavailable or under maintenance\",\n        \"trigger\": \"Tool status check returns unavailable\",\n        \"resolution\": \"Reassign to alternative tool or queue for tool availability\"\n      },\n      {\n        \"id\": \"E2\",\n        \"description\": \"Measurement data is incomplete or corrupted\",\n        \"trigger\": \"Raw measurement data fails integrity check\",\n        \"resolution\": \"Repeat measurement step or flag for manual inspection\"\n      },\n      {\n        \"id\": \"E3\",\n        \"description\": \"Wafer damaged during preparation\",\n        \"trigger\": \"Physical inspection reveals wafer damage\",\n        \"resolution\": \"Quarantine wafer and raise non-conformance report\"\n      }\n    ],\n    \"dependencies\": [\n      {\"from\": \"A1\", \"to\": \"A2\", \"type\": \"control_flow\"},\n      {\"from\": \"A2\", \"to\": \"D1\", \"type\": \"control_flow\"},\n      {\"from\": \"D1\", \"to\": \"A3a\", \"type\": \"conditional\"},\n      {\"from\": \"D1\", \"to\": \"A3b\", \"type\": \"conditional\"},\n      {\"from\": \"D1\", \"to\": \"A3c\", \"type\": \"conditional\"},\n      {\"from\": \"A3a\", \"to\": \"A4a\", \"type\": \"control_flow\"},\n      {\"from\": \"A3b\", \"to\": \"A4b\", \"type\": \"control_flow\"},\n      {\"from\": \"A3c\", \"to\": \"A4c\", \"type\": \"control_flow\"},\n      {\"from\": \"A4a\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A4b\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A4c\", \"to\": \"A5\", \"type\": \"control_flow\"},\n      {\"from\": \"A5\", \"to\": \"D2\", \"type\": \"control_flow\"},\n      {\"from\": \"D2\", \"to\": \"A6\", \"type\": \"conditional\"},\n      {\"from\": \"D2\", \"to\": \"A7\", \"type\": \"conditional\"},\n      {\"from\": \"A7\", \"to\": \"A2\", \"type\": \"control_flow\"}\n    ]\n  },\n  \"automation_opportunities\": [\n    {\n      \"target\": \"D1 - Identify Measurement Tool\",\n      \"rationale\": \"Tool selection can be automated based on real-time tool availability, wafer type, and measurement requirements, reducing manual decision-making and idle time.\",\n      \"required_data\": [\"Tool availability status\", \"Wafer type\", \"Measurement specification\", \"Tool capability matrix\"],\n      \"constraints\": [\"Tool scheduling system must expose availability API\", \"Rules for tool-wafer compatibility must be formalized\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A3a / A3b / A3c - Prepare Wafer for Tool\",\n      \"rationale\": \"Preparation steps are tool-specific but recipe-driven and repeatable; tool controllers can auto-load preparation recipes upon wafer registration, reducing manual setup errors.\",\n      \"required_data\": [\"Wafer ID\", \"Tool ID\", \"Preparation recipe library\"],\n      \"constraints\": [\"Recipes must be digitized and stored in tool controller\", \"Physical wafer loading may still require human intervention\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A4a / A4b / A4c - Perform Measurement\",\n      \"rationale\": \"Modern measurement tools can execute measurement sequences autonomously once configured, removing the need for engineer presence during measurement execution.\",\n      \"required_data\": [\"Measurement parameters\", \"Tool recipe\", \"Wafer alignment data\"],\n      \"constraints\": [\"Requires compatible tool automation interfaces\", \"Initial calibration verification may need manual sign-off\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A5 - Review and Validate Measurement Result\",\n      \"rationale\": \"Automated statistical comparison of raw measurement data against pre-defined acceptance criteria can replace manual review for standard cases, flagging only outliers for human review.\",\n      \"required_data\": [\"Raw measurement data\", \"Acceptance criteria thresholds\", \"Historical baseline data\"],\n      \"constraints\": [\"Acceptance criteria must be formally defined and maintained\", \"Edge cases and novel failure modes may require human judgment\"],\n      \"confidence\": \"medium\"\n    },\n    {\n      \"target\": \"A6 - Record Measurement Result\",\n      \"rationale\": \"Measurement results can be automatically written to the lab management system directly from tool output, eliminating manual data entry and transcription errors.\",\n      \"required_data\": [\"Validated measurement result\", \"Wafer lot ID\", \"Tool ID\", \"Timestamp\"],\n      \"constraints\": [\"Integration between tool controller and lab management system required\", \"Data format standardization needed across tools\"],\n      \"confidence\": \"high\"\n    },\n    {\n      \"target\": \"A7 - Escalate Measurement Failure\",\n      \"rationale\": \"Automated escalation notifications can be triggered immediately upon detection of a fail flag, reducing response time and ensuring consistent escalation paths.\",\n      \"required_data\": [\"Fail flag\", \"Wafer lot ID\", \"Measurement data\", \"Escalation routing rules\"],\n      \"constraints\": [\"Escalation rules and responsible parties must be predefined\", \"Human approval may be needed for rework decisions\"],\n      \"confidence\": \"medium\"\n    }\n  ],\n  \"assumptions\": [\n    \"There are at least three distinct measurement tools (Tool A, Tool B, Tool C), each with different preparation and measurement procedures.\",\n    \"Tool selection is based on factors such as availability, wafer type, and measurement specification, though the exact selection criteria are not specified.\",\n    \"Each tool has a defined recipe or protocol that governs preparation and measurement steps.\",\n    \"The engineer is responsible for both preparation and result recording, though tool operation may be partially automated.\",\n    \"A formal acceptance criteria or specification exists against which measurement results are evaluated.\",\n    \"Failed measurements trigger a re-measurement or escalation loop rather than immediate wafer disposal.\",\n    \"The lab management system and tool controllers are separate systems that may or may not currently be integrated.\",\n    \"Measurement results are stored in a centralized system as part of wafer traceability requirements.\"\n  ]\n}\n```",
+    "parsed": {
+      "workflow": {
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Receive Wafer for Measurement",
+            "actor": "Engineer",
+            "system": "Lab Management System",
+            "inputs": [
+              "Wafer lot ID",
+              "Measurement request"
+            ],
+            "outputs": [
+              "Wafer checked in",
+              "Measurement job ticket"
+            ]
+          },
+          {
+            "id": "A2",
+            "name": "Identify Measurement Tool",
+            "actor": "Engineer",
+            "system": "Lab Management System",
+            "inputs": [
+              "Measurement job ticket",
+              "Tool availability status"
+            ],
+            "outputs": [
+              "Selected tool ID"
+            ]
+          },
+          {
+            "id": "A3a",
+            "name": "Prepare Wafer for Tool A",
+            "actor": "Engineer",
+            "system": "Tool A Controller",
+            "inputs": [
+              "Wafer",
+              "Tool A preparation recipe"
+            ],
+            "outputs": [
+              "Wafer prepared for Tool A"
+            ]
+          },
+          {
+            "id": "A3b",
+            "name": "Prepare Wafer for Tool B",
+            "actor": "Engineer",
+            "system": "Tool B Controller",
+            "inputs": [
+              "Wafer",
+              "Tool B preparation recipe"
+            ],
+            "outputs": [
+              "Wafer prepared for Tool B"
+            ]
+          },
+          {
+            "id": "A3c",
+            "name": "Prepare Wafer for Tool C",
+            "actor": "Engineer",
+            "system": "Tool C Controller",
+            "inputs": [
+              "Wafer",
+              "Tool C preparation recipe"
+            ],
+            "outputs": [
+              "Wafer prepared for Tool C"
+            ]
+          },
+          {
+            "id": "A4a",
+            "name": "Perform Measurement on Tool A",
+            "actor": "Tool A / Engineer",
+            "system": "Tool A Controller",
+            "inputs": [
+              "Wafer prepared for Tool A",
+              "Tool A measurement parameters"
+            ],
+            "outputs": [
+              "Raw measurement data from Tool A"
+            ]
+          },
+          {
+            "id": "A4b",
+            "name": "Perform Measurement on Tool B",
+            "actor": "Tool B / Engineer",
+            "system": "Tool B Controller",
+            "inputs": [
+              "Wafer prepared for Tool B",
+              "Tool B measurement parameters"
+            ],
+            "outputs": [
+              "Raw measurement data from Tool B"
+            ]
+          },
+          {
+            "id": "A4c",
+            "name": "Perform Measurement on Tool C",
+            "actor": "Tool C / Engineer",
+            "system": "Tool C Controller",
+            "inputs": [
+              "Wafer prepared for Tool C",
+              "Tool C measurement parameters"
+            ],
+            "outputs": [
+              "Raw measurement data from Tool C"
+            ]
+          },
+          {
+            "id": "A5",
+            "name": "Review and Validate Measurement Result",
+            "actor": "Engineer",
+            "system": "Data Analysis System",
+            "inputs": [
+              "Raw measurement data",
+              "Acceptance criteria"
+            ],
+            "outputs": [
+              "Validated measurement result",
+              "Pass/Fail flag"
+            ]
+          },
+          {
+            "id": "A6",
+            "name": "Record Measurement Result",
+            "actor": "Engineer",
+            "system": "Lab Management System",
+            "inputs": [
+              "Validated measurement result",
+              "Wafer lot ID",
+              "Tool ID"
+            ],
+            "outputs": [
+              "Measurement record entry",
+              "Updated wafer history"
+            ]
+          },
+          {
+            "id": "A7",
+            "name": "Escalate Measurement Failure",
+            "actor": "Engineer / Supervisor",
+            "system": "Lab Management System",
+            "inputs": [
+              "Fail flag",
+              "Raw measurement data"
+            ],
+            "outputs": [
+              "Escalation ticket",
+              "Rework or re-measurement request"
+            ]
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Which measurement tool is selected?",
+            "branches": [
+              {
+                "label": "Tool A",
+                "next": "A3a"
+              },
+              {
+                "label": "Tool B",
+                "next": "A3b"
+              },
+              {
+                "label": "Tool C",
+                "next": "A3c"
+              }
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Is the measurement result valid and within acceptance criteria?",
+            "branches": [
+              {
+                "label": "Yes - Pass",
+                "next": "A6"
+              },
+              {
+                "label": "No - Fail",
+                "next": "A7"
+              }
+            ]
+          }
+        ],
+        "exceptions": [
+          {
+            "id": "E1",
+            "description": "Selected tool is unavailable or under maintenance",
+            "trigger": "Tool status check returns unavailable",
+            "resolution": "Reassign to alternative tool or queue for tool availability"
+          },
+          {
+            "id": "E2",
+            "description": "Measurement data is incomplete or corrupted",
+            "trigger": "Raw measurement data fails integrity check",
+            "resolution": "Repeat measurement step or flag for manual inspection"
+          },
+          {
+            "id": "E3",
+            "description": "Wafer damaged during preparation",
+            "trigger": "Physical inspection reveals wafer damage",
+            "resolution": "Quarantine wafer and raise non-conformance report"
+          }
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "D1",
+            "type": "control_flow"
+          },
+          {
+            "from": "D1",
+            "to": "A3a",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A3b",
+            "type": "conditional"
+          },
+          {
+            "from": "D1",
+            "to": "A3c",
+            "type": "conditional"
+          },
+          {
+            "from": "A3a",
+            "to": "A4a",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3b",
+            "to": "A4b",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3c",
+            "to": "A4c",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4a",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4b",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4c",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "D2",
+            "type": "control_flow"
+          },
+          {
+            "from": "D2",
+            "to": "A6",
+            "type": "conditional"
+          },
+          {
+            "from": "D2",
+            "to": "A7",
+            "type": "conditional"
+          },
+          {
+            "from": "A7",
+            "to": "A2",
+            "type": "control_flow"
+          }
+        ]
+      },
+      "automation_opportunities": [
+        {
+          "target": "D1 - Identify Measurement Tool",
+          "rationale": "Tool selection can be automated based on real-time tool availability, wafer type, and measurement requirements, reducing manual decision-making and idle time.",
+          "required_data": [
+            "Tool availability status",
+            "Wafer type",
+            "Measurement specification",
+            "Tool capability matrix"
+          ],
+          "constraints": [
+            "Tool scheduling system must expose availability API",
+            "Rules for tool-wafer compatibility must be formalized"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A3a / A3b / A3c - Prepare Wafer for Tool",
+          "rationale": "Preparation steps are tool-specific but recipe-driven and repeatable; tool controllers can auto-load preparation recipes upon wafer registration, reducing manual setup errors.",
+          "required_data": [
+            "Wafer ID",
+            "Tool ID",
+            "Preparation recipe library"
+          ],
+          "constraints": [
+            "Recipes must be digitized and stored in tool controller",
+            "Physical wafer loading may still require human intervention"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A4a / A4b / A4c - Perform Measurement",
+          "rationale": "Modern measurement tools can execute measurement sequences autonomously once configured, removing the need for engineer presence during measurement execution.",
+          "required_data": [
+            "Measurement parameters",
+            "Tool recipe",
+            "Wafer alignment data"
+          ],
+          "constraints": [
+            "Requires compatible tool automation interfaces",
+            "Initial calibration verification may need manual sign-off"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A5 - Review and Validate Measurement Result",
+          "rationale": "Automated statistical comparison of raw measurement data against pre-defined acceptance criteria can replace manual review for standard cases, flagging only outliers for human review.",
+          "required_data": [
+            "Raw measurement data",
+            "Acceptance criteria thresholds",
+            "Historical baseline data"
+          ],
+          "constraints": [
+            "Acceptance criteria must be formally defined and maintained",
+            "Edge cases and novel failure modes may require human judgment"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "target": "A6 - Record Measurement Result",
+          "rationale": "Measurement results can be automatically written to the lab management system directly from tool output, eliminating manual data entry and transcription errors.",
+          "required_data": [
+            "Validated measurement result",
+            "Wafer lot ID",
+            "Tool ID",
+            "Timestamp"
+          ],
+          "constraints": [
+            "Integration between tool controller and lab management system required",
+            "Data format standardization needed across tools"
+          ],
+          "confidence": "high"
+        },
+        {
+          "target": "A7 - Escalate Measurement Failure",
+          "rationale": "Automated escalation notifications can be triggered immediately upon detection of a fail flag, reducing response time and ensuring consistent escalation paths.",
+          "required_data": [
+            "Fail flag",
+            "Wafer lot ID",
+            "Measurement data",
+            "Escalation routing rules"
+          ],
+          "constraints": [
+            "Escalation rules and responsible parties must be predefined",
+            "Human approval may be needed for rework decisions"
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "assumptions": [
+        "There are at least three distinct measurement tools (Tool A, Tool B, Tool C), each with different preparation and measurement procedures.",
+        "Tool selection is based on factors such as availability, wafer type, and measurement specification, though the exact selection criteria are not specified.",
+        "Each tool has a defined recipe or protocol that governs preparation and measurement steps.",
+        "The engineer is responsible for both preparation and result recording, though tool operation may be partially automated.",
+        "A formal acceptance criteria or specification exists against which measurement results are evaluated.",
+        "Failed measurements trigger a re-measurement or escalation loop rather than immediate wafer disposal.",
+        "The lab management system and tool controllers are separate systems that may or may not currently be integrated.",
+        "Measurement results are stored in a centralized system as part of wafer traceability requirements."
+      ]
+    }
+  }
+}
