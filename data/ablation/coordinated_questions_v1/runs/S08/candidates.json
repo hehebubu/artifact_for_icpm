@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "What system or tool is currently used to check room availability and record the reservation — for example, a calendar application, a dedicated room booking portal, or a manual spreadsheet?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "What system or method does the organizer use to check room availability and submit the reservation request?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "What specific inputs must be provided before a reservation can be made — such as meeting date, start and end time, expected number of attendees, or required equipment?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "Is any approval or confirmation required from a facility manager or administrator before the reservation is considered confirmed?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "When multiple rooms are available for the requested time slot, what criteria determine which room is selected?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "What happens when the requested room is unavailable for the desired time slot — does the organizer manually search for alternatives, or is an alternative automatically suggested?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "What happens when no suitable room is available for the requested time — is the meeting rescheduled, moved to an alternative location, or escalated to someone for resolution?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "How is room information communicated to participants — for example, through a calendar invitation, a separate email, or a messaging platform — and is this step performed manually or automatically?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "How is the confirmed room information communicated to participants — for example, through a calendar invite update, an email notification, or a message in a team chat tool?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "What is the process if the organizer needs to cancel or change the reservation after it has been confirmed?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "Approximately how many room reservations are made per day or per week, and is there a predictable peak period when demand is highest?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "Are there any steps that must be completed after the meeting ends, such as formally releasing the room or recording that it was used?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "generic",
+      "question_id": "Q6"
+    }
+  }
+}

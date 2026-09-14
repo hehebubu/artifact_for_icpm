@@ -1,0 +1,12 @@
+{
+  "protocol": "provenance-v1",
+  "stored_arms": 72,
+  "distinct_pipelines": 56,
+  "skipped": [],
+  "input_hashes": {
+    "data/scenarios.json": "d51f9a4070e278945a33886eb6c8d4ed4464489fa27e2b3f1a0a8106474d96ce",
+    "data/scenarios_childcare.json": "f25cafacd0068692b9dbb01345364ee6fa1a0101b6c977b9d2e21377f61c6b00",
+    "scripts/score_runs.py": "4650388295def8b3b7a268feba877072ee4bce7324ac0d11be4da52d7b733c22",
+    "scripts/run_provenance.py": "55393a117e0ad714817d0aa3478a4b0893e76e9f3ca73d0e936efbea76fa6e93"
+  }
+}

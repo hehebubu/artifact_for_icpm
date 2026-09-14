@@ -1,0 +1,233 @@
+{
+  "row": {
+    "scenario_id": "S04",
+    "arm": "coordinated",
+    "overall_score": 0.922,
+    "structured_only_score": 0.891,
+    "activities": 0.875,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 0.5,
+    "automation_opportunities": 1.0,
+    "answer_words": 285,
+    "pipeline_calls": 5,
+    "input_tokens": 4577,
+    "output_tokens": 6982
+  },
+  "scores": {
+    "activities": {
+      "covered": 7,
+      "total": 8,
+      "score": 0.875,
+      "covered_items": [
+        "Register defect issue with initial evidence",
+        "Classify issue severity and affected scope",
+        "Define root-cause hypotheses",
+        "Plan and run follow-up experiment",
+        "Review experiment result and select improvement action",
+        "Assess customer risk",
+        "Share final report and action items"
+      ],
+      "missing_items": [
+        "Notify related teams and assign owners"
+      ]
+    },
+    "actors": {
+      "covered": 5,
+      "total": 5,
+      "score": 1.0,
+      "covered_items": [
+        "issue owner",
+        "process engineer",
+        "quality engineer",
+        "customer interface owner",
+        "manager"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "issue tracking system",
+        "experiment log",
+        "risk report template",
+        "collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "defect description",
+        "sample or lot context",
+        "initial evidence",
+        "customer impact assumption"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 5,
+      "total": 5,
+      "score": 1.0,
+      "covered_items": [
+        "issue report",
+        "root-cause hypothesis",
+        "experiment plan",
+        "improvement action",
+        "customer risk summary"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the issue customer-impacting?",
+        "Does the experiment support the root-cause hypothesis?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "unclear owner",
+        "conflicting root-cause hypotheses"
+      ],
+      "missing_items": [
+        "insufficient evidence",
+        "experiment delay"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A1",
+        "A3",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.922
+  },
+  "structured_only": {
+    "activities": {
+      "covered": 7,
+      "total": 8,
+      "score": 0.875,
+      "covered_items": [
+        "Register defect issue with initial evidence",
+        "Classify issue severity and affected scope",
+        "Define root-cause hypotheses",
+        "Plan and run follow-up experiment",
+        "Review experiment result and select improvement action",
+        "Assess customer risk",
+        "Share final report and action items"
+      ],
+      "missing_items": [
+        "Notify related teams and assign owners"
+      ]
+    },
+    "actors": {
+      "covered": 5,
+      "total": 5,
+      "score": 1.0,
+      "covered_items": [
+        "issue owner",
+        "process engineer",
+        "quality engineer",
+        "customer interface owner",
+        "manager"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "issue tracking system",
+        "experiment log",
+        "risk report template",
+        "collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "defect description",
+        "sample or lot context",
+        "initial evidence",
+        "customer impact assumption"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 5,
+      "total": 5,
+      "score": 1.0,
+      "covered_items": [
+        "issue report",
+        "root-cause hypothesis",
+        "experiment plan",
+        "improvement action",
+        "customer risk summary"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the issue customer-impacting?",
+        "Does the experiment support the root-cause hypothesis?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 1,
+      "total": 4,
+      "score": 0.25,
+      "covered_items": [
+        "conflicting root-cause hypotheses"
+      ],
+      "missing_items": [
+        "insufficient evidence",
+        "unclear owner",
+        "experiment delay"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A1",
+        "A3",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.891
+  },
+  "selection_provenance": {
+    "generic_only": 2,
+    "gapelicit_only": 1,
+    "mixed": 3
+  }
+}

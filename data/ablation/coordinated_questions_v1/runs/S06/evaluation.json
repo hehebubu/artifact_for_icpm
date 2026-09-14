@@ -1,0 +1,233 @@
+{
+  "row": {
+    "scenario_id": "S06",
+    "arm": "coordinated",
+    "overall_score": 0.865,
+    "structured_only_score": 0.833,
+    "activities": 1.0,
+    "actors": 1.0,
+    "systems": 0.75,
+    "inputs": 0.75,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 0.75,
+    "automation_opportunities": 0.667,
+    "answer_words": 291,
+    "pipeline_calls": 5,
+    "input_tokens": 4410,
+    "output_tokens": 6132
+  },
+  "scores": {
+    "activities": {
+      "covered": 7,
+      "total": 7,
+      "score": 1.0,
+      "covered_items": [
+        "Prepare agenda and issue summary",
+        "Schedule meeting with vendor",
+        "Discuss improvement options",
+        "Record decisions and open questions",
+        "Assign action-item owners and due dates",
+        "Share meeting summary",
+        "Track action-item progress"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 5,
+      "total": 5,
+      "score": 1.0,
+      "covered_items": [
+        "equipment engineer",
+        "vendor representative",
+        "meeting organizer",
+        "action-item owner",
+        "manager"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "calendar system",
+        "action-item tracker",
+        "shared document repository"
+      ],
+      "missing_items": [
+        "meeting notes"
+      ]
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "improvement request",
+        "equipment issue summary",
+        "meeting agenda"
+      ],
+      "missing_items": [
+        "vendor proposal"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting minutes",
+        "action-item list",
+        "owner and due date assignments",
+        "updated improvement proposal"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the proposed improvement technically feasible?",
+        "Are action items clearly owned?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "agenda not prepared",
+        "unclear owner",
+        "missed follow-up deadline"
+      ],
+      "missing_items": [
+        "vendor proposal incomplete"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "A2",
+        "A4"
+      ],
+      "missing_items": [
+        "A7"
+      ]
+    },
+    "overall_score": 0.865
+  },
+  "structured_only": {
+    "activities": {
+      "covered": 7,
+      "total": 7,
+      "score": 1.0,
+      "covered_items": [
+        "Prepare agenda and issue summary",
+        "Schedule meeting with vendor",
+        "Discuss improvement options",
+        "Record decisions and open questions",
+        "Assign action-item owners and due dates",
+        "Share meeting summary",
+        "Track action-item progress"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 5,
+      "total": 5,
+      "score": 1.0,
+      "covered_items": [
+        "equipment engineer",
+        "vendor representative",
+        "meeting organizer",
+        "action-item owner",
+        "manager"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "calendar system",
+        "action-item tracker",
+        "shared document repository"
+      ],
+      "missing_items": [
+        "meeting notes"
+      ]
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "improvement request",
+        "equipment issue summary",
+        "meeting agenda"
+      ],
+      "missing_items": [
+        "vendor proposal"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting minutes",
+        "action-item list",
+        "owner and due date assignments",
+        "updated improvement proposal"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the proposed improvement technically feasible?",
+        "Are action items clearly owned?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "agenda not prepared",
+        "missed follow-up deadline"
+      ],
+      "missing_items": [
+        "vendor proposal incomplete",
+        "unclear owner"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "A2",
+        "A4"
+      ],
+      "missing_items": [
+        "A7"
+      ]
+    },
+    "overall_score": 0.833
+  },
+  "selection_provenance": {
+    "generic_only": 2,
+    "gapelicit_only": 1,
+    "mixed": 3
+  }
+}

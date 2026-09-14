@@ -1,0 +1,149 @@
+{
+  "protocol": "domain-ablation-v1",
+  "primary_endpoint": "process_coverage",
+  "domains": {
+    "semiconductor_work": {
+      "expected_scenarios": 8,
+      "complete_scenarios": 8,
+      "means": {
+        "generic": {
+          "process_coverage": 0.9004107142857143,
+          "legacy_coverage": 0.92075,
+          "structured_coverage": 0.907625,
+          "answer_words": 264.5,
+          "input_tokens": 2907.75,
+          "output_tokens": 4032,
+          "activities": 0.948625,
+          "actors": 0.91675,
+          "systems": 0.9375,
+          "inputs": 0.90625,
+          "outputs": 0.9375,
+          "decisions": 0.875,
+          "exceptions": 0.78125
+        },
+        "common": {
+          "process_coverage": 0.8530892857142858,
+          "legacy_coverage": 0.866375,
+          "structured_coverage": 0.866375,
+          "answer_words": 229.5,
+          "input_tokens": 2898.625,
+          "output_tokens": 4315.25,
+          "activities": 0.917375,
+          "actors": 0.8855,
+          "systems": 0.90625,
+          "inputs": 0.90625,
+          "outputs": 0.825,
+          "decisions": 0.875,
+          "exceptions": 0.65625
+        },
+        "domain": {
+          "process_coverage": 0.8478928571428571,
+          "legacy_coverage": 0.87975,
+          "structured_coverage": 0.8614999999999999,
+          "answer_words": 228.75,
+          "input_tokens": 3149.5,
+          "output_tokens": 4227.625,
+          "activities": 0.922625,
+          "actors": 0.825125,
+          "systems": 1.0,
+          "inputs": 0.78125,
+          "outputs": 0.84375,
+          "decisions": 0.9375,
+          "exceptions": 0.625
+        }
+      },
+      "contrasts": {
+        "common_minus_generic": {
+          "mean_difference": -0.047321428571428556,
+          "wins": 1,
+          "ties": 2,
+          "losses": 5
+        },
+        "domain_minus_common": {
+          "mean_difference": -0.005196428571428588,
+          "wins": 3,
+          "ties": 1,
+          "losses": 4
+        },
+        "domain_minus_generic": {
+          "mean_difference": -0.052517857142857144,
+          "wins": 1,
+          "ties": 1,
+          "losses": 6
+        }
+      }
+    },
+    "childcare": {
+      "expected_scenarios": 8,
+      "complete_scenarios": 8,
+      "means": {
+        "generic": {
+          "process_coverage": 0.8772321428571429,
+          "legacy_coverage": 0.894,
+          "structured_coverage": 0.88225,
+          "answer_words": 251.75,
+          "input_tokens": 3096.375,
+          "output_tokens": 4400.25,
+          "activities": 0.953125,
+          "actors": 0.71875,
+          "systems": 0.84375,
+          "inputs": 0.875,
+          "outputs": 0.90625,
+          "decisions": 1.0,
+          "exceptions": 0.84375
+        },
+        "common": {
+          "process_coverage": 0.859375,
+          "legacy_coverage": 0.879,
+          "structured_coverage": 0.8771249999999999,
+          "answer_words": 243.625,
+          "input_tokens": 3167,
+          "output_tokens": 4537.375,
+          "activities": 0.921875,
+          "actors": 0.8125,
+          "systems": 0.875,
+          "inputs": 0.84375,
+          "outputs": 0.84375,
+          "decisions": 0.9375,
+          "exceptions": 0.78125
+        },
+        "domain": {
+          "process_coverage": 0.9017857142857143,
+          "legacy_coverage": 0.920125,
+          "structured_coverage": 0.91425,
+          "answer_words": 236.25,
+          "input_tokens": 3442.25,
+          "output_tokens": 4644.625,
+          "activities": 0.9375,
+          "actors": 0.8125,
+          "systems": 0.90625,
+          "inputs": 0.84375,
+          "outputs": 0.90625,
+          "decisions": 1.0,
+          "exceptions": 0.90625
+        }
+      },
+      "contrasts": {
+        "common_minus_generic": {
+          "mean_difference": -0.017857142857142863,
+          "wins": 3,
+          "ties": 0,
+          "losses": 5
+        },
+        "domain_minus_common": {
+          "mean_difference": 0.04241071428571429,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3
+        },
+        "domain_minus_generic": {
+          "mean_difference": 0.024553571428571425,
+          "wins": 4,
+          "ties": 1,
+          "losses": 3
+        }
+      }
+    }
+  },
+  "errors": []
+}

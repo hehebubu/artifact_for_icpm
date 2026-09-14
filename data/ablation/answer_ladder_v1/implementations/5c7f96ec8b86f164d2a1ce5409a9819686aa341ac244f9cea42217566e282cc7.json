@@ -1,0 +1,27 @@
+{
+  "protocol": "answer-ladder-v1",
+  "levels": [
+    "L3",
+    "L3p",
+    "L2",
+    "L1",
+    "L0"
+  ],
+  "anchor": "L3",
+  "dataset_sha256": "d51f9a4070e278945a33886eb6c8d4ed4464489fa27e2b3f1a0a8106474d96ce",
+  "script_sha256": "5c7f96ec8b86f164d2a1ce5409a9819686aa341ac244f9cea42217566e282cc7",
+  "scorer_sha256": "4650388295def8b3b7a268feba877072ee4bce7324ac0d11be4da52d7b733c22",
+  "criteria": [
+    "document",
+    "field",
+    "exact"
+  ],
+  "primary_endpoint": "field_criterion_seven_category_process_coverage",
+  "model": "claude-sonnet-4-6",
+  "domain": "semiconductor_work",
+  "questions": 6,
+  "repeats": 5,
+  "temperature": 0.7,
+  "max_tokens": 4000,
+  "seed": 20260908
+}

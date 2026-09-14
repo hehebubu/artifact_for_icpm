@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "Which roles from your organization typically attend the vendor meeting, and which specific role is responsible for producing the meeting summary afterward?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "What event or condition triggers the scheduling of a vendor meeting — is it recurring on a fixed schedule, initiated by a specific operational issue, or requested on an ad hoc basis?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "What tool or system is currently used to record meeting notes and track action items—for example, email threads, a shared document, or a dedicated project management platform?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "Which roles or departments are typically involved in the vendor meeting, and who holds primary responsibility for organizing it and producing the post-meeting summary?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "What does the meeting summary look like as a finished output—is it a free-text email, a structured template, or a formal document—and who receives it?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "In what format is the meeting discussion currently captured — for example, a free-text email, a structured template, or recorded notes — and is there a standard tool or system used to store this output?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "How are action items assigned and prioritized after the meeting—is there a defined process for deciding who owns each item and when it must be completed?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "When action items are identified from the meeting, how are they recorded and assigned — do they include a designated owner, a due date, and a priority level, and if so, where is this information stored?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "What happens when an action item is not completed by its agreed deadline—is there a formal escalation path, an automated reminder, or does it rely on someone manually following up?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "How is follow-up on action items currently conducted — for example, through manual email reminders, a task management system, or periodic review meetings — and how frequently does this occur?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "How often do these vendor meetings occur, and what is the typical expected turnaround time for resolving the action items that come out of them?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "What criteria must be met for this workflow to be considered fully complete — is it when all action items are marked closed, when a final summary report is approved, or some other condition?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "generic",
+      "question_id": "Q6"
+    }
+  }
+}

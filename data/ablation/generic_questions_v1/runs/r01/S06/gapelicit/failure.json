@@ -1,0 +1,6 @@
+{
+  "scenario_id": "S06",
+  "repeat": 1,
+  "arm": "gapelicit",
+  "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+}

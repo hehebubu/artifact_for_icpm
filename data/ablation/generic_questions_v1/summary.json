@@ -1,0 +1,40 @@
+{
+  "protocol": "question-ablation-v1",
+  "expected_pairs": 8,
+  "complete_pairs": 8,
+  "errors": [],
+  "means_paired": {
+    "generic": {
+      "overall_score": 0.92075,
+      "structured_only_score": 0.907625,
+      "answer_words": 264.5,
+      "activities": 0.948625,
+      "actors": 0.958375,
+      "systems": 0.9375,
+      "inputs": 0.90625,
+      "outputs": 0.9375,
+      "decisions": 0.875,
+      "exceptions": 0.84375,
+      "automation_opportunities": 0.958375
+    },
+    "gapelicit": {
+      "overall_score": 0.866375,
+      "structured_only_score": 0.866375,
+      "answer_words": 229.5,
+      "activities": 0.917375,
+      "actors": 0.8855,
+      "systems": 0.90625,
+      "inputs": 0.90625,
+      "outputs": 0.825,
+      "decisions": 0.875,
+      "exceptions": 0.65625,
+      "automation_opportunities": 0.958375
+    }
+  },
+  "gapelicit_minus_generic": -0.05437499999999999,
+  "wins_ties_losses": {
+    "wins": 1,
+    "ties": 1,
+    "losses": 6
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "row": {
+    "domain": "semiconductor_work",
+    "scenario_id": "S08",
+    "arm": "domain",
+    "process_coverage": 0.8334285714285714,
+    "legacy_coverage": 0.854,
+    "structured_coverage": 0.854,
+    "activities": 0.667,
+    "actors": 0.667,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 0.5,
+    "answer_words": 200,
+    "cached_baseline": false,
+    "input_tokens": 2927,
+    "output_tokens": 4003
+  },
+  "legacy": {
+    "activities": {
+      "covered": 4,
+      "total": 6,
+      "score": 0.667,
+      "covered_items": [
+        "Collect meeting time and participant count",
+        "Check room availability",
+        "Select room matching capacity and equipment needs",
+        "Reserve selected room"
+      ],
+      "missing_items": [
+        "Create or update calendar invitation",
+        "Notify participants of room information"
+      ]
+    },
+    "actors": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "meeting organizer",
+        "meeting participants"
+      ],
+      "missing_items": [
+        "facility system"
+      ]
+    },
+    "systems": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "calendar system",
+        "room reservation system",
+        "email or collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting date and time",
+        "participant count",
+        "location preference",
+        "equipment needs"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "room reservation",
+        "calendar invitation",
+        "participant notification"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is a suitable room available?",
+        "Does the meeting require special equipment?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "participant count changes",
+        "reservation conflict"
+      ],
+      "missing_items": [
+        "room unavailable",
+        "equipment unavailable"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A5"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.854
+  },
+  "structured": {
+    "activities": {
+      "covered": 4,
+      "total": 6,
+      "score": 0.667,
+      "covered_items": [
+        "Collect meeting time and participant count",
+        "Check room availability",
+        "Select room matching capacity and equipment needs",
+        "Reserve selected room"
+      ],
+      "missing_items": [
+        "Create or update calendar invitation",
+        "Notify participants of room information"
+      ]
+    },
+    "actors": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "meeting organizer",
+        "meeting participants"
+      ],
+      "missing_items": [
+        "facility system"
+      ]
+    },
+    "systems": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "calendar system",
+        "room reservation system",
+        "email or collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting date and time",
+        "participant count",
+        "location preference",
+        "equipment needs"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "room reservation",
+        "calendar invitation",
+        "participant notification"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is a suitable room available?",
+        "Does the meeting require special equipment?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "participant count changes",
+        "reservation conflict"
+      ],
+      "missing_items": [
+        "room unavailable",
+        "equipment unavailable"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A5"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.854
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/semiconductor_work/S08/domain/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/semiconductor_work/S08/domain/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/semiconductor_work/S08/domain/update.json"
+  ]
+}

@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{Answer-quality ladder over 200 pipelines (8 scenarios, 5 repeats, temperature 0.7). L3p conveys the same information as L3 in different words. The last column is the paired difference from L3 under the within-field criterion with a bootstrap 95\% confidence interval.}
+\label{tab:answer-ladder}
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+Answer level & Words & Document & Within-field & Exact & L3 $-$ level (within-field) \\
+\midrule
+L3 full & 252 & 0.857 & 0.744 & 0.510 & -- \\
+L3p reworded & 279 & 0.827 & 0.594 & 0.240 & +0.150 [+0.114, +0.185] \\
+L2 compressed & 76 & 0.783 & 0.592 & 0.347 & +0.152 [+0.115, +0.189] \\
+L1 partial & 148 & 0.729 & 0.544 & 0.317 & +0.200 [+0.164, +0.235] \\
+L0 vague & 124 & 0.577 & 0.315 & 0.103 & +0.428 [+0.374, +0.483] \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}\footnotesize Rewording alone costs as much coverage as compressing every answer to 25 words.
+\end{table}

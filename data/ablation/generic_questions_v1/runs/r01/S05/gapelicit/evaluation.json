@@ -1,0 +1,221 @@
+{
+  "row": {
+    "scenario_id": "S05",
+    "repeat": 1,
+    "arm": "gapelicit",
+    "overall_score": 0.969,
+    "structured_only_score": 0.969,
+    "activities": 1.0,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 0.75,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "automation_opportunities": 1.0,
+    "question_count": 6,
+    "answer_words": 221,
+    "input_tokens": 2932,
+    "output_tokens": 4248
+  },
+  "scores": {
+    "activities": {
+      "covered": 7,
+      "total": 7,
+      "score": 1.0,
+      "covered_items": [
+        "Collect document and related change list",
+        "Compare feature changes with document content",
+        "Check terminology and formatting consistency",
+        "Record comments and requested revisions",
+        "Revise document based on comments",
+        "Confirm revisions with feature owner",
+        "Approve final document"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "document reviewer",
+        "feature owner",
+        "document author",
+        "approver"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "document repository",
+        "change request tracker",
+        "review checklist",
+        "commenting tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "specification document",
+        "feature change list",
+        "previous document version",
+        "review checklist"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "review comments",
+        "change request list",
+        "approval decision"
+      ],
+      "missing_items": [
+        "updated document"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are all feature changes reflected?",
+        "Are the revisions acceptable?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing change list",
+        "conflicting terminology",
+        "unclear feature owner",
+        "unresolved comments"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A4"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.969
+  },
+  "structured_only": {
+    "activities": {
+      "covered": 7,
+      "total": 7,
+      "score": 1.0,
+      "covered_items": [
+        "Collect document and related change list",
+        "Compare feature changes with document content",
+        "Check terminology and formatting consistency",
+        "Record comments and requested revisions",
+        "Revise document based on comments",
+        "Confirm revisions with feature owner",
+        "Approve final document"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "document reviewer",
+        "feature owner",
+        "document author",
+        "approver"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "document repository",
+        "change request tracker",
+        "review checklist",
+        "commenting tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "specification document",
+        "feature change list",
+        "previous document version",
+        "review checklist"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "review comments",
+        "change request list",
+        "approval decision"
+      ],
+      "missing_items": [
+        "updated document"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are all feature changes reflected?",
+        "Are the revisions acceptable?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing change list",
+        "conflicting terminology",
+        "unclear feature owner",
+        "unresolved comments"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A4"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.969
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "version": "domain-taxonomy-v1",
+  "description": "Same 12 common categories; domain conditions append contextual explanations only. These are research prompt designs, not validated professional taxonomies.",
+  "common_categories": [
+    "actor",
+    "system",
+    "input",
+    "output",
+    "decision",
+    "exception",
+    "dependency",
+    "frequency",
+    "manual_effort",
+    "data_availability",
+    "integration_constraint",
+    "risk_or_approval"
+  ],
+  "domains": {
+    "semiconductor_work": {
+      "actor": "Responsibility across engineers, reviewers, coordinators and external collaborators.",
+      "system": "Tools used for measurements, records, documents and communication.",
+      "input": "Identifiers, requests and prerequisites needed before work starts.",
+      "output": "Evidence, reports and notifications that mark progress or completion.",
+      "decision": "Criteria for proceeding, revising, escalating or accepting a result.",
+      "exception": "Disruptions involving equipment, records, ownership or coordination.",
+      "dependency": "Ordering and handoffs between people, systems or organizations.",
+      "frequency": "How often the work is requested and whether demand varies.",
+      "manual_effort": "Human effort in preparing, checking and communicating work.",
+      "data_availability": "Whether needed records exist and can be reliably accessed.",
+      "integration_constraint": "Interfaces and access boundaries between engineering and office tools.",
+      "risk_or_approval": "Who must authorize actions and what confidentiality limits apply."
+    },
+    "childcare": {
+      "actor": "Responsibility shared by parents, other caregivers and childcare staff.",
+      "system": "Tools used for household schedules, records and communication.",
+      "input": "Plans, permissions and practical prerequisites needed before care coordination starts.",
+      "output": "Confirmations, prepared resources and shared information that mark completion.",
+      "decision": "Household or provider criteria for proceeding, changing a plan or seeking confirmation.",
+      "exception": "Disruptions involving schedules, resources, caregivers or communication.",
+      "dependency": "Ordering and handoffs between home, caregivers and childcare providers.",
+      "frequency": "How often the routine occurs and whether the schedule varies.",
+      "manual_effort": "Human effort in checking, preparing and coordinating household tasks.",
+      "data_availability": "Whether needed household or provider information is recorded and accessible.",
+      "integration_constraint": "Interfaces and access boundaries between family and provider tools.",
+      "risk_or_approval": "Who must confirm changes and what family privacy limits apply."
+    }
+  }
+}

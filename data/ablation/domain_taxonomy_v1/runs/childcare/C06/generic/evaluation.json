@@ -1,0 +1,228 @@
+{
+  "row": {
+    "domain": "childcare",
+    "scenario_id": "C06",
+    "arm": "generic",
+    "process_coverage": 0.9285714285714286,
+    "legacy_coverage": 0.938,
+    "structured_coverage": 0.938,
+    "activities": 1.0,
+    "actors": 0.5,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "answer_words": 267,
+    "cached_baseline": false,
+    "input_tokens": 3100,
+    "output_tokens": 4592
+  },
+  "legacy": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Count the available household supplies",
+        "Compare counts with household reorder thresholds",
+        "Check proposed items against the approved product list",
+        "Review the basket against the spending limit",
+        "Resolve unavailable products with a parent",
+        "Place the confirmed order and save confirmation",
+        "Check the delivery against the order record",
+        "Store items and update the inventory count"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "supplier",
+        "receiving caregiver"
+      ],
+      "missing_items": [
+        "mother",
+        "partner"
+      ]
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "household inventory list",
+        "shopping list",
+        "online shop",
+        "order record"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "physical stock count",
+        "household reorder threshold",
+        "approved product list",
+        "spending limit"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "verified inventory",
+        "approved shopping list",
+        "order confirmation",
+        "receipt and stock update"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the stock below the household reorder threshold?",
+        "Does the basket meet product and spending constraints?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "inventory count outdated",
+        "approved product unavailable",
+        "basket exceeds spending limit",
+        "delivery differs from order"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A4",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.938
+  },
+  "structured": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Count the available household supplies",
+        "Compare counts with household reorder thresholds",
+        "Check proposed items against the approved product list",
+        "Review the basket against the spending limit",
+        "Resolve unavailable products with a parent",
+        "Place the confirmed order and save confirmation",
+        "Check the delivery against the order record",
+        "Store items and update the inventory count"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "supplier",
+        "receiving caregiver"
+      ],
+      "missing_items": [
+        "mother",
+        "partner"
+      ]
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "household inventory list",
+        "shopping list",
+        "online shop",
+        "order record"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "physical stock count",
+        "household reorder threshold",
+        "approved product list",
+        "spending limit"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "verified inventory",
+        "approved shopping list",
+        "order confirmation",
+        "receipt and stock update"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the stock below the household reorder threshold?",
+        "Does the basket meet product and spending constraints?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "inventory count outdated",
+        "approved product unavailable",
+        "basket exceeds spending limit",
+        "delivery differs from order"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A4",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.938
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C06/generic/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C06/generic/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C06/generic/update.json"
+  ]
+}

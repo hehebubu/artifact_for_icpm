@@ -1,0 +1,232 @@
+{
+  "row": {
+    "domain": "childcare",
+    "scenario_id": "C05",
+    "arm": "generic",
+    "process_coverage": 0.8392857142857143,
+    "legacy_coverage": 0.859,
+    "structured_coverage": 0.859,
+    "activities": 0.875,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 0.5,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 0.5,
+    "answer_words": 200,
+    "cached_baseline": false,
+    "input_tokens": 2942,
+    "output_tokens": 3891
+  },
+  "legacy": {
+    "activities": {
+      "covered": 7,
+      "total": 8,
+      "score": 0.875,
+      "covered_items": [
+        "Collect adult availability for the coming week",
+        "Match each care period with an available adult",
+        "Request explicit acceptance from assigned caregivers",
+        "Find a replacement for an uncovered period",
+        "Publish the agreed schedule in the shared calendar",
+        "Notify affected caregivers of any later change",
+        "Record acknowledgment of the revised assignment"
+      ],
+      "missing_items": [
+        "List care periods outside childcare hours"
+      ]
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "mother",
+        "partner",
+        "grandparent",
+        "backup caregiver"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "shared family calendar",
+        "care availability form",
+        "family messaging app",
+        "care assignment table"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "adult availability",
+        "backup availability"
+      ],
+      "missing_items": [
+        "childcare hours",
+        "work commitments"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "weekly care plan",
+        "accepted assignments",
+        "updated calendar",
+        "change acknowledgment"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is every required care period assigned to an available adult?",
+        "Has the assigned caregiver accepted the period?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "uncovered care period",
+        "assignment not accepted"
+      ],
+      "missing_items": [
+        "overlapping adult commitments",
+        "last-minute caregiver cancellation"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.859
+  },
+  "structured": {
+    "activities": {
+      "covered": 7,
+      "total": 8,
+      "score": 0.875,
+      "covered_items": [
+        "Collect adult availability for the coming week",
+        "Match each care period with an available adult",
+        "Request explicit acceptance from assigned caregivers",
+        "Find a replacement for an uncovered period",
+        "Publish the agreed schedule in the shared calendar",
+        "Notify affected caregivers of any later change",
+        "Record acknowledgment of the revised assignment"
+      ],
+      "missing_items": [
+        "List care periods outside childcare hours"
+      ]
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "mother",
+        "partner",
+        "grandparent",
+        "backup caregiver"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "shared family calendar",
+        "care availability form",
+        "family messaging app",
+        "care assignment table"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "adult availability",
+        "backup availability"
+      ],
+      "missing_items": [
+        "childcare hours",
+        "work commitments"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "weekly care plan",
+        "accepted assignments",
+        "updated calendar",
+        "change acknowledgment"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is every required care period assigned to an available adult?",
+        "Has the assigned caregiver accepted the period?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "uncovered care period",
+        "assignment not accepted"
+      ],
+      "missing_items": [
+        "overlapping adult commitments",
+        "last-minute caregiver cancellation"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.859
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C05/generic/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C05/generic/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C05/generic/update.json"
+  ]
+}

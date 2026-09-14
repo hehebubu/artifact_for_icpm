@@ -25,6 +25,42 @@ paper files.
   and active clarification conditions.
 - `.env.example`: example environment file for local API configuration.
 
+### Question-policy ablation (RQ2)
+
+- `data/scenarios_childcare.json`: eight childcare coordination scenarios in the
+  same schema, used as the second domain.
+- `data/domain_taxonomies.json`: the common and domain-contextualized gap
+  taxonomies compared in the ablation.
+- `data/ablation/generic_questions_v1/`, `coordinated_questions_v1/`,
+  `domain_taxonomy_v1/`: run logs, frozen manifests with input hashes, scores
+  and reports for the question-policy conditions.
+- `scripts/run_question_ablation.py`, `run_domain_ablation.py`,
+  `run_coordinated_questions.py`: the corresponding experiment runners.
+
+### Provenance and answer-quality analysis (RQ3)
+
+- `data/ablation/provenance_v1/`: item-level provenance of every reference item
+  across all stored pipelines. `items.csv` records, for each item, whether it
+  appears in the initial description, the questions, the answers, the output and
+  the declared gaps, under three match criteria, together with its provenance
+  label.
+- `data/ablation/criterion_sensitivity/`: every stored workflow re-scored under
+  the document, within-field and exact criteria.
+- `data/ablation/answer_ladder_v1/`: 200 pipelines over five answer-quality
+  levels with five repeats, including the bootstrap comparison to the
+  full-answer anchor.
+- `scripts/run_provenance.py`, `rescore_criteria.py`, `run_answer_ladder.py`,
+  `make_new_tables.py`: the analysis scripts. The provenance and
+  criterion-sensitivity analyses re-read stored logs and issue no API calls, so
+  they reproduce offline:
+
+```sh
+python3 scripts/run_provenance.py
+python3 scripts/rescore_criteria.py
+```
+
+- `scripts/test_*.py`: unit tests for the runners and the analysis scripts.
+
 ## Experimental Conditions
 
 The prototype supports three workflow-producing conditions:

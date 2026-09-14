@@ -1,0 +1,234 @@
+{
+  "row": {
+    "domain": "childcare",
+    "scenario_id": "C01",
+    "arm": "common",
+    "process_coverage": 0.8214285714285714,
+    "legacy_coverage": 0.844,
+    "structured_coverage": 0.844,
+    "activities": 1.0,
+    "actors": 0.5,
+    "systems": 0.75,
+    "inputs": 0.75,
+    "outputs": 0.75,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "answer_words": 221,
+    "cached_baseline": false,
+    "input_tokens": 3144,
+    "output_tokens": 4504
+  },
+  "legacy": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Check the arrival window and provider notice",
+        "Confirm the escort with the partner",
+        "Review the daily item list",
+        "Pack and check the bag",
+        "Resolve missing items before departure",
+        "Escort the child to childcare",
+        "Send an arrival delay notice when needed",
+        "Confirm handover with the childcare teacher"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "childcare teacher",
+        "backup caregiver"
+      ],
+      "missing_items": [
+        "mother",
+        "partner"
+      ]
+    },
+    "systems": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "packing checklist",
+        "childcare messaging app",
+        "attendance register"
+      ],
+      "missing_items": [
+        "shared family calendar"
+      ]
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "arrival window",
+        "daily item list",
+        "caregiver availability"
+      ],
+      "missing_items": [
+        "provider notice"
+      ]
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "assigned escort",
+        "arrival notice",
+        "handover confirmation"
+      ],
+      "missing_items": [
+        "checked bag"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are all required items packed?",
+        "Can the assigned escort meet the arrival window?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing required item",
+        "escort unavailable",
+        "arrival delay",
+        "unacknowledged handover"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A1",
+        "A4",
+        "A7"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.844
+  },
+  "structured": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Check the arrival window and provider notice",
+        "Confirm the escort with the partner",
+        "Review the daily item list",
+        "Pack and check the bag",
+        "Resolve missing items before departure",
+        "Escort the child to childcare",
+        "Send an arrival delay notice when needed",
+        "Confirm handover with the childcare teacher"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "childcare teacher",
+        "backup caregiver"
+      ],
+      "missing_items": [
+        "mother",
+        "partner"
+      ]
+    },
+    "systems": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "packing checklist",
+        "childcare messaging app",
+        "attendance register"
+      ],
+      "missing_items": [
+        "shared family calendar"
+      ]
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "arrival window",
+        "daily item list",
+        "caregiver availability"
+      ],
+      "missing_items": [
+        "provider notice"
+      ]
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "assigned escort",
+        "arrival notice",
+        "handover confirmation"
+      ],
+      "missing_items": [
+        "checked bag"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are all required items packed?",
+        "Can the assigned escort meet the arrival window?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing required item",
+        "escort unavailable",
+        "arrival delay",
+        "unacknowledged handover"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A1",
+        "A4",
+        "A7"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.844
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C01/common/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C01/common/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C01/common/update.json"
+  ]
+}

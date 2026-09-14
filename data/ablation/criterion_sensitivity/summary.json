@@ -1,0 +1,508 @@
+{
+  "criteria": [
+    "document",
+    "field",
+    "exact"
+  ],
+  "runs": 104,
+  "legacy_overall": {
+    "runs/semiconductor_work": {
+      "one_shot": {
+        "document": 0.7251,
+        "field": 0.4544,
+        "exact": 0.2229
+      },
+      "checklist": {
+        "document": 0.7529,
+        "field": 0.4967,
+        "exact": 0.24
+      },
+      "update": {
+        "document": 0.925,
+        "field": 0.8385,
+        "exact": 0.5613
+      }
+    },
+    "generic_questions_v1/semiconductor_work": {
+      "generic": {
+        "document": 0.9076,
+        "field": 0.7972,
+        "exact": 0.5789
+      },
+      "gapelicit": {
+        "document": 0.8662,
+        "field": 0.7379,
+        "exact": 0.5246
+      }
+    },
+    "coordinated_questions_v1/semiconductor_work": {
+      "coordinated": {
+        "document": 0.8885,
+        "field": 0.7764,
+        "exact": 0.5894
+      }
+    },
+    "domain_taxonomy_v1/childcare": {
+      "generic": {
+        "document": 0.8822,
+        "field": 0.7572,
+        "exact": 0.4564
+      },
+      "common": {
+        "document": 0.877,
+        "field": 0.7363,
+        "exact": 0.4375
+      },
+      "domain": {
+        "document": 0.9141,
+        "field": 0.7871,
+        "exact": 0.4844
+      }
+    },
+    "domain_taxonomy_v1/semiconductor_work": {
+      "domain": {
+        "document": 0.8617,
+        "field": 0.7571,
+        "exact": 0.5481
+      }
+    },
+    "matched_pilot/semiconductor_work": {
+      "generic": {
+        "document": 0.9076,
+        "field": 0.7972,
+        "exact": 0.5789
+      },
+      "gapelicit": {
+        "document": 0.8662,
+        "field": 0.7379,
+        "exact": 0.5246
+      },
+      "coordinated": {
+        "document": 0.8885,
+        "field": 0.7764,
+        "exact": 0.5894
+      }
+    }
+  },
+  "process_overall": {
+    "runs/semiconductor_work": {
+      "one_shot": {
+        "document": 0.6858,
+        "field": 0.3764,
+        "exact": 0.1119
+      },
+      "checklist": {
+        "document": 0.7176,
+        "field": 0.4248,
+        "exact": 0.1314
+      },
+      "update": {
+        "document": 0.9143,
+        "field": 0.8154,
+        "exact": 0.4986
+      }
+    },
+    "generic_questions_v1/semiconductor_work": {
+      "generic": {
+        "document": 0.9004,
+        "field": 0.7742,
+        "exact": 0.5247
+      },
+      "gapelicit": {
+        "document": 0.8531,
+        "field": 0.7064,
+        "exact": 0.4626
+      }
+    },
+    "coordinated_questions_v1/semiconductor_work": {
+      "coordinated": {
+        "document": 0.8845,
+        "field": 0.7564,
+        "exact": 0.5426
+      }
+    },
+    "domain_taxonomy_v1/childcare": {
+      "generic": {
+        "document": 0.8772,
+        "field": 0.7344,
+        "exact": 0.3906
+      },
+      "common": {
+        "document": 0.8594,
+        "field": 0.6987,
+        "exact": 0.3571
+      },
+      "domain": {
+        "document": 0.9018,
+        "field": 0.7567,
+        "exact": 0.4107
+      }
+    },
+    "domain_taxonomy_v1/semiconductor_work": {
+      "domain": {
+        "document": 0.8479,
+        "field": 0.7284,
+        "exact": 0.4895
+      }
+    },
+    "matched_pilot/semiconductor_work": {
+      "generic": {
+        "document": 0.9004,
+        "field": 0.7742,
+        "exact": 0.5247
+      },
+      "gapelicit": {
+        "document": 0.8531,
+        "field": 0.7064,
+        "exact": 0.4626
+      },
+      "coordinated": {
+        "document": 0.8845,
+        "field": 0.7564,
+        "exact": 0.5426
+      }
+    }
+  },
+  "legacy_overall_paired": {
+    "runs/semiconductor_work": {
+      "update vs one_shot": {
+        "document": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.1999
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.3841
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.3384
+        }
+      },
+      "update vs checklist": {
+        "document": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.1721
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.3418
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.3213
+        }
+      }
+    },
+    "generic_questions_v1/semiconductor_work": {
+      "generic vs gapelicit": {
+        "document": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 2,
+          "losses": 1,
+          "mean_difference": 0.0414
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 6,
+          "ties": 1,
+          "losses": 1,
+          "mean_difference": 0.0593
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0544
+        }
+      }
+    },
+    "domain_taxonomy_v1/childcare": {
+      "domain vs generic": {
+        "document": {
+          "scenarios": 8,
+          "wins": 4,
+          "ties": 1,
+          "losses": 3,
+          "mean_difference": 0.0319
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0299
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 4,
+          "ties": 1,
+          "losses": 3,
+          "mean_difference": 0.028
+        }
+      },
+      "domain vs common": {
+        "document": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0371
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0508
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 7,
+          "ties": 1,
+          "losses": 0,
+          "mean_difference": 0.0469
+        }
+      }
+    },
+    "matched_pilot/semiconductor_work": {
+      "generic vs gapelicit": {
+        "document": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 2,
+          "losses": 1,
+          "mean_difference": 0.0414
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 6,
+          "ties": 1,
+          "losses": 1,
+          "mean_difference": 0.0593
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0544
+        }
+      },
+      "generic vs coordinated": {
+        "document": {
+          "scenarios": 8,
+          "wins": 6,
+          "ties": 1,
+          "losses": 1,
+          "mean_difference": 0.0192
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 6,
+          "ties": 0,
+          "losses": 2,
+          "mean_difference": 0.0208
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 3,
+          "ties": 1,
+          "losses": 4,
+          "mean_difference": -0.0104
+        }
+      }
+    }
+  },
+  "process_overall_paired": {
+    "runs/semiconductor_work": {
+      "update vs one_shot": {
+        "document": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.2284
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.439
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.3867
+        }
+      },
+      "update vs checklist": {
+        "document": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.1967
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.3906
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 8,
+          "ties": 0,
+          "losses": 0,
+          "mean_difference": 0.3672
+        }
+      }
+    },
+    "generic_questions_v1/semiconductor_work": {
+      "generic vs gapelicit": {
+        "document": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 2,
+          "losses": 1,
+          "mean_difference": 0.0473
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 6,
+          "ties": 1,
+          "losses": 1,
+          "mean_difference": 0.0678
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0621
+        }
+      }
+    },
+    "domain_taxonomy_v1/childcare": {
+      "domain vs generic": {
+        "document": {
+          "scenarios": 8,
+          "wins": 4,
+          "ties": 1,
+          "losses": 3,
+          "mean_difference": 0.0246
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0223
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 4,
+          "ties": 1,
+          "losses": 3,
+          "mean_difference": 0.0201
+        }
+      },
+      "domain vs common": {
+        "document": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0424
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.058
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 7,
+          "ties": 1,
+          "losses": 0,
+          "mean_difference": 0.0536
+        }
+      }
+    },
+    "matched_pilot/semiconductor_work": {
+      "generic vs gapelicit": {
+        "document": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 2,
+          "losses": 1,
+          "mean_difference": 0.0473
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 6,
+          "ties": 1,
+          "losses": 1,
+          "mean_difference": 0.0678
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0621
+        }
+      },
+      "generic vs coordinated": {
+        "document": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 1,
+          "losses": 2,
+          "mean_difference": 0.0159
+        },
+        "field": {
+          "scenarios": 8,
+          "wins": 5,
+          "ties": 0,
+          "losses": 3,
+          "mean_difference": 0.0178
+        },
+        "exact": {
+          "scenarios": 8,
+          "wins": 2,
+          "ties": 1,
+          "losses": 5,
+          "mean_difference": -0.0179
+        }
+      }
+    }
+  }
+}

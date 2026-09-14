@@ -1,0 +1,52 @@
+\begin{table}[!t]
+\caption{Automation-critical gap taxonomy used for clarification.}
+\label{tab:gap-taxonomy}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.94}
+\begin{tabular}{p{0.18\textwidth}p{0.31\textwidth}p{0.22\textwidth}p{0.20\textwidth}}
+\toprule
+\textbf{Gap category} & \textbf{Why it matters} & \textbf{Missing information} & \textbf{Example question} \\
+\midrule
+Actor or owner &
+Automation needs clear responsibility, handoff, and approval boundaries. &
+Reviewer, approver, requester, owner &
+Who performs or approves this step? \\
+\midrule
+System or data source &
+Integration feasibility depends on where data is created, stored, and updated. &
+Repository, tracker, calendar, tool &
+Which system contains the required record? \\
+\midrule
+Input or trigger &
+Bots and monitoring rules require explicit start conditions and input objects. &
+Request, identifier, agenda, document &
+What input starts the workflow? \\
+\midrule
+Output or artifact &
+Process outcomes must be observable and reusable by later steps. &
+Report, notification, result file, update &
+What artifact is produced by this step? \\
+\midrule
+Decision rule &
+Branching logic must be explicit to support modeling and rule-based automation. &
+Validity criterion, approval rule, capacity rule &
+How is this decision made? \\
+\midrule
+Exception path &
+Robust automation requires known failure modes and recovery behavior. &
+Missing file, conflict, invalid output, delay &
+What happens when the normal path fails? \\
+\midrule
+Dependency or handoff &
+Ordering and coordination constraints determine process structure. &
+Precondition, successor, sender, receiver &
+Which step must happen before this one? \\
+\midrule
+Automation constraint &
+Candidate opportunities need feasibility, risk, and human-control boundaries. &
+Access limit, confidentiality, manual judgment &
+What prevents this step from being fully automated? \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,75 @@
+{
+  "protocol": "coordinated-questions-v1",
+  "expected_scenarios": 8,
+  "complete_scenarios": 8,
+  "means_complete_cases": {
+    "generic": {
+      "overall_score": 0.92075,
+      "structured_only_score": 0.907625,
+      "answer_words": 264.5,
+      "pipeline_calls": 3,
+      "input_tokens": 2907.75,
+      "output_tokens": 4032,
+      "activities": 0.948625,
+      "actors": 0.958375,
+      "systems": 0.9375,
+      "inputs": 0.90625,
+      "outputs": 0.9375,
+      "decisions": 0.875,
+      "exceptions": 0.84375,
+      "automation_opportunities": 0.958375
+    },
+    "gapelicit": {
+      "overall_score": 0.866375,
+      "structured_only_score": 0.866375,
+      "answer_words": 229.5,
+      "pipeline_calls": 3,
+      "input_tokens": 2898.625,
+      "output_tokens": 4315.25,
+      "activities": 0.917375,
+      "actors": 0.8855,
+      "systems": 0.90625,
+      "inputs": 0.90625,
+      "outputs": 0.825,
+      "decisions": 0.875,
+      "exceptions": 0.65625,
+      "automation_opportunities": 0.958375
+    },
+    "coordinated": {
+      "overall_score": 0.8965,
+      "structured_only_score": 0.888625,
+      "answer_words": 254.75,
+      "pipeline_calls": 5,
+      "input_tokens": 4371,
+      "output_tokens": 6438.25,
+      "activities": 0.93075,
+      "actors": 0.91675,
+      "systems": 0.90625,
+      "inputs": 0.9375,
+      "outputs": 0.90625,
+      "decisions": 0.9375,
+      "exceptions": 0.71875,
+      "automation_opportunities": 0.91675
+    }
+  },
+  "coordinated_vs": {
+    "generic": {
+      "mean_difference": -0.024249999999999994,
+      "wins": 1,
+      "ties": 1,
+      "losses": 6
+    },
+    "gapelicit": {
+      "mean_difference": 0.030125,
+      "wins": 5,
+      "ties": 0,
+      "losses": 3
+    }
+  },
+  "selected_question_sources": {
+    "generic_only": 21,
+    "gapelicit_only": 9,
+    "mixed": 18
+  },
+  "errors": []
+}

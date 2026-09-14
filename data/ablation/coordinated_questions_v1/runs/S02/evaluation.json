@@ -1,0 +1,225 @@
+{
+  "row": {
+    "scenario_id": "S02",
+    "arm": "coordinated",
+    "overall_score": 0.909,
+    "structured_only_score": 0.909,
+    "activities": 0.857,
+    "actors": 0.667,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 0.75,
+    "automation_opportunities": 1.0,
+    "answer_words": 271,
+    "pipeline_calls": 5,
+    "input_tokens": 4390,
+    "output_tokens": 6352
+  },
+  "scores": {
+    "activities": {
+      "covered": 6,
+      "total": 7,
+      "score": 0.857,
+      "covered_items": [
+        "Confirm measurement request and wafer identifier",
+        "Select suitable measurement equipment",
+        "Prepare wafer according to equipment procedure",
+        "Run measurement recipe",
+        "Validate measurement output",
+        "Upload result and notify requester"
+      ],
+      "missing_items": [
+        "Check equipment availability and reserve slot"
+      ]
+    },
+    "actors": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "measurement engineer",
+        "requester"
+      ],
+      "missing_items": [
+        "equipment owner"
+      ]
+    },
+    "systems": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "measurement equipment",
+        "equipment reservation system",
+        "measurement result repository"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "measurement request",
+        "wafer identifier",
+        "measurement recipe",
+        "equipment availability"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "measurement result",
+        "equipment usage record",
+        "request completion notice"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "Which equipment is required for the requested measurement?",
+        "Is the equipment available and qualified?",
+        "Is the measurement output valid?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "wafer information mismatch",
+        "recipe not approved",
+        "invalid measurement output"
+      ],
+      "missing_items": [
+        "equipment unavailable"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A6"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.909
+  },
+  "structured_only": {
+    "activities": {
+      "covered": 6,
+      "total": 7,
+      "score": 0.857,
+      "covered_items": [
+        "Confirm measurement request and wafer identifier",
+        "Select suitable measurement equipment",
+        "Prepare wafer according to equipment procedure",
+        "Run measurement recipe",
+        "Validate measurement output",
+        "Upload result and notify requester"
+      ],
+      "missing_items": [
+        "Check equipment availability and reserve slot"
+      ]
+    },
+    "actors": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "measurement engineer",
+        "requester"
+      ],
+      "missing_items": [
+        "equipment owner"
+      ]
+    },
+    "systems": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "measurement equipment",
+        "equipment reservation system",
+        "measurement result repository"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "measurement request",
+        "wafer identifier",
+        "measurement recipe",
+        "equipment availability"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "measurement result",
+        "equipment usage record",
+        "request completion notice"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "Which equipment is required for the requested measurement?",
+        "Is the equipment available and qualified?",
+        "Is the measurement output valid?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "wafer information mismatch",
+        "recipe not approved",
+        "invalid measurement output"
+      ],
+      "missing_items": [
+        "equipment unavailable"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A3",
+        "A6"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.909
+  },
+  "selection_provenance": {
+    "generic_only": 4,
+    "gapelicit_only": 1,
+    "mixed": 1
+  }
+}

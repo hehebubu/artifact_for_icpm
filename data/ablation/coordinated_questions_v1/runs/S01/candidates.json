@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "What event or condition triggers the start of the verification test preparation — for example, is it a scheduled time, a manual decision by the engineer, or the completion of a specific upstream activity?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "Which specific tools or systems does the engineer use to run the evaluation and store the test results?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "What are the specific steps the engineer performs when preparing the verification test, such as selecting test cases, setting configuration parameters, or loading input datasets?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "What criteria or thresholds determine that a result 'looks wrong' and triggers the investigation branch?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "How does the engineer determine that a result 'looks wrong' — are there defined thresholds, pass/fail criteria, or a reference baseline that the output is compared against?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "What does the investigation step involve, and how is it concluded — is there a defined resolution condition or sign-off required?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "What does the investigation step involve when a problem is found — what actions does the engineer take, what information sources are consulted, and is there a defined process or is it ad hoc?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "What is the required format and delivery destination of the short report, and who are the 'related people' who receive the findings?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "Who are the 'related people' that receive the shared result, and through what channel or system is the result communicated to them?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "How frequently is this verification test workflow executed, and is it triggered on a fixed schedule, by an event, or on demand?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "Does the short report follow a predefined template or structure, and where is it stored or delivered once it is written?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "Which step in the workflow currently takes the most time or manual effort to complete?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "generic",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "What event or action officially signals that a meeting has ended and should trigger the summarization workflow — for example, the meeting ending in a calendar system, a manual action by the organizer, or something else?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "Who is currently responsible for producing the meeting summary — a specific role such as the meeting organizer or a designated note-taker — and is any tool or automated transcription service already involved in that step?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "How is the meeting summary currently created — is it written manually by a participant, compiled from pre-taken notes, or generated using a transcription or AI-assisted tool?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "What source material is used to create the summary — for example, live notes, an audio or video recording, an auto-generated transcript, or shared slides?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "How is the list of email recipients determined — for example, is it always the meeting attendees, a predefined distribution list, or does someone manually decide who should receive the summary?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "Is there a required format or template for the summary, such as mandatory sections for decisions made, action items with owners, or follow-up deadlines?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "Does the meeting summary need to be reviewed or approved by a specific person before the email is sent, and if so, who is responsible for that approval?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "How is the email recipient list determined after each meeting — is it fixed to all attendees, manually curated by the organizer, or driven by a rule such as role or team membership?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "Is there a required timeframe within which the summary email must be sent after the meeting concludes — such as within one hour, by end of business day, or within 24 hours?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "Does the summary need to be reviewed or approved by anyone before the email is sent, and if so, who performs that review and what is the typical turnaround time?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "Is there a standard template or set of required sections that every meeting summary must follow — such as attendees, agenda items, decisions made, and action items with owners?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "Approximately how many meetings per week trigger this summarization and email workflow, and is the volume consistent or does it vary significantly?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "generic",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    }
+  }
+}

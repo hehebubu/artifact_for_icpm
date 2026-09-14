@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "What criteria or rules determine which measurement tool is selected for a given wafer — for example, wafer type, lot specification, or tool availability?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "What criteria or rules determine which measurement tool is assigned to a given wafer, and is that assignment made by a person, a scheduling system, or some other mechanism?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "Can you describe the preparation steps that must be completed before measurement begins, and do these steps differ significantly between tools?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "For each tool variant, can you list the discrete preparation and measurement steps in the order they are performed, including any calibration or setup actions that must happen before the wafer is measured?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "When the engineer records the measurement result, what exactly does that involve — is it a manual entry into a form or system, a physical log, or does the tool output data automatically?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "How does the engineer record the measurement result—for example, manual entry into a form or system, automatic capture from the tool, or a paper log—and where is that result stored after recording?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "Do the measurement tools have any data export capability, such as file outputs, network interfaces, or APIs that could be used to retrieve results programmatically?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "Are there defined acceptance thresholds for the measurement result, and if a result falls outside those thresholds, what happens next in the process?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "What happens when a measurement result falls outside the acceptable specification range — is there a defined escalation or rework path?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "Besides the engineer, which other roles or automated systems are involved in this workflow, and at which specific steps do they act or make decisions?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "Approximately how many wafers go through this measurement workflow per shift or per day, and how often does the active tool change during that period?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "What event or condition triggers the start of this measurement workflow, and what signal or output marks its completion so that the next downstream process can begin?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "generic",
+      "question_id": "Q6"
+    }
+  }
+}

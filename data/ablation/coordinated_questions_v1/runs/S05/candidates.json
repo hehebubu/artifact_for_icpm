@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "What event or condition triggers the start of a specification document review — for example, is it a new document version being published, a change request being submitted, or a scheduled review date being reached?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "Is the specification document review performed by a single engineer working alone, or does it involve multiple reviewers whose findings must be consolidated before the review is considered complete?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "How does the engineer identify which parts of the document need to be reviewed — for instance, do they use a diff against a previous version, a checklist of expected features, or do they review the entire document each time?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "In what format and location is the specification document stored when it enters the review step — for example, a version-controlled repository, a shared editing platform, or a static file attachment?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "Can you walk me through the specific steps the engineer performs during the review itself — for example, what do they check first, what tools or references do they use, and in what order do activities typically occur?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "What artifact does the engineer produce to record review findings, and where does that artifact go after the review — for instance, inline annotations, a structured report, or issues logged in a tracking tool?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "When the engineer finds an issue such as a typo or a missing detail, what happens next — who is responsible for making the correction, how is the issue recorded, and does the document come back to the engineer for re-review?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "What specific criteria or checklist does the engineer use to decide whether a feature is correctly reflected in the document, and what are the possible outcomes of that judgment (e.g., approved, needs minor edits, needs major revision)?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "Is the review performed by a single engineer acting alone, or are there other roles involved — such as a document author, a second reviewer, or an approver — and if so, how does the work pass between them?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "What happens when the engineer discovers a significant gap or blocking issue during the review — for example, is the document sent back to the author, escalated to a lead, or does the review process pause until the issue is resolved?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "What marks the review as officially complete — for example, is there a formal sign-off, a status update in a tracking system, a review report that is produced, or something else?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "What triggers a new review instance — for example, a specific event such as a feature branch merge or a release milestone — and roughly how often does this review occur?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "generic",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    }
+  }
+}

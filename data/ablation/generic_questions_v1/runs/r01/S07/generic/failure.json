@@ -1,0 +1,6 @@
+{
+  "scenario_id": "S07",
+  "repeat": 1,
+  "arm": "generic",
+  "error": "Expecting value: line 1 column 1 (char 0)"
+}

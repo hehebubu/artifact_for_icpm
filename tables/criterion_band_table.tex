@@ -1,0 +1,16 @@
+\begin{table}[t]
+\caption{Reference coverage under three lexical match criteria. The stored criterion accepts an item when its tokens occur anywhere in the serialized output; within-field requires the same tokens inside one field value; exact requires the full phrase.}
+\label{tab:criterion-band}
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Condition & Document & Within-field & Exact \\
+\midrule
+One-shot & 0.686 & 0.376 & 0.112 \\
+Checklist & 0.718 & 0.425 & 0.131 \\
+Active & 0.914 & 0.815 & 0.499 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}\footnotesize Seven process categories; the ID-matched automation category is excluded.
+\end{table}

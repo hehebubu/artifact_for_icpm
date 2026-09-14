@@ -1,0 +1,230 @@
+{
+  "row": {
+    "domain": "semiconductor_work",
+    "scenario_id": "S07",
+    "arm": "domain",
+    "process_coverage": 0.9234285714285714,
+    "legacy_coverage": 0.891,
+    "structured_coverage": 0.891,
+    "activities": 0.714,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 0.75,
+    "answer_words": 215,
+    "cached_baseline": false,
+    "input_tokens": 3048,
+    "output_tokens": 3746
+  },
+  "legacy": {
+    "activities": {
+      "covered": 5,
+      "total": 7,
+      "score": 0.714,
+      "covered_items": [
+        "Collect meeting notes or transcript",
+        "Extract decisions and action items",
+        "Confirm unclear items with decision owners",
+        "Draft summary email",
+        "Send email to relevant recipients"
+      ],
+      "missing_items": [
+        "Attach or link supporting materials",
+        "Update task tracker if needed"
+      ]
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting participant",
+        "minute taker",
+        "decision owner",
+        "recipient"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "calendar system",
+        "meeting transcript or notes",
+        "email client",
+        "task tracker"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting agenda",
+        "meeting notes or transcript",
+        "participant list",
+        "action-item list"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting summary email",
+        "decision list",
+        "action-item assignments",
+        "task tracker updates"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are all action items assigned to owners?",
+        "Does the meeting require task tracking?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "missing transcript",
+        "unclear decision owner",
+        "recipient list incomplete"
+      ],
+      "missing_items": [
+        "confidential content included"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "A2",
+        "A4"
+      ],
+      "missing_items": [
+        "A7"
+      ]
+    },
+    "overall_score": 0.891
+  },
+  "structured": {
+    "activities": {
+      "covered": 5,
+      "total": 7,
+      "score": 0.714,
+      "covered_items": [
+        "Collect meeting notes or transcript",
+        "Extract decisions and action items",
+        "Confirm unclear items with decision owners",
+        "Draft summary email",
+        "Send email to relevant recipients"
+      ],
+      "missing_items": [
+        "Attach or link supporting materials",
+        "Update task tracker if needed"
+      ]
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting participant",
+        "minute taker",
+        "decision owner",
+        "recipient"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "calendar system",
+        "meeting transcript or notes",
+        "email client",
+        "task tracker"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting agenda",
+        "meeting notes or transcript",
+        "participant list",
+        "action-item list"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "meeting summary email",
+        "decision list",
+        "action-item assignments",
+        "task tracker updates"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are all action items assigned to owners?",
+        "Does the meeting require task tracking?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "missing transcript",
+        "unclear decision owner",
+        "recipient list incomplete"
+      ],
+      "missing_items": [
+        "confidential content included"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 2,
+      "total": 3,
+      "score": 0.667,
+      "covered_items": [
+        "A2",
+        "A4"
+      ],
+      "missing_items": [
+        "A7"
+      ]
+    },
+    "overall_score": 0.891
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/semiconductor_work/S07/domain/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/semiconductor_work/S07/domain/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/semiconductor_work/S07/domain/update.json"
+  ]
+}

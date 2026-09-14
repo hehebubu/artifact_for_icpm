@@ -1,0 +1,11 @@
+{
+  "protocol": "question-ablation-v1",
+  "dataset_sha256": "d51f9a4070e278945a33886eb6c8d4ed4464489fa27e2b3f1a0a8106474d96ce",
+  "script_sha256": "f6d96ac9dfc0e4c1a5d12dc95dd475c9b526852c67f6316532bc77374d128ce8",
+  "scorer_sha256": "4650388295def8b3b7a268feba877072ee4bce7324ac0d11be4da52d7b733c22",
+  "model": "claude-sonnet-4-6",
+  "questions": 6,
+  "repeats": 1,
+  "temperature": 0,
+  "max_tokens": 4000
+}

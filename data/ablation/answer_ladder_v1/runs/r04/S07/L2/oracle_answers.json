@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-09-08T22:25:21.478265+00:00",
+  "request": {
+    "model": "claude-sonnet-4-6",
+    "max_tokens": 4000,
+    "temperature": 0.7,
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are supporting a process mining research prototype.\nUse only the synthetic scenario information provided below.\nDo not invent company-specific system names, product names, confidential logs, internal metrics, or real organizational details.\nReturn valid JSON only. Do not wrap it in Markdown.\n\nScenario ID: S07\nScenario title: Meeting Summary and Email Reporting\nInitial workflow description:\nAfter a meeting, the contents are summarized and shared by email with the relevant people.\n\nClarification questions:\n[\n  {\n    \"id\": \"Q1\",\n    \"question\": \"What event or action currently starts the summarization process after a meeting ends — for example, does a specific person manually initiate it, or is it triggered automatically by a system such as a calendar or conferencing tool?\"\n  },\n  {\n    \"id\": \"Q2\",\n    \"question\": \"How is the meeting summary currently created — is it written manually by a participant, derived from a recorded transcript, or generated with the help of an automated or AI-based tool?\"\n  },\n  {\n    \"id\": \"Q3\",\n    \"question\": \"How is the list of email recipients determined — is it always the set of meeting attendees, a predefined distribution list, or does the sender decide case by case?\"\n  },\n  {\n    \"id\": \"Q4\",\n    \"question\": \"Does the summary need to be reviewed or approved by anyone before the email is sent, and if so, who holds that responsibility?\"\n  },\n  {\n    \"id\": \"Q5\",\n    \"question\": \"What content is expected to appear in the summary email — for instance, is it a free-form narrative, or must it include structured elements such as action items, owners, and deadlines?\"\n  },\n  {\n    \"id\": \"Q6\",\n    \"question\": \"Is there a target or maximum time limit within which the summary email must be sent after the meeting concludes?\"\n  }\n]\nReference workflow for oracle use:\n{\n  \"goal\": \"Summarize meeting content and distribute decisions, owners, and deadlines to relevant stakeholders.\",\n  \"actors\": [\n    \"meeting participant\",\n    \"minute taker\",\n    \"decision owner\",\n    \"recipient\"\n  ],\n  \"systems\": [\n    \"calendar system\",\n    \"meeting transcript or notes\",\n    \"email client\",\n    \"task tracker\"\n  ],\n  \"inputs\": [\n    \"meeting agenda\",\n    \"meeting notes or transcript\",\n    \"participant list\",\n    \"action-item list\"\n  ],\n  \"outputs\": [\n    \"meeting summary email\",\n    \"decision list\",\n    \"action-item assignments\",\n    \"task tracker updates\"\n  ],\n  \"activities\": [\n    {\n      \"id\": \"A1\",\n      \"name\": \"Collect meeting notes or transcript\",\n      \"actor\": \"minute taker\"\n    },\n    {\n      \"id\": \"A2\",\n      \"name\": \"Extract decisions and action items\",\n      \"actor\": \"minute taker\"\n    },\n    {\n      \"id\": \"A3\",\n      \"name\": \"Confirm unclear items with decision owners\",\n      \"actor\": \"minute taker\"\n    },\n    {\n      \"id\": \"A4\",\n      \"name\": \"Draft summary email\",\n      \"actor\": \"minute taker\"\n    },\n    {\n      \"id\": \"A5\",\n      \"name\": \"Attach or link supporting materials\",\n      \"actor\": \"minute taker\"\n    },\n    {\n      \"id\": \"A6\",\n      \"name\": \"Send email to relevant recipients\",\n      \"actor\": \"minute taker\"\n    },\n    {\n      \"id\": \"A7\",\n      \"name\": \"Update task tracker if needed\",\n      \"actor\": \"decision owner\"\n    }\n  ],\n  \"decisions\": [\n    {\n      \"id\": \"D1\",\n      \"condition\": \"Are all action items assigned to owners?\",\n      \"branches\": [\n        \"assigned\",\n        \"clarification needed\"\n      ]\n    },\n    {\n      \"id\": \"D2\",\n      \"condition\": \"Does the meeting require task tracking?\",\n      \"branches\": [\n        \"tracker update needed\",\n        \"email only\"\n      ]\n    }\n  ],\n  \"exceptions\": [\n    \"missing transcript\",\n    \"unclear decision owner\",\n    \"recipient list incomplete\",\n    \"confidential content included\"\n  ],\n  \"dependencies\": [\n    {\n      \"from\": \"A1\",\n      \"to\": \"A2\",\n      \"type\": \"control_flow\"\n    },\n    {\n      \"from\": \"A2\",\n      \"to\": \"A3\",\n      \"type\": \"control_flow\"\n    },\n    {\n      \"from\": \"A3\",\n      \"to\": \"A4\",\n      \"type\": \"control_flow\"\n    },\n    {\n      \"from\": \"A4\",\n      \"to\": \"A5\",\n      \"type\": \"control_flow\"\n    },\n    {\n      \"from\": \"A5\",\n      \"to\": \"A6\",\n      \"type\": \"control_flow\"\n    },\n    {\n      \"from\": \"A6\",\n      \"to\": \"A7\",\n      \"type\": \"control_flow\"\n    }\n  ],\n  \"automation_opportunities\": [\n    {\n      \"target\": \"A2\",\n      \"rationale\": \"Decision and action-item extraction can be supported by summarization models.\"\n    },\n    {\n      \"target\": \"A4\",\n      \"rationale\": \"Email drafting can be template-based.\"\n    },\n    {\n      \"target\": \"A7\",\n      \"rationale\": \"Task tracker updates can be generated from action-item tables.\"\n    }\n  ]\n}\nTask: Simulate a concise domain expert who answers only these questions using the reference workflow.\nDo not reveal the full reference workflow. Do not add details not needed by the questions.\nIf a requested fact is absent, explicitly say it is not specified; do not guess.\nUse at most 80 words per answer. Return one answer for each question, with matching ID and question text.\nReturn JSON: {\"answers\": [{\"question_id\": \"Q1\", \"question\": \"original question\", \"answer\": \"grounded answer\"}]}\n\nAdditional constraint for this respondent: this expert is in a hurry. Use at most 25 words per answer.\nKeep the most decision-relevant fact and drop elaboration. Do not add information to compensate.\n"
+      }
+    ]
+  },
+  "elapsed_seconds": 10.59,
+  "response": {
+    "model": "claude-sonnet-4-6",
+    "id": "msg_011CerkreaB1iGeEYYAdMmzj",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"answers\": [{\"question_id\": \"Q1\", \"question\": \"What event or action currently starts the summarization process after a meeting ends — for example, does a specific person manually initiate it, or is it triggered automatically by a system such as a calendar or conferencing tool?\", \"answer\": \"The minute taker manually initiates it by collecting meeting notes or transcript after the meeting.\"}, {\"question_id\": \"Q2\", \"question\": \"How is the meeting summary currently created — is it written manually by a participant, derived from a recorded transcript, or generated with the help of an automated or AI-based tool?\", \"answer\": \"The minute taker drafts it from collected notes or transcript. Automated extraction is an opportunity, not current practice.\"}, {\"question_id\": \"Q3\", \"question\": \"How is the list of email recipients determined — is it always the set of meeting attendees, a predefined distribution list, or does the sender decide case by case?\", \"answer\": \"Recipients are \\\"relevant recipients.\\\" Exact determination method is not specified.\"}, {\"question_id\": \"Q4\", \"question\": \"Does the summary need to be reviewed or approved by anyone before the email is sent, and if so, who holds that responsibility?\", \"answer\": \"Unclear items are confirmed with decision owners before drafting. No formal approval step is specified.\"}, {\"question_id\": \"Q5\", \"question\": \"What content is expected to appear in the summary email — for instance, is it a free-form narrative, or must it include structured elements such as action items, owners, and deadlines?\", \"answer\": \"Structured: decisions, action items, and owners are required. Supporting materials may be attached.\"}, {\"question_id\": \"Q6\", \"question\": \"Is there a target or maximum time limit within which the summary email must be sent after the meeting concludes?\", \"answer\": \"No time limit is specified.\"}]}"
+      }
+    ],
+    "container": null,
+    "stop_reason": "end_turn",
+    "stop_sequence": null,
+    "stop_details": null,
+    "usage": {
+      "input_tokens": 1528,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "output_tokens": 424,
+      "service_tier": "standard",
+      "inference_geo": "global"
+    }
+  }
+}

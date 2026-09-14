@@ -1,0 +1,6 @@
+{
+  "domain": "childcare",
+  "scenario_id": "C05",
+  "arm": "generic",
+  "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+}

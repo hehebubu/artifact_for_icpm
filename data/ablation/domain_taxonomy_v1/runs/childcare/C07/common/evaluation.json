@@ -1,0 +1,234 @@
+{
+  "row": {
+    "domain": "childcare",
+    "scenario_id": "C07",
+    "arm": "common",
+    "process_coverage": 0.8214285714285714,
+    "legacy_coverage": 0.844,
+    "structured_coverage": 0.844,
+    "activities": 0.75,
+    "actors": 0.5,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 0.75,
+    "decisions": 1.0,
+    "exceptions": 0.75,
+    "answer_words": 217,
+    "cached_baseline": false,
+    "input_tokens": 3190,
+    "output_tokens": 4398
+  },
+  "legacy": {
+    "activities": {
+      "covered": 6,
+      "total": 8,
+      "score": 0.75,
+      "covered_items": [
+        "List the unfinished household care tasks",
+        "Review the next-day schedule",
+        "Share relevant caregiver notes with the incoming caregiver",
+        "Prepare items needed for the next day",
+        "Mark completed preparation tasks in the checklist",
+        "Confirm unresolved tasks with the next-day caregiver"
+      ],
+      "missing_items": [
+        "Confirm who accepts each remaining task",
+        "Clarify conflicting or missing task information"
+      ]
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "partner",
+        "next-day caregiver"
+      ],
+      "missing_items": [
+        "mother",
+        "grandparent"
+      ]
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "family handover log",
+        "evening task checklist",
+        "shared family calendar",
+        "family messaging app"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "unfinished task list",
+        "next-day schedule",
+        "caregiver availability",
+        "caregiver notes"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "assigned remaining tasks",
+        "prepared next-day items",
+        "updated handover log"
+      ],
+      "missing_items": [
+        "acknowledged handover"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Has the incoming caregiver acknowledged the remaining tasks?",
+        "Are next-day items and task owners confirmed?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "handover note missing",
+        "incoming caregiver unavailable",
+        "next-day preparation incomplete"
+      ],
+      "missing_items": [
+        "conflicting task information"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A1",
+        "A6",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.844
+  },
+  "structured": {
+    "activities": {
+      "covered": 6,
+      "total": 8,
+      "score": 0.75,
+      "covered_items": [
+        "List the unfinished household care tasks",
+        "Review the next-day schedule",
+        "Share relevant caregiver notes with the incoming caregiver",
+        "Prepare items needed for the next day",
+        "Mark completed preparation tasks in the checklist",
+        "Confirm unresolved tasks with the next-day caregiver"
+      ],
+      "missing_items": [
+        "Confirm who accepts each remaining task",
+        "Clarify conflicting or missing task information"
+      ]
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "partner",
+        "next-day caregiver"
+      ],
+      "missing_items": [
+        "mother",
+        "grandparent"
+      ]
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "family handover log",
+        "evening task checklist",
+        "shared family calendar",
+        "family messaging app"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "unfinished task list",
+        "next-day schedule",
+        "caregiver availability",
+        "caregiver notes"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "assigned remaining tasks",
+        "prepared next-day items",
+        "updated handover log"
+      ],
+      "missing_items": [
+        "acknowledged handover"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Has the incoming caregiver acknowledged the remaining tasks?",
+        "Are next-day items and task owners confirmed?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "handover note missing",
+        "incoming caregiver unavailable",
+        "next-day preparation incomplete"
+      ],
+      "missing_items": [
+        "conflicting task information"
+      ]
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A1",
+        "A6",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.844
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C07/common/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C07/common/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C07/common/update.json"
+  ]
+}

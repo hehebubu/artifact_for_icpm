@@ -1,0 +1,228 @@
+{
+  "row": {
+    "domain": "semiconductor_work",
+    "scenario_id": "S03",
+    "arm": "generic",
+    "process_coverage": 0.9642857142857143,
+    "legacy_coverage": 0.969,
+    "structured_coverage": 0.969,
+    "activities": 1.0,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 0.75,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "answer_words": 251,
+    "cached_baseline": true,
+    "input_tokens": 2954,
+    "output_tokens": 4341
+  },
+  "legacy": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Identify required sample and evaluation purpose",
+        "Submit sample transfer request",
+        "Approve transfer request",
+        "Physically confirm sample",
+        "Move sample to target location",
+        "Update sample status after evaluation",
+        "Submit disposal request for completed sample",
+        "Approve and record disposal"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "sample requester",
+        "sample manager",
+        "verification engineer",
+        "approver"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "sample tracking sheet",
+        "transfer request form",
+        "approval system",
+        "storage location registry"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "sample identifier",
+        "evaluation purpose",
+        "target location"
+      ],
+      "missing_items": [
+        "disposal reason"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "transfer approval",
+        "updated sample status",
+        "disposal record",
+        "physical confirmation note"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the sample available and correctly identified?",
+        "Is disposal allowed after evaluation?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "sample identifier mismatch",
+        "missing physical sample",
+        "approval delay",
+        "retention requirement"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A6",
+        "A7"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.969
+  },
+  "structured": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Identify required sample and evaluation purpose",
+        "Submit sample transfer request",
+        "Approve transfer request",
+        "Physically confirm sample",
+        "Move sample to target location",
+        "Update sample status after evaluation",
+        "Submit disposal request for completed sample",
+        "Approve and record disposal"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "sample requester",
+        "sample manager",
+        "verification engineer",
+        "approver"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "sample tracking sheet",
+        "transfer request form",
+        "approval system",
+        "storage location registry"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "sample identifier",
+        "evaluation purpose",
+        "target location"
+      ],
+      "missing_items": [
+        "disposal reason"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "transfer approval",
+        "updated sample status",
+        "disposal record",
+        "physical confirmation note"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Is the sample available and correctly identified?",
+        "Is disposal allowed after evaluation?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "sample identifier mismatch",
+        "missing physical sample",
+        "approval delay",
+        "retention requirement"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A6",
+        "A7"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.969
+  },
+  "source_files": [
+    "data/ablation/generic_questions_v1/runs/r01/S03/generic/questions.json",
+    "data/ablation/generic_questions_v1/runs/r01/S03/generic/oracle_answers.json",
+    "data/ablation/generic_questions_v1/runs/r01/S03/generic/update.json"
+  ]
+}

@@ -1,0 +1,40 @@
+\begin{table}[!t]
+  \caption{Mapping elicited workflow information to downstream automation-planning artifacts.}
+  \label{tab:automation-plan}
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{0.96}
+  \begin{tabular}{p{0.20\textwidth}p{0.22\textwidth}p{0.28\textwidth}p{0.20\textwidth}}
+    \toprule
+    \textbf{Elicited information} &
+    \textbf{Downstream route} &
+    \textbf{Example candidate} &
+    \textbf{Human role} \\
+    \midrule
+    Control flow &
+    BPMN/XML export &
+    Convert tasks and branches into model elements &
+    Validate semantics \\
+    File/data handling &
+    Python script &
+    Collect result files and generate a report draft &
+    Inspect abnormal results \\
+    UI transfer &
+    RPA or macro &
+    Submit a sample movement or disposal request &
+    Confirm request context \\
+    Stable system update &
+    API integration &
+    Update a tracker or create a meeting invitation &
+    Resolve conflicts \\
+    Risk judgment &
+    Human-in-the-loop workflow &
+    Assess customer risk or approve an exception &
+    Make final judgment \\
+    Sensitive step &
+    Not ready for automation &
+    Ambiguous exception or confidential content &
+    Clarify and constrain \\
+    \bottomrule
+  \end{tabular}
+\end{table}

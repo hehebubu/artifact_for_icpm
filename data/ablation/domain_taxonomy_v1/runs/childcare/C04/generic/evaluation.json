@@ -1,0 +1,228 @@
+{
+  "row": {
+    "domain": "childcare",
+    "scenario_id": "C04",
+    "arm": "generic",
+    "process_coverage": 0.9642857142857143,
+    "legacy_coverage": 0.969,
+    "structured_coverage": 0.969,
+    "activities": 1.0,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 0.75,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "answer_words": 272,
+    "cached_baseline": false,
+    "input_tokens": 3166,
+    "output_tokens": 4669
+  },
+  "legacy": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Check the outing time and venue information",
+        "Confirm who will accompany the child",
+        "Prepare the outing checklist",
+        "Check reusable items against the inventory",
+        "Pack and confirm needed items",
+        "Resolve missing items or change the outing plan",
+        "Notify accompanying caregivers of plan changes",
+        "Record used items and restock the bag after returning"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "mother",
+        "partner",
+        "accompanying caregiver",
+        "venue contact"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "shared family calendar",
+        "outing checklist",
+        "venue information page",
+        "household inventory list"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "outing time",
+        "venue information",
+        "reusable item inventory"
+      ],
+      "missing_items": [
+        "attendee availability"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "confirmed outing plan",
+        "packed items list",
+        "change notification",
+        "restocked bag"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are the venue plan and accompanying caregiver confirmed?",
+        "Are required items available?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "venue plan changes",
+        "accompanying caregiver unavailable",
+        "required item missing",
+        "used items not restocked"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A3",
+        "A7",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.969
+  },
+  "structured": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Check the outing time and venue information",
+        "Confirm who will accompany the child",
+        "Prepare the outing checklist",
+        "Check reusable items against the inventory",
+        "Pack and confirm needed items",
+        "Resolve missing items or change the outing plan",
+        "Notify accompanying caregivers of plan changes",
+        "Record used items and restock the bag after returning"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "mother",
+        "partner",
+        "accompanying caregiver",
+        "venue contact"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "shared family calendar",
+        "outing checklist",
+        "venue information page",
+        "household inventory list"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "outing time",
+        "venue information",
+        "reusable item inventory"
+      ],
+      "missing_items": [
+        "attendee availability"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "confirmed outing plan",
+        "packed items list",
+        "change notification",
+        "restocked bag"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are the venue plan and accompanying caregiver confirmed?",
+        "Are required items available?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "venue plan changes",
+        "accompanying caregiver unavailable",
+        "required item missing",
+        "used items not restocked"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A3",
+        "A7",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.969
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C04/generic/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C04/generic/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C04/generic/update.json"
+  ]
+}

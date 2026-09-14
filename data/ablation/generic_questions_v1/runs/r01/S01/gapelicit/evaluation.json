@@ -1,0 +1,223 @@
+{
+  "row": {
+    "scenario_id": "S01",
+    "repeat": 1,
+    "arm": "gapelicit",
+    "overall_score": 0.906,
+    "structured_only_score": 0.906,
+    "activities": 1.0,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 0.75,
+    "outputs": 0.5,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "automation_opportunities": 1.0,
+    "question_count": 6,
+    "answer_words": 220,
+    "input_tokens": 2836,
+    "output_tokens": 4140
+  },
+  "scores": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Review test request and conditions",
+        "Prepare evaluation setup",
+        "Run verification test",
+        "Collect result files",
+        "Check result validity",
+        "Summarize findings in report",
+        "Share report for review",
+        "Review report and request clarification if needed"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "verification engineer",
+        "review engineer",
+        "project owner"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test execution tool",
+        "result repository",
+        "report template",
+        "email or collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "test request",
+        "test condition",
+        "evaluation setup guide"
+      ],
+      "missing_items": [
+        "sample identifier"
+      ]
+    },
+    "outputs": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "test result files",
+        "summary report"
+      ],
+      "missing_items": [
+        "issue list",
+        "review notification"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are the result files complete and readable?",
+        "Do the results contain abnormal patterns?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing setup information",
+        "test execution failure",
+        "incomplete result files",
+        "unclear abnormal pattern"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.906
+  },
+  "structured_only": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Review test request and conditions",
+        "Prepare evaluation setup",
+        "Run verification test",
+        "Collect result files",
+        "Check result validity",
+        "Summarize findings in report",
+        "Share report for review",
+        "Review report and request clarification if needed"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "verification engineer",
+        "review engineer",
+        "project owner"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test execution tool",
+        "result repository",
+        "report template",
+        "email or collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "test request",
+        "test condition",
+        "evaluation setup guide"
+      ],
+      "missing_items": [
+        "sample identifier"
+      ]
+    },
+    "outputs": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "test result files",
+        "summary report"
+      ],
+      "missing_items": [
+        "issue list",
+        "review notification"
+      ]
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are the result files complete and readable?",
+        "Do the results contain abnormal patterns?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing setup information",
+        "test execution failure",
+        "incomplete result files",
+        "unclear abnormal pattern"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.906
+  }
+}

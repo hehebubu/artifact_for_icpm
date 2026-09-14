@@ -1,0 +1,233 @@
+{
+  "row": {
+    "domain": "childcare",
+    "scenario_id": "C03",
+    "arm": "domain",
+    "process_coverage": 0.8035714285714286,
+    "legacy_coverage": 0.844,
+    "structured_coverage": 0.828,
+    "activities": 0.875,
+    "actors": 0.5,
+    "systems": 0.5,
+    "inputs": 0.75,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "answer_words": 181,
+    "cached_baseline": false,
+    "input_tokens": 3379,
+    "output_tokens": 4617
+  },
+  "legacy": {
+    "activities": {
+      "covered": 8,
+      "total": 8,
+      "score": 1.0,
+      "covered_items": [
+        "Collect unread notices from the provider app",
+        "Identify response and preparation requirements",
+        "Check the event against the household schedule",
+        "Ask the administrator about unclear notice details",
+        "Confirm the family's participation decision",
+        "Submit a response and save the receipt",
+        "Add the event and item deadline to the calendar",
+        "Check that the preparation reminder is assigned"
+      ],
+      "missing_items": []
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "mother",
+        "partner"
+      ],
+      "missing_items": [
+        "childcare administrator",
+        "childcare teacher"
+      ]
+    },
+    "systems": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "childcare messaging app",
+        "shared family calendar"
+      ],
+      "missing_items": [
+        "notice checklist",
+        "response archive"
+      ]
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "response deadline",
+        "household schedule",
+        "required item details"
+      ],
+      "missing_items": [
+        "provider notice"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "classified notice",
+        "submitted response",
+        "calendar entry",
+        "preparation reminder"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Does the notice require an explicit response?",
+        "Are the event details complete and compatible with the schedule?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "ambiguous notice",
+        "schedule conflict",
+        "response receipt missing",
+        "preparation task unassigned"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A7",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.844
+  },
+  "structured": {
+    "activities": {
+      "covered": 7,
+      "total": 8,
+      "score": 0.875,
+      "covered_items": [
+        "Collect unread notices from the provider app",
+        "Identify response and preparation requirements",
+        "Check the event against the household schedule",
+        "Confirm the family's participation decision",
+        "Submit a response and save the receipt",
+        "Add the event and item deadline to the calendar",
+        "Check that the preparation reminder is assigned"
+      ],
+      "missing_items": [
+        "Ask the administrator about unclear notice details"
+      ]
+    },
+    "actors": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "mother",
+        "partner"
+      ],
+      "missing_items": [
+        "childcare administrator",
+        "childcare teacher"
+      ]
+    },
+    "systems": {
+      "covered": 2,
+      "total": 4,
+      "score": 0.5,
+      "covered_items": [
+        "childcare messaging app",
+        "shared family calendar"
+      ],
+      "missing_items": [
+        "notice checklist",
+        "response archive"
+      ]
+    },
+    "inputs": {
+      "covered": 3,
+      "total": 4,
+      "score": 0.75,
+      "covered_items": [
+        "response deadline",
+        "household schedule",
+        "required item details"
+      ],
+      "missing_items": [
+        "provider notice"
+      ]
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "classified notice",
+        "submitted response",
+        "calendar entry",
+        "preparation reminder"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Does the notice require an explicit response?",
+        "Are the event details complete and compatible with the schedule?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "ambiguous notice",
+        "schedule conflict",
+        "response receipt missing",
+        "preparation task unassigned"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A2",
+        "A7",
+        "A8"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.828
+  },
+  "source_files": [
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C03/domain/questions.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C03/domain/oracle_answers.json",
+    "data/ablation/domain_taxonomy_v1/runs/childcare/C03/domain/update.json"
+  ]
+}

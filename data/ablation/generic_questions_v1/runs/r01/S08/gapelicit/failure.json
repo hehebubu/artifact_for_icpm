@@ -1,0 +1,6 @@
+{
+  "scenario_id": "S08",
+  "repeat": 1,
+  "arm": "gapelicit",
+  "error": "Expecting value: line 1 column 1 (char 0)"
+}

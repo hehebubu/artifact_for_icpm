@@ -1,0 +1,1576 @@
+{
+  "version": "childcare-synthetic-v1",
+  "provenance": "AI-assisted synthetic research cases authored for this experiment before API outcome inspection. Not interviews, logs, representative population samples, or independently validated gold standards.",
+  "scope": "Administrative coordination and shared caregiving; not replacement of care or medical decisions.",
+  "design": "Eight activities, two decisions, four exceptions, four actors, four systems, four inputs, four outputs and three candidate support opportunities per case. Artificial regularity is a limitation.",
+  "scenarios": [
+    {
+      "id": "C01",
+      "title": "Morning Preparation and Childcare Drop-off",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "I get my child ready in the morning, pack what we need, and take them to childcare. If we are running late, I let someone know.",
+      "reference_workflow": {
+        "goal": "Morning Preparation and Childcare Drop-off with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "childcare teacher",
+          "backup caregiver"
+        ],
+        "systems": [
+          "shared family calendar",
+          "packing checklist",
+          "childcare messaging app",
+          "attendance register"
+        ],
+        "inputs": [
+          "arrival window",
+          "daily item list",
+          "caregiver availability",
+          "provider notice"
+        ],
+        "outputs": [
+          "checked bag",
+          "assigned escort",
+          "arrival notice",
+          "handover confirmation"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Check the arrival window and provider notice",
+            "actor": "mother"
+          },
+          {
+            "id": "A2",
+            "name": "Confirm the escort with the partner",
+            "actor": "mother"
+          },
+          {
+            "id": "A3",
+            "name": "Review the daily item list",
+            "actor": "partner"
+          },
+          {
+            "id": "A4",
+            "name": "Pack and check the bag",
+            "actor": "partner"
+          },
+          {
+            "id": "A5",
+            "name": "Resolve missing items before departure",
+            "actor": "mother"
+          },
+          {
+            "id": "A6",
+            "name": "Escort the child to childcare",
+            "actor": "mother"
+          },
+          {
+            "id": "A7",
+            "name": "Send an arrival delay notice when needed",
+            "actor": "mother"
+          },
+          {
+            "id": "A8",
+            "name": "Confirm handover with the childcare teacher",
+            "actor": "mother"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are all required items packed?",
+            "branches": [
+              "ready to depart",
+              "check the agreed substitute or contact the teacher"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Can the assigned escort meet the arrival window?",
+            "branches": [
+              "escort proceeds",
+              "confirm the backup caregiver and notify the teacher"
+            ]
+          }
+        ],
+        "exceptions": [
+          "missing required item",
+          "escort unavailable",
+          "arrival delay",
+          "unacknowledged handover"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A1",
+            "rationale": "Combine calendar reminders and provider notices for parent review."
+          },
+          {
+            "target": "A4",
+            "rationale": "Generate a dated packing checklist without confirming physical completion."
+          },
+          {
+            "target": "A7",
+            "rationale": "Draft delay messages for the parent's confirmation."
+          }
+        ],
+        "operating_context": {
+          "frequency": "weekday mornings",
+          "manual_effort": "Checklist review and calendar coordination take about ten minutes in this fictional household.",
+          "data_availability": "The calendar is shared with the partner; childcare messages remain in the provider app.",
+          "integration_and_approval_constraints": "A reminder may be drafted automatically, but a parent confirms any escort change; handover remains in person."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "Afternoon Pickup and Caregiver Handover",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "I arrange who will pick up my child and check that they got home. Sometimes the person collecting them changes during the day.",
+      "reference_workflow": {
+        "goal": "Afternoon Pickup and Caregiver Handover with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "backup caregiver",
+          "childcare teacher"
+        ],
+        "systems": [
+          "shared family calendar",
+          "authorized pickup list",
+          "childcare messaging app",
+          "family handover log"
+        ],
+        "inputs": [
+          "pickup window",
+          "collector availability",
+          "authorized pickup names",
+          "change request"
+        ],
+        "outputs": [
+          "confirmed collector",
+          "provider acknowledgment",
+          "collection confirmation",
+          "home arrival note"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Review the pickup window",
+            "actor": "mother"
+          },
+          {
+            "id": "A2",
+            "name": "Ask the planned collector to confirm availability",
+            "actor": "mother"
+          },
+          {
+            "id": "A3",
+            "name": "Check the collector against authorized pickup names",
+            "actor": "mother"
+          },
+          {
+            "id": "A4",
+            "name": "Request a collector change from the teacher if needed",
+            "actor": "mother"
+          },
+          {
+            "id": "A5",
+            "name": "Wait for provider acknowledgment before the changed pickup",
+            "actor": "backup caregiver"
+          },
+          {
+            "id": "A6",
+            "name": "Collect the child and confirm collection",
+            "actor": "partner"
+          },
+          {
+            "id": "A7",
+            "name": "Record home arrival in the handover log",
+            "actor": "partner"
+          },
+          {
+            "id": "A8",
+            "name": "Follow up on a missing collection confirmation",
+            "actor": "mother"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the proposed collector already authorized?",
+            "branches": [
+              "use the existing entry",
+              "obtain provider acknowledgment before collection"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Has collection been confirmed by the end of the pickup window?",
+            "branches": [
+              "record completion",
+              "contact the collector and the teacher"
+            ]
+          }
+        ],
+        "exceptions": [
+          "collector unavailable",
+          "collector not authorized",
+          "provider acknowledgment missing",
+          "collection confirmation missing"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A1",
+            "rationale": "Summarize pickup plans from the household calendar."
+          },
+          {
+            "target": "A2",
+            "rationale": "Send availability requests to the planned collector."
+          },
+          {
+            "target": "A8",
+            "rationale": "Remind the mother when a confirmation has not been logged."
+          }
+        ],
+        "operating_context": {
+          "frequency": "each scheduled childcare afternoon",
+          "manual_effort": "The mother spends about five minutes confirming pickup when the original plan holds.",
+          "data_availability": "The household can read its calendar and handover log, but only the provider updates the pickup list.",
+          "integration_and_approval_constraints": "A new collector is not automatically approved; the teacher follows the fictional provider's agreed acknowledgment process."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "Childcare Notices and Consent Responses",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "I read messages from childcare, respond when necessary, and make sure we remember any special event or item to bring.",
+      "reference_workflow": {
+        "goal": "Childcare Notices and Consent Responses with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "childcare administrator",
+          "childcare teacher"
+        ],
+        "systems": [
+          "childcare messaging app",
+          "notice checklist",
+          "shared family calendar",
+          "response archive"
+        ],
+        "inputs": [
+          "provider notice",
+          "response deadline",
+          "household schedule",
+          "required item details"
+        ],
+        "outputs": [
+          "classified notice",
+          "submitted response",
+          "calendar entry",
+          "preparation reminder"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect unread notices from the provider app",
+            "actor": "mother"
+          },
+          {
+            "id": "A2",
+            "name": "Identify response and preparation requirements",
+            "actor": "mother"
+          },
+          {
+            "id": "A3",
+            "name": "Check the event against the household schedule",
+            "actor": "partner"
+          },
+          {
+            "id": "A4",
+            "name": "Ask the administrator about unclear notice details",
+            "actor": "mother"
+          },
+          {
+            "id": "A5",
+            "name": "Confirm the family's participation decision",
+            "actor": "mother"
+          },
+          {
+            "id": "A6",
+            "name": "Submit a response and save the receipt",
+            "actor": "mother"
+          },
+          {
+            "id": "A7",
+            "name": "Add the event and item deadline to the calendar",
+            "actor": "partner"
+          },
+          {
+            "id": "A8",
+            "name": "Check that the preparation reminder is assigned",
+            "actor": "mother"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Does the notice require an explicit response?",
+            "branches": [
+              "submit the parent's decision",
+              "record the notice without a response"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are the event details complete and compatible with the schedule?",
+            "branches": [
+              "confirm the plan",
+              "clarify missing details or decline participation"
+            ]
+          }
+        ],
+        "exceptions": [
+          "ambiguous notice",
+          "schedule conflict",
+          "response receipt missing",
+          "preparation task unassigned"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Extract proposed dates and preparation requirements for review."
+          },
+          {
+            "target": "A7",
+            "rationale": "Draft calendar entries from confirmed notices."
+          },
+          {
+            "target": "A8",
+            "rationale": "Flag unassigned preparation reminders."
+          }
+        ],
+        "operating_context": {
+          "frequency": "notices checked once each evening in this fictional household",
+          "manual_effort": "Reading and recording a routine notice takes about five minutes.",
+          "data_availability": "Notices and response receipts are accessible in the provider app; the family manually copies dates into its calendar.",
+          "integration_and_approval_constraints": "Consent is always confirmed by a parent; summaries cannot submit consent or disclose notices to unrelated recipients."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    },
+    {
+      "id": "C04",
+      "title": "Family Outing Preparation and Return",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "Before going out with my child, I get our things together and coordinate with whoever is coming. Afterwards I put things away for next time.",
+      "reference_workflow": {
+        "goal": "Family Outing Preparation and Return with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "accompanying caregiver",
+          "venue contact"
+        ],
+        "systems": [
+          "shared family calendar",
+          "outing checklist",
+          "venue information page",
+          "household inventory list"
+        ],
+        "inputs": [
+          "outing time",
+          "venue information",
+          "attendee availability",
+          "reusable item inventory"
+        ],
+        "outputs": [
+          "confirmed outing plan",
+          "packed items list",
+          "change notification",
+          "restocked bag"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Check the outing time and venue information",
+            "actor": "mother"
+          },
+          {
+            "id": "A2",
+            "name": "Confirm who will accompany the child",
+            "actor": "partner"
+          },
+          {
+            "id": "A3",
+            "name": "Prepare the outing checklist",
+            "actor": "mother"
+          },
+          {
+            "id": "A4",
+            "name": "Check reusable items against the inventory",
+            "actor": "partner"
+          },
+          {
+            "id": "A5",
+            "name": "Pack and confirm needed items",
+            "actor": "mother"
+          },
+          {
+            "id": "A6",
+            "name": "Resolve missing items or change the outing plan",
+            "actor": "mother"
+          },
+          {
+            "id": "A7",
+            "name": "Notify accompanying caregivers of plan changes",
+            "actor": "partner"
+          },
+          {
+            "id": "A8",
+            "name": "Record used items and restock the bag after returning",
+            "actor": "mother"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Are the venue plan and accompanying caregiver confirmed?",
+            "branches": [
+              "continue preparation",
+              "contact the venue or rearrange the plan"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are required items available?",
+            "branches": [
+              "finish packing",
+              "obtain an agreed substitute or postpone"
+            ]
+          }
+        ],
+        "exceptions": [
+          "venue plan changes",
+          "accompanying caregiver unavailable",
+          "required item missing",
+          "used items not restocked"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A3",
+            "rationale": "Create an outing checklist from the confirmed plan."
+          },
+          {
+            "target": "A7",
+            "rationale": "Draft one consistent plan-change message."
+          },
+          {
+            "target": "A8",
+            "rationale": "Create restocking reminders from recorded usage."
+          }
+        ],
+        "operating_context": {
+          "frequency": "one planned outing most weekends in this fictional household",
+          "manual_effort": "Checking and packing usually takes about fifteen minutes, excluding travel.",
+          "data_availability": "The family keeps an item list but it does not detect physical stock automatically.",
+          "integration_and_approval_constraints": "Checklists can be suggested; physical item checks and the decision to change the outing remain with caregivers."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    },
+    {
+      "id": "C05",
+      "title": "Weekly Shared Caregiving Schedule",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "I work out next week's childcare arrangements with my family. When someone cannot make it, we find another arrangement and tell each other.",
+      "reference_workflow": {
+        "goal": "Weekly Shared Caregiving Schedule with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "grandparent",
+          "backup caregiver"
+        ],
+        "systems": [
+          "shared family calendar",
+          "care availability form",
+          "family messaging app",
+          "care assignment table"
+        ],
+        "inputs": [
+          "childcare hours",
+          "adult availability",
+          "work commitments",
+          "backup availability"
+        ],
+        "outputs": [
+          "weekly care plan",
+          "accepted assignments",
+          "updated calendar",
+          "change acknowledgment"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect adult availability for the coming week",
+            "actor": "mother"
+          },
+          {
+            "id": "A2",
+            "name": "List care periods outside childcare hours",
+            "actor": "partner"
+          },
+          {
+            "id": "A3",
+            "name": "Match each care period with an available adult",
+            "actor": "mother"
+          },
+          {
+            "id": "A4",
+            "name": "Request explicit acceptance from assigned caregivers",
+            "actor": "mother"
+          },
+          {
+            "id": "A5",
+            "name": "Find a replacement for an uncovered period",
+            "actor": "mother"
+          },
+          {
+            "id": "A6",
+            "name": "Publish the agreed schedule in the shared calendar",
+            "actor": "partner"
+          },
+          {
+            "id": "A7",
+            "name": "Notify affected caregivers of any later change",
+            "actor": "mother"
+          },
+          {
+            "id": "A8",
+            "name": "Record acknowledgment of the revised assignment",
+            "actor": "backup caregiver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is every required care period assigned to an available adult?",
+            "branches": [
+              "request confirmations",
+              "seek an available replacement"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Has the assigned caregiver accepted the period?",
+            "branches": [
+              "publish the assignment",
+              "keep it pending and contact the caregiver"
+            ]
+          }
+        ],
+        "exceptions": [
+          "uncovered care period",
+          "overlapping adult commitments",
+          "assignment not accepted",
+          "last-minute caregiver cancellation"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Identify time periods requiring care from agreed schedules."
+          },
+          {
+            "target": "A3",
+            "rationale": "Suggest nonconflicting assignments for family review."
+          },
+          {
+            "target": "A8",
+            "rationale": "Track missing acknowledgment after a schedule change."
+          }
+        ],
+        "operating_context": {
+          "frequency": "schedule prepared every Sunday and updated when availability changes",
+          "manual_effort": "Initial coordination takes about twenty minutes in this fictional household.",
+          "data_availability": "Adults provide their availability voluntarily; the shared table records accepted versus pending assignments.",
+          "integration_and_approval_constraints": "Software may suggest an assignment but cannot treat silence as acceptance or override a caregiver's availability."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    },
+    {
+      "id": "C06",
+      "title": "Childcare Supply Stock and Replenishment",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "I check the supplies we use for my child and order more when they are getting low. When the delivery arrives, I put everything away.",
+      "reference_workflow": {
+        "goal": "Childcare Supply Stock and Replenishment with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "supplier",
+          "receiving caregiver"
+        ],
+        "systems": [
+          "household inventory list",
+          "shopping list",
+          "online shop",
+          "order record"
+        ],
+        "inputs": [
+          "physical stock count",
+          "household reorder threshold",
+          "approved product list",
+          "spending limit"
+        ],
+        "outputs": [
+          "verified inventory",
+          "approved shopping list",
+          "order confirmation",
+          "receipt and stock update"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Count the available household supplies",
+            "actor": "partner"
+          },
+          {
+            "id": "A2",
+            "name": "Compare counts with household reorder thresholds",
+            "actor": "mother"
+          },
+          {
+            "id": "A3",
+            "name": "Check proposed items against the approved product list",
+            "actor": "mother"
+          },
+          {
+            "id": "A4",
+            "name": "Review the basket against the spending limit",
+            "actor": "partner"
+          },
+          {
+            "id": "A5",
+            "name": "Resolve unavailable products with a parent",
+            "actor": "mother"
+          },
+          {
+            "id": "A6",
+            "name": "Place the confirmed order and save confirmation",
+            "actor": "mother"
+          },
+          {
+            "id": "A7",
+            "name": "Check the delivery against the order record",
+            "actor": "receiving caregiver"
+          },
+          {
+            "id": "A8",
+            "name": "Store items and update the inventory count",
+            "actor": "receiving caregiver"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Is the stock below the household reorder threshold?",
+            "branches": [
+              "propose replenishment",
+              "leave the item off the order"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Does the basket meet product and spending constraints?",
+            "branches": [
+              "parent confirms the order",
+              "revise the basket before purchasing"
+            ]
+          }
+        ],
+        "exceptions": [
+          "inventory count outdated",
+          "approved product unavailable",
+          "basket exceeds spending limit",
+          "delivery differs from order"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Flag items below the household's recorded threshold."
+          },
+          {
+            "target": "A4",
+            "rationale": "Calculate proposed basket cost and flag the limit."
+          },
+          {
+            "target": "A8",
+            "rationale": "Draft inventory updates from confirmed delivery quantities."
+          }
+        ],
+        "operating_context": {
+          "frequency": "stock checked twice a week in this fictional household",
+          "manual_effort": "Counting and preparing a shopping list takes about ten minutes.",
+          "data_availability": "Thresholds and product choices are household-defined entries; online stock is visible but not synchronized to the inventory.",
+          "integration_and_approval_constraints": "Purchase and product substitution need parent confirmation; no child health or dietary suitability is inferred."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    },
+    {
+      "id": "C07",
+      "title": "Evening Caregiver Handover and Next-day Preparation",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "When another family member takes over in the evening, I tell them what still needs doing. We also get things ready for the next day.",
+      "reference_workflow": {
+        "goal": "Evening Caregiver Handover and Next-day Preparation with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "grandparent",
+          "next-day caregiver"
+        ],
+        "systems": [
+          "family handover log",
+          "evening task checklist",
+          "shared family calendar",
+          "family messaging app"
+        ],
+        "inputs": [
+          "unfinished task list",
+          "next-day schedule",
+          "caregiver availability",
+          "caregiver notes"
+        ],
+        "outputs": [
+          "acknowledged handover",
+          "assigned remaining tasks",
+          "prepared next-day items",
+          "updated handover log"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "List the unfinished household care tasks",
+            "actor": "mother"
+          },
+          {
+            "id": "A2",
+            "name": "Review the next-day schedule",
+            "actor": "partner"
+          },
+          {
+            "id": "A3",
+            "name": "Share relevant caregiver notes with the incoming caregiver",
+            "actor": "mother"
+          },
+          {
+            "id": "A4",
+            "name": "Confirm who accepts each remaining task",
+            "actor": "grandparent"
+          },
+          {
+            "id": "A5",
+            "name": "Clarify conflicting or missing task information",
+            "actor": "mother"
+          },
+          {
+            "id": "A6",
+            "name": "Prepare items needed for the next day",
+            "actor": "partner"
+          },
+          {
+            "id": "A7",
+            "name": "Mark completed preparation tasks in the checklist",
+            "actor": "partner"
+          },
+          {
+            "id": "A8",
+            "name": "Confirm unresolved tasks with the next-day caregiver",
+            "actor": "mother"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Has the incoming caregiver acknowledged the remaining tasks?",
+            "branches": [
+              "complete the handover",
+              "confirm directly before leaving tasks assigned"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Are next-day items and task owners confirmed?",
+            "branches": [
+              "mark preparation complete",
+              "leave unresolved items open and contact the owner"
+            ]
+          }
+        ],
+        "exceptions": [
+          "handover note missing",
+          "conflicting task information",
+          "incoming caregiver unavailable",
+          "next-day preparation incomplete"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A1",
+            "rationale": "Draft the open-task list from checked records."
+          },
+          {
+            "target": "A6",
+            "rationale": "Generate a next-day preparation checklist."
+          },
+          {
+            "target": "A8",
+            "rationale": "Remind assigned caregivers about unresolved tasks."
+          }
+        ],
+        "operating_context": {
+          "frequency": "each evening when care responsibility changes in this fictional household",
+          "manual_effort": "Updating notes and confirming tasks takes about ten minutes.",
+          "data_availability": "Only participating caregivers can read the shared log; task completion is manually recorded.",
+          "integration_and_approval_constraints": "A tool can summarize notes but cannot mark care performed or substitute for an acknowledged human handover."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    },
+    {
+      "id": "C08",
+      "title": "Child Activity Enrollment and Schedule Changes",
+      "domain": "childcare_coordination",
+      "narrator": "mother in a fictional household with shared caregiving",
+      "initial_description": "I find an activity for my child, sign up if it fits, and put it on our calendar. If the provider changes the schedule, I rearrange our plans.",
+      "reference_workflow": {
+        "goal": "Child Activity Enrollment and Schedule Changes with explicit responsibilities, decisions and recorded completion.",
+        "actors": [
+          "mother",
+          "partner",
+          "activity provider",
+          "transport caregiver"
+        ],
+        "systems": [
+          "provider registration page",
+          "shared family calendar",
+          "registration receipt folder",
+          "family messaging app"
+        ],
+        "inputs": [
+          "activity schedule",
+          "household availability",
+          "provider participation requirements",
+          "household spending limit"
+        ],
+        "outputs": [
+          "participation decision",
+          "registration confirmation",
+          "transport assignment",
+          "updated calendar notice"
+        ],
+        "activities": [
+          {
+            "id": "A1",
+            "name": "Collect the activity schedule and participation requirements",
+            "actor": "mother"
+          },
+          {
+            "id": "A2",
+            "name": "Check household and transport caregiver availability",
+            "actor": "partner"
+          },
+          {
+            "id": "A3",
+            "name": "Compare the activity cost with the spending limit",
+            "actor": "mother"
+          },
+          {
+            "id": "A4",
+            "name": "Confirm the participation decision with the partner",
+            "actor": "mother"
+          },
+          {
+            "id": "A5",
+            "name": "Submit the approved registration request",
+            "actor": "mother"
+          },
+          {
+            "id": "A6",
+            "name": "Save provider confirmation before marking enrollment complete",
+            "actor": "mother"
+          },
+          {
+            "id": "A7",
+            "name": "Assign transport and add the activity to the calendar",
+            "actor": "partner"
+          },
+          {
+            "id": "A8",
+            "name": "Confirm revised arrangements after a provider schedule change",
+            "actor": "mother"
+          }
+        ],
+        "decisions": [
+          {
+            "id": "D1",
+            "condition": "Do schedule and cost fit the household's agreed constraints?",
+            "branches": [
+              "parent may approve registration",
+              "choose another time or decline"
+            ]
+          },
+          {
+            "id": "D2",
+            "condition": "Has the provider confirmed enrollment or the revised schedule?",
+            "branches": [
+              "update the calendar and notify caregivers",
+              "keep the arrangement pending and contact the provider"
+            ]
+          }
+        ],
+        "exceptions": [
+          "activity fully booked",
+          "registration confirmation missing",
+          "transport caregiver unavailable",
+          "provider schedule change"
+        ],
+        "dependencies": [
+          {
+            "from": "A1",
+            "to": "A2",
+            "type": "control_flow"
+          },
+          {
+            "from": "A2",
+            "to": "A3",
+            "type": "control_flow"
+          },
+          {
+            "from": "A3",
+            "to": "A4",
+            "type": "control_flow"
+          },
+          {
+            "from": "A4",
+            "to": "A5",
+            "type": "control_flow"
+          },
+          {
+            "from": "A5",
+            "to": "A6",
+            "type": "control_flow"
+          },
+          {
+            "from": "A6",
+            "to": "A7",
+            "type": "control_flow"
+          },
+          {
+            "from": "A7",
+            "to": "A8",
+            "type": "control_flow"
+          }
+        ],
+        "automation_opportunities": [
+          {
+            "target": "A2",
+            "rationale": "Flag calendar conflicts and missing transport availability."
+          },
+          {
+            "target": "A6",
+            "rationale": "Track unconfirmed registration requests."
+          },
+          {
+            "target": "A8",
+            "rationale": "Draft calendar changes and caregiver notifications."
+          }
+        ],
+        "operating_context": {
+          "frequency": "enrollment considered at the start of a term, with occasional provider changes",
+          "manual_effort": "Checking schedules and completing a request takes about fifteen minutes in this fictional household.",
+          "data_availability": "Requirements and availability are shown on the provider page; confirmation is saved separately by the family.",
+          "integration_and_approval_constraints": "Registration and payments need parent approval; a suggested calendar entry is not evidence of provider confirmation."
+        },
+        "interpretation": "Activity dependencies describe the nominal sequence. Decision branches and exception descriptions qualify that sequence; this is not an executable BPMN model."
+      },
+      "intentionally_missing_in_initial_description": [
+        "explicit role allocation",
+        "named record or communication tools",
+        "required inputs",
+        "recorded completion evidence",
+        "decision criteria",
+        "exception handling conditions"
+      ],
+      "omission_grounding": [
+        {
+          "category": "actor",
+          "reference_path": "/reference_workflow/actors"
+        },
+        {
+          "category": "system",
+          "reference_path": "/reference_workflow/systems"
+        },
+        {
+          "category": "input",
+          "reference_path": "/reference_workflow/inputs"
+        },
+        {
+          "category": "output",
+          "reference_path": "/reference_workflow/outputs"
+        },
+        {
+          "category": "decision",
+          "reference_path": "/reference_workflow/decisions"
+        },
+        {
+          "category": "exception",
+          "reference_path": "/reference_workflow/exceptions"
+        }
+      ],
+      "unknown_information": [
+        "Numeric arrival times, monetary amounts and product specifications not explicitly provided are unknown.",
+        "No medical judgments, real child records or legal policy claims are represented."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "row": {
+    "domain": "semiconductor_work",
+    "scenario_id": "S01",
+    "arm": "generic",
+    "process_coverage": 0.9821428571428571,
+    "legacy_coverage": 0.984,
+    "structured_coverage": 0.984,
+    "activities": 0.875,
+    "actors": 1.0,
+    "systems": 1.0,
+    "inputs": 1.0,
+    "outputs": 1.0,
+    "decisions": 1.0,
+    "exceptions": 1.0,
+    "answer_words": 260,
+    "cached_baseline": true,
+    "input_tokens": 2938,
+    "output_tokens": 4766
+  },
+  "legacy": {
+    "activities": {
+      "covered": 7,
+      "total": 8,
+      "score": 0.875,
+      "covered_items": [
+        "Review test request and conditions",
+        "Prepare evaluation setup",
+        "Run verification test",
+        "Collect result files",
+        "Check result validity",
+        "Share report for review",
+        "Review report and request clarification if needed"
+      ],
+      "missing_items": [
+        "Summarize findings in report"
+      ]
+    },
+    "actors": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "verification engineer",
+        "review engineer",
+        "project owner"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test execution tool",
+        "result repository",
+        "report template",
+        "email or collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test request",
+        "test condition",
+        "sample identifier",
+        "evaluation setup guide"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test result files",
+        "summary report",
+        "issue list",
+        "review notification"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are the result files complete and readable?",
+        "Do the results contain abnormal patterns?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing setup information",
+        "test execution failure",
+        "incomplete result files",
+        "unclear abnormal pattern"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.984
+  },
+  "structured": {
+    "activities": {
+      "covered": 7,
+      "total": 8,
+      "score": 0.875,
+      "covered_items": [
+        "Review test request and conditions",
+        "Prepare evaluation setup",
+        "Run verification test",
+        "Collect result files",
+        "Check result validity",
+        "Share report for review",
+        "Review report and request clarification if needed"
+      ],
+      "missing_items": [
+        "Summarize findings in report"
+      ]
+    },
+    "actors": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "verification engineer",
+        "review engineer",
+        "project owner"
+      ],
+      "missing_items": []
+    },
+    "systems": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test execution tool",
+        "result repository",
+        "report template",
+        "email or collaboration tool"
+      ],
+      "missing_items": []
+    },
+    "inputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test request",
+        "test condition",
+        "sample identifier",
+        "evaluation setup guide"
+      ],
+      "missing_items": []
+    },
+    "outputs": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "test result files",
+        "summary report",
+        "issue list",
+        "review notification"
+      ],
+      "missing_items": []
+    },
+    "decisions": {
+      "covered": 2,
+      "total": 2,
+      "score": 1.0,
+      "covered_items": [
+        "Are the result files complete and readable?",
+        "Do the results contain abnormal patterns?"
+      ],
+      "missing_items": []
+    },
+    "exceptions": {
+      "covered": 4,
+      "total": 4,
+      "score": 1.0,
+      "covered_items": [
+        "missing setup information",
+        "test execution failure",
+        "incomplete result files",
+        "unclear abnormal pattern"
+      ],
+      "missing_items": []
+    },
+    "automation_opportunities": {
+      "covered": 3,
+      "total": 3,
+      "score": 1.0,
+      "covered_items": [
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "missing_items": []
+    },
+    "overall_score": 0.984
+  },
+  "source_files": [
+    "data/ablation/generic_questions_v1/runs/r01/S01/generic/questions.json",
+    "data/ablation/generic_questions_v1/runs/r01/S01/generic/oracle_answers.json",
+    "data/ablation/generic_questions_v1/runs/r01/S01/generic/update.json"
+  ]
+}

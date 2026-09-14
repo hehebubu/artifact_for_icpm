@@ -1,0 +1,327 @@
+{
+  "protocol": "answer-ladder-v1",
+  "levels": [
+    "L3",
+    "L3p",
+    "L2",
+    "L1",
+    "L0"
+  ],
+  "complete_sets": 40,
+  "expected_sets": 40,
+  "errors": [],
+  "levels_summary": {
+    "L3": {
+      "document_process": {
+        "mean": 0.8574,
+        "sd": 0.0754
+      },
+      "field_process": {
+        "mean": 0.7437,
+        "sd": 0.0799
+      },
+      "exact_process": {
+        "mean": 0.5097,
+        "sd": 0.101
+      },
+      "answer_words": {
+        "mean": 251.975,
+        "sd": 34.4767
+      },
+      "unsure_answers": {
+        "mean": 0,
+        "sd": 0.0
+      },
+      "provenance_carried": {
+        "mean": 2.6,
+        "sd": 1.4987
+      },
+      "provenance_lost": {
+        "mean": 0.4,
+        "sd": 0.6718
+      },
+      "provenance_recovered": {
+        "mean": 18.25,
+        "sd": 3.5716
+      },
+      "provenance_dropped": {
+        "mean": 1.45,
+        "sd": 1.2598
+      },
+      "provenance_unsupported": {
+        "mean": 1.15,
+        "sd": 0.9213
+      },
+      "provenance_missed": {
+        "mean": 5.025,
+        "sd": 2.0938
+      }
+    },
+    "L3p": {
+      "document_process": {
+        "mean": 0.827,
+        "sd": 0.0837
+      },
+      "field_process": {
+        "mean": 0.5939,
+        "sd": 0.098
+      },
+      "exact_process": {
+        "mean": 0.2405,
+        "sd": 0.068
+      },
+      "answer_words": {
+        "mean": 279.125,
+        "sd": 36.3573
+      },
+      "unsure_answers": {
+        "mean": 0,
+        "sd": 0.0
+      },
+      "provenance_carried": {
+        "mean": 2.15,
+        "sd": 1.099
+      },
+      "provenance_lost": {
+        "mean": 0.85,
+        "sd": 1.0513
+      },
+      "provenance_recovered": {
+        "mean": 12.5,
+        "sd": 4.1013
+      },
+      "provenance_dropped": {
+        "mean": 2.425,
+        "sd": 1.8659
+      },
+      "provenance_unsupported": {
+        "mean": 2.9,
+        "sd": 2.1098
+      },
+      "provenance_missed": {
+        "mean": 8.05,
+        "sd": 2.828
+      }
+    },
+    "L2": {
+      "document_process": {
+        "mean": 0.783,
+        "sd": 0.1105
+      },
+      "field_process": {
+        "mean": 0.592,
+        "sd": 0.1045
+      },
+      "exact_process": {
+        "mean": 0.3472,
+        "sd": 0.0951
+      },
+      "answer_words": {
+        "mean": 76.45,
+        "sd": 17.8167
+      },
+      "unsure_answers": {
+        "mean": 0,
+        "sd": 0.0
+      },
+      "provenance_carried": {
+        "mean": 2.2,
+        "sd": 1.3625
+      },
+      "provenance_lost": {
+        "mean": 0.8,
+        "sd": 0.8829
+      },
+      "provenance_recovered": {
+        "mean": 12.25,
+        "sd": 3.6847
+      },
+      "provenance_dropped": {
+        "mean": 0.75,
+        "sd": 1.1491
+      },
+      "provenance_unsupported": {
+        "mean": 3.275,
+        "sd": 1.617
+      },
+      "provenance_missed": {
+        "mean": 9.6,
+        "sd": 2.8084
+      }
+    },
+    "L1": {
+      "document_process": {
+        "mean": 0.7291,
+        "sd": 0.1077
+      },
+      "field_process": {
+        "mean": 0.5439,
+        "sd": 0.0921
+      },
+      "exact_process": {
+        "mean": 0.3168,
+        "sd": 0.0844
+      },
+      "answer_words": {
+        "mean": 148.025,
+        "sd": 17.2039
+      },
+      "unsure_answers": {
+        "mean": 3,
+        "sd": 0.0
+      },
+      "provenance_carried": {
+        "mean": 2.45,
+        "sd": 1.5013
+      },
+      "provenance_lost": {
+        "mean": 0.55,
+        "sd": 0.6775
+      },
+      "provenance_recovered": {
+        "mean": 11.25,
+        "sd": 3.3108
+      },
+      "provenance_dropped": {
+        "mean": 1.45,
+        "sd": 1.2999
+      },
+      "provenance_unsupported": {
+        "mean": 2.55,
+        "sd": 1.6787
+      },
+      "provenance_missed": {
+        "mean": 10.625,
+        "sd": 3.2557
+      }
+    },
+    "L0": {
+      "document_process": {
+        "mean": 0.5769,
+        "sd": 0.1469
+      },
+      "field_process": {
+        "mean": 0.3154,
+        "sd": 0.1219
+      },
+      "exact_process": {
+        "mean": 0.1031,
+        "sd": 0.0577
+      },
+      "answer_words": {
+        "mean": 124.3,
+        "sd": 13.7079
+      },
+      "unsure_answers": {
+        "mean": 0,
+        "sd": 0.0
+      },
+      "provenance_carried": {
+        "mean": 2.2,
+        "sd": 1.4178
+      },
+      "provenance_lost": {
+        "mean": 0.8,
+        "sd": 0.791
+      },
+      "provenance_recovered": {
+        "mean": 0.375,
+        "sd": 0.8066
+      },
+      "provenance_dropped": {
+        "mean": 0.1,
+        "sd": 0.3038
+      },
+      "provenance_unsupported": {
+        "mean": 6.925,
+        "sd": 3.1735
+      },
+      "provenance_missed": {
+        "mean": 18.475,
+        "sd": 4.0572
+      }
+    }
+  },
+  "paired_vs_anchor": {
+    "L3p": {
+      "document_process": {
+        "mean_difference": 0.0304,
+        "ci_low": 0.0046,
+        "ci_high": 0.0568,
+        "pairs": 40
+      },
+      "field_process": {
+        "mean_difference": 0.1498,
+        "ci_low": 0.1144,
+        "ci_high": 0.1847,
+        "pairs": 40
+      },
+      "exact_process": {
+        "mean_difference": 0.2692,
+        "ci_low": 0.2374,
+        "ci_high": 0.3022,
+        "pairs": 40
+      }
+    },
+    "L2": {
+      "document_process": {
+        "mean_difference": 0.0744,
+        "ci_low": 0.041,
+        "ci_high": 0.1075,
+        "pairs": 40
+      },
+      "field_process": {
+        "mean_difference": 0.1517,
+        "ci_low": 0.1147,
+        "ci_high": 0.1888,
+        "pairs": 40
+      },
+      "exact_process": {
+        "mean_difference": 0.1625,
+        "ci_low": 0.1391,
+        "ci_high": 0.1841,
+        "pairs": 40
+      }
+    },
+    "L1": {
+      "document_process": {
+        "mean_difference": 0.1283,
+        "ci_low": 0.0903,
+        "ci_high": 0.1667,
+        "pairs": 40
+      },
+      "field_process": {
+        "mean_difference": 0.1998,
+        "ci_low": 0.1643,
+        "ci_high": 0.2351,
+        "pairs": 40
+      },
+      "exact_process": {
+        "mean_difference": 0.1929,
+        "ci_low": 0.1608,
+        "ci_high": 0.2228,
+        "pairs": 40
+      }
+    },
+    "L0": {
+      "document_process": {
+        "mean_difference": 0.2805,
+        "ci_low": 0.2254,
+        "ci_high": 0.3334,
+        "pairs": 40
+      },
+      "field_process": {
+        "mean_difference": 0.4283,
+        "ci_low": 0.3744,
+        "ci_high": 0.4828,
+        "pairs": 40
+      },
+      "exact_process": {
+        "mean_difference": 0.4066,
+        "ci_low": 0.3694,
+        "ci_high": 0.4416,
+        "pairs": 40
+      }
+    }
+  }
+}

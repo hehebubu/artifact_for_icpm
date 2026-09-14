@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "Which specific roles or organizational functions are required to participate in the triage discussion, and who has the authority to make the final improvement decision?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "What specific event or signal triggers the defect reporting step — for example, is it an automated system alert, a failed test result, a manual observation by an engineer, or something else?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "Is there a defined system or tool where defects are formally logged and tracked throughout this process, and if so, what data fields does it capture at the point of initial reporting?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "Which teams or roles are typically involved in the discussion step after a defect is reported, and who holds the final authority to approve the chosen improvement action?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "What criteria or rules are used to classify a defect's severity or risk level during triage—for example, are there predefined thresholds based on defect type, affected volume, or potential impact?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "What do the 'additional experiments' involve — what types of tests or analyses are performed, and what outcome or condition signals that this step is complete?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "What is the expected output of the risk communication step—specifically, what format does it take, who receives it, and is it ever submitted to an external body such as a regulator or customer?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "Is there a defined framework, scoring model, or risk matrix used to evaluate the defect and decide on the improvement approach, or is this judgment left to individual engineers?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "Is there a defined escalation or emergency path for defects that are identified as critical or safety-related, and does that path involve any mandatory approvals or external notifications?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "What does the risk communication output look like — who receives it, in what format is it delivered, and are there required fields or a standard template that must be followed?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "Approximately how many defect reports are processed per month, and what is the typical end-to-end cycle time from initial report to completed risk communication?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "Is there a separate escalation or fast-track path for high-severity defects, and if so, how is severity determined and what steps differ from the standard workflow?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "generic",
+      "question_id": "Q6"
+    }
+  }
+}

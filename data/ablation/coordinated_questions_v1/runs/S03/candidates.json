@@ -1,0 +1,102 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "question": "What event or condition triggers the initiation of a wafer sample transfer — for example, is it a scheduled evaluation cycle, a manual request from an engineer, or a signal from an upstream process step?"
+    },
+    {
+      "candidate_id": "C2",
+      "question": "Who is responsible for initiating a sample transfer request — is it the engineer requesting the evaluation, a dedicated lab technician, or is the transfer triggered automatically by a system event?"
+    },
+    {
+      "candidate_id": "C3",
+      "question": "Who are the specific roles involved at each stage of the workflow — such as who submits the transfer request, who authorizes it, who performs the physical transfer, and who conducts the evaluation?"
+    },
+    {
+      "candidate_id": "C4",
+      "question": "What specific criteria or conditions determine that a sample is 'unnecessary' after evaluation and should be flagged for disposal — for example, are there defined evaluation outcomes, age thresholds, or quantity rules?"
+    },
+    {
+      "candidate_id": "C5",
+      "question": "What specific criteria or rules determine whether a sample is classified as 'unnecessary' and eligible for disposal after evaluation?"
+    },
+    {
+      "candidate_id": "C6",
+      "question": "Does the disposal request require approval from any person or role before it can be executed, and if so, what is the approval authority and what conditions might lead to a rejection?"
+    },
+    {
+      "candidate_id": "C7",
+      "question": "Can you walk through the individual steps of the disposal request process, including any approvals required, the parties who must sign off, and any regulatory or safety compliance checks that must be completed?"
+    },
+    {
+      "candidate_id": "C8",
+      "question": "What system or tool is currently used to track sample status, location, and evaluation results throughout this workflow — for example, a laboratory information management system, a spreadsheet, or another platform?"
+    },
+    {
+      "candidate_id": "C9",
+      "question": "Which systems or tools are used to record and track sample transfers and disposal requests throughout the workflow — for example, a lab information management system, an inventory database, or a manual log?"
+    },
+    {
+      "candidate_id": "C10",
+      "question": "What is the expected output at the end of the disposal request process — for example, is a disposal record, confirmation log, or compliance certificate generated, and where is it stored?"
+    },
+    {
+      "candidate_id": "C11",
+      "question": "How is the process handled when a sample is damaged, goes missing during transfer, or produces an inconclusive evaluation result — is there a defined escalation or rework path?"
+    },
+    {
+      "candidate_id": "C12",
+      "question": "Approximately how many sample transfers and disposal requests occur per week or month, and are they handled individually on demand or grouped into scheduled batches?"
+    }
+  ],
+  "provenance": {
+    "C1": {
+      "arm": "generic",
+      "question_id": "Q1"
+    },
+    "C2": {
+      "arm": "gapelicit",
+      "question_id": "Q1"
+    },
+    "C3": {
+      "arm": "generic",
+      "question_id": "Q2"
+    },
+    "C4": {
+      "arm": "gapelicit",
+      "question_id": "Q2"
+    },
+    "C5": {
+      "arm": "generic",
+      "question_id": "Q3"
+    },
+    "C6": {
+      "arm": "gapelicit",
+      "question_id": "Q3"
+    },
+    "C7": {
+      "arm": "generic",
+      "question_id": "Q4"
+    },
+    "C8": {
+      "arm": "gapelicit",
+      "question_id": "Q4"
+    },
+    "C9": {
+      "arm": "generic",
+      "question_id": "Q5"
+    },
+    "C10": {
+      "arm": "gapelicit",
+      "question_id": "Q5"
+    },
+    "C11": {
+      "arm": "generic",
+      "question_id": "Q6"
+    },
+    "C12": {
+      "arm": "gapelicit",
+      "question_id": "Q6"
+    }
+  }
+}

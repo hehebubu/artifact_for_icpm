@@ -1,0 +1,6 @@
+{
+  "domain": "semiconductor_work",
+  "scenario_id": "S08",
+  "arm": "domain",
+  "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+}
