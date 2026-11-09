@@ -1,0 +1,23 @@
+{
+  "seed": 20261106,
+  "design": "purposive stratified cluster sample",
+  "clusters": 8,
+  "warmup": 3,
+  "scored": 24,
+  "strata": {
+    "undecidable": 12,
+    "unsupported": 6,
+    "recovered": 4,
+    "absent": 2
+  },
+  "categories": {
+    "inputs": 1,
+    "activities": 11,
+    "outputs": 5,
+    "decisions": 1,
+    "actors": 3,
+    "exceptions": 2,
+    "systems": 1
+  },
+  "blocks_to_read": 9
+}

@@ -1,0 +1,28 @@
+item_no,role,stratum,corpus,domain,scenario_id,arm,category,item,desc_match,question_match,answer_match,output_match,gaps_match,label,label_field,label_exact
+W1,warmup,warmup,coordinated_questions_v1,semiconductor_work,S03,coordinated,inputs,disposal reason,none,scatter,exact,exact,none,recovered,recovered,recovered
+W2,warmup,warmup,coordinated_questions_v1,semiconductor_work,S03,coordinated,exceptions,missing physical sample,none,field,exact,exact,exact,recovered,recovered,recovered
+W3,warmup,warmup,coordinated_questions_v1,semiconductor_work,S03,coordinated,inputs,evaluation purpose,none,none,exact,exact,none,recovered,recovered,recovered
+I01,scored,absent,domain_taxonomy_v1,childcare,C03,domain,inputs,provider notice,none,field,field,none,none,dropped,dropped,missed
+I02,scored,undecidable,generic_questions_v1,semiconductor_work,S02,gapelicit,activities,Confirm measurement request and wafer identifier,none,none,field,scatter,scatter,recovered,dropped,missed
+I03,scored,undecidable,generic_questions_v1,semiconductor_work,S02,gapelicit,activities,Select suitable measurement equipment,none,none,field,scatter,field,recovered,dropped,missed
+I04,scored,undecidable,domain_taxonomy_v1,childcare,C04,generic,activities,Pack and confirm needed items,none,scatter,field,scatter,scatter,recovered,dropped,missed
+I05,scored,recovered,domain_taxonomy_v1,childcare,C03,generic,activities,Add the event and item deadline to the calendar,none,scatter,field,field,field,recovered,recovered,missed
+I06,scored,undecidable,domain_taxonomy_v1,childcare,C02,common,activities,Wait for provider acknowledgment before the changed pickup,none,none,field,scatter,none,recovered,dropped,missed
+I07,scored,undecidable,domain_taxonomy_v1,childcare,C06,generic,activities,Place the confirmed order and save confirmation,none,none,field,scatter,scatter,recovered,dropped,missed
+I08,scored,unsupported,domain_taxonomy_v1,childcare,C03,domain,outputs,calendar entry,none,none,none,exact,none,unsupported,unsupported,unsupported
+I09,scored,undecidable,domain_taxonomy_v1,childcare,C03,domain,activities,Identify response and preparation requirements,none,scatter,field,scatter,scatter,recovered,dropped,missed
+I10,scored,undecidable,domain_taxonomy_v1,childcare,C03,generic,decisions,Are the event details complete and compatible with the schedule?,none,scatter,field,scatter,none,recovered,dropped,missed
+I11,scored,undecidable,domain_taxonomy_v1,childcare,C03,generic,activities,Identify response and preparation requirements,none,none,field,scatter,scatter,recovered,dropped,missed
+I12,scored,recovered,domain_taxonomy_v1,childcare,C02,common,outputs,home arrival note,none,none,field,field,none,recovered,recovered,missed
+I13,scored,absent,coordinated_questions_v1,semiconductor_work,S02,coordinated,activities,Check equipment availability and reserve slot,none,none,field,none,none,dropped,dropped,missed
+I14,scored,unsupported,generic_questions_v1,semiconductor_work,S02,gapelicit,outputs,equipment usage record,none,none,none,field,none,unsupported,unsupported,missed
+I15,scored,unsupported,domain_taxonomy_v1,childcare,C06,generic,actors,supplier,none,exact,none,exact,none,unsupported,unsupported,unsupported
+I16,scored,recovered,domain_taxonomy_v1,childcare,C04,generic,actors,accompanying caregiver,none,none,exact,exact,none,recovered,recovered,recovered
+I17,scored,recovered,generic_questions_v1,semiconductor_work,S02,gapelicit,actors,requester,none,none,exact,exact,exact,recovered,recovered,recovered
+I18,scored,unsupported,generic_questions_v1,semiconductor_work,S02,gapelicit,exceptions,equipment unavailable,none,none,none,field,field,unsupported,unsupported,missed
+I19,scored,unsupported,domain_taxonomy_v1,childcare,C03,generic,outputs,calendar entry,none,none,none,exact,none,unsupported,unsupported,unsupported
+I20,scored,undecidable,domain_taxonomy_v1,childcare,C02,common,activities,Request a collector change from the teacher if needed,none,none,field,scatter,scatter,recovered,dropped,missed
+I21,scored,undecidable,domain_taxonomy_v1,childcare,C04,generic,activities,Resolve missing items or change the outing plan,none,scatter,field,scatter,scatter,recovered,dropped,missed
+I22,scored,undecidable,domain_taxonomy_v1,childcare,C04,domain,exceptions,used items not restocked,none,none,field,scatter,scatter,recovered,dropped,missed
+I23,scored,undecidable,coordinated_questions_v1,semiconductor_work,S02,coordinated,systems,measurement equipment,none,none,field,scatter,none,recovered,dropped,missed
+I24,scored,unsupported,domain_taxonomy_v1,childcare,C04,domain,outputs,change notification,none,none,none,field,none,unsupported,unsupported,missed

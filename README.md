@@ -61,6 +61,25 @@ python3 scripts/rescore_criteria.py
 
 - `scripts/test_*.py`: unit tests for the runners and the analysis scripts.
 
+### Human validation instrument
+
+- `data/ablation/human_eval_v1/sample.csv`: the stratified cluster sample of
+  reference items drawn for blinded human rating, with the strata and the seed
+  recorded in `sample_manifest.json`.
+- `data/ablation/human_eval_v1/sheet_ko.html`: the rating sheet itself, a single
+  self-contained page. The judged text is English; Korean glosses are shown as a
+  reading aid and are machine translated, and raters are instructed to judge the
+  English.
+- `data/ablation/human_eval_v1/item_gloss_ko.json`, `content_gloss_ko.json`: the
+  glosses, released so that the translation can be inspected.
+- `scripts/sample_human_eval.py`, `build_rating_sheet.py`, `translate_sheet.py`:
+  sampling, sheet generation and translation.
+
+### Export to modelling tools
+
+- `tools/export_bpmn.py`: converts a reconstructed workflow into BPMN 2.0 XML
+  with diagram interchange, plus an automation register and a data-flow table.
+
 ## Experimental Conditions
 
 The prototype supports three workflow-producing conditions:
