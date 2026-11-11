@@ -49,13 +49,21 @@ paper files.
 - `data/ablation/answer_ladder_v1/`: 200 pipelines over five answer-quality
   levels with five repeats, including the bootstrap comparison to the
   full-answer anchor.
-- `scripts/run_provenance.py`, `rescore_criteria.py`, `run_answer_ladder.py`,
-  `make_new_tables.py`: the analysis scripts. The provenance and
+- `data/ablation/output_side_v1/`: the reverse direction. `items.csv` records every
+  distinct element the reconstructions state, by run and category, with its match
+  level against the reference, the initial description and the answers, and its
+  classification under each of the three criteria. `report.md` gives the counts and a
+  sample; `summary.json` the full breakdown. The classification order, the closed list
+  of abstention placeholders and the restated-artifact rule are documented in the
+  script's docstring.
+- `scripts/run_provenance.py`, `run_output_side.py`, `rescore_criteria.py`,
+  `run_answer_ladder.py`, `make_new_tables.py`: the analysis scripts. The provenance and
   criterion-sensitivity analyses re-read stored logs and issue no API calls, so
   they reproduce offline:
 
 ```sh
 python3 scripts/run_provenance.py
+python3 scripts/run_output_side.py
 python3 scripts/rescore_criteria.py
 ```
 

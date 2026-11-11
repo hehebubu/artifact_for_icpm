@@ -1,0 +1,173 @@
+{
+  "protocol": "output-side-v1",
+  "distinct_pipelines": 56,
+  "items": 2671,
+  "document": {
+    "in_reference": 1972,
+    "grounded": 333,
+    "abstention": 63,
+    "restated_artifact": 74,
+    "untraceable": 229,
+    "untraceable_per_run": 4.09,
+    "untraceable_share": 0.0857,
+    "untraceable_structural": 56,
+    "by_category": {
+      "activities": {
+        "in_reference": 464,
+        "grounded": 48,
+        "untraceable": 17
+      },
+      "actors": {
+        "in_reference": 176,
+        "untraceable": 4,
+        "abstention": 1,
+        "grounded": 12
+      },
+      "systems": {
+        "abstention": 60,
+        "in_reference": 193,
+        "grounded": 28,
+        "untraceable": 5
+      },
+      "inputs": {
+        "in_reference": 537,
+        "untraceable": 89,
+        "restated_artifact": 37,
+        "grounded": 103,
+        "abstention": 1
+      },
+      "outputs": {
+        "grounded": 92,
+        "in_reference": 430,
+        "untraceable": 75,
+        "restated_artifact": 37
+      },
+      "decisions": {
+        "in_reference": 122,
+        "untraceable": 8,
+        "grounded": 11
+      },
+      "exceptions": {
+        "abstention": 1,
+        "in_reference": 50,
+        "untraceable": 31,
+        "grounded": 39
+      }
+    }
+  },
+  "field": {
+    "in_reference": 1437,
+    "grounded": 653,
+    "abstention": 68,
+    "restated_artifact": 116,
+    "untraceable": 397,
+    "untraceable_per_run": 7.09,
+    "untraceable_share": 0.1486,
+    "untraceable_structural": 121,
+    "by_category": {
+      "activities": {
+        "in_reference": 348,
+        "grounded": 143,
+        "untraceable": 38
+      },
+      "actors": {
+        "in_reference": 143,
+        "grounded": 38,
+        "untraceable": 10,
+        "abstention": 2
+      },
+      "systems": {
+        "abstention": 64,
+        "in_reference": 171,
+        "grounded": 41,
+        "untraceable": 10
+      },
+      "inputs": {
+        "in_reference": 424,
+        "grounded": 152,
+        "untraceable": 132,
+        "restated_artifact": 58,
+        "abstention": 1
+      },
+      "outputs": {
+        "grounded": 175,
+        "in_reference": 277,
+        "untraceable": 124,
+        "restated_artifact": 58
+      },
+      "decisions": {
+        "in_reference": 60,
+        "grounded": 52,
+        "untraceable": 29
+      },
+      "exceptions": {
+        "abstention": 1,
+        "in_reference": 14,
+        "untraceable": 54,
+        "grounded": 52
+      }
+    }
+  },
+  "exact": {
+    "in_reference": 578,
+    "grounded": 63,
+    "abstention": 80,
+    "restated_artifact": 428,
+    "untraceable": 1522,
+    "untraceable_per_run": 27.18,
+    "untraceable_share": 0.5698,
+    "untraceable_structural": 692,
+    "by_category": {
+      "activities": {
+        "in_reference": 80,
+        "untraceable": 445,
+        "grounded": 4
+      },
+      "actors": {
+        "in_reference": 127,
+        "untraceable": 56,
+        "abstention": 2,
+        "grounded": 8
+      },
+      "systems": {
+        "abstention": 76,
+        "in_reference": 130,
+        "untraceable": 73,
+        "grounded": 7
+      },
+      "inputs": {
+        "in_reference": 169,
+        "restated_artifact": 214,
+        "untraceable": 355,
+        "grounded": 28,
+        "abstention": 1
+      },
+      "outputs": {
+        "untraceable": 346,
+        "restated_artifact": 214,
+        "in_reference": 60,
+        "grounded": 14
+      },
+      "decisions": {
+        "untraceable": 132,
+        "in_reference": 9
+      },
+      "exceptions": {
+        "abstention": 1,
+        "untraceable": 115,
+        "in_reference": 3,
+        "grounded": 2
+      }
+    }
+  },
+  "abstentions_observed": {
+    "unknown": 42,
+    "unclear": 1,
+    "unspecified": 12,
+    "none": 7,
+    "none specified": 5,
+    "na": 1
+  },
+  "exceptions_declaring_an_undefined_path": 15,
+  "skipped": []
+}
