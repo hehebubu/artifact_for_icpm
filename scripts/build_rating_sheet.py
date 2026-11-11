@@ -89,7 +89,7 @@ footer{max-width:1000px;margin:0 auto 60px;padding:0 22px;color:#6a6a63;font-siz
 <h2>진행 방법</h2>
 <ul>
 <li>항목마다 <b>재구성 결과</b>와 <b>담당자 답변</b>이 위에 함께 제시됩니다. 읽고 세 문항에 답하세요.</li>
-<li>W1~W5는 <b>연습 문항</b>입니다. 기준을 잡는 용도이며 분석에 쓰지 않습니다.</li>
+<li>W1~W3은 <b>연습 문항</b>입니다. 기준을 잡는 용도이며 분석에 쓰지 않습니다.</li>
 <li><b>다른 채점자와 상의하지 마세요.</b> 독립 채점이어야 일치도를 계산할 수 있습니다.</li>
 <li>판정 기준은 <b>영문 원문</b>입니다. 회색 국문은 <b>기계 번역된 참고용</b>이며 판정 근거가 아닙니다.
 번역이 원문과 어긋나 보이면 영문을 따르세요. 오른쪽 위에서 국문을 숨길 수 있습니다.</li>
@@ -106,7 +106,7 @@ footer{max-width:1000px;margin:0 auto 60px;padding:0 22px;color:#6a6a63;font-siz
 </div>
 <div id="sheet"></div>
 </main>
-<footer>문항 수 __N__ (연습 5 포함). 자동 저장 위치: 이 브라우저.</footer>
+<footer>문항 수 __N__ (연습 3 포함). 자동 저장 위치: 이 브라우저.</footer>
 <script id="data" type="application/json">__DATA__</script>
 <script>
 const DATA = JSON.parse(document.getElementById('data').textContent);
@@ -204,7 +204,8 @@ def main():
     args = parser.parse_args()
 
     rows = list(csv.DictReader((args.dir / "sample.csv").open(encoding="utf-8")))
-    gloss = json.loads((args.dir / "item_gloss_ko.json").read_text(encoding="utf-8"))
+    gloss_file = args.dir / "item_gloss_ko.json"
+    gloss = json.loads(gloss_file.read_text(encoding="utf-8")) if gloss_file.exists() else {}
     generator = random.Random(args.seed)
 
     grouped = {}

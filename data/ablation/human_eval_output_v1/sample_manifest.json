@@ -1,0 +1,32 @@
+{
+  "seed": 20261111,
+  "direction": "output-side",
+  "criterion": "within-field",
+  "design": "purposive stratified cluster sample",
+  "clusters": 8,
+  "warmup": 3,
+  "scored": 24,
+  "strata": {
+    "untraceable_structural": 10,
+    "untraceable_data": 6,
+    "grounded": 4,
+    "restated_artifact": 2,
+    "abstention": 2
+  },
+  "stratum_populations": {
+    "untraceable_structural": 121,
+    "untraceable_data": 276,
+    "grounded": 653,
+    "restated_artifact": 116,
+    "abstention": 68
+  },
+  "categories": {
+    "inputs": 6,
+    "activities": 5,
+    "exceptions": 4,
+    "decisions": 3,
+    "systems": 2,
+    "outputs": 4
+  },
+  "blocks_to_read": 9
+}
