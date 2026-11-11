@@ -1,0 +1,28 @@
+item_no,role,stratum,corpus,domain,scenario_id,arm,category,item,reference_match,desc_match,answer_match,label_document,label_field,label_exact
+W1,warmup,warmup,domain_taxonomy_v1,childcare,C02,generic,activities,Child collected by confirmed collector,scatter,none,field,in_reference,grounded,untraceable
+W2,warmup,warmup,domain_taxonomy_v1,childcare,C02,generic,activities,Receive collector availability confirmation,scatter,none,field,in_reference,grounded,untraceable
+W3,warmup,warmup,domain_taxonomy_v1,childcare,C02,generic,outputs,Teacher acknowledgement,none,none,scatter,grounded,untraceable,untraceable
+O01,scored,untraceable_data,domain_taxonomy_v1,childcare,C03,generic,inputs,Preparation responsibility status,none,none,none,untraceable,untraceable,untraceable
+O02,scored,untraceable_structural,domain_taxonomy_v1,childcare,C01,common,activities,Travel to childcare centre,none,none,scatter,grounded,untraceable,untraceable
+O03,scored,untraceable_structural,domain_taxonomy_v1,childcare,C02,domain,exceptions,Intended collector is unavailable and a substitute is needed,scatter,none,none,in_reference,untraceable,untraceable
+O04,scored,untraceable_data,domain_taxonomy_v1,childcare,C01,common,inputs,Delay status,none,none,none,untraceable,untraceable,untraceable
+O05,scored,untraceable_structural,domain_taxonomy_v1,childcare,C05,generic,activities,Draft weekly care schedule,scatter,none,none,in_reference,untraceable,untraceable
+O06,scored,untraceable_structural,domain_taxonomy_v1,childcare,C03,domain,exceptions,"A reply was submitted but no confirmation of receipt was returned from the childcare messaging app, or a response deadline was missed.",none,none,none,untraceable,untraceable,untraceable
+O07,scored,untraceable_structural,domain_taxonomy_v1,childcare,C05,generic,decisions,Has a caregiver reported unavailability for an assigned slot?,none,none,none,untraceable,untraceable,untraceable
+O08,scored,grounded,domain_taxonomy_v1,childcare,C06,generic,exceptions,Item not on approved product list or a required substitution is needed.,none,none,field,grounded,grounded,untraceable
+O09,scored,abstention,domain_taxonomy_v1,childcare,C02,domain,systems,None,none,none,none,abstention,abstention,abstention
+O10,scored,abstention,domain_taxonomy_v1,childcare,C06,generic,systems,None,none,none,none,abstention,abstention,abstention
+O11,scored,grounded,generic_questions_v1,semiconductor_work,S08,generic,outputs,Updated calendar invitation with room information,scatter,none,field,in_reference,grounded,untraceable
+O12,scored,grounded,domain_taxonomy_v1,childcare,C02,domain,inputs,Current family availability,scatter,none,field,in_reference,grounded,untraceable
+O13,scored,untraceable_data,generic_questions_v1,semiconductor_work,S08,generic,outputs,Alternative room or time slot selection,none,none,none,untraceable,untraceable,untraceable
+O14,scored,grounded,domain_taxonomy_v1,childcare,C05,generic,activities,Record caregiver acceptance or pending status,scatter,none,field,in_reference,grounded,untraceable
+O15,scored,untraceable_structural,domain_taxonomy_v1,childcare,C03,generic,exceptions,Preparation task has no assigned owner — flagged as unassigned reminder but resolution process not specified,none,none,scatter,grounded,untraceable,untraceable
+O16,scored,untraceable_structural,domain_taxonomy_v1,childcare,C02,domain,activities,Request authorised pickup list update from teacher,scatter,none,scatter,in_reference,untraceable,untraceable
+O17,scored,untraceable_structural,domain_taxonomy_v1,childcare,C04,common,activities,Pack bag according to checklist,scatter,none,scatter,in_reference,untraceable,untraceable
+O18,scored,untraceable_data,domain_taxonomy_v1,childcare,C06,generic,inputs,Discrepancy details,none,none,none,untraceable,untraceable,untraceable
+O19,scored,untraceable_data,domain_taxonomy_v1,childcare,C05,generic,outputs,Availability request sent to all adults,none,none,scatter,grounded,untraceable,untraceable
+O20,scored,untraceable_structural,domain_taxonomy_v1,childcare,C06,generic,decisions,Is it a scheduled stock-check day? (twice-weekly cadence),none,none,none,untraceable,untraceable,untraceable
+O21,scored,untraceable_structural,generic_questions_v1,semiconductor_work,S08,generic,decisions,Is an alternative room or time slot acceptable?,none,none,none,untraceable,untraceable,untraceable
+O22,scored,untraceable_data,domain_taxonomy_v1,childcare,C02,domain,inputs,Pickup time and location details,none,none,scatter,grounded,untraceable,untraceable
+O23,scored,restated_artifact,domain_taxonomy_v1,childcare,C03,generic,outputs,Notice content,none,none,none,restated_artifact,restated_artifact,restated_artifact
+O24,scored,restated_artifact,domain_taxonomy_v1,childcare,C01,common,inputs,Packed bag,scatter,none,none,in_reference,restated_artifact,restated_artifact

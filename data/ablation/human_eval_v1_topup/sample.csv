@@ -1,0 +1,20 @@
+item_no,role,stratum,corpus,domain,scenario_id,arm,category,item,desc_match,question_match,answer_match,output_match,gaps_match,label,label_field,label_exact
+W1,warmup,warmup,generic_questions_v1,semiconductor_work,S04,generic,decisions,Does the experiment support the root-cause hypothesis?,none,none,field,field,none,recovered,recovered,missed
+W2,warmup,warmup,generic_questions_v1,semiconductor_work,S04,generic,outputs,customer risk summary,none,none,exact,exact,scatter,recovered,recovered,recovered
+W3,warmup,warmup,generic_questions_v1,semiconductor_work,S04,generic,actors,process engineer,none,scatter,exact,exact,none,recovered,recovered,recovered
+T01,scored,recovered,domain_taxonomy_v1,childcare,C04,common,actors,mother,none,none,exact,exact,exact,recovered,recovered,recovered
+T02,scored,unsupported,domain_taxonomy_v1,childcare,C03,domain,outputs,classified notice,none,none,none,exact,none,unsupported,unsupported,unsupported
+T03,scored,undecidable,domain_taxonomy_v1,childcare,C03,domain,activities,Confirm the family's participation decision,none,scatter,field,scatter,field,recovered,dropped,missed
+T04,scored,recovered,domain_taxonomy_v1,childcare,C05,generic,systems,shared family calendar,none,scatter,exact,exact,none,recovered,recovered,recovered
+T05,scored,undecidable,domain_taxonomy_v1,childcare,C06,common,activities,Place the confirmed order and save confirmation,none,none,field,scatter,field,recovered,dropped,missed
+T06,scored,recovered,generic_questions_v1,semiconductor_work,S03,gapelicit,systems,storage location registry,none,none,exact,exact,exact,recovered,recovered,recovered
+T07,scored,unsupported,domain_taxonomy_v1,childcare,C05,generic,outputs,weekly care plan,none,scatter,none,field,none,unsupported,unsupported,missed
+T08,scored,undecidable,coordinated_questions_v1,semiconductor_work,S02,coordinated,decisions,Is the equipment available and qualified?,none,none,field,scatter,none,recovered,dropped,missed
+T09,scored,unsupported,generic_questions_v1,semiconductor_work,S03,gapelicit,inputs,target location,none,scatter,none,exact,none,unsupported,unsupported,unsupported
+T10,scored,undecidable,domain_taxonomy_v1,childcare,C05,generic,outputs,change acknowledgment,none,none,exact,scatter,none,recovered,dropped,dropped
+T11,scored,recovered,domain_taxonomy_v1,childcare,C06,common,systems,shopping list,none,none,exact,exact,none,recovered,recovered,recovered
+T12,scored,unsupported,domain_taxonomy_v1,childcare,C03,domain,exceptions,ambiguous notice,none,none,none,exact,field,unsupported,unsupported,unsupported
+T13,scored,undecidable,generic_questions_v1,semiconductor_work,S03,gapelicit,activities,Move sample to target location,none,scatter,field,scatter,none,recovered,dropped,missed
+T14,scored,unsupported,domain_taxonomy_v1,childcare,C03,domain,exceptions,schedule conflict,none,none,none,exact,none,unsupported,unsupported,unsupported
+T15,scored,undecidable,domain_taxonomy_v1,childcare,C04,common,activities,Prepare the outing checklist,none,none,field,scatter,scatter,recovered,dropped,missed
+T16,scored,unsupported,domain_taxonomy_v1,childcare,C05,generic,activities,Notify affected caregivers of any later change,none,none,none,field,none,unsupported,unsupported,missed
