@@ -83,6 +83,28 @@ python3 scripts/rescore_criteria.py
 - `scripts/sample_human_eval.py`, `build_rating_sheet.py`, `translate_sheet.py`:
   sampling, sheet generation and translation.
 
+### Second-round instruments (no ratings collected)
+
+The paper reports one round of human validation: the 24 items in
+`human_eval_v1`. Two further instruments are released as fixed designs, with
+their samples and seeds recorded, so that the planned second round can be run and
+checked against them.
+
+- `data/ablation/human_eval_output_v1/`: 24 output-side elements drawn across five
+  strata, with the sheet that presents them. This direction asks whether an
+  element is supported by what the run was given, so the sheet withholds the
+  reference workflow.
+- `data/ablation/human_eval_v1_topup/`: 16 further reference items, disjoint from
+  the first round, thickening its two thinnest strata.
+- `scripts/sample_output_side.py`, `build_rating_sheet_b.py`,
+  `sample_forward_topup.py`, `analyze_output_eval.py`: sampling, sheet generation,
+  and the analysis that sets the classifier's labels against the raters'
+  judgements.
+
+No ratings have been collected for either instrument, and neither contributes to
+any number reported in the paper. Section 7 of the paper states that the
+output-side count carries no human validation.
+
 ### Export to modelling tools
 
 - `tools/export_bpmn.py`: converts a reconstructed workflow into BPMN 2.0 XML
